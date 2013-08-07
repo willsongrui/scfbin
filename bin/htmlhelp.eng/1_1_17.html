@@ -1,0 +1,21 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString strreplace(TString source, TString from, TString to)<br>
+TInteger TString::replace(TString from, TString to)</div><h1>DESCRIPTION</h1>
+<div class="dc">To find a sub-string from a string and replace all found sub-string to a new string. The finding is case sensitive and support string including character 0. strreplace() function dose not change the source string and returns a new string. TString::replace() changes the source string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>source</h4>
+<div class="dc">source string</div>
+<h4>from</h4>
+<div class="dc">the sub-string to be found</div>
+<h4>to</h4>
+<div class="dc">the objective sub-string replaced</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+strreplace() returns a new string. TString::replace returns 0</div><h1>EXAMPLES</h1><div class="dc">
+assert(strreplace('abcdABcd','ab','cc') == 'cccdABcd');<br>
+s='111111';<br>
+s.replace('1', '2');<br>
+assert(s == '222222');<br>
+s.replace('2', '\00\01');<br>
+assert(s == '\00\01\00\01\00\01\00\01\00\01\00\01');<br>
+s.replace('\01', '\02\03');<br>
+assert(s == '\00\02\03\00\02\03\00\02\03\00\02\03\00\02\03\00\02\03');<br>
+</div>

@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TString switchtranslate(TString s, TString&nbsp;&nbsp;defaultValue, ... )</div><h1>说明</h1>
+<div class="dc">多条件分支函数，完成匹配功能</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">条件变量</div>
+<h4>defaultValue</h4>
+<div class="dc">缺省值，如果匹配不成功，返回缺省值</div>
+<h4>...</h4>
+<div class="dc">此后的参数都成对出现，前者是匹配值，后者是匹配成功后返回的值</div>
+</div><h1>返回</h1><div class="dc">
+字符串</div><h1>示例</h1><div class="dc">
+s1 = 'ACR_RECORD';<br>
+s = switchtranslate(s1,'null','ACR_RECORD','AA','ACR_RECORD_01','BB');<br>
+assert(s == 'AA');<br>
+</div>

@@ -1,0 +1,18 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSCPTimer::timeout([eventProcessLabel])</div><h1>DESCRIPTION</h1>
+<div class="dc">To set the event-processing label for timeout</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>eventProcessLabel</h4>
+<div class="dc">The event processing label</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+var TSCPTimer timer;<br>
+timer = new TSCPTimer;<br>
+timer.timeout([timeoutproc]);<br>
+timer.settimer(10);<br>
+...<br>
+on([timeoutproc], TSCPTimer t)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;// execute this part after 10 seconds<br>
+&nbsp;&nbsp;&nbsp;// ...<br>
+}<br>
+</div>

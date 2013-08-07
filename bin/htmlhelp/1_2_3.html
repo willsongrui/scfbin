@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger&nbsp;&nbsp;acrdurationtoint1 (TString durationStr)<br>
+TInteger&nbsp;&nbsp;acrdurationtoint2 (TString durationStr)</div><h1>说明</h1>
+<div class="dc">将ACR返回的duration转换为秒数。因为INAP协议定义的不确定性，导致不同的交换机返回的duration参数格式有所不同，所以定义了着两个函数</div><h1>参数</h1>
+<div class="dc"><h4>durationStr</h4>
+<div class="dc">8个字符：<br>
+对于acrdurationtoint1，次序为H2 H1 H0 M1 M0 S1 S0 T<br>
+对于acrdurationtoint2，次序为H1 H2 M1 H0 S1 M0 T S0<br>
+（H表示小时，M表示分，S表示秒，T表示厘秒；2表示百位，1表示十位，0表示个位）</div>
+</div><h1>返回</h1><div class="dc">
+整数类型的以秒单位duration，如果厘秒不为0则算一秒。</div><h1>示例</h1><div class="dc">
+assert(acrdurationtoint1('00123456') == 5026) // 1:23:45.6<br>
+assert(acrdurationtoint2('00123456') == 8077) // 2:14:36.5<br>
+</div>

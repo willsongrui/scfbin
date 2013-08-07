@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TFTPClient::putfile(TString lname, TString rname)</div><h1>DESCRIPTION</h1>
+<div class="dc">To put a file to the FTP server</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>lname</h4>
+<div class="dc">The local file path</div>
+<h4>rname</h4>
+<div class="dc">The rempote file path</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+var TFTPClient ftp;<br>
+ftp = new TFTPClient;<br>
+ftp.init('ahost'£¬21£¬'user'£¬'password');<br>
+ftp.putfile('sourceFile', 'destFile');<br>
+</div>

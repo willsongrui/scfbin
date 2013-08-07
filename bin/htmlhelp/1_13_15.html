@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TString checksum(TString s)<br>
+TString checksum2(TString s)<br>
+TString checksum3(TString s)</div><h1>说明</h1>
+<div class="dc">求检查和（例如将字符串的各个字符相加得到的和取模）可以用来检验字符串的正确性。其中：<br>
+- checksum用的是各字符相加用256取模<br>
+- checksum2用的是个字符异或得到的字符<br>
+- checksum3有特殊用处，主要是处理FSK字符串，是FSK字符串中除去同步引导串之外的字节相加用256取模</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">需要求检查和的字符串</div>
+</div><h1>返回</h1><div class="dc">
+单个检查和字符的字符串</div><h1>示例</h1><div class="dc">
+str = checksum('12341');<br>
+assert(str == '1');<br>
+</div>

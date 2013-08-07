@@ -1,0 +1,8 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;crduration()</div><h1>说明</h1>
+<div class="dc">这个函数只有当旧的解码方式InitialDP触发的业务逻辑中使用，当收到ACR事件的时候可以得到ACR参数中的duration变量的值。同对应的静态CCB变量等价，只不过返回的是ASC格式，而静态CCB变量是BCD格式</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+ASC码，HHHMMSST格式的通话时长（也有可能相邻两位的位置倒换HHMHSMTS）</div><h1>示例</h1><div class="dc">
+s= crduration ()<br>
+执行结果可能是：s为'00000113'<br>
+</div>

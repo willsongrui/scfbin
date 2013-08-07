@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TSipMsg TSipMsg::getres(TInteger resCode)</div><h1>说明</h1>
+<div class="dc">从请求对象中构造响应消息对象。一般来说，在收到一个reqMsg请求后，业务逻辑需要调用这个函数根据请求消息构造一个响应消息发送给请求方。<br>
+注：在得到响应消息后，对于UA用户（MS，sipphone），对于180，200的响应中的Contact必须自己设置。</div><h1>参数</h1>
+<div class="dc"><h4>resCode</h4>
+<div class="dc">要构造的响应消息的响应码</div>
+</div><h1>返回</h1><div class="dc">
+得到的响应消息</div><h1>示例</h1><div class="dc">
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TSipMsg res;<br>
+&nbsp;&nbsp;&nbsp;res = req.getres(100);<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

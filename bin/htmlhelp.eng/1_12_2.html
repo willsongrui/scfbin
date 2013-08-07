@@ -1,0 +1,21 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString trimfloatstr2(TString f, TInteger e)<br>
+TString floattosciense(TString f)</div><h1>DESCRIPTION</h1>
+<div class="dc">trimfloatstr2() is to convert a float string and an exponent of 10 to one float string. floattosciense() is to convert a float string to an integer string and an exponent of 10. The conversion do not lose significant digits</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>f</h4>
+<div class="dc">The float string</div>
+<h4>e</h4>
+<div class="dc">The exponent of 10</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+trimfloatstr2() returns a float string. floattosciense() returns a integer string and an exponent of 10</div><h1>EXAMPLES</h1><div class="dc">
+assert(floattosciense('1.1') == '11|-1');<br>
+assert(floattosciense('1.11111') == '111111|-5');<br>
+assert(floattosciense('11111') == '11111|0');<br>
+assert(floattosciense('100000') == '1|5');<br>
+assert(floattosciense('11100000') == '111|5');<br>
+assert(trimfloatstr2('111',5) == '11100000');<br>
+assert(trimfloatstr2('1',5) == '100000');<br>
+assert(trimfloatstr2('11111',0) == '11111');<br>
+assert(trimfloatstr2('111111',-5) == '1.11111');<br>
+assert(trimfloatstr2('1.11111',-5) == '0.0000111111');<br>
+</div>

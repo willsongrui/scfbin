@@ -1,0 +1,16 @@
+<h1>原型</h1>
+<div class="dc">TString getsipnodeaddress(TString nodename)</div><h1>说明</h1>
+<div class="dc">根据给定的node名字读取对应的IP地址</div><h1>参数</h1>
+<div class="dc"><h4>arg</h4>
+<div class="dc">node名字</div>
+</div><h1>返回</h1><div class="dc">
+如果config.as中有该节点的信息，则返回该节点对应的ip值，包括端口</div><h1>示例</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString addresshost;<br>
+&nbsp;&nbsp;&nbsp;addresshost =getsipnodeaddress('ms1');<br>
+&nbsp;&nbsp;&nbsp;assert(addresshost=='192.168.2.237:50914');<br>
+<br>
+}<br>
+</div>

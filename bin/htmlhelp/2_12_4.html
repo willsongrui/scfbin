@@ -1,0 +1,9 @@
+<h1>原型</h1>
+<div class="dc">TInteger TCorbaServer::setreturnvalue(TString argName, TString argValue)</div><h1>说明</h1>
+<div class="dc">如果request消息调用的方法不是one-way类型，我们需要返回一个reply消息到对端，该函数是设置参数的值。</div><h1>参数</h1>
+<div class="dc"><h4>argName</h4>
+<div class="dc">参数的名称，如果是返回值，那么argName应该为return,否则，应该与调用函数的参数名一致</div>
+<h4>argValue</h4>
+<div class="dc">要设置的值。注意,返回reply,只有out或in-out类型的参数才有效，in类型的只在请求消息时起作用</div>
+</div><h1>返回</h1><div class="dc">
+返回值0代表成功，其余代表失败</div>

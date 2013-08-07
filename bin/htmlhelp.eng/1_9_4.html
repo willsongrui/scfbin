@@ -1,0 +1,38 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString hxmlstr(TXMLtree handle)<br>
+TString TXMLTree::tostr(TInteger indent=-1)<br>
+TString TXMLTree::wbxmlencode(TString wbxmlCfg)</div><h1>DESCRIPTION</h1>
+<div class="dc">To convert the TXMLTree object to an XML string. wbxmlencode() is to convert the object to WBXML string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">The handle of the TXMLTree object</div>
+<h4>indent</h4>
+<div class="dc">Whether to format the XML string. The default value is -1 for not formatting. 0 is for formatting.</div>
+<h4>wbxmlCfg</h4>
+<div class="dc">The WBXML configuration file name</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+XML string or WBXML string</div><h1>EXAMPLES</h1><div class="dc">
+var TXMLTree i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+i = new TXMLTree('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s = i.tostr();<br>
+assert(s == '&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s = i.tostr(0)<br>
+assert(s == '&lt;x&gt;xxx<br>
+&nbsp;&nbsp;&lt;y&gt;yyy&lt;/y&gt;<br>
+&lt;/x&gt;<br>
+');<br>
+<br>
+/* For example a WBXML tag configuration that the name is wbxmltest<br>
+&nbsp;&nbsp;&nbsp;&lt;token&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tag&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;aaa&quot; id=&quot;5&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;bbb&quot; id=&quot;6&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;ccc&quot; id=&quot;7&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tag&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/token&gt;<br>
+ */<br>
+x = new TXMLTree('&lt;aaa&gt;111&lt;bbb&gt;222&lt;/bbb&gt;&lt;ccc&gt;333&lt;/ccc&gt;&lt;/aaa&gt;');<br>
+assert(x.wbxmlencode('wbxmltest')<br>
+&nbsp;&nbsp;&nbsp;== '\01\01\03\00\45\03111\00\46\03222\00\01\47\03333\00\01\01');<br>
+</div>

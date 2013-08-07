@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TXMLTree hxmldupelement(TXMLTree handle, TString path)<br>
+TXMLTree TXMLTree::dupelement(TString path)</div><h1>说明</h1>
+<div class="dc">将一个XML树的子树复制，形成一个新的XML树。</div><h1>参数</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">要复制的XML树</div>
+<h4>path</h4>
+<div class="dc">子树的路径</div>
+</div><h1>返回</h1><div class="dc">
+成功返回新XML树的handle，失败返回-1</div><h1>示例</h1><div class="dc">
+i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+j = hxmldupelement (i,'x/y');<br>
+s = hxmlstr(j);<br>
+assert(s == '&lt;y&gt;yyy&lt;/y&gt;');<br>
+</div>

@@ -1,0 +1,37 @@
+<h1>原型</h1>
+<div class="dc">TString TSCPChargeServer::getcrstartdate8andtime()<br>
+TString TSCPChargeServer::getcrstopdate8andtime()<br>
+TInteger TSCPChargeServer::getcrcallcost()<br>
+TInteger TSCPChargeServer::getcrcallduration()<br>
+TInteger TSCPChargeServer::getcrreason()<br>
+TString TSCPChargeServer::getcrcallinfo(TString infoname)</div><h1>说明</h1>
+<div class="dc">当TSCPChargeServer对象停止计费后，这组函数可以用来取得话单信息：<br>
+getcrstartdate8andtime取得呼叫开始时间。<br>
+getcrstopdate8andtime取得呼叫结束时间。<br>
+getcrcallcost取得呼叫费用。<br>
+getcrcallduration取得呼叫时长。<br>
+getcrreason取得计费停止原因。<br>
+getcrcallinfo取得某种呼叫信息</div><h1>参数</h1>
+<div class="dc"><h4>infoname</h4>
+<div class="dc">信息的名字可以是：'startdate8andtime', 'stopdate8andtime', 'cost', 'duration', 'reason'等</div>
+</div><h1>返回</h1><div class="dc">
+getcrstartdate8andtime和getcrstopdate8andtime是得到YYYYMMDDHHmmSS格式的字符串<br>
+getcrcallcost得到整数形式的费用<br>
+getcrcallduration得到整数形式的秒为单位的时长<br>
+getcrreason得到计费停止原因，定义如下：<br>
+1: chargeLimitReached<br>
+2: recordClosedNotFinal<br>
+3: recordCloseFinal<br>
+4: timeLimitReached<br>
+5: slpStopCharge</div><h1>示例</h1><div class="dc">
+var TString crStart = ch1.getcrstartdate8andtime();<br>
+var TString crStop = ch1.getcrstopdate8andtime();<br>
+var TInteger crcost = ch1.getcrcallcost();<br>
+var TInteger crdur = ch1.getcrcallduration();<br>
+var TInteger crrea = ch1.getcrreason();<br>
+crstart = ch1.getcrcallinfo('startdate8andtime');<br>
+crstop = ch1.getcrcallinfo('stopdate8andtime');<br>
+crcost = ch1.getcrcallinfo('cost');<br>
+crdur = ch1.getcrcallinfo('duration');<br>
+crrea = ch1.getcrcallinfo('reason');<br>
+</div>

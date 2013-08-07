@@ -1,0 +1,26 @@
+<h1>原型</h1>
+<div class="dc">TString TINESObj::synctoines(TString msg, TInteger timer=10)<br>
+TString TINESObj::synctoines2(TString msg, Integer timer=10)<br>
+TInteger TINESObj::sendtoines(TString msg)</div><h1>说明</h1>
+<div class="dc">synctoines和synctoines2发送消息给对端INES，并禁止中断，同步等待对端响应。超时对端还未响应则抛出异常。几点说明：<br>
+1. 因为自动机之间的通信协议与INES之间的通信协议不一样，所以不允许初始化TINESObj对象用于自动机通信，却实际用于与INES对象通信的情况。<br>
+2. 当第一次发起会话请求时（对端FSMID为&quot;*&quot;），发送的消息必须由invokeservice开头，请求对端INES创建一个自动机进行通信。<br>
+3. 调用synctoines后，底层收到了serviceEvent消息或fsmCommand消息后，会根据INES名称和自动机号等信息自动判断该消息是否是TINESObj对象所期待的响应，如果是则将消息扔给TINESObj处理；如果不是，serviceEvent消息被扔回消息队列，而对FSMCommand消息的处理则是SCFERROR后直接删除。4. synctoines2()函数与synctoines类似，只是该函数发送ines消息的源地址格式为myinstanceid:objectid ，响应消息的目的地址必须和发送的源地址相同才能被对象接收。<br>
+sendtoined()发送消息给对端INES，不期待对端立刻返回结果。通常这个函数用于发送最后一条响应消息，通知对端结束本次会话。</div><h1>参数</h1>
+<div class="dc"><h4>msg</h4>
+<div class="dc">需要发送的消息</div>
+<h4>timer</h4>
+<div class="dc">超时时间，缺省为10秒</div>
+</div><h1>返回</h1><div class="dc">
+synctoines和synctoines2返回完整的对端响应，底层未做任何截取</div><h1>示例</h1><div class="dc">
+var TINESObj inesobj;<br>
+var TString response;<br>
+inesobj = new TINESObj;<br>
+inesobj.init('INESC');<br>
+response=inesobj.synctoines('invokeservice 201 1', 5);<br>
+...<br>
+repines=inesobj.synctoines('serviceevent the second msg');<br>
+...<br>
+inesobj.sendtoines('serviceevent end session');<br>
+...<br>
+</div>

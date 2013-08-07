@@ -1,0 +1,19 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::getparescode()<br>
+TInteger TSipCallSegment::getpcrescode()<br>
+TString TSipCallSegment::getpcdtmf()<br>
+TInteger TSipCallSegment::getprrescode()</div><h1>DESCRIPTION</h1>
+<div class="dc">These function can be called to get the response code or the collected digits content in the event processing logic that is set by onpa(), onpc() or onpr()</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+Response code or collected digits</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.onpa ([padone]);<br>
+cs.asynpa('0','10001',0,' ',1,0);<br>
+on([padone], TSipCallSegment cs1)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TInteger code = cs1.getparescode();<br>
+}<br>
+</div>

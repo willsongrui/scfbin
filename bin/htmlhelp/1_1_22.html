@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TString TString::cuthead(TString sepFlag)</div><h1>说明</h1>
+<div class="dc">对字符串根据分割字符串查找第一个部分，返回，并把源串的第一个部分以及这个分割字符串都裁掉。如果这个分割串找不到，源串会被全部裁掉，并返回整个原串</div><h1>参数</h1>
+<div class="dc"><h4>sepFlag</h4>
+<div class="dc">字符串，分割字符串</div>
+</div><h1>返回</h1><div class="dc">
+字符串，分割的第一部分</div><h1>示例</h1><div class="dc">
+var TString s='123 456';<br>
+s1 = s.cuthead(' ');<br>
+assert(s == '456');<br>
+assert(s1 == '123');<br>
+s1 = s.cuthead('A');<br>
+assert(s == '');<br>
+assert(s1 == '456');<br>
+</div>

@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSoap::getdetail()<br>
+TInteger TSoap::addfault(TString faultcode, TString faultstring, TString detail)</div><h1>DESCRIPTION</h1>
+<div class="dc">If it is failed for soap message processing, addfault() will be called to construct fault message to send.<br>
+If the detail argument is needed when calling addfault() function, the detail content can be got by calling getdetail() function.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>faultcode</h4>
+<div class="dc">The values are defined in the soap protocol</div>
+<h4>faultstring</h4>
+<div class="dc">The values are defined in the soap protocol</div>
+<h4>detail</h4>
+<div class="dc">The value is got using getdetail(). Null string for not using this argument</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+addfault() returns value less than 0 for failure and returns other values for success</div>

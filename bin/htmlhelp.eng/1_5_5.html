@@ -1,0 +1,16 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString addmonth(TString t1, TInteger s)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get another time string according to a time string and a month integer. <br>
+Note 1: If the source date is the last day of a month, the new date is also the last day of the month<br>
+Note 2: If the day of new date is not valid for the new month, the function will choose a valid day automatically</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>t1</h4>
+<div class="dc">The time string. The format is YYYYMMDDHHmmSS</div>
+<h4>s</h4>
+<div class="dc">The month integer to be added. It can be negative</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A new time string. The format is YYYYMMDDHHmmSS</div><h1>EXAMPLES</h1><div class="dc">
+assert(addmonth('20100101000000', 1) == '20100201000000');<br>
+assert(addmonth('20100131000000', 1) == '20100228000000');<br>
+assert(addmonth('20100227000000', 1) == '20100327000000');<br>
+assert(addmonth('20100228000000', 1) == '20100331000000');<br>
+</div>

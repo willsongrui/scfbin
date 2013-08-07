@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString htmlentity2gbk(TString source)<br>
+TString htmlentity2utf8(TString source)</div><h1>说明</h1>
+<div class="dc">这两个函数会将参数字符串中的html entity替换为对应的gbk或者utf8编码的字符并返回新串。如果entity格式不正确，那么不替换原样返回。对于htmlentity2gbk如果对应的unicode没有相应的gbk码对应，那么也不替换原样返回。支持的entity名称是html 4.0所定义的253个。</div><h1>参数</h1>
+<div class="dc"><h4>source</h4>
+<div class="dc">被转化的字符串</div>
+</div><h1>返回</h1><div class="dc">
+转换之后的字符串</div><h1>示例</h1><div class="dc">
+s = htmlentity2gbk('&amp;amp;&amp;gt;&amp;&amp;&amp;&amp;#x61&amp;#x61;&amp;#x54C8;');<br>
+assert(s == '&amp;&gt;&amp;&amp;&amp;&amp;#x61a\B9\FE', s);<br>
+s = htmlentity2gbk('&amp;amp;&amp;gt;&amp;&amp;&amp;&amp;#x61&amp;#x61;&amp;#x54C8;');<br>
+assert(s == '&amp;&gt;&amp;&amp;&amp;&amp;#x61a\E5\93\88', s);<br>
+</div>

@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString&nbsp;&nbsp;ltrim (TString s)<br>
+TString&nbsp;&nbsp;rtrim (TString s)<br>
+TString&nbsp;&nbsp;trim (TString s)</div><h1>DESCRIPTION</h1>
+<div class="dc">Trim a string. Function ltrim delete the left space character of the string, Function rtrim delete the right space character of the string. Function trim not only delete the left and right space character but also replace the multi-space to one space in the string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">Source string to trim</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A new string after trim</div><h1>EXAMPLES</h1><div class="dc">
+assert(ltrim('&nbsp;&nbsp;abc') == 'abc');<br>
+assert(rtrim(' abc&nbsp;&nbsp;') == ' abc');<br>
+assert(trim('&nbsp;&nbsp;ab&nbsp;&nbsp;cd&nbsp;&nbsp;') == 'ab cd');<br>
+</div>

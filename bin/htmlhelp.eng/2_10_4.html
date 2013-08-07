@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TASNObject::TASNObject(TInteger opID, TString para)</div><h1>DESCRIPTION</h1>
+<div class="dc">To create a TASNObject object according to the operation ID and the encoded argument string. The result object is like as the object got by TTCAPDialogue::getasnobj()</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>opID</h4>
+<div class="dc">operation ID integer</div>
+<h4>para</h4>
+<div class="dc">an ASC string encoded with ASN.1. For example, string '0330081010' indicates the 5 bytes ASN.1 code: 30 03 80 01 01</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+the handle of the constructed TASNObject object</div><h1>EXAMPLES</h1><div class="dc">
+var TASNObject a;<br>
+var TString s;<br>
+a = new TASNObject(48,'08500212345670');<br>
+s = a.asnvalue(&lt;&lt;inap.result.receivedinformation.digitsresponse&gt;&gt;,'NULL');<br>
+assert(s == '1234567');<br>
+</div>

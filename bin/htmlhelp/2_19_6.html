@@ -1,0 +1,12 @@
+<h1>原型</h1>
+<div class="dc">TInteger TTCAPDialogue::getlgthead(TInteger&amp; tt, TInteger&amp; np, TInteger&amp; nai)<br>
+TInteger TTCAPDialogue::getrgthead(TInteger&amp; tt, TInteger&amp; np, TInteger&amp; nai)</div><h1>说明</h1>
+<div class="dc">获得本地或者是远端的gt的头部信息。（对于接受TC-Begin，本地对应目的，远端对应源；对于发送TC-Begin，本地对应源，远端对应目的）</div><h1>参数</h1>
+<div class="dc"><h4>tt</h4>
+<div class="dc">整数引用，返回Translation type，如果不存在则返回-1</div>
+<h4>np</h4>
+<div class="dc">整数引用，返回Number plan，如果不存在则返回-1</div>
+<h4>nai</h4>
+<div class="dc">整数引用，返回Nature of Address Indicator，如果不存在则返回-1</div>
+</div><h1>返回</h1><div class="dc">
+GT头部的类型：0表示没有GT，1表示只有NAI，2表示只有TT，3表示有TT和NP，4表示有TT,NP和NAI</div>

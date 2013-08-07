@@ -1,0 +1,67 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSCPChargeServer::settimesupervision(TInteger t1, TInteger t2, TInteger stopFlag)<br>
+TInteger TSCPChargeServer::setbalancesupervision(TInteger c1, TInteger t2, TInteger stopFlag)</div><h1>说明</h1>
+<div class="dc">设置呼叫监控，settimesupervision监控方式为时间监控，setbalancesupervision监控方式为呼叫费用监控</div><h1>参数</h1>
+<div class="dc"><h4>t1</h4>
+<div class="dc">监控时间值</div>
+<h4>c1</h4>
+<div class="dc">监控费用值</div>
+<h4>t2</h4>
+<div class="dc">提前告警提示时间值，0表示不提前告警，如果非0，则必须通过onlimitwarning 函数设置回调入口。</div>
+<h4>stopFlag</h4>
+<div class="dc">表示当监控时间到达时底层程序是否自动停止计费（默认为自动停止计费）</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+// time supervision example<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TSCPChargeServer ch1;<br>
+&nbsp;&nbsp;&nbsp;ch1 = new TSCPChargeServer;<br>
+&nbsp;&nbsp;&nbsp;ch1.addchargeclass(100);<br>
+&nbsp;&nbsp;&nbsp;ch1.settimesupervision(300,30,1);<br>
+&nbsp;&nbsp;&nbsp;ch1.onlimitwarning([playWarning]);<br>
+&nbsp;&nbsp;&nbsp;// 表示300秒后底层程序自动停止计费，并在270秒时跳转到playWarning<br>
+<br>
+&nbsp;&nbsp;&nbsp;sleep(1000);<br>
+<br>
+&nbsp;&nbsp;&nbsp;on([playWarning])<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+<br>
+// balance supervision example<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TSCPChargeServer ch1;<br>
+&nbsp;&nbsp;&nbsp;ch1= new TSCPChargeServer;<br>
+&nbsp;&nbsp;&nbsp;ch1.addchargeclass(100);<br>
+<br>
+&nbsp;&nbsp;&nbsp;// 设置呼叫监控费用为300分，限额到达后底层并不自动停止计费<br>
+&nbsp;&nbsp;&nbsp;ch1. setbalancesupervision (300,30,0);<br>
+<br>
+&nbsp;&nbsp;&nbsp;// 限额到达前30秒跳转到 playWarning<br>
+&nbsp;&nbsp;&nbsp;ch1.onlimitwarning([playWarning]);<br>
+<br>
+&nbsp;&nbsp;&nbsp;// 限额到达后跳转到playReached<br>
+&nbsp;&nbsp;&nbsp;ch1.onlimitreached([playReached]);<br>
+<br>
+&nbsp;&nbsp;&nbsp;// 在这里，因为底层并不自动停止计费，所以必须调用onlimitreached<br>
+&nbsp;&nbsp;&nbsp;// 函数设置限额到达时的业务逻辑入口，不然将只有在挂机处理中才有<br>
+&nbsp;&nbsp;&nbsp;// 机会停止计费。<br>
+&nbsp;&nbsp;&nbsp;// 在playReached开始的业务逻辑片断中，业务逻辑可以做一些处理，<br>
+&nbsp;&nbsp;&nbsp;// 比如说放一条语音等，然后再切断通话，同时，业务逻辑还必须显式<br>
+&nbsp;&nbsp;&nbsp;// 的调用stopcharge函数来停止计费。<br>
+<br>
+&nbsp;&nbsp;&nbsp;sleep(1000);<br>
+<br>
+&nbsp;&nbsp;&nbsp;on([playWarning])<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;on([playReached])<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+</div>

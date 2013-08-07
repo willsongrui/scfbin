@@ -1,0 +1,39 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSCPTable::toxml()<br>
+TString TSCPTable::toxml2()</div><h1>DESCRIPTION</h1>
+<div class="dc">To convert a table to a xml string, XML string returned by toxml() includes enter and indentation. XML string returned by toxml2() does not include enter and indentation</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+converted xml string</div><h1>EXAMPLES</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+assert(t.toxml() ==<br>
+'&lt;table&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;row&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;11&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;14&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/row&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;row&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;21&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/row&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;row&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;31&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/row&gt;<br>
+&lt;/table&gt;');<br>
+<br>
+assert(t.toxml2() ==<br>
+'&lt;table&gt; &lt;row&gt;&lt;col&gt;11&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;14&lt;/col&gt;&lt;/row&gt; &lt;row&gt;&lt;col&gt;21<br>
+&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/row&gt; &lt;row&gt;&lt;col&gt;31&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;<br>
+&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/row&gt;&lt;/table&gt;');<br>
+</div>

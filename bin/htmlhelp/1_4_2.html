@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString md5(TString s, TInteger length=0)</div><h1>说明</h1>
+<div class="dc">加密算法函数，md5加密算法是单向的，所以没有对应的md5解码函数</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要加密的字符串</div>
+<h4>length</h4>
+<div class="dc">如果s中含有字符串结束符，应填写该参数，表示s的长度。这个参数缺省为0，只取s中字符串结束符之前的部分</div>
+</div><h1>返回</h1><div class="dc">
+返回结果固定为 16个字节</div><h1>示例</h1><div class="dc">
+assert(md5('abcd') == '\E2\FC\71\4C\47\27\EE\93\95\F3\24\CD\2E\7F\33\1F');<br>
+assert(md5('abcd\00abcd') == '\E2\FC\71\4C\47\27\EE\93\95\F3\24\CD\2E\7F\33\1F');<br>
+assert(md5('abcd\00abcd',9) == '\13\DA\E0\38\04\FD\7F\DA\C5\B0\8E\5B\41\02\82\72');<br>
+</div>

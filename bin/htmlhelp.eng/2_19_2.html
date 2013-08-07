@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TCommandLine::argv(TInteger index=-1)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the value of argument for TCommandLine object</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>index</h4>
+<div class="dc">index of argument, -1 for whole message, other (0-29) for one specified argument</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+the argument, type is TString</div><h1>EXAMPLES</h1><div class="dc">
+void main(TCommandLine cmd)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TInteger i;<br>
+&nbsp;&nbsp;&nbsp;print(cmd.argv()); // display the whole message<br>
+&nbsp;&nbsp;&nbsp;for(i=0; i&lt;cmd.argc(); i=i+1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(cmd.argv(i));&nbsp;&nbsp;// display each argument<br>
+}<br>
+</div>

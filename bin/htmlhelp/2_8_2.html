@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger TFTPClient::getfile(TString rname, TString lname)</div><h1>说明</h1>
+<div class="dc">从FTP服务器上获得一个文件</div><h1>参数</h1>
+<div class="dc"><h4>rname</h4>
+<div class="dc">远端文件名</div>
+<h4>lname</h4>
+<div class="dc">本地文件名。文件名可以使用绝对或者相对路径。对远端文件名来说，相对路径是指相对于FTP用户登录后起始位置的路径；对本地用户来说，相对路径是相对于程序启动位置的路径。路径上的每个目录都必须存在并有相应权限，否则函数执行失败。以下如不做特殊说明，关于文件或目录名的使用与本函数相同</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var&nbsp;&nbsp;TFTPClient ftp;<br>
+ftp = new TFTPClient;<br>
+ftp.init('ahost'，21，'user'，'password');<br>
+ftp.getfile('sourceFile', 'destFile');<br>
+</div>

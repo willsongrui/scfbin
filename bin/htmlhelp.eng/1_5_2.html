@@ -1,0 +1,12 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString ntptimestamp(TInteger t)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the NTP time stamp according to a seconds integer from 1970-1-1 00:00:00.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>t</h4>
+<div class="dc">A second integer. Normally it is the result of tosec() function</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A 4 bytes string</div><h1>EXAMPLES</h1><div class="dc">
+assert(tosec('20070723093100') == 1185154260);<br>
+assert(tosec2('20070723093100') == '3394143060');<br>
+assert(ntptimestamp(1185154260) == '\CA\4E\83\54');<br>
+assert(strh2u('CA4E8354') == '3394143060'); // 3394143060 = 1185154260 + 2208988800<br>
+</div>

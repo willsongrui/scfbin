@@ -1,0 +1,22 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TINESObj::sendtofsm(TString msg)<br>
+TString TINESObj::synctofsm(TString msg, TInteger timer)</div><h1>DESCRIPTION</h1>
+<div class="dc">synctofsm() is to send message to other FSM and syncronous wait the result. The first message must be begin with 'invokeservice ' to create an FSM<br>
+sendtofsm() is to send message and not wait the response</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>msg</h4>
+<div class="dc">The message to be sent</div>
+<h4>timer</h4>
+<div class="dc">The timeout. The default value is 10 seconds</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+synctofsm() is to return the received message.</div><h1>EXAMPLES</h1><div class="dc">
+var TINESObj inesobj;<br>
+var TString response;<br>
+inesobj = new TINESObj;<br>
+inesobj.init('FSM');<br>
+response=inesobj.synctofsm('invokeservice 201 1', 5);<br>
+...<br>
+repines=inesobj.synctofsm('serviceevent the second msg');<br>
+...<br>
+inesobj.sendtofsm('serviceevent end session');<br>
+...<br>
+</div>

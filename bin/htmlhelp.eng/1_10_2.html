@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger udpsend(TString host, TInteger port, TString s)<br>
+TInteger&nbsp;&nbsp;udpsendbyname(TString host, TInteger port, TString s, TString logicName)</div><h1>DESCRIPTION</h1>
+<div class="dc">udpsend() is to send a UDP message and it can not indicate a sending party port number, and need to config the config.udp.*. udpsendbyname() can specify a sending port</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>host</h4>
+<div class="dc">The destination host name</div>
+<h4>port</h4>
+<div class="dc">The destination port number</div>
+<h4>s</h4>
+<div class="dc">The string to be sent</div>
+<h4>logicName</h4>
+<div class="dc">The logic name that configured the UDP sending port. It is configured in the config.server.*, using udp protocol</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0 is for success and a negative value is for failure</div>

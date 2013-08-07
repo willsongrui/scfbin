@@ -1,0 +1,39 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSCPTable::filter(TInteger col, TString pattern, TInteger mode=1)</div><h1>DESCRIPTION</h1>
+<div class="dc">To do a filter according to a column index and the condition pattern. The source table will not be destoried after the filter action. Only a virtual table view is generated according to the filter condition. After the filter, all actions will be done on the virtual table view.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>col</h4>
+<div class="dc">column index to match the filter condition</div>
+<h4>pattern</h4>
+<div class="dc">filter condition pattern. supporting wildcard such as '*' or '?' like the function dosmatchpattern(). '*' is to undo all the filter action if argument mode is 1</div>
+<h4>mode</h4>
+<div class="dc">1 is to select the matched rows and 0 is to select the unmatched rows</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0</div><h1>EXAMPLES</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+t.settitle(1,'A');<br>
+t.settitle(2,'B');<br>
+t.settitle(3,'C');<br>
+t.settitle(4,'D');<br>
+<br>
+// select the rows that first column is begin with '1'<br>
+t.filter(1,'1*');<br>
+assert(t.toxml2() ==<br>
+'&lt;table&gt;&lt;record&gt;&lt;A&gt;11&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;14&lt;/D&gt;&lt;/record&gt;&lt;/table&gt;');<br>
+<br>
+// undo the filter action<br>
+t.filter(1,'*');<br>
+assert(t.toxml2() ==<br>
+'&lt;table&gt;&lt;record&gt;&lt;A&gt;11&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;14&lt;/D&gt;&lt;/record&gt;&lt;record&gt;&lt;A&gt;21&lt;/A&gt;&lt;B&gt;&lt;/B&gt;<br>
+&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;record&gt;&lt;A&gt;31&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;/table&gt;');<br>
+<br>
+// select the rows that first column is not begin with '1'<br>
+t.filter(1, '1*', 0);<br>
+assert(t.toxml2() ==<br>
+'&lt;table&gt;&lt;record&gt;&lt;A&gt;21&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;record&gt;&lt;A&gt;31&lt;/A&gt;&lt;B&gt;&lt;/B&gt;<br>
+&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;/table&gt;');<br>
+</div>

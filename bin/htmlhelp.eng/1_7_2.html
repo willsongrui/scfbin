@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger fputs(TString fileName, TString line)</div><h1>DESCRIPTION</h1>
+<div class="dc">To append a line to a file. The enter character is added automatically</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>fileName</h4>
+<div class="dc">The file name</div>
+<h4>line</h4>
+<div class="dc">The string of one line to append</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0</div><h1>EXAMPLES</h1><div class="dc">
+var TString sfile;<br>
+sfile=sprintf('%s/log/test.txt',getenv('CINDIR'));<br>
+assert(fputs(sfile,'hello world') == 0);<br>
+</div>

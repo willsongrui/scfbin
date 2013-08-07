@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger rematch(TString regexp, TString s)</div><h1>说明</h1>
+<div class="dc">正则表达式匹配，实现的是完全匹配，并不是子串匹配。</div><h1>参数</h1>
+<div class="dc"><h4>regexp</h4>
+<div class="dc">正则表达式</div>
+<h4>s</h4>
+<div class="dc">要匹配的字符串</div>
+</div><h1>返回</h1><div class="dc">
+匹配的结果，返回1表示匹配成功，否则返回一个负数，其绝对值是匹配失败的位置。如果正则表达式不符合规范，抛出异常</div><h1>示例</h1><div class="dc">
+var TString str='abcdefghijklmnop';<br>
+var TString regexp = '[a-z]{4,16}';<br>
+var TInteger ret=rematch(regexp, str);<br>
+assert(ret==1);<br>
+</div>

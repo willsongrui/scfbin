@@ -1,0 +1,40 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TXMLTree hxmlparse(TString xmlStr)<br>
+TXMLTree::TXMLTree(TString xmlStr, TInteger parseType=0, TString wbxmlCfg='')</div><h1>DESCRIPTION</h1>
+<div class="dc">To parse an XML string and construct a TXMLTree object</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>xmlStr</h4>
+<div class="dc">The XML string to be parsed. This string can be WBXML format if the parse type is 2 ( the second argument of TXMLTree::TXMLTree() function )</div>
+<h4>parseType</h4>
+<div class="dc">The parse type. The default value is 0.<br>
+0: All element content fragments will be merged to one string even though they are separated by sub-elements<br>
+1: Element content fragments will not be merged if they are separated by sub-elements<br>
+2: The string is WBXML (Wireless Binary XML) format<br>
+3: Ths string is JSON format</div>
+<h4>wbxmlCfg</h4>
+<div class="dc">This argument is the WBXML tag configuration name when the parse type is 2</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The new TXMLTree object handle</div><h1>EXAMPLES</h1><div class="dc">
+var TXMLTree x;<br>
+x = hxmlparse('&lt;a&gt;&lt;b&gt;AABBCC&lt;/b&gt;&lt;b&gt;22222&lt;/b&gt;&lt;c&gt;33333&lt;/c&gt;&lt;/a&gt;');<br>
+x = new TXMLTree('&lt;a&gt;&lt;b&gt;AABBCC&lt;/b&gt;&lt;b&gt;22222&lt;/b&gt;&lt;c&gt;33333&lt;/c&gt;&lt;/a&gt;');<br>
+<br>
+x = new TXMLTree('&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;AAA&lt;/a&gt;');<br>
+assert(x.tostr()=='&lt;a&gt;aaaAAA&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;'); // 'aaa',&nbsp;&nbsp;'AAA' -&gt; 'aaaAAA'<br>
+x = new TXMLTree('&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;AAA&lt;/a&gt;', 1);<br>
+assert(x.tostr()=='&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;AAA&lt;/a&gt;');<br>
+<br>
+/* For example the following is the WBXML tag configuration file<br>
+&nbsp;&nbsp;&nbsp;&lt;token&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tag&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;aaa&quot; id=&quot;5&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;bbb&quot; id=&quot;6&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;ccc&quot; id=&quot;7&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tag&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/token&gt;<br>
+&nbsp;&nbsp;&nbsp;The file name is wbxmltest<br>
+ */<br>
+var TString s =<br>
+'\01\01\03\00\45\03\31\31\31\00\46\03\32\32\32\00\01\47\03\33\33\33\00\01\01';<br>
+x = new TXMLTree(s, 2, 'wbxmltest');<br>
+assert(x.tostr() == '&lt;aaa&gt;111&lt;bbb&gt;222&lt;/bbb&gt;&lt;ccc&gt;333&lt;/ccc&gt;&lt;/aaa&gt;');<br>
+</div>

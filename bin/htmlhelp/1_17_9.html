@@ -1,0 +1,47 @@
+<h1>原型</h1>
+<div class="dc">TInteger setinesroute(TInteger ruleid, TString key)</div><h1>说明</h1>
+<div class="dc">当SCF配置为scf_fep&nbsp;&nbsp;scf_bep方式时，可以在serviceconfig通过配置路由机制选择后端应用。<br>
+移动GPRS业务的实现和CDMA业务很类似，也需要配置为前端和后端结构，但是实现GPRS业务关联的KEY 是存放在tcap消息的userinfo中，不能直接使用serviceconfig配置。所以增加此函数，通过该函数的调用达到选择scf_bep连接的目的。<br>
+返回成功后静态变量BESConName 被设置为bep端的ines名字，业务可以通过该名字给bep端发送消息。</div><h1>参数</h1>
+<div class="dc"><h4>ruleid</h4>
+<div class="dc">整型，表示serviceconfig配置中rule表的id</div>
+<h4>key</h4>
+<div class="dc">字符串，路由选择key</div>
+</div><h1>返回</h1><div class="dc">
+0 成功<br>
+2 检索路由表失败<br>
+3 key错误<br>
+4 ruleID错误</div><h1>示例</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TInteger key;<br>
+&nbsp;&nbsp;&nbsp;var TString strKey;<br>
+<br>
+&nbsp;&nbsp;&nbsp;strKey=argv4;<br>
+&nbsp;&nbsp;&nbsp;key=setinesroute(1,strKey);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('Key:%s RuleID:1 return:%d BESConName:%s',strKey,key,besconName));<br>
+}<br>
+通过使用不同的参数调用上面的业务逻辑，可以看到如下的输出：<br>
+Key:1 RuleID:1 return:0 BESConName:bep2<br>
+Key:2 RuleID:1 return:0 BESConName:diameterS1<br>
+Key:3 RuleID:1 return:0 BESConName:bep2 // ines3连接不通，所以选择了备用bep2<br>
+Key:4 RuleID:1 return:0 BESConName:bep1<br>
+路由表配置：<br>
+service_config_begin<br>
+ACID : 50<br>
+OPID : 123<br>
+SSN&nbsp;&nbsp;: -1<br>
+SERVICEID : 14<br>
+FSMTYPE : 6<br>
+ROUTETAB<br>
+ RULEID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 1<br>
+ ROUTERULE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:4<br>
+ ROUTEKEYMAX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 4<br>
+ = 0 BESCONNAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 'bep1'<br>
+ = 1 BESCONNAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 'bep2'<br>
+ = 2 BESCONNAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 'diameterS1'<br>
+ = 3 BESCONNAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 'ines3'&nbsp;&nbsp;'bep2'<br>
+ROUTETABEND<br>
+service_config_end<br>
+</div>

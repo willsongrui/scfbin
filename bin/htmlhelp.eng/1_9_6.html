@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TXMLTree hxmldupelement(TXMLTree handle, TString path)<br>
+TXMLTree TXMLTree::dupelement(TString path)</div><h1>DESCRIPTION</h1>
+<div class="dc">To duplicate an element of a TXMLTree object and create a new TXMLTree element</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">The TXMLTree object handle</div>
+<h4>path</h4>
+<div class="dc">The path of the element to be duplicated</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A new TXMLTree object handle</div><h1>EXAMPLES</h1><div class="dc">
+i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+j = hxmldupelement (i,'x/y');<br>
+s = hxmlstr(j);<br>
+assert(s == '&lt;y&gt;yyy&lt;/y&gt;');<br>
+</div>

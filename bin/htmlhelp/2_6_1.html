@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSCPChargeServer::addchargeclass(TInteger c)</div><h1>说明</h1>
+<div class="dc">向TSCPChargeServer对象增加一个计费类别，可以反复的调用实现对多个计费类别同时计费，一个典型是移动计费时分为本地基本通话费、长途费、漫游费等等。目前一个TSCPChargeServer对象最多支持对10个chargeClass同时计费</div><h1>参数</h1>
+<div class="dc"><h4>c</h4>
+<div class="dc">增加的chargeclass</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TSCPChargeServer ch1;<br>
+ch1 = new TSCPChargeServer;<br>
+ch1.addchargeclass(100);<br>
+ch1.addchargeclass(101);<br>
+ch1.addchargeclass(102);<br>
+// 3 charging classes are set<br>
+</div>

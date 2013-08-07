@@ -1,0 +1,23 @@
+<h1>原型</h1>
+<div class="dc">TString cutgbklen(TString s, TInteger cutEncodeLen, TInteger type)</div><h1>说明</h1>
+<div class="dc">截取字符串，返回截取的字符串，源串同时发生改变。根据gbk编码的方式，保证不会截取半个汉字，如果截取长度正好在半个汉字上，那么少截取一个字节</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">源字符串，函数执行之后，其内容会发生改变</div>
+<h4>cutEncodeLen</h4>
+<div class="dc">要截取的字符串的编码长度。因为截取之后一般要编码，这个函数根据这个长度以及编码方式，计算出对源串实际截取多长才能符合这个编码长度</div>
+<h4>type</h4>
+<div class="dc">西文字符的编码方式，1为1字节编码，2为2字节编码</div>
+</div><h1>返回</h1><div class="dc">
+截取的字符串</div><h1>示例</h1><div class="dc">
+var TString s = '话：057，座国际';<br>
+var TString s1 = cutgbklen(s, 4, 1);<br>
+assert(s1 == '话：');<br>
+assert(s == '057，座国际');<br>
+s1 = cutgbklen(s, 4, 1);<br>
+assert(s1 == '057'); // the 4th char is Chinese GBK code, so only 3 bytes cut.<br>
+assert(s == '，座国际');<br>
+s = 'abc';<br>
+s1 = cutgbklen(s, 4, 2);<br>
+assert(s1 == 'ab');&nbsp;&nbsp;// 2 characters need 4 bytes<br>
+assert(s == 'c');<br>
+</div>

@@ -1,0 +1,16 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString hxmlelemname(TInteger handle, TString path, TInteger n)<br>
+TString TXMLTree::getelemname(TString path, TInteger n)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the child tag name of an element of the TXMLTree object according to the child index</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">The handle of the TXMLTree object</div>
+<h4>path</h4>
+<div class="dc">The path of the element</div>
+<h4>n</h4>
+<div class="dc">The child index. 0 is for the first child</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The child tag name. A null string will be returned if the path is not valid or no child for the element</div><h1>EXAMPLES</h1><div class="dc">
+i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s = hxmlelemname(i, 'x', 0);<br>
+assert(s == 'y');<br>
+</div>

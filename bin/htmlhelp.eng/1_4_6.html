@@ -1,0 +1,63 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString idea(TString s, TInteger length, TInteger mode, TString key, TString&amp; ivec)</div><h1>DESCRIPTION</h1>
+<div class="dc">To encrypt or decrypt a string using IDEA algorithm, using cfb mode</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The source string</div>
+<h4>length</h4>
+<div class="dc">The length of source string</div>
+<h4>mode</h4>
+<div class="dc">1 is for encryption, 0 is for decryption</div>
+<h4>key</h4>
+<div class="dc">The 16 bytes key. Normally it is a MD5 result</div>
+<h4>ivec</h4>
+<div class="dc">The 8 bytes initial vector</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The result string. Its length is equal to the source string length</div><h1>EXAMPLES</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString plain,cipher,cipher1,plain1,cipher2,plain2,plain3;<br>
+&nbsp;&nbsp;&nbsp;var TString key,ivec;<br>
+&nbsp;&nbsp;&nbsp;var TInteger mode,length;<br>
+<br>
+&nbsp;&nbsp;&nbsp;plain='This is the plain i want to encrypt by idea algorithm.';<br>
+&nbsp;&nbsp;&nbsp;key=md5('222222');<br>
+&nbsp;&nbsp;&nbsp;printbin(key);<br>
+&nbsp;&nbsp;&nbsp;ivec='12345678';<br>
+<br>
+&nbsp;&nbsp;&nbsp;length=strlen(plain);<br>
+&nbsp;&nbsp;&nbsp;print('length='+itoa(length));<br>
+<br>
+&nbsp;&nbsp;&nbsp;mode=1;//encrypt<br>
+&nbsp;&nbsp;&nbsp;// first, encrypt the precious 44 bytes<br>
+&nbsp;&nbsp;&nbsp;cipher=idea(plain, length-10, mode, key, ivec);<br>
+&nbsp;&nbsp;&nbsp;print('ivec='+ivec); // ivec is changed<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher);<br>
+<br>
+&nbsp;&nbsp;&nbsp;// then encrypt the last 10 bytes<br>
+&nbsp;&nbsp;&nbsp;cipher1=idea(substr(plain,length-10,10), 10, mode, key, ivec);<br>
+&nbsp;&nbsp;&nbsp;print('cipher1:');<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher1);<br>
+<br>
+&nbsp;&nbsp;&nbsp;cipher2=cipher+cipher1; // the total cipher text<br>
+&nbsp;&nbsp;&nbsp;print('cipher2:');<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher2);<br>
+<br>
+&nbsp;&nbsp;&nbsp;mode=0; // decryption<br>
+&nbsp;&nbsp;&nbsp;ivec='12345678'; // The value is same as encryption<br>
+<br>
+&nbsp;&nbsp;&nbsp;// decrypt the priviois 44 bytes, and the ivec is changed<br>
+&nbsp;&nbsp;&nbsp;plain2=idea(cipher2, length-10, mode, key, ivec);<br>
+<br>
+&nbsp;&nbsp;&nbsp;// decrypt the last 10 bytes<br>
+&nbsp;&nbsp;&nbsp;plain3=idea(substr(cipher2,length-10,10),10,mode,key,ivec);<br>
+&nbsp;&nbsp;&nbsp;plain1=plain2+plain3; // the total plain text<br>
+&nbsp;&nbsp;&nbsp;printbin(plain1);<br>
+&nbsp;&nbsp;&nbsp;printbin(plain);<br>
+<br>
+&nbsp;&nbsp;&nbsp;if(strcmp(plain, plain1)==0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('ok.');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('error!');<br>
+}<br>
+</div>

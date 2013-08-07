@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TString THttpContent::getbuffer(TInteger isInlucdeHedaer=0)<br>
+TXMLTree THttpContent::getxmlbody()<br>
+TSoap THttpContent::getsoapbody()</div><h1>说明</h1>
+<div class="dc">getbuffer用于获得整个content的内容<br>
+如果Content-Type是Text/xml, 通过getxmlbody函数可以获得TXMLTree对象实例，接下来可以通过调用TXMLTree的方法，进行取值操作。<br>
+如果Content-Type是Text/xml, 且确定是soap消息，通过getsoapbody函数可以获得TSoap对象实例，接下来可以通过调用TSoap的方法，进行取值操作。</div><h1>参数</h1>
+<div class="dc"><h4>isInlucdeHedaer</h4>
+<div class="dc">0，返回不包含头，非0，返回包含包头，缺省为0</div>
+</div><h1>返回</h1><div class="dc">
+getsoapbody返回TSoap对象的handle</div><h1>示例</h1><div class="dc">
+contentObj.getbuffer();<br>
+contentObj.getsoapbody();<br>
+<br>
+</div>

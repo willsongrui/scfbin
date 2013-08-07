@@ -1,0 +1,72 @@
+<h1>原型</h1>
+<div class="dc">TString xmlwoods(TString path, TString defaultValue, TInteger useCache=1)<br>
+TString xmlwoodsaggign(TString path, TString var1, TString subPath1, ...)<br>
+TString TXMLtree::query(TString path, TString var1, TString subPath1, ...)</div><h1>说明</h1>
+<div class="dc">获取xmlwoods配置中的值。可以直接根据xml路径得到某个元素的值，也可以在路径中附带查询条件。xmlwoods函数直接返回得到的值，而xmlwoodsassign可以在取到一个节点之后，根据子路径再次操作这个节点将返回值填写到具体变量中。TXMLTree::query则直接从TXMLTree对象中取值，参数及返回值方式同xmlwoodsassign</div><h1>参数</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">路径，其中可以带查询条件，查询条件在路径中用[]给出。查询条件基本上是这样的产生式：<br>
+查询条件表达式: 条件项&nbsp;&nbsp; '||' 条件项 <br>
+条件项: 条件因子&nbsp;&nbsp;'&amp;&amp;' 条件因子<br>
+条件因子:&nbsp;&nbsp;'@'属性名 OP 条件值 | '(' 表达式&nbsp;&nbsp;')'<br>
+OP: '=' | '&gt;' | '&lt;' | '&gt;=' | '&lt;=' | '!='<br>
+带查询条件的路径举例：<br>
+PPC:service/config[0]/menu[@level=1 &amp;&amp; @key=2]<br>
+PPC:service/config[0]/menu[@level=1 ]/submenu[(@level=1 || @level=2) &amp;&amp; @key=3]</div>
+<h4>defaultValue</h4>
+<div class="dc">缺省值，如果路径不存在，返回缺省值</div>
+<h4>useCache</h4>
+<div class="dc">是否启用cache，默认为启用。参数值为0表示本次查询不启用cache，通常用于查询条件和用户号码相关的场景</div>
+<h4>var1,var2...</h4>
+<div class="dc">被赋值的字符串变量</div>
+<h4>subPath1,subPath2...</h4>
+<div class="dc">要赋值的子元素的子路经</div>
+</div><h1>返回</h1><div class="dc">
+对于xmlwoods，返回path对应的元素的值。对于xmlwoodsassign或者TXMLTree::query，返回根据查询到的元素的子路经成功赋值的变量的个数</div><h1>示例</h1><div class="dc">
+/*<br>
+For example the xml file: $CINDIR/xmlwoods/PPC<br>
+&lt;service&gt;<br>
+&lt;config&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;1&quot;&nbsp;&nbsp;key=&quot;1&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;1&quot; key=&quot;1&quot; desc=&quot;PROMPT_CCARD1&quot; msgid=&quot;1111&quot; func=&quot;PCCARD1&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;1&quot;&nbsp;&nbsp;key=&quot;2&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;1&quot; key=&quot;2&quot; desc=&quot;PROMPT_CCARD2&quot; msgid=&quot;1212&quot; func=&quot;PCCARD2&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;1&quot;&nbsp;&nbsp;key=&quot;1&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;1&quot; key=&quot;4&quot; desc=&quot;PROMPT_CCARD1&quot; msgid=&quot;1114&quot; func=&quot;PCCARD1&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;1&quot;&nbsp;&nbsp;key=&quot;2&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;1&quot; key=&quot;3&quot; desc=&quot;PROMPT_CCARD2&quot; msgid=&quot;1213&quot; func=&quot;PCCARD2&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;2&quot;&nbsp;&nbsp;key=&quot;1&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;2&quot; key=&quot;1&quot; desc=&quot;PROMPT_CCARD5&quot; msgid=&quot;2121&quot; func=&quot;PCCARD5&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;2&quot;&nbsp;&nbsp;key=&quot;2&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;2&quot; key=&quot;2&quot; desc=&quot;PROMPT_CCARD6&quot; msgid=&quot;2222&quot; func=&quot;PCCARD6&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&lt;/config&gt;<br>
+&lt;/service&gt;<br>
+*/<br>
+var TString query, msgid, func, desc;<br>
+query = 'PPC:service/config[0]/menu[@level=1&amp;&amp;@key=2]/submenu[@level=1&amp;&amp;@key=3]';<br>
+var TInteger n = xmlwoodsassign(query<br>
+&nbsp;&nbsp;&nbsp;, msgid, 'msgid' // submenu/msgid -&gt; var msgid<br>
+&nbsp;&nbsp;&nbsp;, func, 'func'&nbsp;&nbsp;// submenu/func -&gt; var func<br>
+&nbsp;&nbsp;&nbsp;, desc,'desc' // submenu/desc -&gt; var desc<br>
+&nbsp;&nbsp;&nbsp;);<br>
+assert(n == 3);<br>
+assert(msgid == '1213');<br>
+assert(func == 'PCCARD2');<br>
+assert(desc == 'PROMPT_CCARD2');<br>
+<br>
+var TXMLTree x = new TXMLTree('&lt;a&gt;<br>
+&lt;b a=&quot;1&quot; b=&quot;a&quot;/&gt;<br>
+&lt;b a=&quot;2&quot; b=&quot;b&quot;/&gt;<br>
+&lt;b a=&quot;3&quot; b=&quot;c&quot;/&gt;<br>
+&lt;b a=&quot;4&quot; b=&quot;d&quot;/&gt;<br>
+&lt;/a&gt;');<br>
+var TString s1, s2;<br>
+x.query('a/b[@a=1]', s1, 'b', s2, 'a');<br>
+assert(s1 == 'a');<br>
+assert(s2 == '1');<br>
+</div>

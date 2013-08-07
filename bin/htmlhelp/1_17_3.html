@@ -1,0 +1,10 @@
+<h1>原型</h1>
+<div class="dc">TString systemcall (TString cmd)</div><h1>说明</h1>
+<div class="dc">执行一个外部命令，将启动一个线程执行</div><h1>参数</h1>
+<div class="dc"><h4>cmd</h4>
+<div class="dc">如果要执行外部命令，那么必须这样填写参数'System ...'</div>
+</div><h1>返回</h1><div class="dc">
+命令的执行结果。注意：使用该函数必须保证cin/crash目录存在，否则执行失败。</div><h1>示例</h1><div class="dc">
+systemcall('System ls');<br>
+将返回当前目录的文件列表。<br>
+</div>

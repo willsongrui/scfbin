@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString TFTPClient::getlastinfo()</div><h1>说明</h1>
+<div class="dc">获得服务器的最后一条返回信息。可以帮助确认以上函数执行失败的原因。</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TFTPClient ftp;<br>
+var TString tmpStr;<br>
+ftp = new TFTPClient;<br>
+ftp.init('ahost'，21，'user'，'password');<br>
+ftp.rename('oldname'， 'newname');<br>
+tmpStr = ftp.getlastinfo();<br>
+print(tmpStr)<br>
+</div>

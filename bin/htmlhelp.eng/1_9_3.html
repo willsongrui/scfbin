@@ -1,0 +1,16 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger hxmlcc(TXMLTree handle, TString path)<br>
+TInteger TXMLtree::childcount(TString path)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the children number of an element</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">The TXMLTree handle</div>
+<h4>path</h4>
+<div class="dc">The element path</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The children number integer</div><h1>EXAMPLES</h1><div class="dc">
+var TXMLTree i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+var TInteger j = hxmlcc (i, 'x');<br>
+assert(j == 1);<br>
+j = i.childcount('x');<br>
+assert(j == 1);<br>
+</div>

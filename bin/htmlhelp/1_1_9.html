@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;ltrim (TString s)<br>
+TString&nbsp;&nbsp;rtrim (TString s)<br>
+TString&nbsp;&nbsp;trim (TString s)</div><h1>说明</h1>
+<div class="dc">字符串格式整理，ltrim消除字符串左空格, rtrim消除字符串右空格，trim不但消除字符串左右的空格，并且将字符串中多余的空格和tab,回车也消除，只保留一个空格</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要整理的字符串</div>
+</div><h1>返回</h1><div class="dc">
+整理后字符串</div><h1>示例</h1><div class="dc">
+assert(ltrim('&nbsp;&nbsp;abc') == 'abc');<br>
+assert(rtrim(' abc&nbsp;&nbsp;') == ' abc');<br>
+assert(trim('&nbsp;&nbsp;ab&nbsp;&nbsp;cd&nbsp;&nbsp;') == 'ab cd');<br>
+</div>

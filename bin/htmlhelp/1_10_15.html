@@ -1,0 +1,20 @@
+<h1>原型</h1>
+<div class="dc">TString hxmlgetattr(TMXLTree handle, TString path, TString default)<br>
+TString TXMLTree::getattrvalue(TString path, TString default)</div><h1>说明</h1>
+<div class="dc">取得xml树中的某个路径下属性的值</div><h1>参数</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">TXMLTree对象的handle</div>
+<h4>path</h4>
+<div class="dc">xml的路径</div>
+<h4>default</h4>
+<div class="dc">缺省值</div>
+</div><h1>返回</h1><div class="dc">
+这棵树对应路径下的属性值</div><h1>示例</h1><div class="dc">
+i = hxmlparse('&lt;x&gt;xxx&lt;y cvd:z=&quot;aaa&quot;&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s = hxmlgetattr(i, 'x/y/z', '');<br>
+s1 = i.getattrvalue('x/y/cvd:z','null');<br>
+s2 = i.getattrvalue('x/y/z','null');<br>
+assert(s == 'aaa');<br>
+assert(s1 == 'aaa');<br>
+assert(s2 == 'aaa');<br>
+</div>

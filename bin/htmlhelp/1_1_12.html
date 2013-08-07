@@ -1,0 +1,17 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;pickword(TString str, TString sepStr, TInteger index)</div><h1>说明</h1>
+<div class="dc">从字符串按照分界符提取指定序号的子串，或者随机返回某个子串</div><h1>参数</h1>
+<div class="dc"><h4>str</h4>
+<div class="dc">源字符串</div>
+<h4>sepStr</h4>
+<div class="dc">分界符</div>
+<h4>index</h4>
+<div class="dc">整数，分界符在源字符串中的位置。如果这个字符串被分界符分割为n个子串，那么一般来说这个index的取值范围应该是0到n-1。<br>
+如果取比n-1还大的值，会返回空串。<br>
+如果取-1，那么会返回第m个子串，m是0到n-1之间的随机数</div>
+</div><h1>返回</h1><div class="dc">
+提取后的指定序号的字符串</div><h1>示例</h1><div class="dc">
+assert(pickword('aaa/bbb/ccc/ddd ', '/', 2) == 'ccc');<br>
+var s = pickword('aaa/bbb/ccc/ddd ', '/', -1); // random return<br>
+assert(s == 'aaa' || s == 'bbb' || s == 'ccc' || s == 'ddd');<br>
+</div>

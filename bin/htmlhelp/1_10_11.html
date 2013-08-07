@@ -1,0 +1,16 @@
+<h1>原型</h1>
+<div class="dc">TString hxmlelemname(TInteger handle, TString path, TInteger n)<br>
+TString TXMLTree::getelemname(TString path, TInteger n)</div><h1>说明</h1>
+<div class="dc">获取XML树的指定子树的 第i个子元素的名字</div><h1>参数</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">XML树的handle。</div>
+<h4>path</h4>
+<div class="dc">子树的路径</div>
+<h4>n</h4>
+<div class="dc">第几个子元素，从0开始</div>
+</div><h1>返回</h1><div class="dc">
+返回元素的名字，失败返回''</div><h1>示例</h1><div class="dc">
+i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s = hxmlelemname(i, 'x', 0);<br>
+assert(s == 'y');<br>
+</div>

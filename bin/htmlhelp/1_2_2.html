@@ -1,0 +1,12 @@
+<h1>原型</h1>
+<div class="dc">TString itoa(TInteger i)<br>
+TString itoa2(TInteger i)</div><h1>说明</h1>
+<div class="dc">将整数转换为字符串，itoa返回10进制整数字符串。itoa2返回2进制整数字符串</div><h1>参数</h1>
+<div class="dc"><h4>i</h4>
+<div class="dc">要转换的整数。对itoa2，这个整数只能是0-255之间</div>
+</div><h1>返回</h1><div class="dc">
+转换后的字符串。对itoa2，固定返回8位</div><h1>示例</h1><div class="dc">
+assert(itoa(255) == '255');<br>
+assert(itoa2(255) == '11111111');<br>
+assert(itoa2(1) == '00000001');<br>
+</div>

@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger tcpsend(TString logicName, TInteger linkID, TString s, TInteger length)</div><h1>DESCRIPTION</h1>
+<div class="dc">To send a tcp message according to the socket logic name and link ID. This function is used for permanent connection for client or server</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>logicName</h4>
+<div class="dc">The socket logic name, It is configured in the config.server.* or config.client.* file</div>
+<h4>linkID</h4>
+<div class="dc">The link id</div>
+<h4>s</h4>
+<div class="dc">The string to be sent</div>
+<h4>length</h4>
+<div class="dc">The length to be sent. If the value is 0, the whole s will be sent and one byte that the value is 0 will be sent for string end. If the value is greater than the length of s, the whole s will be sent</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0 is for success and a negative value is for failure</div>

@@ -1,0 +1,21 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSCPTimer::timeout([eventProcessLabel])</div><h1>说明</h1>
+<div class="dc">设置timer到达后要执行的业务逻辑片段的入口。<br>
+要求该业务逻辑片断:<br>
+1. 禁止中断<br>
+2. 结束后使用return 返回</div><h1>参数</h1>
+<div class="dc"><h4>eventProcessLabel</h4>
+<div class="dc">业务逻辑片段入口对应的sib的标识</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TSCPTimer timer;<br>
+timer = new TSCPTimer;<br>
+timer.timeout([timeoutproc]);<br>
+timer.settimer(10);<br>
+...<br>
+on([timeoutproc], TSCPTimer t)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;// execute this part after 10 seconds<br>
+&nbsp;&nbsp;&nbsp;// ...<br>
+}<br>
+</div>

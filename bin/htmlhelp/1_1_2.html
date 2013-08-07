@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TInteger strlen(TString s)<br>
+TInteger binlen(TString s)<br>
+TInteger TString::length()</div><h1>说明</h1>
+<div class="dc">求字符串长度。strlen考虑字符串结束符0，遇到认为结束；而binlen或者TString::length则返回二进制字符串的实际长度</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要求的长度的字符串</div>
+</div><h1>返回</h1><div class="dc">
+字符串长度</div><h1>示例</h1><div class="dc">
+assert(strlen('12345') == 5);<br>
+assert(binlen('ABC\00ABC\00') == 8);<br>
+assert(strlen('ABC\00ABC\00') == 3); // the first \00 as the string end<br>
+</div>

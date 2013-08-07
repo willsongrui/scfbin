@@ -1,0 +1,27 @@
+<h1>原型</h1>
+<div class="dc">TInteger THttpContent::getsubcount()<br>
+THttpContent THttpContent::getsubcontent(TInteger index)<br>
+TInteger THttpContent::insertsubbody(TString conteType, THttpContent contentid)<br>
+TInteger THttpContent::removesubbody(TInteger index)</div><h1>说明</h1>
+<div class="dc">如果Content-Type是'multipart/...'类型，可以使用这几个函数。<br>
+getsubcount()用于获得子项的个数<br>
+getsubcontent()用于获得一个子内容，得到一个子THttpContent。<br>
+insertsubbody()用于设置子项的消息<br>
+removesubbody()用于把某个子content从自身移走</div><h1>参数</h1>
+<div class="dc"><h4>index</h4>
+<div class="dc">指示是第几个子内容。</div>
+<h4>contentType</h4>
+<div class="dc">要设值的content的Content-Type</div>
+<h4>contentid</h4>
+<div class="dc">插入的content</div>
+</div><h1>返回</h1><div class="dc">
+getsubsount()返回子项的个数，如果不是multipart类型返回0。<br>
+getsubcontent返回子THttpContent对象的handle<br>
+insertsubbody返回值如果小于0代表失败，否则成功<br>
+removesubbody返回值如果小于0代表失败，否则表示移走的子content的句柄</div><h1>示例</h1><div class="dc">
+contObj.getsubcount();<br>
+contObj.getsubcontent(1);<br>
+contSubObj.setbuffer('text/plain','&lt;vxml version=&quot;1.0&quot;&gt;&lt;form id=&quot;form1&quot;&gt;&lt;block&gt;&lt;prompt&gt;&lt;audio src=&quot;10006.wav&quot;/&gt;&lt;/prompt&gt;&lt;/block&gt;&lt;/form&gt;&lt;/vxml&gt;');<br>
+contObj.insertsubbody('multipart/related',contSubObj);<br>
+contObj.removesubbody(1);<br>
+</div>

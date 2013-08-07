@@ -1,0 +1,24 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TASNObject::asnvalue( tagpath, TString default)<br>
+TInteger TASNObject::asnvalue( tagpath, TInteger default)<br>
+TString TASNObject::asnrawvalue ( tagpath )</div><h1>DESCRIPTION</h1>
+<div class="dc">To get value from an TASNObject object according to a path.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>tagpath</h4>
+<div class="dc">The tag path</div>
+<h4>defaultValue</h4>
+<div class="dc">asnvalue() returns this default value if the tag path is not valid</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+asnvalue() returns the decoded value or the default value. asnrawvalue returns the raw hex string or 'NULL'</div><h1>EXAMPLES</h1><div class="dc">
+// For example, this logic is invoked by INAP IDP...<br>
+void main(TTCAPDialogue t)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TASNObject a;<br>
+&nbsp;&nbsp;&nbsp;var TString s;<br>
+&nbsp;&nbsp;&nbsp;var TInteger i;<br>
+&nbsp;&nbsp;&nbsp;a = t.getasnobj();<br>
+&nbsp;&nbsp;&nbsp;s = a.asnvalue(&lt;&lt;inap.invoke.initialdp.calledPartyNumber&gt;&gt;,'NULL');<br>
+&nbsp;&nbsp;&nbsp;i = a.asnvalue(&lt;&lt;inap.invoke.initialdp.serviceKey&gt;&gt;,-1);<br>
+&nbsp;&nbsp;&nbsp;s = a.asnrawvalue(&lt;&lt;inap.invoke.initialdp.serviceKey&gt;&gt;);<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

@@ -1,0 +1,24 @@
+<h1>原型</h1>
+<div class="dc">TString strftime(TString s1, TString format)<br>
+TString strptime(TString s2, TString format)</div><h1>说明</h1>
+<div class="dc">strftime根据格式获取ISO 8601规定格式的日期、时间字符串。<br>
+strptime根据ISO 8601规定格式的日期、时间字符串和格式获取原始时间字符串。这个函数在Windows下不支持</div><h1>参数</h1>
+<div class="dc"><h4>s1</h4>
+<div class="dc">一般为14位的字符串，YYYYMMDDHHmmSS格式的时间；如果为''，表示当前时间（timediff有效）；如果只有6位，则只表示时间</div>
+<h4>format</h4>
+<div class="dc">与unix的strftime的格式参数一致（man strftime）</div>
+<h4>s2</h4>
+<div class="dc">需要被转换的字符串</div>
+</div><h1>返回</h1><div class="dc">
+strftime返回格式化的时间<br>
+strptime返回YYYYMMDDHHmmSS格式的时间, 如果参数不合法，SIB将抛出异常。<br>
+如果被转换的不是完整的时间信息，返回的14位字符只有相关字符有效，其它部分可能是当前时间的对应，也可能是未知的随机值</div><h1>示例</h1><div class="dc">
+assert(strftime('20040723012243', '%T') == '01:22:43');<br>
+assert(strftime('20040723012243', '%c') == 'Fri Jul 23 01:22:43 2004');<br>
+assert(strftime('20040723012243', '%D') == '07/23/04');<br>
+assert(strftime('20000101123456', '%T') == '12:34:56')<br>
+assert(strftime('123456', '%T') == '12:34:56')<br>
+<br>
+assert(strptime('2000-01-01 12:34:56','%Y-%m-%d %T') == '20000101123456');<br>
+assert(strptime('Fri Jul 23 16:00:21 2004','%c') == '20040723160021')<br>
+</div>

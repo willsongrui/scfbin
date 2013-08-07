@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString TSoap::getdetail()<br>
+TInteger TSoap::addfault(TString faultcode, TString faultstring, TString detail)</div><h1>说明</h1>
+<div class="dc">如果解析失败，则需要调用addfault()构造fault消息发送到对端<br>
+如果需要设置fault当中的detail，那么该内容通过调用getdetail()数获得。即soap的body中的内容。</div><h1>参数</h1>
+<div class="dc"><h4>faultcode</h4>
+<div class="dc">根据具体协议具体定义</div>
+<h4>faultstring</h4>
+<div class="dc">根据具体协议具体定义</div>
+<h4>detail</h4>
+<div class="dc">可选参数，如果为空，则fault中不包含detail。Detail一般是从getdetail获得</div>
+</div><h1>返回</h1><div class="dc">
+addfault()返回值小于0，失败，否则成功</div>

@@ -1,0 +1,79 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::pa(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat ,TInteger interval, TInteger timer=60)<br>
+TInteger TSipCallSegment::asynpa(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat ,TInteger interval)<br>
+TString TSipCallSegment::pc(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat, TInteger interval, TInteger interrupted, TInteger min, TInteger max,TString endDigit, TString cancelDigit, TInteger firstTimeout, TInteger interTimeOut, TInteger timer=60)<br>
+TInteger TSipCallSegment::asynpc(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat, TInteger interval, TInteger interrupted, TInteger min, TInteger max,TString endDigit, TString cancelDigit, TInteger firstTimeout, TInteger interTimeOut)<br>
+TInteger TSipCallSegment::pr(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat, TInteger interval, TString endDigit, TInteger duration, TString fileName, TString fileFormat, TInteger dupTreat, TInteger timer=60 )<br>
+TInteger TSipCallSegment::asynpr(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat, TInteger interval, TString endDigit, TInteger duration, TString fileName, TString fileFormat, TInteger dupTreat)<br>
+TString TSipCallSegment::syncpc(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat, TInteger interval, TInteger interrupted, TInteger min, TInteger max,TString endDigit, TString cancelDigit, TInteger firstTimeout, TInteger interTimeOut, TInteger timer=60)<br>
+TInteger TSipCallSegment::syncpa(TString msgRadix, TString msgid, TInteger playType, TString var, TInteger repeat, TInteger interval, TInteger ini, TInteger timer=60)</div><h1>DESCRIPTION</h1>
+<div class="dc">pa() is for synchronous playing announcement, and asyncpa() for asynchronous<br>
+pc() is for synchronous playing announcement collecting user information, and asyncpc() for asynchronous<br>
+pr() is for synchronous playing announcement recording, and asyncpr() for asynchronous</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>msgIDBase</h4>
+<div class="dc">message id base number</div>
+<h4>msgID</h4>
+<div class="dc">message id. It can be a number string or a filename. It will be null if the mode is TTS</div>
+<h4>type</h4>
+<div class="dc">message type:<br>
+0: fix announcement<br>
+1: integer<br>
+2: number<br>
+3: time. The format is HHMM<br>
+4: date. The format is YYYYMMDD<br>
+5: price. The format is an integer that the unit is the smmallest unit of the currency<br>
+6: time duration, The format is an integer that the unit is second<br>
+7: text for TTS<br>
+8: number for DTMF playing<br>
+9: number for FSK playing<br>
+10: fax sending</div>
+<h4>varPart</h4>
+<div class="dc">content of the variable part:<br>
+- For TTS, the text content<br>
+- For fix announcement of fax, null string<br>
+- Fot other, default is for chinese. If using other language, the format is &quot;lang-value-subtype&quot;. For example: &quot;eng-12833-gen&quot;, &quot;chi-1234-ord&quot;</div>
+<h4>repeat</h4>
+<div class="dc">repetation number</div>
+<h4>interval</h4>
+<div class="dc">interval between the repetation</div>
+<h4>timer</h4>
+<div class="dc">time out, default is 60 seconds</div>
+<h4>min</h4>
+<div class="dc">min digits length</div>
+<h4>max</h4>
+<div class="dc">max digits length</div>
+<h4>endDigit</h4>
+<div class="dc">end digits for collecting or recording</div>
+<h4>cancelDigit</h4>
+<div class="dc">cancel digits</div>
+<h4>firstTimeout</h4>
+<div class="dc">time out for first digit</div>
+<h4>interTimeout</h4>
+<div class="dc">time out for inter digits</div>
+<h4>duration</h4>
+<div class="dc">max duration for recording</div>
+<h4>fileName</h4>
+<div class="dc">file name for recording</div>
+<h4>fileFormat</h4>
+<div class="dc">file format for recording. It can be:<br>
+- audio/wav<br>
+- audio/x-wav<br>
+- audio/vnd.wave;codec=x, x=1:PCM, 6:G711a, 7:G711u, 83:G729, 8C:Convedia G729c<br>
+- video/quicktime;Codecs=&quot;h263,ulaw&quot;</div>
+<h4>dupTreat</h4>
+<div class="dc">duplicate file name treatment for recording (0: replace; 1: append)</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+for pa, 200 for success, other for failure<br>
+for pc, return the collected digits<br>
+for pr, 1 for success, 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.pa('0','10001',0,' ',1,0);<br>
+...<br>
+cs.pc('0','10001',0, ' ', 1, 0, 1, 1, 18,'#', '0', 20, 20);<br>
+...<br>
+cs.pr('0','100001','0',' ',1,0,'#',60,'record1',' audio/wav',0,10);<br>
+...<br>
+</div>

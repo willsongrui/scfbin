@@ -1,0 +1,8 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;telecommonth ()</div><h1>说明</h1>
+<div class="dc">获得电信月，scfenv的一个参数TelecomMonthLastDay来确定电信月的最后一天，取值在-27和27之间（0： 表示电信月最后一天就是实际月底。如果大于0：表示电信月最后一天提前到几号，例如19，表示5月19号电信月5月结束，5月20号开始为下一个电信月，6月。如果小于0：表示电信月最后一天顺延到下个月的几号，例如9，表示6月9号5月电信月才结束，6月10号开始才是电信月6月）</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+ 电信月格式的记录，格式:YYYYMM</div><h1>示例</h1><div class="dc">
+stmp = telecommonth();<br>
+print(stmp);<br>
+</div>

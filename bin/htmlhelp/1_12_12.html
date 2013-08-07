@@ -1,0 +1,22 @@
+<h1>原型</h1>
+<div class="dc">TInteger repeat(initialAction, TInteger conditialExp, actions ...)</div><h1>说明</h1>
+<div class="dc">重复执行一些动作，对于业务逻辑中一些简单的循环，用这个语句代替可以简化逻辑以及提高效率。为了防止死循环，程序中作了限制，最多执行10000次循环就会抛出异常</div><h1>参数</h1>
+<div class="dc"><h4>initialAction</h4>
+<div class="dc">可以是任意类型的一个表达式，一般来说应该是一个赋值语句，只被调用一次</div>
+<h4>conditionExp</h4>
+<div class="dc">整数类型的表达式，每次循环判断一次，当这个表达式为0的时候循环结束</div>
+<h4>actions</h4>
+<div class="dc">可以是任意类型的表达式或者赋值语句，一般含有一个能够改变循环条件因子的语句，可以有任意多个</div>
+</div><h1>返回</h1><div class="dc">
+0</div><h1>示例</h1><div class="dc">
+// To print: 0 0 2 2000 4 4000...<br>
+var TInteger i;<br>
+repeat(i=0, i&lt;100, print(itoa(i)), print(itoa(i*1000)), i=i+2);<br>
+<br>
+// To calculate the sum of the second column of the table<br>
+var TSCPTable t;<br>
+var TInteger i, sum=0, rowCount;<br>
+...<br>
+rowCount = t.rowcount();<br>
+repeat(i=1, i&lt;=rowCount, sum+=atoi(t[i++][2]));<br>
+</div>

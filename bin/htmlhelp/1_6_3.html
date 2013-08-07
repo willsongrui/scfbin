@@ -1,0 +1,8 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;crspecificnumber()</div><h1>说明</h1>
+<div class="dc">这个函数只有当旧的解码方式InitialDP触发的业务逻辑中使用，当收到ACR事件的时候可以得到ACR参数中的specificchargepartynumber变量的值。同对应的静态CCB变量等价，只不过返回的是ASC格式，而静态CCB变量是BCD格式</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+ASC码类型的ACR上报的specificchargepartynumber参数。固定22个字符，各个字符的含义根据业务逻辑的不同有不同的定义</div><h1>示例</h1><div class="dc">
+s= crspecificnumber ()<br>
+执行结果，s可能是'0303131303036363738393'<br>
+</div>

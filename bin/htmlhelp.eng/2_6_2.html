@@ -1,0 +1,58 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSCPChargeServer::settimesupervision(TInteger t1, TInteger t2, TInteger stopFlag)<br>
+TInteger TSCPChargeServer::setbalancesupervision(TInteger c1, TInteger t2, TInteger stopFlag)</div><h1>DESCRIPTION</h1>
+<div class="dc">To set the charging supervision. settimesupervision() is for time duration supervision. setbalancesupervision() is for balance supervision</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>t1</h4>
+<div class="dc">The max time duration for supervision</div>
+<h4>c1</h4>
+<div class="dc">The max balance for supervision</div>
+<h4>t2</h4>
+<div class="dc">The time before limitation. 0 is for no warning before limitation. If there is warning before limitation, a event-processing label must be set using onlimitwarning() function</div>
+<h4>stopFlag</h4>
+<div class="dc">Whether to stop the charging when limitation is reached. 0 is not to stop</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+// time supervision example<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TSCPChargeServer ch1;<br>
+&nbsp;&nbsp;&nbsp;ch1 = new TSCPChargeServer;<br>
+&nbsp;&nbsp;&nbsp;ch1.addchargeclass(100);<br>
+&nbsp;&nbsp;&nbsp;ch1.settimesupervision(300,30,1);<br>
+&nbsp;&nbsp;&nbsp;ch1.onlimitwarning([playWarning]);<br>
+&nbsp;&nbsp;&nbsp;// The charging will be stopped after 300 seconds<br>
+<br>
+&nbsp;&nbsp;&nbsp;sleep(1000);<br>
+<br>
+&nbsp;&nbsp;&nbsp;on([playWarning])<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// This part will be executed after 270 seconds<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+<br>
+// balance supervision example<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TSCPChargeServer ch1;<br>
+&nbsp;&nbsp;&nbsp;ch1= new TSCPChargeServer;<br>
+&nbsp;&nbsp;&nbsp;ch1.addchargeclass(100);<br>
+<br>
+&nbsp;&nbsp;&nbsp;// The balance limitation is 300 cents<br>
+&nbsp;&nbsp;&nbsp;// The charging will not be stopped on limitation<br>
+&nbsp;&nbsp;&nbsp;ch1. setbalancesupervision (300,30,0);<br>
+&nbsp;&nbsp;&nbsp;ch1.onlimitwarning([playWarning]);<br>
+&nbsp;&nbsp;&nbsp;ch1.onlimitreached([playReached]);<br>
+<br>
+&nbsp;&nbsp;&nbsp;sleep(1000);<br>
+<br>
+&nbsp;&nbsp;&nbsp;on([playWarning])<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;on([playReached])<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// ...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+</div>

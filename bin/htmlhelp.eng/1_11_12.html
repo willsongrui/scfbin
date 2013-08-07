@@ -1,0 +1,28 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger limit(TString key, TInteger number, TInteger rateLimit)</div><h1>DESCRIPTION</h1>
+<div class="dc">To limit the service logic concurrent execution number. The limitation can be according to the instances number and the invocation rate.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>key</h4>
+<div class="dc">The key to identify one limitation</div>
+<h4>number</h4>
+<div class="dc">The max concurrent number for number limitation or the max invocation number per second for rate limitation</div>
+<h4>rateLimit</h4>
+<div class="dc">0 is for number limitation. 1 is for rate limitation. The default value is 0</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+Values greater than or equal to 0 are returned for passed the limitation. Other values are returned for not passed the limitation</div><h1>EXAMPLES</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TInteger i;<br>
+&nbsp;&nbsp;&nbsp;i=limit('123',10);<br>
+&nbsp;&nbsp;&nbsp;print(itoa(i));<br>
+&nbsp;&nbsp;&nbsp;if(i&gt;=0)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('limit passed');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sleep(10);<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('limit not pass');<br>
+&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+</div>

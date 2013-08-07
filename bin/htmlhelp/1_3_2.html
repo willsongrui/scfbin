@@ -1,0 +1,20 @@
+<h1>原型</h1>
+<div class="dc">TString gsmtoasc(TString s)<br>
+TString&nbsp;&nbsp;asctogsm(TString s)</div><h1>说明</h1>
+<div class="dc">在短消息编解码的时候用到这两个函数。gsmtoasc是一个8位变7位的过程，而asctogsm是一个7位变8位的过程。所谓7变8是针对早期的英文短信，每个字符只有7位有效，为了避免最高位的浪费产生的一种编码方式，7变8是对其的解码过程。这两个函数由于实现的问题，并不是对称的。例子中有一个较为详细的解释</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要转换的字符串。</div>
+</div><h1>返回</h1><div class="dc">
+转换之后的字符串</div><h1>示例</h1><div class="dc">
+例如要发送短消息'1234abcd'，8个字节，那么：<br>
+首先调用asctogsm('1234abcd')得到'139DC86161F89C'；<br>
+然后调用asctobcd('139DC86161F89C')得到7个字节:31 D9 8C 16 16 8F C9发送；<br>
+这就是7位变8位的效果，使得8个字节的消息只要7个字节的传输，节省了一个字节。<br>
+<br>
+如果收到了7个字节的消息：31 D9 8C 16 16 8F C9，那么：<br>
+首先调用bcdtoasc('\31\D9\8C\16\8F\C9',0)转换为'139DC86161F89C'<br>
+再调用strxchar('139DC86161F89C')转换为'31D98C16168FC9'<br>
+再调用gsmtoasc('31D98C16168FC9')就可以恢复为'1234abcd'了。<br>
+<br>
+之所以说着两个函数不对称，就是因为gsmtoasc之前多了一个strxchar<br>
+</div>

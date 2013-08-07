@@ -1,0 +1,21 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString httpauthenticate(TString nonce, TString realm)<br>
+TString httpgetauthorization(TString a, TString method, TString uri, TString username, TString password)</div><h1>DESCRIPTION</h1>
+<div class="dc">httpauthenticate() is to construct the content of WWW-Authenticate header before server sending message<br>
+httpgetauthorization() is to construct the content of Authenticate header before client sending message</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>nonce</h4>
+<div class="dc">nonce string</div>
+<h4>realm</h4>
+<div class="dc">realm string</div>
+<h4>a</h4>
+<div class="dc">The content of WWW-Authenticate header of the message that client received</div>
+<h4>method</h4>
+<div class="dc">The method used to send message, 'GET' or 'POST'</div>
+<h4>uri</h4>
+<div class="dc">The uri address to request '/QuickSetup.htm'µÈ</div>
+<h4>username</h4>
+<div class="dc">User name</div>
+<h4>password</h4>
+<div class="dc">User password</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The constructed content of WWW-Authenticate header or Authenticate header</div>

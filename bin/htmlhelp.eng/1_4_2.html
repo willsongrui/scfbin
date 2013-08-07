@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString md5(TString s, TInteger length=0)</div><h1>DESCRIPTION</h1>
+<div class="dc">To encrypt a string using MD5 algorithm.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The string to be encrypted</div>
+<h4>length</h4>
+<div class="dc">if s include null character, you may use this argument to indicate the length. The default value is 0 that means only part before null character is used</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A 16 bytes string</div><h1>EXAMPLES</h1><div class="dc">
+assert(md5('abcd') == '\E2\FC\71\4C\47\27\EE\93\95\F3\24\CD\2E\7F\33\1F');<br>
+assert(md5('abcd\00abcd') == '\E2\FC\71\4C\47\27\EE\93\95\F3\24\CD\2E\7F\33\1F');<br>
+assert(md5('abcd\00abcd',9) == '\13\DA\E0\38\04\FD\7F\DA\C5\B0\8E\5B\41\02\82\72');<br>
+</div>

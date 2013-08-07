@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TString TRadius::encode()</div><h1>说明</h1>
+<div class="dc">对Radius消息进行编码</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+返回编码之后的完整的Radius消息可以直接发送</div><h1>示例</h1><div class="dc">
+var TRadius r;<br>
+var TString s, sr;<br>
+r = new TRadius;<br>
+r.setcommandcode(2);<br>
+r.setid(10);<br>
+r.setauth('1234567890123456'); // a string after md5 encryption<br>
+r.setcontent(s); // s is constructed by xmlsib<br>
+sr=r.encode();<br>
+udpsend(argv0,atoi(argv1),sr); // send the messagae<br>
+</div>

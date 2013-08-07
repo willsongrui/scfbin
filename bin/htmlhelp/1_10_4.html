@@ -1,0 +1,38 @@
+<h1>原型</h1>
+<div class="dc">TString hxmlstr(TXMLtree handle)<br>
+TString TXMLTree::tostr(TInteger indent=-1)<br>
+TString TXMLTree::wbxmlencode(TString wbxmlCfg)</div><h1>说明</h1>
+<div class="dc">将指定XML树转换为xml串返回，wbxmlencode是按照WBXML规范编码</div><h1>参数</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">要转换的XML树的handle</div>
+<h4>indent</h4>
+<div class="dc">是否重新排版，这个参数缺省为-1表示不排版，如果为0，则按照一定的规则将tag进行回车对齐缩进</div>
+<h4>wbxmlCfg</h4>
+<div class="dc">wbxmlencode需要这个参数指明使用xmlwoods中配置的哪个配置文件</div>
+</div><h1>返回</h1><div class="dc">
+xml串</div><h1>示例</h1><div class="dc">
+var TXMLTree i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+i = new TXMLTree('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s = i.tostr();<br>
+assert(s == '&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s = i.tostr(0)<br>
+assert(s == '&lt;x&gt;xxx<br>
+&nbsp;&nbsp;&lt;y&gt;yyy&lt;/y&gt;<br>
+&lt;/x&gt;<br>
+');<br>
+<br>
+/* For example a WBXML tag configuration that the name is wbxmltest<br>
+&nbsp;&nbsp;&nbsp;&lt;token&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tag&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;aaa&quot; id=&quot;5&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;bbb&quot; id=&quot;6&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;ccc&quot; id=&quot;7&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tag&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/token&gt;<br>
+ */<br>
+x = new TXMLTree('&lt;aaa&gt;111&lt;bbb&gt;222&lt;/bbb&gt;&lt;ccc&gt;333&lt;/ccc&gt;&lt;/aaa&gt;');<br>
+assert(x.wbxmlencode('wbxmltest')<br>
+&nbsp;&nbsp;&nbsp;== '\01\01\03\00\45\03111\00\46\03222\00\01\47\03333\00\01\01');<br>
+</div>

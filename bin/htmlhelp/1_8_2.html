@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TInteger fputs(TString fileName, TString line)</div><h1>说明</h1>
+<div class="dc">在文件结尾自动追加一行，自动加回车</div><h1>参数</h1>
+<div class="dc"><h4>fileName</h4>
+<div class="dc">文件名</div>
+<h4>line</h4>
+<div class="dc">要写的字符串</div>
+</div><h1>返回</h1><div class="dc">
+返回整数0</div><h1>示例</h1><div class="dc">
+var TString sfile;<br>
+sfile=sprintf('%s/log/test.txt',getenv('CINDIR'));<br>
+assert(fputs(sfile,'hello world') == 0);<br>
+</div>

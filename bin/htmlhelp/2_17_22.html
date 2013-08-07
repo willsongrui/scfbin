@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString TSipCallLeg::getheaderfromreq(TString name)<br>
+TString TSipCallLeg::getheaderfromres(TString name)</div><h1>说明</h1>
+<div class="dc">从请求/响应消息中取某个头字段的内容</div><h1>参数</h1>
+<div class="dc"><h4>name</h4>
+<div class="dc">头字段名</div>
+</div><h1>返回</h1><div class="dc">
+头字段的内容</div><h1>示例</h1><div class="dc">
+var TSipCallLeg oleg;<br>
+var TString s;<br>
+s = oleg.getheaderfromreq('Server');<br>
+s = oleg.getheaderfromres('Comtact');<br>
+</div>

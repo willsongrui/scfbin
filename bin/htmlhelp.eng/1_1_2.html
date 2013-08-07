@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger strlen(TString s)<br>
+TInteger binlen(TString s)<br>
+TInteger TString::length()</div><h1>DESCRIPTION</h1>
+<div class="dc">Get the length of a string. binlen and TString::length return the whole length of a binary string. strlen only counts the characters before the first null character</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The string length</div><h1>EXAMPLES</h1><div class="dc">
+assert(strlen('12345') == 5);<br>
+assert(binlen('ABC\00ABC\00') == 8);<br>
+assert(strlen('ABC\00ABC\00') == 3); // the first \00 as the string end<br>
+</div>

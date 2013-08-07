@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TString::cuthead(TString sepFlag)</div><h1>DESCRIPTION</h1>
+<div class="dc">To cut the head part of a string according to the separator. The cut part (not include the separator) is returned. If the separator cannot be found, the whole string will be returned and the source string is set to null</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>sepFlag</h4>
+<div class="dc">The separator string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The cut string</div><h1>EXAMPLES</h1><div class="dc">
+var TString s='123 456';<br>
+s1 = s.cuthead(' ');<br>
+assert(s == '456');<br>
+assert(s1 == '123');<br>
+s1 = s.cuthead('A');<br>
+assert(s == '');<br>
+assert(s1 == '456');<br>
+</div>

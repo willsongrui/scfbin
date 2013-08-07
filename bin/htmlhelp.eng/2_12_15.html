@@ -1,0 +1,25 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSipMsg::getfromaddr()<br>
+TString TSipMsg::gettoaddr()<br>
+TString TSipMsg::getcontactaddr()</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the address information from the &quot;From&quot;, &quot;To&quot; or &quot;Contact&quot; parameter of the sip message head</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+The address information in &quot;To&quot; parameter</div><h1>EXAMPLES</h1><div class="dc">
+/* For example INVITE message<br>
+INVITE sip:7434@10.20.200.227:5060 SIP/2.0<br>
+Call-ID: 7764053628133e4b65b609e7160e555e@10.20.200.227<br>
+From: &lt;sip:07312910430@10.20.200.227:5060&gt;;tag=00143-0b1006b1010684d6<br>
+To: &lt;sip:7434@10.20.200.227:5060&gt;<br>
+CSeq: 1 INVITE<br>
+Via: SIP/2.0/UDP 10.20.200.227:9060;branch=z9hG4bK13884222<br>
+Max-Forwards: 30<br>
+Contact: &lt;sip:10.20.200.227:9060&gt;<br>
+...<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getfromaddr() == 'sip:07312910430@10.20.200.227:5060');<br>
+&nbsp;&nbsp;&nbsp;assert(req.gettoaddr() == 'sip:7434@10.20.200.227:5060');<br>
+&nbsp;&nbsp;&nbsp;assert(req.getcontactaddr() == 'sip:10.20.200.227:9060');<br>
+}<br>
+</div>

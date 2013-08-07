@@ -1,0 +1,21 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger min(TInteger i, ... )<br>
+TDouble min(TDouble i, ... )<br>
+TInteger max(TInteger i, ... )<br>
+TDouble max(TDouble i, ... )</div><h1>DESCRIPTION</h1>
+<div class="dc">min() is to get the value of the smallest argument. max() is to get the value of the largest argument</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>i...</h4>
+<div class="dc">The arguments to compare. The argument number is between 2-30</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The smallest or largest argument</div><h1>EXAMPLES</h1><div class="dc">
+var TInteger i;<br>
+var TDouble x;<br>
+i = min(10, 5, 8, 12, 4, 6);<br>
+assert(i == 4);<br>
+i = max(10, 5, 8, 12, 4, 6);<br>
+assert(i == 12);<br>
+x = min(10, 5.1, 8, 12, 4.2, 6);<br>
+assert(x == 4.2);<br>
+x = max(10, 5.1, 8, 12.2, 4, 6);<br>
+assert(x == 12.2);<br>
+</div>

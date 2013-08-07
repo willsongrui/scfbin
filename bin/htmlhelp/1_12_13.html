@@ -1,0 +1,28 @@
+<h1>原型</h1>
+<div class="dc">TInteger limit(TString key, TInteger number, TInteger rateLimit)</div><h1>说明</h1>
+<div class="dc">对业务逻辑的执行进行限制，分为数量限制和速率限制两种，结果可能是通过或者不通过，针对不同的情况可以做不同的后续操作</div><h1>参数</h1>
+<div class="dc"><h4>key</h4>
+<div class="dc">字符串，同一个限制必须使用同样的key，对于使用相同的key调用的limit总体上控制数量或者速率</div>
+<h4>number</h4>
+<div class="dc">如果是数量限制，那么这个参数是同时存在的业务逻辑执行示例的个数。如果是速率限制，那么是每秒钟允许执行的次数</div>
+<h4>rateLimit</h4>
+<div class="dc">0表示数量限制，1表示速率限制，缺省为0</div>
+</div><h1>返回</h1><div class="dc">
+返回大于或者等于0表示通过，返回小于0表示不通过</div><h1>示例</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TInteger i;<br>
+&nbsp;&nbsp;&nbsp;i=limit('123',10);<br>
+&nbsp;&nbsp;&nbsp;print(itoa(i));<br>
+&nbsp;&nbsp;&nbsp;if(i&gt;=0)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('limit passed');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sleep(10);<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('limit not pass');<br>
+&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+</div>

@@ -1,0 +1,38 @@
+<h1>原型</h1>
+<div class="dc">TInteger TTCAPDialogue::rejectreq(TInteger invokeID, TInteger problemType, TInteger problemID)</div><h1>说明</h1>
+<div class="dc">请求U-REJECT原语</div><h1>参数</h1>
+<div class="dc"><h4>invokeID</h4>
+<div class="dc">整数，前面收到的操作的InvokeID</div>
+<h4>problemType</h4>
+<div class="dc">整数，要发送的问题码类型：<br>
+问题码类型0x80表示一般问题（general problem）<br>
+问题码类型0x81表示调用问题（invoke problem）<br>
+问题码类型0x82表示返回结果问题（return result problem）<br>
+问题码类型0x83表示返回错误问题（return error problem）</div>
+<h4>problemID</h4>
+<div class="dc">整数，问题码：<br>
+问题码类型0x80对应的问题码取值如下：<br>
+	0x00&nbsp;&nbsp;未被识别的成分（unrecognized component）<br>
+	0x01&nbsp;&nbsp;成分类型错误（mistype component）<br>
+ 	0x02&nbsp;&nbsp;成分结构不良（badly structured component）<br>
+问题码类型0x81对应的问题码取值如下：<br>
+ 	0x00 重复的调用ID（duplicated invoke ID）<br>
+ 	0x01 未被识别的操作（unrecongnized operation）<br>
+ 	0x02 参数类型错误 (mistyped parameter)<br>
+ 	0x03 资源限制 (resource limitation)<br>
+ 	0x04 启动释放 (initiating release)<br>
+ 	0x05 未被识别的链接ID (unrongnized linked ID)<br>
+ 	0x06 非预期的链接相应 (linked response unexpected)<br>
+ 	0x07 非预期的链接操作( unexpected linked operation)<br>
+问题码类型0x82对应的问题码取值如下：<br>
+ 	0x00 未被识别的调用ID(unrecognized invoke ID)<br>
+ 	0x01 返回非预期的结果（return result unexpected）<br>
+ 	0x02 按时类型错误（mistyped parameter）<br>
+问题码类型0x83对应的问题码取值如下：<br>
+ 	0x00 未被识别的调用ID(unrecognized invoke ID)<br>
+ 	0x01 非预期的返回差错（return error unexpected）<br>
+ 	0x02 未被识别的差错（unrecongnized error）<br>
+ 	0x03 非预期差错（unexpected error）<br>
+ 	0x04 参数类型错误（mistyped parameter）</div>
+</div><h1>返回</h1><div class="dc">
+0</div>

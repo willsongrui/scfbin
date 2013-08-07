@@ -1,0 +1,17 @@
+<h1>原型</h1>
+<div class="dc">TInteger TFTPClient::init(TString host, TInteger port, TString user, TString passwd)</div><h1>说明</h1>
+<div class="dc">初始化TFTPClient对象，初始化后只是在对象内部保存这些值，并不真正的连接到远端FTP服务器</div><h1>参数</h1>
+<div class="dc"><h4>host</h4>
+<div class="dc">主机名（或者IP地址）</div>
+<h4>port</h4>
+<div class="dc">端口号</div>
+<h4>user</h4>
+<div class="dc">用户名，匿名用户用'anonymous'</div>
+<h4>passwd</h4>
+<div class="dc">用户口令，匿名用户用'a@b.com'</div>
+</div><h1>返回</h1><div class="dc">
+应该永远返回正确（即返回0）</div><h1>示例</h1><div class="dc">
+var TFTPClient ftp;<br>
+ftp = new TFTPClient;<br>
+ftp.init('ahost'，21，'user'，'password');<br>
+</div>

@@ -1,0 +1,21 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSCPChargeServer::stopcharge()</div><h1>说明</h1>
+<div class="dc">当呼叫结束后，如果底层没有自动停止计费的话，用这个函数来停止计费。</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TSCPChargeServer ch1;<br>
+ch1 = new TSCPChargeServer;<br>
+ch1.addchargeclass(100);<br>
+ch1.setbalancesupervision(300, 0, 0);<br>
+<br>
+// 限额到达后跳转到 stop 业务逻辑片断中<br>
+ch1.onlimitreached([limitReach]);<br>
+<br>
+ch1.onstop([recACR]);<br>
+ch1.startcharge();<br>
+<br>
+// ... 通常是连接通话<br>
+<br>
+//通常应该在 limitReach业务逻辑片断或挂机处理逻辑中<br>
+ch1.stopcharge();<br>
+</div>

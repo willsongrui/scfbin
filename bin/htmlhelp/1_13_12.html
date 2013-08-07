@@ -1,0 +1,21 @@
+<h1>原型</h1>
+<div class="dc">TString numbertrans(TString src, TInteger type)<br>
+TString keymatch(TString src, TInteger type)</div><h1>说明</h1>
+<div class="dc">匹配$CINDIR/etc/numbertab表的第一列，返回第二列。numbertrans一般用于电话号码取得计费前缀，例如区号或者局号。keymatch一般用于关键词过滤等应用。二者的匹配方式有所区别，对keymatch来说可以从任何位置开始匹配，而numbertrans必须是从开头进行匹配。为了避免冲突，为keymatch而设置的numbertab中的匹配关键词须F开头</div><h1>参数</h1>
+<div class="dc"><h4>src</h4>
+<div class="dc">被匹配的字符串</div>
+<h4>type</h4>
+<div class="dc">匹配规则2和12表示最长匹配，1和11表示最短匹配，1和2查不到抛出异常，11和12如果查不到返回空串</div>
+</div><h1>返回</h1><div class="dc">
+如果匹配成功，返回numbertab表中匹配行的第二列</div><h1>示例</h1><div class="dc">
+/*<br>
+# the numbertab file<br>
+030 309999<br>
+0306223 21890<br>
+F030 a<br>
+*/<br>
+assert(numbertrans('0306223', 11) == '309999');<br>
+assert(numbertrans('0306223', 22) == '21890');<br>
+assert(numbertrans('003000', 12) == '');<br>
+assert(keymatch('003000', 2) == 'a');<br>
+</div>

@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::etc()<br>
+TInteger TSipCallSegment::ctr(TInteger resCode=183)</div><h1>DESCRIPTION</h1>
+<div class="dc">To connect to the midia server. ctr has not answering action and without charging</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>resCode</h4>
+<div class="dc"></div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+1 for success, 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.etc();<br>
+</div>

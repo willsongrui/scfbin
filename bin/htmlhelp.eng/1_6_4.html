@@ -1,0 +1,11 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString sqlstrencode( TString s)<br>
+TString sqlstrdecode( TString s)</div><h1>DESCRIPTION</h1>
+<div class="dc">sqlstrencode() is to encode some strings include special characters before constructing sql statement. sqlstrdecode() is to decode some string include special characters when processing sql select result. The special characters include enter or vertical line</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The source string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The result string</div><h1>EXAMPLES</h1><div class="dc">
+assert(sqlstrencode('abc\ndef|123') == 'abc\\0Adef\\7C123');<br>
+assert(sqlstrdecode('abc\\0Adef\\7C123') == 'abc\ndef|123');<br>
+</div>

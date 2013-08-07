@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TFTPClient::getfile(TString rname, TString lname)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get a file from the FTP server</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>rname</h4>
+<div class="dc">The remote file path</div>
+<h4>lname</h4>
+<div class="dc">The local file path</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+var&nbsp;&nbsp;TFTPClient ftp;<br>
+ftp = new TFTPClient;<br>
+ftp.init('ahost'£¬21£¬'user'£¬'password');<br>
+ftp.getfile('sourceFile', 'destFile');<br>
+</div>

@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TString utf8toucs2(TString s, TInteger i=0)<br>
+TString ucs2toutf8(TString s, TInteger i=0 )</div><h1>说明</h1>
+<div class="dc">UTF8和UCS2编码的相互转换</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要转换的字符串</div>
+<h4>i</h4>
+<div class="dc">指示UCS2的字节序（高字节在前还是低字节在前）。对utf8toucs2()来说，3为高字节在前，2为低字节在前。对ucs2toutf8()来说，1为高字节在前，0为低字节在前。缺省为0。</div>
+</div><h1>返回</h1><div class="dc">
+转换后的字符串，如果源串的格式不正确， 返回空串</div><h1>示例</h1><div class="dc">
+assert(utf8toucs2('\EF\BB\BF\E6\B1\89\E5\A5\8E\61\62', 2)<br>
+&nbsp;&nbsp;&nbsp;== '\FF\FE\49\6C\4E\59\61\00\62\00');<br>
+assert(utf8toucs2('\EF\BB\BF\E6\B1\89\E5\A5\8E\61\62', 3)<br>
+&nbsp;&nbsp;&nbsp;== '\FE\FF\6C\49\59\4E\00\61\00\62');<br>
+</div>

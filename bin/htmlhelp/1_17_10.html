@@ -1,0 +1,32 @@
+<h1>原型</h1>
+<div class="dc">TInteger abnfparse(TString msg, TString abnfName)</div><h1>说明</h1>
+<div class="dc">按照ABNF语法描述解析一个消息，解析结果生成一个xml对象，返回对象的handle</div><h1>参数</h1>
+<div class="dc"><h4>msg</h4>
+<div class="dc">要解析的消息体，如果不符合语法，则不能生成xml对象，导致抛出异常</div>
+<h4>abnfName</h4>
+<div class="dc">ABNF语法规则的名字。这个在之前应该配置好，abnf命令可以维护这些ABNF配置表。</div>
+</div><h1>返回</h1><div class="dc">
+如果解析成功，则返回xml对象的handle</div><h1>示例</h1><div class="dc">
+例如\$CINDIR/abnf/中配置了sip.abnf以及sip.abnf.rulecfg<br>
+并且使用abnf load sip命令成功加载，那么可以调用下面的函数<br>
+abnfparse('INVITE sip:1234@192.168.2.120 SIP/2.0\0D\0A','sip')<br>
+可能生成一个xml树（根据sip.abnf.rulecfg配置不同，xml节点可能不同）：<br>
+&lt;SIP-message&gt;INVITE sip:1234@192.168.2.120 SIP/2.0<br>
+&nbsp;&nbsp;&lt;Request&gt;INVITE sip:1234@192.168.2.120 SIP/2.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;Request-Line&gt;INVITE sip:1234@192.168.2.120 SIP/2.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Method&gt;INVITE&lt;/Method&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Request-URI&gt;sip:1234@192.168.2.120<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;SIP-URI&gt;sip:1234@192.168.2.120<br>
+	&nbsp;&nbsp;&lt;userinfo&gt;1234@<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;user&gt;1234&lt;/user&gt;<br>
+	&nbsp;&nbsp;&lt;/userinfo&gt;<br>
+	&nbsp;&nbsp;&lt;hostport&gt;192.168.2.120<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&lt;host&gt;192.168.2.120&lt;/host&gt;<br>
+	&nbsp;&nbsp;&lt;/hostport&gt;<br>
+	&lt;/SIP-URI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Request-URI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;SIP-Version&gt;SIP/2.0&lt;/SIP-Version&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Request-Line&gt;<br>
+&nbsp;&nbsp;&lt;/Request&gt;<br>
+&lt;/SIP-message&gt;<br>
+</div>

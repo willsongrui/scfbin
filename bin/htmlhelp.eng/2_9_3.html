@@ -1,0 +1,35 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TTelnetClient::send(TString msg)</div><h1>DESCRIPTION</h1>
+<div class="dc">To send message to the server. The 0D 0A will be added to the string automatically.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>msg</h4>
+<div class="dc">The string to be sent</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString tmpStr;<br>
+&nbsp;&nbsp;&nbsp;var TInteger tmpInt;<br>
+&nbsp;&nbsp;&nbsp;var TTelnetClient telnetClient;<br>
+<br>
+&nbsp;&nbsp;&nbsp;telnetClient=new TTelnetClient;<br>
+&nbsp;&nbsp;&nbsp;telnetClient.init('192.168.2.205', 23);<br>
+&nbsp;&nbsp;&nbsp;sleep(1);&nbsp;&nbsp;// wait for server<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;tmpInt=telnetClient.send('wenyx');<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;telnetClient.send('*****');<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;telnetClient.send('vmstat 1');<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;tmpStr=sprintf('\03');&nbsp;&nbsp;&nbsp;// send ctrl-C, can interrupt the vmstat command<br>
+&nbsp;&nbsp;&nbsp;telnetClient.send(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;sleep(3);<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+}<br>
+</div>

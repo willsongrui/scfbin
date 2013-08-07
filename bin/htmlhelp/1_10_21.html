@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString xmltextencode(TString arg1)<br>
+TString xmltextdecode(TString arg1)<br>
+TString vxmltextencode(TString arg1)<br>
+TString vxmltextdecode(TString arg1)</div><h1>说明</h1>
+<div class="dc">encode是将一个字符串中的一些XML内容认为非法字符转换，例如小于号转换为'&amp;lt;', 符号大于号转换为'&amp;gt;'，而decode则反之。vxml某些场合要求比xml更加严格一些，所以针对vmxl的内容除了xml的要求之外对空格回车换行等字符也做了替换</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">要转换的字符串</div>
+</div><h1>返回</h1><div class="dc">
+转换后的字符串</div><h1>示例</h1><div class="dc">
+s = xmltextencode('&lt;a/b[0]&gt;');<br>
+assert(s == '&amp;lt;a/b[0]&amp;gt;');<br>
+</div>

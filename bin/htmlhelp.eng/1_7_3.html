@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger fwrite(TString fileName, TInteger pos, TString str, TInteger length)</div><h1>DESCRIPTION</h1>
+<div class="dc">To write a string to a file</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>fileName</h4>
+<div class="dc">The file name</div>
+<h4>pos</h4>
+<div class="dc">The begin position of the file to write (-1 is for the end of the file)</div>
+<h4>str</h4>
+<div class="dc">The string to be written</div>
+<h4>length</h4>
+<div class="dc">The length to write. If the length is not valid ( less than or equal to 0, greater than the string length ), the whole string length is used</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The actual bytes number that is written</div><h1>EXAMPLES</h1><div class="dc">
+assert(fwrite('file',0,'good',-2) == 4);<br>
+</div>

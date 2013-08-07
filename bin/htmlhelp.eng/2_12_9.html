@@ -1,0 +1,34 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSipMsg::getheader(TString path)<br>
+TInteger TSipMsg::setheader(TString path, TString value)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get or set the content of a parameter of the message head</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">header path</div>
+<h4>value</h4>
+<div class="dc">the header value to be set</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+getheader() returns the content string. setheader returns 0 for success and -1 for failure</div><h1>EXAMPLES</h1><div class="dc">
+/* For example:<br>
+INVITE sip:7434@10.20.200.227:5060 SIP/2.0<br>
+Call-ID: 7764053628133e4b65b609e7160e555e@10.20.200.227<br>
+From: &lt;sip:07312910430@10.20.200.227:5060&gt;;tag=00143-0b1006b1010684d6<br>
+To: &lt;sip:7434@10.20.200.227:5060&gt;<br>
+CSeq: 1 INVITE<br>
+Via: SIP/2.0/UDP 10.20.200.227:9060;branch=z9hG4bK13884222<br>
+Max-Forwards: 30<br>
+Contact: &lt;sip:10.20.200.227:9060&gt;<br>
+Content-Type: application/sdp<br>
+Content-Length: 130<br>
+Route: &lt;sip:10.20.200.227:5090;call=orig;lr&gt;<br>
+P-Asserted-Identity: &lt;sip:07312910430@10.20.201.5&gt;<br>
+Supported: 100rel,timer,diversion<br>
+...<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getheader('Supported') == '100rel,timer,diversion');<br>
+&nbsp;&nbsp;&nbsp;assert(req.getheader('From/tag') == '00143-0b1006b1010684d6');<br>
+&nbsp;&nbsp;&nbsp;req.setheader('Contact','&lt;sip:192.168.2.235:14550&gt;');<br>
+&nbsp;&nbsp;&nbsp;assert(req.getheader('Contact') == '&lt;sip:192.168.2.235:14550&gt;');<br>
+}<br>
+</div>

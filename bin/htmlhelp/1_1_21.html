@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TInteger TString::getbyte(TInteger index)<br>
+TInteger TString::setbyte(TInteger index, TInteger value)</div><h1>说明</h1>
+<div class="dc">对字符串的某个字节进行操作，getbyte是取得某个字节，setbyte是设置某个字节</div><h1>参数</h1>
+<div class="dc"><h4>index</h4>
+<div class="dc">整数，必须是在字符串的长度允许范围之内，0开始</div>
+<h4>value</h4>
+<div class="dc">整数，要设置的字符串某个byte的值</div>
+</div><h1>返回</h1><div class="dc">
+整数，返回负数表示失败。getbyte成功将返回某个byte的整数值，0-255返回。setbyte成功将返回0</div><h1>示例</h1><div class="dc">
+var TString s='12345';<br>
+assert(s.getbyte(2) == 51);<br>
+s.setbyte(1,51);<br>
+assert(s == '13345');<br>
+</div>

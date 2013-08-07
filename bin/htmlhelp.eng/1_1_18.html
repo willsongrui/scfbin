@@ -1,0 +1,17 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString strhtmlwrap(TString s)<br>
+TString htmltextencode(TString s, TInteger type=7)</div><h1>DESCRIPTION</h1>
+<div class="dc">strhtmlwrap() will replace the enter in the text to &lt;br&gt;. This function used to generate a text include enter and embedded it into the html. If the text includes not only enter but also other special character, htmltextencode() function can replace these special character to html entity.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The text to be processed</div>
+<h4>type</h4>
+<div class="dc">If type is 7, 7 characters include ampersand, less-than sign, greater-than sign, apostrophe, double quote, space, enter wull be processed. If type is 5, only ampersand, less-than sign, greater-than sign, apostrophe, double quote will be processed. The default value is 7</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+a new string. Note: htmltextencode() replaces the enter to &lt;br&gt; and not delete the enter character</div><h1>EXAMPLES</h1><div class="dc">
+var TString s = 'lkjsaf\nasdlkfsdf\naslkdjfh\n asdlkfjhsadf\nasdlfk\n';<br>
+s = strhtmlwrap(s);<br>
+assert(s == 'lkjsaf&lt;br&gt;asdlkfsdf&lt;br&gt;aslkdjfh&lt;br&gt; asdlkfjhsadf&lt;br&gt;asdlfk&lt;br&gt;');<br>
+s = 'ab\nc&amp;def&lt;g&gt;\n';<br>
+assert(htmltextencode(s) == 'ab&lt;br&gt;\nc&amp;amp;def&amp;lt;g&amp;gt;&lt;br&gt;\n');<br>
+assert(htmltextencode(s,5) == 'ab\nc&amp;amp;def&amp;lt;g&amp;gt;\n');<br>
+</div>

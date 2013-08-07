@@ -1,0 +1,51 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;currentdate8andtime(TInteger alignSec=-1, TInteger timeZone=0)</div><h1>说明</h1>
+<div class="dc">取得系统当前时间，或者通过给定参数校准的当前时间</div><h1>参数</h1>
+<div class="dc"><h4>alignSec</h4>
+<div class="dc">格林威治时间0点到现在的秒数（0-86399合法），缺省-1表示直接返回系统当前时间，否则返回的时间是通过这个参数校准的</div>
+<h4>timeZone</h4>
+<div class="dc">当地和格林威治时间的时差（分钟为单位）（-720-780合法）</div>
+</div><h1>返回</h1><div class="dc">
+14位ASC码类型的时间，格式为YYYYMMDDHHmmSS。如果是校准时间，则根据校准时间求出一个和当前系统时间最接近的时间</div><h1>示例</h1><div class="dc">
+例如，在中国东8区运行：<br>
+print(currentdate8andtime());<br>
+// 假设输出20080728201605，28号20点16分，这是scf的当前时间<br>
+<br>
+print(currentdate8andtime(10*3600,480));<br>
+// 校准时间为18点，那么应该返回20080728180000<br>
+<br>
+print(currentdate8andtime(12*3600,480));<br>
+// 校准时间为20点，那么应该返回20080728200000<br>
+<br>
+print(currentdate8andtime(14*3600,480));<br>
+// 校准时间为22点，那么应该返回20080728220000<br>
+<br>
+print(currentdate8andtime(16*3600,480));<br>
+// 校准时间为0点，那么应该返回20080729000000，注意这里已经变为29号，因为<br>
+29号0点和当前scf时间比28号0点更接近<br>
+<br>
+print(currentdate8andtime(18*3600,480));<br>
+// 校准时间为2点，那么应该返回20080729020000<br>
+<br>
+print(currentdate8andtime(20*3600,480));<br>
+// 校准时间为4点，那么应该返回20080729040000<br>
+<br>
+print(currentdate8andtime(22*3600,480));<br>
+// 校准时间为6点，那么应该返回20080729060000<br>
+<br>
+print(currentdate8andtime(0,480));<br>
+// 校准时间为8点，那么应该返回20080729080000<br>
+<br>
+print(currentdate8andtime(2*3600,480));<br>
+// 校准时间为10点，那么应该返回20080728100000，注意这里又变回了28号10<br>
+点，因为28号10点和当前scf时间更接近<br>
+<br>
+print(currentdate8andtime(4*3600,480));<br>
+// 校准时间为12点，那么应该返回20080728120000<br>
+<br>
+print(currentdate8andtime(6*3600,480));<br>
+// 校准时间为14点，那么应该返回20080728140000<br>
+<br>
+print(currentdate8andtime(8*3600,480));<br>
+// 校准时间为16点，那么应该返回20080728160000<br>
+</div>

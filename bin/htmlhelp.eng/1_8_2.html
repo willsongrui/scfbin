@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger rematch(TString regexp, TString s)</div><h1>DESCRIPTION</h1>
+<div class="dc">To check whether a string can match to a regular expression. The matching is for total string, not for sub string.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>regexp</h4>
+<div class="dc">The regular expression string</div>
+<h4>s</h4>
+<div class="dc">The string to match</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The matching result. 1 is returned for success. A negative integer is returned for matching failure and the absolute value indicate the failure position of the string. If the regular expression is invalid, an exception will be thrown out</div><h1>EXAMPLES</h1><div class="dc">
+var TString str='abcdefghijklmnop';<br>
+var TString regexp = '[a-z]{4,16}';<br>
+var TInteger ret=rematch(regexp, str);<br>
+assert(ret==1);<br>
+</div>

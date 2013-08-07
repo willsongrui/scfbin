@@ -1,0 +1,3792 @@
+
+COMMAND
+
+    access
+ a
+
+
+FUNCTION
+
+    To access a particular process
+
+
+USAGE
+
+    access <processname>
+
+
+DESCRIPTION
+
+    
+    <processname> can be manager, sync, scf0, scf1, ..., scf39, tcap, etc.
+     The condition for successful execution of command access x is that this 
+    process x must have been started-up and the FIFO files $DINDIR/fifo/access.
+    x and $CINDIR/fifo/x.access have been opened. access can be executed 
+    under the prompt of any process. It is actually a command reserved by 
+    inaccess itself, and this maintenance command is not included in other 
+    processes.
+    
+
+COMMAND
+
+    exit
+ quit
+
+
+FUNCTION
+
+    To return to the operating system
+
+
+USAGE
+
+    exit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    To list out all commands
+
+
+USAGE
+
+    help
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    history
+
+
+FUNCTION
+
+    To list out the latest executed commands since INACCESS was started-
+    up, 100 commands at most
+
+
+USAGE
+
+    history
+
+
+DESCRIPTION
+
+    
+    'history' can be executed under the prompt of any process. It is actually 
+    a command reserved by inaccess itself, and this maintenance command is 
+    not included in other processes.
+    
+
+COMMAND
+
+    passwd
+
+
+FUNCTION
+
+    To modify user's password
+
+
+USAGE
+
+    passwd
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    quitall
+
+
+FUNCTION
+
+    To return to the operating system under any status
+
+
+USAGE
+
+    quitall
+
+
+DESCRIPTION
+
+    
+    'quitall' can be executed under the prompt of any process. It is actually 
+    a command reserved by inaccess itself, and this maintenance command is 
+    not included in other processes.
+    
+
+COMMAND
+
+    useradd
+
+
+FUNCTION
+
+    To add users
+
+
+USAGE
+
+    useradd [-l <level>] [-d <day>] [-h <hour>] [-s <second>] <username>
+    
+
+
+DESCRIPTION
+
+    
+    -1 is user's level, the default value is "1";
+    -d, -h, and -s are to set the time validity for the password and  indicate 
+    days, hours and seconds respectively.
+    
+
+COMMAND
+
+    userdel
+
+
+FUNCTION
+
+    To delete users
+
+
+USAGE
+
+    userdel <username>
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    usermod
+
+
+FUNCTION
+
+    To modify user's status
+
+
+USAGE
+
+    usermod <username> [-l <level>] [-d <day>] [-h <hour>] [-s <second>]
+     
+
+
+DESCRIPTION
+
+    
+    The meaning of the parameters is same 'useradd' command
+    
+
+COMMAND
+
+    users
+
+
+FUNCTION
+
+    To list out all users
+
+
+USAGE
+
+    users
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    whoami
+
+
+FUNCTION
+
+    Who am I?
+
+
+USAGE
+
+    whoami
+
+
+DESCRIPTION
+
+    
+    To show the name of the current user who logs in inaccess.
+    
+
+COMMAND
+
+    abnf
+
+
+FUNCTION
+
+    ABNF maintenance commands
+
+
+USAGE
+
+    abnf list [<abnfname>]
+    abnf load <abnfname>
+    abnf rm <abnfname>
+
+
+DESCRIPTION
+
+    
+    'abnf list' is to list all the ABNF rule tables. The argument is the 
+    name of the ABNF table that is optional. An ABNF rule table's detail 
+    information will be listed if the argument is presented.
+    'abnf load' is to load a ABNF rule table.  The argument is the name 
+    of the ABNF table.
+    'abnf rm' is to remove a ABNF rule table.  The argument is the name 
+    of the ABNF rule table.
+    For example:
+    'abnf load sip'
+    To read the file: $CINDIR/abnf/sip.abnf and $CINDIR/abnf/sip.abnf.rulecfg
+    
+
+COMMAND
+
+    about
+
+
+FUNCTION
+
+    To show the version of the program
+
+
+USAGE
+
+    about
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    ac
+
+
+FUNCTION
+
+    To show the Application Context (AC) supported by the SCF
+
+
+USAGE
+
+    ac [-ld | -o]
+
+
+DESCRIPTION
+
+    
+    The command ac with no arguments will show the sequence numbers and 
+    names of all the ACs. 
+    For example:
+
+    scf0> ac
+    [ 0] [ 08 03 A3 7D 01 01 01 00 00 -- -- -- ]
+    [ 0] [ 0A 2B 0C 02 88 53 03 03 00 00 04 -- ]
+    [ 0] [ 07 04 00 01 01 01 00 00 -- -- -- -- ]
+    [ 1] [ 08 03 A3 7D 01 01 01 01 00 -- -- -- ]
+    [ 2] [ 08 03 A3 7D 01 01 01 02 00 -- -- -- ]
+    [ 3] [ 08 03 A3 7D 01 01 01 03 00 -- -- -- ]
+    [ 4] [ 08 03 A3 7D 01 01 01 04 00 -- -- -- ]
+    [ 5] [ 08 03 A3 7D 01 01 01 05 00 -- -- -- ]
+    [ 6] [ 08 03 A3 7D 01 01 01 06 00 -- -- -- ]
+    [ 7] [ 08 03 A3 7D 01 01 01 07 00 -- -- -- ]
+    [11] [ 08 03 A3 7D 01 01 01 0B 00 -- -- -- ]
+    [12] [ 09 02 84 08 01 00 01 00 05 02 -- -- ]
+
+    This shows ACs that SCF supports. 
+    Column Explanatory Notes:
+    - The first column is the sequence number of the AC. 
+    - 08 in the second column means the length of the name of the AC is 
+    8. 
+    - The third to the tenth column list the name of the AC, encoded according 
+    to the object identifier encoding rule. 
+    
+    'ac -o' will show ACs names with asc mode object identifier. For example
+
+    scf0> ac -o
+    [ 0] 0.3.4605.1.1.1.0.0
+    [ 0] 1.3.12.2.1107.3.3.0.0.4
+    [ 0] 0.4.0.1.1.1.0.0
+    [ 1] 0.3.4605.1.1.1.1.0
+    [ 2] 0.3.4605.1.1.1.2.0
+    [ 3] 0.3.4605.1.1.1.3.0
+    [ 4] 0.3.4605.1.1.1.4.0
+    [ 5] 0.3.4605.1.1.1.5.0
+    [ 6] 0.3.4605.1.1.1.6.0
+    [ 7] 0.3.4605.1.1.1.7.0
+    [11] 0.3.4605.1.1.1.11.0
+    [12] 0.2.520.1.0.1.0.5.2
+    total: 10 of 100
+
+    'ac -ld' will reload the AC configuration from the file $CINDIR/etc/
+    config.ac
+    
+
+SEE ALSO
+
+    op
+
+
+COMMAND
+
+    addwatch
+
+
+FUNCTION
+
+    To turn on the display switches of several CCBs
+
+
+USAGE
+
+    addwatch <ccbName> ...
+
+
+DESCRIPTION
+
+    
+    The fsm command will show some contents of the CCB of the corresponding 
+    SCSM FSM. The CCB contents shown depend on whether or not the contents 
+    are turned on by their display switch. <ccbName> indicates the name of 
+    the CCB for the static CCBs; <ccbName> indicates the sequence number 
+    (from 0 on) defined in CIDLOC of the CCB in the service being currently 
+    debugged for the dynamic CCBs. The name and sequence number of the CCB 
+    can be obtained by the lccb command. With one command can turn on the 
+    display switches of several CCBs
+    
+
+SEE ALSO
+
+    stopat，watchall，nowatch，delwatch，fsm，go，next，lccb
+
+
+COMMAND
+
+    blackbox 
+
+
+FUNCTION
+
+    To record the execution status of the service logic in SCF.INFO.*
+
+
+USAGE
+
+    blackbox on
+    blackbox off
+    blackbox <40-bytes-character-string>
+
+
+DESCRIPTION
+
+    
+    During the SCF operation, the latest 20 steps will be recorded for each 
+    execution of service logic. When a call-related error occurs, SCF will 
+    record the error message in SCF.INFO.* files. If blackbox is set on, 
+    the latest 20 steps will be written to 40-byte character strings and 
+    appended after the error message. To turn off this function, set blackbox 
+    off (to prevent SCF.INFO.* being written too much).
+    Because it is difficult to read the 40-byte character string, you can 
+    use the command blackbox string to list out the 20 steps to analyze system 
+    problems.
+    
+
+COMMAND
+
+    broadcast
+
+
+FUNCTION
+
+    To broadcast maintenance commands of scf process
+
+
+USAGE
+
+    broadcast <command> <argv1> <argv2>...
+
+
+DESCRIPTION
+
+    
+    Some maintenance commands, e.g., keytree -a, etc.,  need to be performed 
+    in every SCF process. It is very time-consuming especially when there 
+    are many SCF processes. This command broadcasts these specific commands 
+    to all SCF processes. The arguments of broadcast are complete sets of 
+    a SCF maintenance commands (including arguments). For example:
+    'broadcast keytree -a'
+    You can use this command at the prompt of any SCF process. The execution 
+    of broadcast 'keytree -a' means that the command 'keytree -a' is executed 
+    in every SCF process of this SCP.
+    
+
+COMMAND
+
+    buffer
+
+
+FUNCTION
+
+    To view the several buffers of the data segment of the SCF process
+
+
+USAGE
+
+    buffer <type> [-d]
+
+
+DESCRIPTION
+
+    
+    Note: be careful when using the -d argument, as it will affect the normal 
+    operation of SCF when there are too much to display.
+    
+    The new and delete operations are reloaded for the classes of TMsg, 
+    TSCSM, TTimeItem, TFSMQueueItem, TQueueItem and TDFPData in SCF process.
+     Every class will obtain the address from the predefined array of the 
+    data segment. Each class corresponds to one array, each of which has 
+    1000 characters. The size of the array is the size of the corresponding 
+    class. In the buffer command, the name of the class as the argument shows 
+    the usage of the array. For example:
+
+    scf0> buffer TLispResult
+    @..@@@......................................................
+    ............................................................
+    ............................................................
+    ........
+
+    1000 characters will be displayed in total, among which '@' represents 
+    the occupied area, and '.' represents the unoccupied location.
+    -d means to show the detailed information of each item.
+    
+
+COMMAND
+
+    charge
+
+
+FUNCTION
+
+    To manage the setting related to SCP charging
+
+
+USAGE
+
+    charge -c | -h | -a
+    charge -dm <starttime> <duration> <chargeclass>
+    charge -dm2 <startdateandtime> <duration> <chargeclass>
+    charge -md <money> <chargeclass> <starttime> <maxduration>
+    charge -mdmc <money> <starttime> <maxduration> <chargeclass> ...
+    charge -mdf <money> <chargeclass> ...
+
+
+DESCRIPTION
+
+    
+    -c means to list all charging classes
+    -h means to list holiday tariffs
+    -a means to reload the list of all charging classes and holiday tariffs
+    
+    -dm calculate the cost according to the begin time, duration and charging 
+    class
+    -dm2 calculate the cost according to the begin date and time, duration 
+    and charging class
+    -md calculate the duration according to the begin time, cost and charging 
+    class
+    -mdmc calculate the duration according to the begin time, cost and many 
+    charging classes
+    -mdf calculate an estimate duration according to cost and many charging 
+    classes
+    
+
+COMMAND
+
+    checkdb
+
+
+FUNCTION
+
+    To check the status of the database
+
+
+USAGE
+
+    checkdb -l | -a
+
+
+DESCRIPTION
+
+    
+    This function is applicable to the configuration environment of multi-
+    SCP applications connecting to multi-INFORMIX, under the environment 
+    of Alpha TruCluster with Memory Channel.
+    Under this environment, the $INFORMIXDIR/bin of each device has an executive 
+    program, lkforinformix, added by ourselves. It is intended to create 
+    a cluster lock; its argument is the key of the lock. The start-up script 
+    of INFORMIX of TruCluster is to start-up this program finally, while 
+    the close script is to kill this process.
+    Therefore, if one device start-up ASE service, there should be a lkforinformix 
+    process accordingly, and corresponding lock should also exist in cluster.
+     By judging the existence of the lock, process scf or sync will find 
+    out the status of the database connecting to it.
+    Use 'checkdb -l' command to view the connection status of the three 
+    databases, and use 'checkdb -a' command to update the database configuration 
+    (re-load from the config file $CINDIR/etc/config.checkdb)
+    Samples of the format of the config file $CINDIR/etc/config.checkdb 
+    are as follows:
+
+    scp1@shbep1 24613521
+    scp2@shbep2 24613522
+    scp3@shbep3 24613523
+
+    The first column is the database name, the second column is the key 
+    of the lock corresponding to the database. The files of all device are 
+    identical and won't be changed in general cases.
+    The result returned of 'checkdb -l' database might be as follows:
+
+    [0] scp1@shbep1 24613521 up
+    [1] scp2@shbep2 24613522 up
+    [2] scp3@shbep3 24613523 up
+
+    
+
+COMMAND
+
+    clearstop
+
+
+FUNCTION
+
+    To clear all the breakpoints
+
+
+USAGE
+
+    clearstop
+
+
+DESCRIPTION
+
+
+SEE ALSO
+
+    stopat，debug
+
+
+COMMAND
+
+    configssp
+
+
+FUNCTION
+
+    To configure the PC and SSN of SCP itself and other signaling points 
+    connecting to SCP
+
+
+USAGE
+
+    configssp
+    configssp -scp
+    configssp -l
+    configssp -a <name> <addr>
+    configssp -u <name> <addr>
+    configssp -d <name>
+    configssp -lall
+    configssp -max <name> <maxnumber>
+    configssp -ld
+    configssp -g
+    configssp -ac
+
+
+DESCRIPTION
+
+    
+    1. configssp
+    Lists names of SCP, OPC, OPC's destination signaling points (including 
+    SSP and IP), and DPC.
+    
+    2. configssp -scp
+    Only lists name of SCP and OPC.
+    
+    3. configssp -l
+    Only lists the names of SCP's destination signaling points (including 
+    SSP and IP) and DPC.
+    
+    4. configssp -a <name> <addr>
+    Add a destination signaling point. <name> is a character string with 
+    maximum length of 12 characters, used for identifying signaling points.
+     <addr> is in the format of AAA.BBB.CCC.DDD. AAA, BBB, CCC and DDD are 
+    integers between 0 and 255, specifying the SS7 address of SSP. DDD is 
+    the subsystem number (SSN) and AAA, BBB and CCC constitute the SS7 signaling 
+    point code (PC).
+    
+    5. configssp -u <name> <addr>
+    Updates a destination signaling point, see above definition.
+    
+    6. configssp -d <name> <addr>
+    Deletes a destination signaling point, see above definition. The execution 
+    of the above three commands will automatically modify (add, delete, update)
+     the configuration file $SCINDIR/etc/SYSCFG.DAT.
+    
+    7. configssp -lall
+    Lists some statistical information of calling for a specific SSP. 
+    Legends:
+    - SSP-NAME: name of a SSP
+    - RATE: the total number of calls initiated in a 2-second period in 
+    that SSP
+    - MAX: the maximum number of calls that a SCP can handle from that SSP 
+    within 2 seconds, the rest of calls will be aborted; "0" means no limitation.
+    
+    - HMAX: Since the launching of SCP up to now, the maximum value of number 
+    of calls made in 2-second periods in that SSP.
+    - AVA: The average processing time in SCP for the latest 3000 calls 
+    from that SSP.
+    - CALLSUM: Since the launching of SCP up to now, the total number of 
+    calls sent by that SSP
+    - INTER: Since the launching of SCP up to now, the total number of international 
+    long distance calls sent by the SSP.
+    - NATIVE: Since the launching of SCP up to now, the total number of 
+    domestic long distance calls sent by the SSP.
+    - LOCAL: Since the launching of SCP up to now, the total number of local 
+    calls sent by the SSP.
+    - SSP-NO7-ADDRESS: the SS7 address of a SSP
+    
+    8. configssp -max <name> <maxnumber>
+    To set a MAX value to restrict the calling traffic when a SSP has more 
+    calling traffic than usual.
+    
+    9. configssp -ld
+    Reloads the configuration information from the configuration file $SCINDIR/
+    etc/SYSCFG.DAT.
+    
+    10. configssp -g
+    To view the group configuration for the DPCs
+    
+    11. configssp -ac
+    To view the default AC configuration for the DPCs
+
+COMMAND
+
+    debug
+
+
+FUNCTION
+
+    To go to the debugging state
+
+
+USAGE
+
+    debug [<callingPartyNumber>]
+    debug -s <serviceid>
+
+
+DESCRIPTION
+
+    
+    This command performs debugging of the FSM established for the call 
+    invoked by a calling party number. It allows tracing a service branch 
+    without affecting other calls in the normal operation. If the optional 
+    argument is omitted and there exists a SCSM FSM, the FSM that first receives 
+    a message will be debugged. Otherwise, the first FSM established afterwards 
+    will be debugged. When the FSM is deleted, it will automatically exit 
+    the debugging state. Only one FSM can be debugged at a time. Once the 
+    debugging state is started, the FSM meeting the conditions will be debugged.
+     The execution of the service logic will be suspended before the execution 
+    of the first SIB. One has to use the go or next command to resume the 
+    execution of the service logic.
+    'debug -s' is used to debug the FSM of the specified service.
+    
+
+SEE ALSO
+
+    stopat，watchall，fsm，go，next
+
+
+COMMAND
+
+    delete
+
+
+FUNCTION
+
+    To delete one or several FSMs. 
+
+
+USAGE
+
+    delete [-9] <fsmInstance> ...
+    delete -old <serviceKey>
+    delete -e <fsmInstance> ...
+
+
+DESCRIPTION
+
+    
+    1. delete [-9] <fsminstance> ...
+    To delete one or several FSM. <fsmInstance> is an instance number of 
+    the FSM. In fact, this command will send an id-dummyTCEnd message to 
+    each FSM. When receiving the message, the SCSM will break the execution 
+    of the current service and begin to execute the error exit of the current 
+    SIB. If the error exit of the current SIB does not lead to the end of 
+    the service logic, the -9 option can be applied. This command will send 
+    a message of inter-fsmDelete to forcedly delete the FSM.
+    
+    2. delete -old <servicekey>
+    If you can not remove or update a service logic using 'rm' or 'update'
+     command because there is an old version existing for processing some 
+    old FSM. You can use this command to delete the old FSMs. <servicekey>
+     is the id if the service
+    
+    3. delete -e <fsminstance>
+    This command generates a serviceEvent event and sends to the FSM.
+    
+
+SEE ALSO
+
+    scmectrl
+
+
+COMMAND
+
+    delwatch
+
+
+FUNCTION
+
+    To turn off the display switch of several CCBs
+
+
+USAGE
+
+    delwatch <ccbName> ...
+
+
+DESCRIPTION
+
+    
+    <ccbName> shows the name of the CCB for the static CCBs; 'ccbName' shows 
+    the sequence number (from 0 on) defined in CIDLOC of the CCB in the service 
+    being currently debugged for the dynamic CCBs. Refer to the detailed 
+    description of 'addwatch'.
+    
+
+SEE ALSO
+
+    stopat，watchall，nowatch，addwatch，fsm，go，next，lccb
+
+
+COMMAND
+
+    display
+
+
+FUNCTION
+
+    To control the trace information display
+
+
+USAGE
+
+    display -all | -no
+    display -monitor  or -nomonitor
+    display -nmp  or -nonmp
+    display -servicelog | -noservicelog
+    display -calling <callingnumber>
+    display -called <callednumber>
+    display -addcalling [is|like|include] <ccbvalue> [username] [filter]
+    
+    display -delcalling [is|like|include] <ccbvalue>
+    display -addcalled [is|like|include] <ccbvalue> [username] [filter]
+    
+    display -delcalled [is|like|include] <ccbvalue>
+    display -gt <remotegt>
+    display -pc <remotepc>
+    display -ssn <ssn>
+    display -s <servicekey>
+    display -fsm <fsminstance>
+    display -ccb <servickey> <ccbname>  is | like <ccbvalue>
+    display -ccb clear all
+    display -ccb clear <servicekey> [<ccbname>]
+    display -elapse  or -noelapse
+    display -sipon | -sipoff
+    display -sibon | -siboff
+    display -nr
+    display -stop
+    display state
+
+
+DESCRIPTION
+
+    
+    1. display -all | -no
+    'display -all' command turns on the trace switch for all FSM. 'display -no'
+     turns off the trace switch for all FSM
+    
+    2. display -servicelog | -noservicelog
+    To control the switch for information that the service logic want to 
+    log using printf SIB and -Log option. The switch is off default. 'display -servicelog'
+     will turn it on. 'display -noservicelog' will turn it off
+    
+    3. display -s <servicekey>
+    To set a condition. If a new FSM's service id is <servicekey>, the trace 
+    switch is turned on.
+    'display -s 0' to delete the condition
+    
+    5. display -calling <callingnumber>
+       display -called <callednumber>
+    To set a condition. If a new FSM satisfy the condition, the trace switch 
+    is turned on.
+    For FSMs triggered by SS7 InitialDP, normally <callingnumber> is the 
+    calling party number and <callednumber> is the called party number
+    For FSMs created by 'invokeservice' command or INES or SIP message, 
+    the definition of <callingnumber> and <callednumber> is differently
+    For other service logic, <callingnumber> and <callednumber> may be used 
+    to match the value of CCB 'callingAddress' and 'calledAddress'.
+    Command 'display -calling NO' or 'display -called NO' can delete the 
+    condition
+    
+    6. display -fsm <fsminstance>
+    to turn on the trace switch of a FSM specified by <fsminstance>.
+    
+    7. display -ccb <servickey> <ccbname>  is | like <ccbvalue>
+    To set a condition. If the value of a CCB of a new FSM is fully or partially 
+    equal to value, the trace switch is turned on. <ccbname> can only be 
+    TString type.
+    'display -ccb clear ...' can delete the condition.
+    
+    8. display -nr 
+    Normally, If the trace switch is on of a FSM, the trace switch of the 
+    related FSM will be turned on automatically. This command is to forbidden 
+    the related FSM tracing.
+    
+    9. display -stop
+    Same as 'display -no' and stop all trace immediately
+    
+    10. display state
+    To view the state of the conditions
+    
+
+COMMAND
+
+    distrtab
+
+
+FUNCTION
+
+    To maintain the call distribution table
+
+
+USAGE
+
+    distrtab -l [<index>] 
+    distrtab -dp | -ds | -dn | -dt <index>
+
+
+DESCRIPTION
+
+    
+    'distrtab -l' is to display the all contents of the distribution table.
+      The result of the execution of the command distrtab -1 is as follows:
+    
+
+    distribute items of percentage
+    index  key              logicEnds counter
+    ...
+    distribute items of sequential
+    index  key              logicEnds counter
+    ...
+    distribute items of number interval
+    index  key              counter
+    ...
+    distribute items of time interval
+    index  key              nextTime   currentTime
+    ...
+
+    <index> is an array subscript in the table; key is a unique string identifying 
+    each distribution, which is generally composed of the service key and 
+    service subscriber number.
+    
+    There are four ways of call distribution explained as follows:
+    1. Distribution on the basis of percentage
+    Each distribution on the basis of percentage will have a corresponding 
+    array of 100 elements after being established. The elements of the array 
+    are the SIB exit number, which is evenly distributed in the array on 
+    the basis of percentage. The command distrtab -1 index can show the details 
+    about the array of corresponding elements. LogicEnds means how many logic 
+    exits there are in total. The counter cyclically counts from "0" to "
+    99". The current call will use the counter as the subscript to get the 
+    SIB exit from the array.
+    
+    2. Distribution on the basis of sequence
+    LogicEnds is the number of the SIB exits. The counter cyclically counts 
+    between 1 to logicEnds. The current call will choose SIB exit to go through 
+    based on the value of this counter.
+    
+    3. Distribution on the basis of counter
+    The counter cyclically counts between "0" and an interval value. When 
+    the current call checks that counter is "0", it exits from SIB exit 1,
+     when the counter is not "0", it exits from SIB exit 2. 
+    
+    4. Distribution on the basis of time interval
+    The nextTime, currentTime and time interval are in seconds. The nextTime 
+    is firstly assigned with the value of currentTime + time interval, and 
+    currentTime increases by 1 for each second. When the current call checks 
+    that nextTime is equal to currentTime, it will exit from SIB exit 1 (
+    then assign nextTime with the value of currentTime + time interval again)
+    , otherwise exits from the SIB exit 2.
+    
+    'distrtab -dp' is to delete the corresponding percentage-based distribution 
+    element.
+    'distrtab -ds' is to delete the corresponding sequence-based distribution 
+    element.
+    'distrtab -dn' is to delete the corresponding counter-based distribution 
+    element.
+    'distrtab -dt' is to delete the corresponding time interval-based distribution 
+    element.
+
+COMMAND
+
+    env
+
+
+FUNCTION
+
+    To maintain some environment variable
+
+
+USAGE
+
+    env [<name> <value>]
+    env default
+
+
+DESCRIPTION
+
+    
+    'env' command with no argument displays the value of every environment 
+    variable:
+    - TimeUnit: a time unit that multiplies with the timeout parameter when 
+    SCF program creates a TC-Invoke primitive. It is used to resolve the 
+    different interpretations by various vendors about this parameter. For 
+    the TCAP of IN7 that is used most frequently at present, it's better 
+    to set this argument as 20. The default is 1.
+    
+    - ComponentSingle: "1" means that when SCF is requesting an operations,
+     a dialogue primitive follows each component primitive. 0 means to request 
+    the component primitives continuously and transmit the dialogue primitive 
+    only when needed. The default is 0.
+    
+    - MainLoopTimes: number of main loops that lead to one activation of 
+    FEAM to receive the message from the MANAGER program. The default is 
+    6.
+    
+    - FirstInvokeID: the number of invocation ID from which SCF starts to 
+    allocate to the invocation operation in a dialogue. The default value 
+    is 128. 
+    
+    - ActivateTest: "0" means not to transmit ActivityTest operation to 
+    SSP after Connect operation. Other integer means to transmit ActivityTest 
+    operation to SSP after Connect operation. The value indicates the time 
+    interval measured in minutes between two ActivityTest operations. The 
+    default value is 5.
+    
+    - MaxFSMNumber: means the maximum number of the FSMs in one SCF process.
+     The default is 1000.
+    
+    - LogToSCFInfo: "1" means to write the error message to the SCF.INFO.
+    x file by SCF process. "0" means not to write. The default value is 1.
+    
+    
+    - BackupSCSMState: it indicate whether to keep the state of the call 
+    in the $CINDIR/crash/SCEFSM.log.* files ( just in case to restore the 
+    state of the call when SCF or SCP re-starts); "0" means not to retain"
+    , "1" means to retain, the default value is zero.
+    
+    - SLPUseShareMem: it indicate whether SLP is kept in the shared memory 
+    or not; "0" means not to use shared memory, "1" means to use shared memory,
+     the default value is "1". Practically, a running SCP system must be 
+    "1". If it is SCE's back end environment, the value is generally "0";
+     the use of shared memory can be saved to accommodate more users.
+    
+    - SCFID: the parameter in the ETC operation that SCP sends to SSP when 
+    SCP wants to use an independent IP. 
+    If the value is "0", the SCFID parameter in the ETC operation is not 
+    specified.
+    If the value of SCFID is set to be between 0 to 65535, then in the ETC 
+    operation will contain a 2-byte SCFID argument, among which: 
+    	- The first byte is: SCFID variable/256
+    	- The second byte is: SCFID variable%256
+    For example, if the value is 1025, the actual SCFID sent to SSP should 
+    be of two bytes 04 01.
+    
+    If SCFID is set to be between 16777216 to 33554431 (that is in HEX, 
+    between 0x1000000 and 0x1FFFFFF), then the SCFID sent to SSP should be 
+    with three bytes
+    	- The first byte is: SCFID variable/65536%256
+    	- The second byte is: SCFID variable/256%256
+    	- The third byte is: SCFID varialbe%256
+    For example, if the value is 16777301, the actual SCFID sent to SSP 
+    should be of three bytes 00 00 55. In reverse, if the SCFID value to 
+    be sent is 00 00 55, then the SCFID of env should be set as: 16777216+
+    0*65536+0*256+85=16777301
+    
+    - SyncState: it indicates how SCP synchronizes with SMP in SQL statements:
+    
+    1: For Call Details Record (CDR) statements, SCP does not operate but 
+    only send to SMP; for other statements, SCP operates but not send to 
+    SMP
+    3: For CDR statements, SCP neither operate nor send to SMP; for other 
+    statements, SCP operates but not send to SMP
+    4: For CDR statements, SCP neither operate nor send to SMP; for other 
+    statements, after SCP has successfully operated, send to SMP.
+    0: For CDR statements, SCP does not operate but only send to SMP; for 
+    other statements, after SCP has successfully operated, send to SMP.
+    The default value is 0 that most systems currently use. For the case 
+    that SCP and SMP sharing a database, the value should be 1. For the configuration 
+    of SCE back end environment, 3 is generally used (because no SMP). 4 
+    is not usually used.
+    9: For all statement, only operate locally
+    
+    - StepsPerEvent: how many SIBs that can be consecutively executed by 
+    the FSM before handover the control right. The default value is 1, setting 
+    greater than 1 can increase system efficiency, but it cannot be greater 
+    than 5.
+    
+    - PriceFormat: it varies because SSP from different vendors may differently 
+    interpret price parameters in INAP's PA and P&C operations. "0" is for 
+    BELL1240, "1" is for Lucent. 
+    
+    - TimerForIP: the value of the timer (in second) in AssistSSPIPFSM when 
+    an independent IP is used. The default value is 600 seconds. Its value 
+    is generally set to be the longest continuous duration of a voice session.
+     
+    
+    - SCPCharge: whether use SCP charging. 0: to use SSP charging;1: to 
+    use SCP charging.
+    
+    - AlarmInterval: 'configssp' command can config the call traffic for 
+    each ssp by set a max call number per N seconds. The N is set here. It 
+    is an integer between 0-10
+    
+    'env' with <name> and <value> argument can re-set the value of a given 
+    environment variable and at the same time update the file $CINDIR/etc/
+    scfenv.
+    
+    'env default' sets these variables as default.
+    
+    Note: env affects only one SCF process, therefore this command is generally 
+    issued to all SCF processes.
+
+COMMAND
+
+    feam
+
+
+FUNCTION
+
+    To show or maintanence the status of socket
+
+
+USAGE
+
+    feam -wait [<sec> <usec>]
+    feam -sdp
+    feam -sdp connect
+    feam -sdp <sdphost> <sdpport> <bakhost> <bakport>
+    feam -protocol
+    feam -printon [t]
+    feam -printoff
+    feam -fifo
+    feam -ines
+    feam -link
+    feam -ines enable | disable <name>
+    feam -sockservice
+
+
+DESCRIPTION
+
+    
+
+
+    'feam -wait' with argument <sec> and <usec> can change the wait time 
+    of 'select' system call. The unit of <sec> is second and the unit of 
+    <usec> is microsecond. The default setting is 0 and 1000. 'feam -wait'
+     only display the value of the wait time.
+    
+    When the scf connect to the external SDP:
+    'feam -sdp' can display status of the socket to SDP
+    'feam -sdp connect' can reconnect the SDP
+    'feam -sdp' with argument <sdphost>, <sdpport>, <bakhost>, <bakport>
+     can reset the configuration of the host and port of SDP ( The file $
+    CINDIR/etc/config.sdp.* will be changed also)
+    
+    'feam -protocol' can display the protocols that configured in file config.
+    protocol
+    
+    'feam -printon' or ' feam -printoff' can turn on or turn off the trace 
+    switch of socket message. (Note: this command can only be used in the 
+    initial installation and debugging of the system. After the system has 
+    been put to service, it should not be used in order not to affect the 
+    system performance.)
+    If 'feam -printon t' is used, the trace information will be text format 
+    if the message is printable text.
+    
+    'feam -fifo' can display the status of FIFOs with manager.
+    
+    'feam -sockservice' can display the relationship between socket and 
+    service. The relationship is config in file config.socketservice.*
+    
+    'feam -ines' can display the status of SOCKET configured in file config.
+    server.* or file config.client.*.
+    'feam -ines enable' or 'feam -ines disable' with argument <name> can 
+    enable or disable a socket.
+    'feam -link' can display all the alive socket links.
+    - LOGICNAME: The logic name
+    - PROTOCOL: The protocol name
+    - T: The socket type, C for client, S for Server
+    - ID: The identifier of socket link
+    - PEER-ADDR: The IP address and port of peer host
+    - READ: Bytes received
+    - WRITE: Bytes sent
+    - KEY: The correlation key with FSM
+    
+
+COMMAND
+
+    fsm
+
+
+FUNCTION
+
+    To view the CCB of the FSM
+
+
+USAGE
+
+    fsm [<fsmInstance>]
+
+
+DESCRIPTION
+
+    
+    <fsmInstance> is the instance number of the FSM. If the FSM is SCSM,
+     the values of all the CCB to be viewed will be listed. If the FSM is 
+    other types of FSM, the relevant information will be shown. If <fsmInstance>
+     is in default, the currently debugged SCSM will be the object of viewing.
+     A possible result is displayed as follows:
+
+    [ 0]serviceKey         	= 	300, 0x12C
+    [ 1]streamNumber       	= 	0, 0x0
+    [ 3]callingAddress      	= 	'0281111111'
+    [ 4]calledAddress        = 	''
+    [ 5]callConnectedElapsedTime = 0, 0x0
+    [ 6]callAttemptElapsedTime = 0, 0x0
+    [ 7]callStopTime			= 	00 00 00 00 00 00
+    CCBItem[  3]       = ( 19) 	0, 0x0
+    CCBItem[  4]       = ( 19) 	0, 0x0
+    CCBItem[  5]       = ( 19) 	0, 0x0
+
+    The first part of the above output includes some static CCBs. Inside 
+    [] is the sequence number of the static CCB, the name of the static CCB 
+    follows and then the value of the static CCB. For the integer, decimal 
+    and hexadecimal values will be displayed. For the printable string, the 
+    content of the string will be enclosed by ' ' and for the unprintable 
+    string, a hexadecimal value will be displayed for each byte.
+    The second part includes some dynamic CCBs. Inside [] is the sequence 
+    number of the CCB, then the type of the CCB is enclosed in ( ) and then 
+    the value of the CCB follows.
+    
+
+SEE ALSO
+
+    debug，addwatch，delwatch，watchall，scmectrl
+
+
+COMMAND
+
+    go
+
+
+FUNCTION
+
+    To continue
+
+
+USAGE
+
+    go
+
+
+DESCRIPTION
+
+    
+    The service continues executing and suspends at the encounter of the 
+    SLPSTEP indicated by any breakpoint. The name of the SIB and other related 
+    information for the SLPSTEP will be shown.
+    
+
+SEE ALSO
+
+    stopat，watchall，fsm，next
+
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    To provide help information on commands
+
+
+USAGE
+
+    help [<commandName>]
+
+
+DESCRIPTION
+
+    
+    'help' command without argument will list all the commands and their 
+    abbreviations. 
+    'help' command with argument <commandName> will list the function, instruction,
+     description and reference of the command specified.
+    
+
+COMMAND
+
+    info
+
+
+FUNCTION
+
+    To show the sizes of some classes
+
+
+USAGE
+
+    info [ccb  |  inap  |  sib ]
+
+
+DESCRIPTION
+
+    
+    'info ccb' shows the length of some CCB variable types.
+    'info inap' shows the length of some inap operation related data types.
+    
+    'info sib' shows the length of data types of some SIBs.
+    'info' with no arguments show the length of some other important data 
+    types.
+    
+
+COMMAND
+
+    invokeservice
+ i
+
+
+FUNCTION
+
+    To invoke a service
+
+
+USAGE
+
+    invokeservice <serviceid> <accesscode> [<callingaddr>] ...
+
+
+DESCRIPTION
+
+    
+    The <serviceid> is the identifier of the service logic to be invoked.
+    
+    The <accesscode> is a code that will be duplicated to the static CCB 
+    variable calledPartyNumber. The service logic can go through different 
+    branches based on the value of this CCB variable.
+    The first SIB of the service cannot be Start SIB. If the service is 
+    required to deal with the SSP, then the first SIB related to the INAP 
+    will be InitiateCall SIB.
+    In fact, invokeservice can support 30 arguments at most, from the third 
+    of which is optional. These arguments will be duplicated to CCB variables 
+    from argv2 to argv29.
+    
+
+COMMAND
+
+    keytree
+
+
+FUNCTION
+
+    To maintain the keytree used for number prefix analysis
+
+
+USAGE
+
+    keytree -l | -a
+
+
+DESCRIPTION
+
+    
+    The keytree is a 10-branch tree, used for storing all possible area 
+    numbers or office numbers.
+    'keytree -l' to list the content of the keytree
+    'keytree -a' to re-construct the keytree from the file $CINDIR/etc/numbertab
+    
+    
+    In the programming of the service logic, it is necessary in some cases 
+    to get the area number or office number from the calling or called numbers 
+    for charging. Therefore, the programming language of the service logic 
+    provides the function to extract the area number, which is one kind of 
+    statement of Algorithm SIB:
+    <destNumber> = numbertrans(<srcNumber>, <n>);
+    
+    The variable <srcNumber> is the calling or called number. <destNumber>
+     is used for storing the returned area number or office number. <n> is 
+    an integer that can be 1 or 2. 1 means shortest matching and 2 longest 
+    matching and 1 is the default value if omitted. For example, if 010 and 
+    0106228 are both in the keytree, then the shortest matching is 010 and 
+    the longest is 0106228.
+    
+    The file $CINDIR/etc/numbertab is used for creating the keytree, which 
+    has two columns of numbers. The first column is used for matching and 
+    the second for the returned result. For example, the file content is 
+    as follows:
+
+    010     	10
+    0106207  	106207
+    0106228  	106228
+    020      	20
+    021      	21
+    0215     	215
+    022      	22
+
+    The command 'keytree -l' will give the following result:
+
+    scf0> keytree -l
+    010      	10
+    ...6207 	106207
+    .....28  	106228
+    .20      	20
+    ..1      	21
+    ...5     	215
+    ..2      	22
+
+    '.' indicates the same character as that in the same position of the 
+    line above.
+    numbertrans('01062282297',1) will get '10'.
+    numbertrans('01062282297',2) will get '106228'.
+    
+
+COMMAND
+
+    lccb
+
+
+FUNCTION
+
+    To list the names of the CCB
+
+
+USAGE
+
+    lccb -s | -d
+
+
+DESCRIPTION
+
+    
+    'lccb -s' lists the names of the static CCB. For example:
+
+    scf0> lccb -s
+    [+]serviceKey
+    [+]streamNumber
+    [+]cli
+    [-]callingAddress
+    [-]calledAddress
+    [+]callConnectedElapsedTime
+    [+]callAttemptElapsedTime
+    [+]callStopTime
+    [+]releaseCause
+    ...
+
+    '[+]' indicates the CCB is being viewed, i.e. the command fsm will list 
+    the value of this CCB.
+    '[-]' indicates the CCB is not being viewed.
+    
+    'lccb -d' lists the name and sequence number of the dynamic CCB of the 
+    service selected by the command service.
+
+    scf0> lccb -d
+    [  0] [+]mailBoxID (38)
+    [  1] [+]boxPayed (19)
+    [  2] [+]selectedFunction (13)
+    [  3] [+]ownerUser (19)
+    [  4] [+]userState (19)
+    [  5] [+]stateModified (19)
+    [  6] [+]contentState (19)
+    [  7] [+]totalOwnersMail (19)
+    [  8] [+]totalClientsMail (19)
+    [  9] [+]deletedMail (19)
+    [ 10] [+]recordSuccess (19)
+
+    The first column represents the sequence number. '[+]' and '[-]' have 
+    the same meaning as that for the static CCB. The integer enclosed in 
+    () represents the type of the CCB.
+    A service must be selected by using 'service' command before using 'lccb -d'
+     command.
+    
+
+SEE ALSO
+
+    addwatch，delwatch，service
+
+
+COMMAND
+
+    limittab
+
+
+FUNCTION
+
+    To maintain the call limit table
+
+
+USAGE
+
+    limittab -l 
+    limittab -l <key>
+    limittab -d all
+    limittab -d <index>
+    limittab -d key <key>
+    limittab -d ex <expandkey>
+
+
+DESCRIPTION
+
+    
+    'limittab -l' shows the content of every item of the call limit table.
+    
+    1st column: index
+    2nd column: limited key, right hand side of the dot period is expandkey.
+    
+    3rd column: maxNumber is the maximum number of calls within the limit.
+    
+    4th column: the current number
+    
+    'limittab -l' with argument <key> only shows the content one item that 
+    the item key is <key>
+    
+    'limittab -d all' deletes all items.
+    
+    'limittab -d' with argument <index> deletes the item with respect to 
+    the specified <index>.
+    
+    'limittab -d' with argument <key> deletes the item with respect to the 
+    specified <key>.
+    
+    'limittab -d ex' with argument <expandkey> deletes the item with respect 
+    to the specified <expandkey>. 
+    
+    If a Limit SIB is used to realize calling card service, the following 
+    command may be used (e.g. calling card no is 111122223333, the specified 
+    expandkey is 5).
+    'limittab -d key 111122223333.5'
+    
+
+COMMAND
+
+    list
+ l
+
+
+FUNCTION
+
+    To list the general information about the service logic
+
+
+USAGE
+
+    list [<stepNo>]
+    list -all [exec]
+    list -sib <sibid>
+    list -edp
+    list -proc
+    list -proc <procid>
+
+
+DESCRIPTION
+
+    
+    Select a service with the command service first. list with no arguments 
+    will list the information about 10 steps of the service from the current 
+    step (the initial current step is 0) on. list with the argument <stepNo>
+     will list the information about 10 steps of the service from the <stepNo>
+     on. For example:
+
+    scf0> l 50
+    [ 50]51	: NewCMP  '' exit( 2:52 e:196 ) [0]
+    [ 51]52	:UI     'PA 12' exit( 1:197 e:196 ) [0]
+    [ 52]53	:UI     'P\&C 13' exit( 1:48 2:48 e:196 ) [0]
+    [ 53]54	: UI      'P\&C 14' exit( e:196 ) [0]
+    [ 54]55	: NewCMP  '' exit( 3:56 e:196 ) [0]
+    [ 55]56	: UI      'PA 15' exit( 1:197 e:196 ) [0]
+    [ 56]57	:ExecSQL 'update VMS\_USER set pin' exit( e:196 ) [0]
+    [ 57]58	: UI      'PA 16' exit( 1:15 2:15 e:196 ) [0]
+    [ 58]59	: NewCMP  '' exit( 1:64 e:196 ) [1]
+    [ 59]60	: NewCMP  '' exit( 1:62 e:196 ) [0]
+
+    The first column [] is the sequence number of the service logic steps,
+     which is used in the command stopat. In the second column, the content 
+    before ':' is the label of the service logic steps in the form of any 
+    type of character string. The character string after ':' is the name 
+    of the SIB. The content in within the quotation marks is the brief information 
+    of the SIB parameters, e.g., for ExecSQL SIB is part of SQL statement.
+     The content in exit( ) is the exit of the SIB.  The last column shows 
+    the times of the execution of the step.
+    
+    'list -all exec' only list the sib steps that have been executed.
+    
+    'list -sib' with argument <sibid> only list the specified sib steps 
+    that have been executed. <sibid> is a integer that can be got using 'st sib'
+     command.
+    
+    'list -edp' will list all the EDP event exits of the service logic, 
+    e.g.
+
+    scf0> l -edp
+    10 -> 176
+    9 -> 123
+
+    This shows that it should go to the step 176 when receiving the oAbandon 
+    (10) event, and the step 123 when receiving the oDisconnect (9) event.
+    
+    
+    'list -proc' list all the procedures. The procedure name and id will 
+    be listed.
+    
+    'list -proc' with argument <procid> can list all the steps information 
+    of the procedure specified by <procid>.
+    
+
+SEE ALSO
+
+    addwatch, delwatch, service, st
+
+
+COMMAND
+
+    liststop
+
+
+FUNCTION
+
+    To list all the breakpoints
+
+
+USAGE
+
+    liststop
+
+
+DESCRIPTION
+
+
+SEE ALSO
+
+    stopat，debug
+
+
+COMMAND
+
+    load
+
+
+FUNCTION
+
+    To load a service
+
+
+USAGE
+
+    load <serviceid> <binFileName>
+
+
+DESCRIPTION
+
+    
+    <serviceid> is an integer as the service identifier.
+    <binFileName> is the name of the binary file of the service logic. The 
+    new file named as <binFileName> is already in the $CINDIR/etc directory.
+    
+    
+
+SEE ALSO
+
+    ls，update，rm
+
+
+COMMAND
+
+    ls
+
+
+FUNCTION
+
+    To list the information about all the services
+
+
+USAGE
+
+    ls [-s | -c | -m | -d | -v]
+
+
+DESCRIPTION
+
+    
+    'ls' with no arguments will show the following information:
+
+    SERVICEID FILENAME      ACCESSCODE T S V USING USED  UPDATETIME
+    101       test.bin      101        0 0 0 0     0     20091203175613
+    ...
+
+    'SERVICEID' means the service id.
+    'FILENAME' means the name of the file.
+    'ACCESSCODE' means the service access code.
+    'S' is the state of the service (0 represents normal and 1 suspended)
+    .
+    'V' is the version of the service (0 represents the new version and 
+    1 the old).
+    'USING' means how many calls are using the service.
+    'USED' means how many calls have used the service.
+    'UPDATETIME' means the time of the last update of the service logic.
+    
+    
+    'ls -s' will show the following information:
+
+    svcID callSum normalEnd Connect CostSum(C) AvaDuration(S)
+    101   0       0         0       0          0.000000
+    ...
+
+    'normalEnd' refer to the number of calls that do not go through the 
+    ERROR exits. 
+    'Connect' refer to the number of calls that has executed to the Connect 
+    SIB. 
+    This command will add the displayed information to the file $CINDIR/
+    service.st.
+    The command 'ls -c' will reset the timers listed by the command ls -
+    s.
+    
+    'ls -m' will list the summary information about the shared memory taken 
+    by the loaded service logics. For example:
+
+    scf0> ls -m
+    m[40220000..41532d00]
+    free table:  1 blocks, 19551080 bytes total
+    alloc table: 410 blocks, 448920 bytes total
+
+    This shows that the addresses of the shared memory are from 40220000 
+    to 41532d00; 1 free block; 19551080 bytes in total; 410 allocated blocks 
+    and 448920 bytes in total.
+    The command 'ls -md' will list the detailed information about the shared 
+    memory taken by the loaded service logic. 
+    Note: 'ls -md' command cannot be used in case of large-volume traffic,
+     for the command will take up much of the system time that will affect 
+    the normal operation of the system.
+    
+    'ls -v' can list the version information of all service logic.
+    
+    'ls' with argument <serviceid> can list the detail information of the 
+    service logic specified by <serviceid>
+    
+
+SEE ALSO
+
+    rm，update，load
+
+
+COMMAND
+
+    manageinfo
+
+
+FUNCTION
+
+    To view which SCF process is currently responsible for handling the 
+    schedule and other functions.
+
+
+USAGE
+
+    manageinfo
+
+
+DESCRIPTION
+
+    
+    Some functions of the SCF such as schedule and those tables relating 
+    to the flow control such as static, dynamic tables and self-adaptive 
+    table have to be checked periodically in order to adjust the information 
+    of the tables accordingly. When a SCP starts up a number of SCF processes,
+     only one SCF process is responsible for this job. Therefore, one shared 
+    memory bock will record which SCF process is responsible for the job,
+     thus enabling other SCF processes to make decision.
+    
+
+SEE ALSO
+
+    schedule
+
+
+COMMAND
+
+    msgs
+
+
+FUNCTION
+
+    To list the detailed information about the current message queue
+
+
+USAGE
+
+    msgs
+
+
+DESCRIPTION
+
+    
+    The first line of the result of command 'msgs' will be displayed as:
+    
+
+    msgName                msgPara   sourceFSM destFSM   counter
+
+    'msgName' is the message name.
+    'msgPara' is the parameter of the message.
+    'sourceFSM' is the ID of the source FSM of the message.
+    'destFSM' is the ID of destination FSM of the message.
+    'counter' is the number of times of re-transmitting this message.
+    
+
+SEE ALSO
+
+    scmectrl，timers
+
+
+COMMAND
+
+    next
+ n
+
+
+FUNCTION
+
+    To perform the next step
+
+
+USAGE
+
+    next
+
+
+DESCRIPTION
+
+    
+    Perform the current SLPSTEP, then pause and display the SIB name and 
+    other related information about the next SLPSTEP
+    
+
+SEE ALSO
+
+    stopat，watchall，fsm，go
+
+
+COMMAND
+
+    nowatch
+
+
+FUNCTION
+
+    To turn off all the display switches of all the CCB
+
+
+USAGE
+
+    nowatch
+
+
+DESCRIPTION
+
+
+SEE ALSO
+
+    stopat，watchall，addwatch，delwatch，fsm，go，next
+
+
+COMMAND
+
+    op
+
+
+FUNCTION
+
+    To display the information about a given operation
+
+
+USAGE
+
+    op [<opID>]
+
+
+DESCRIPTION
+
+    
+    'op' without argument will display some old INAP operations that scf 
+    supported only for compatibal. ( Other operations are defined in the 
+    protocol template )
+    
+    'op' with argument <opid> will display the detail information of the 
+    operation. For example:
+
+    scf0> op 48
+    operation id   = 48
+    operation name = PromptAndCollectUserInformation
+    operation type = 1
+    timer value    = 1000
+
+    This shows the operation with the operation ID being 48, with the name 
+    of PromptAndCollectUserInformation. The operation type is 1 (correct 
+    or error execution will be returned). The operation timer value is 1000 
+    (When creating TCInvoke primitive, it should multiply by 'TimeUnit'. 
+    See the command 'env')
+    
+
+SEE ALSO
+
+    ac
+
+
+COMMAND
+
+    outtty
+
+
+FUNCTION
+
+    To change the output display terminal
+
+
+USAGE
+
+    outtty <ttyname>
+    outtty -delay
+    outtty -nodelay
+
+
+DESCRIPTION
+
+    
+    The <ttyname> is the name of the terminal, which can be obtained with 
+    the command tty in the operating system shell, e.g. /dev/pts/0.  The 
+    standard output of the process will be changed to the corresponding terminal 
+    after executing the command 'outtty'.
+    This command can be used in one of the following cases:
+    - When it is needed to allocate the output of every process to different 
+    terminals.
+    - When it is needed to re-display the output of every process as the 
+    terminal, which starts up the process in the beginning, is lost.
+    
+    'outtty  -delay' set to block mode.
+    'outtty  -nodelay' set to no-block mode.
+    
+
+COMMAND
+
+    pause
+
+
+FUNCTION
+
+    To pause the service
+
+
+USAGE
+
+    pause <serviceid>
+
+
+DESCRIPTION
+
+    
+    To pause the service with the 'serviceid', making it to receive no more 
+    new calls. The service can be restored with the command 'restore'.
+    
+
+SEE ALSO
+
+    ls，update，load，rm，restore
+
+
+COMMAND
+
+    queuetab
+
+
+FUNCTION
+
+    To maintain the queue
+
+
+USAGE
+
+    queuetab -l
+
+
+DESCRIPTION
+
+    queuetab -d <index>
+    
+    The command 'queuetab -l' will list all the items of the queue table:
+    
+
+    index key  maxAct maxQue waitTm length usable
+
+    - 'index' is the array subscript of the item in the queue table
+    - 'key' is the key of the item in the queue table
+    - 'maxAct' is the maximum available resources
+    - 'maxQue' is the maximum length of the queue
+    - 'waitTm' is the maximum waiting time of the item in the queue
+    - 'length' is the length of the current queue
+    - 'usable' is the current available resources
+    
+    'queuetab -d' with argument <index> can delete the items in the queue 
+    with respect to the specified <index>.
+    
+
+COMMAND
+
+    quit
+
+
+FUNCTION
+
+    To quit the monitoring of the current SCF process
+
+
+USAGE
+
+    quit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    restore
+
+
+FUNCTION
+
+    To restore the paused service
+
+
+USAGE
+
+    restore <serviceid>
+
+
+DESCRIPTION
+
+    
+    To restore the service specified in <serviceid>
+    
+
+SEE ALSO
+
+    ls，update，load，rm，pause
+
+
+COMMAND
+
+    rm
+
+
+FUNCTION
+
+    To remove a service
+
+
+USAGE
+
+    rm <serviceid> 
+    rm -old <serviceid>
+
+
+DESCRIPTION
+
+    
+    To remove the service with the <serviceid>. If the service is currently 
+    used by some call, the service will receive no more new calls and will 
+    be removed when the current call ends.
+    
+    -old option will remove in a forced manner the old version services 
+    left by the commands update and rm in the service listing. ( Note: The 
+    command 'delete -old' must be executed before using the 'rm -old' command 
+    )
+    
+
+SEE ALSO
+
+    ls，update，load
+
+
+COMMAND
+
+    schedule
+
+
+FUNCTION
+
+    To maintain the schedule
+
+
+USAGE
+
+    schedule -l
+    schedule  -a
+    schedule  -add YYYYMMDDWhhmm 'command arg ...'
+    schedule  -del 'command arg ...'
+
+
+DESCRIPTION
+
+    
+    'schedule -l' will list the schedule.
+    'schedule -a' will reload the schedule.
+    
+    During the operation of SCF, some actions will be taken according to 
+    the schedule. These actions are generally command lines.
+    The schedule is defined by the configuration file $CINDIR/etc.schedule.
+    scf with the format as:
+
+    ---------0000 servicest 300
+    --------10000 servicest 800
+
+    As the example shows, each item of the schedule takes a line. The 13 
+    characters in the first column represent the date and time with the format 
+    as: YYYYMMDDWHHmm. YYYY means the year; MM means the Month (1-12); DD 
+    means the day (1-31); W means the day of a week (0-6); HH means the hour 
+    (0-23); mm means the minute (0-59). The character "-" means the position 
+    which can be ignored. This column has to start from the utmost left without 
+    any space or other characters. It is separated by a space from the following 
+    command line. The command line ends with the Return key.
+    The example above means to list the statistics of the service 300 at 
+    0 am every day and list the statistics of the service 800 at 0 am every 
+    Monday.
+    'alignmentSecond' listed by the command 'schedule -l' represents the 
+    time (seconds) of visiting the schedule by the main loop last time
+    
+    'schedule -add' with arguments will add one item into the schedule table.
+    
+    
+    'schedule -del' with arguments will delete one item from the schedule 
+    table.
+    
+
+SEE ALSO
+
+    ls，update，load
+
+
+COMMAND
+
+    scmectrl
+
+
+FUNCTION
+
+    To list some information about some forms or tables related to the flow 
+    control
+    To find a FSM according to a CCB value
+
+
+USAGE
+
+    scmectrl  [first]
+    scmectrl   -s serviceKey -v ccbname ccbvalue
+    scmectrl fsmmap
+    scmectrl all
+
+
+DESCRIPTION
+
+    
+    1. The result of the command c{scmectrl} will be displayed as:
+
+    scMEControl:
+    msgQueue: 0 messages.
+    timeQueue: 1 second timers, 0 minute timers.
+    total: 1
+    fsmQueue:
+    --------------------------------------------------
+    fsmType    fsmInstance 	parentFSM   dialogueID	MsgCount
+    SCFFSM     1           	0           101         0
+
+    There is no message in the msgQueue. There are 1 second timer in the 
+    timeQueue. There are 1 FSM in the fsmQueue. The type is SCFSM, which 
+    is used to execute the service logic. The 'fsmInstance' means the instance 
+    number of the FSM. The 'dialogueID' is the dialogue ID of the TCAP. The 
+    'parentFSM' refers to the identifier of the parent FSM of this FSM. 'MsgCount'
+     is the message number of this FSM that have not been processed.
+    
+    'scmectrl first' lists the instance number and the creation time of 
+    the oldest FSM in the process.
+    
+    2. The Command 'scmectrl  -s servicekey -v ccbname ccbvalue' is to get 
+    the FSM instance id according to a service's CCB variable name and value
+    
+    
+    3. 'scmectrl fsmmap' can display the memory location map of the FSMs.
+    
+    There are 64*16 characters to present 8192 FSM's location. Character 
+    '.' for 0 FSMs, and '1'-'8' for the numbers of FSMs.
+    
+    4. 'scmectrl all' can display more detail information of the FSMs. The 
+    meaning of each columns:
+    ID: FSM instance Identifier
+    PID: Parent FSM instance identifier
+    T: FSM type, 0 for SCFFSM, 6 for GMPFSM
+    SVCKEY: The executing service ID
+    DLGID: The TCAP dialogue ID in hex integer. '-' for no dialogue ID
+    MSGS: Message number in the message queue
+    EVENT: Messages that have been processed
+    STEP: The current SLP step ID
+    STATE: The current SIB state
+    TIMER: The current timer settings in second. '0' for no timer. Negative 
+    for invalid timer setting ( for example: two or more time settings)
+    N: Whether the current interrupt mask is disabled. 'N' means all interrupt 
+    are disabled. '-' means interrupt can be processed
+    STARTED: The FSM creation time. Normally the time is displayed. If the 
+    FSM is elder more than one day, only the date is displayed.
+    CORRKEY: The correlation key
+    
+
+SEE ALSO
+
+    msgs，timers，display，state
+
+
+COMMAND
+
+    service
+
+
+FUNCTION
+
+    To select a service
+
+
+USAGE
+
+    service <serviceid>
+
+
+DESCRIPTION
+
+    
+    To select the service which will be used by the commands 'list' and 
+    'lccb'.
+    
+
+SEE ALSO
+
+    list，lccb
+
+
+COMMAND
+
+    serviceid
+
+
+FUNCTION
+
+    To maintain the configuration table of service identifiers
+
+
+USAGE
+
+    serviceid -l  |  -a
+
+
+DESCRIPTION
+
+    
+    After receiving TCBegin and CS1 InitialDP (or relevant AIN operation)
+    , SCP will query a table so as to decide a service ID according to service 
+    key, calling number, called number and sub-system number. If failed, 
+    then the service key will be regarded as the service ID. If even the 
+    service key is not existing, then the sub-system number will be regarded 
+    as the service ID, then a unique service will be specified according 
+    to this service ID.
+    The configuration file $CINDIR/etc/config.serviceid saves the configuration 
+    information of service IDs in format as below:Blank lines and lines starting 
+    with # will be omitted. Valid lines contain 5 fields separated by space 
+    or Tab, they are service key, sub-system number, calling number, called 
+    number and service ID. If one field is "NULL", it means that the corresponding 
+    item is null and this item will be neglected in future matching, e.g.
+    :
+    1 240 NULL NULL 1
+    2 240 NULL NULL 1
+    3 240 NULL NULL 1
+    1 101 NULL NULL 2
+    1 102 NULL NULL 2
+    1 103 NULL NULL 2
+    NULL NULL NULL 300 3
+    It means that the serviceKey is 1 or 2 or 3, SSN is 240, and no matter 
+    to what calling and called number, the corresponding service ID will 
+    be 1; serviceKey is 1, SSN is 101 or 102 or 103, and no matter to what 
+    calling and called number, the corresponding service ID is 2.
+    
+    'serviceid -l' lists the content of the service ID table.
+    
+    'serviceid -a' re-loads from the configuration file.
+    
+
+COMMAND
+
+    serviceconfig
+ sc
+
+
+FUNCTION
+
+    To maintain the service trigger configuration of config.service.bin
+
+    
+
+USAGE
+
+    serviceconfig -l  |  -a
+
+
+DESCRIPTION
+
+    
+    'serviceconfig -l' can list the configuration information of file $CINDIR/
+    config.sevice.bin
+
+    AC  OPID  SSN  SVRID  FSM  R  PARAMETER      CALLING      CALLED
+    0   0     -1   200    6    0  <<0.48.128>>=200     X         X
+    1   0     -1   0      6    0        X           X         X
+    2   0     -1   0      6    0        X           X         X
+
+    
+    'serviceconfig -a' can reload the configuration information of file 
+    $CINDIR/config.sevice.bin
+    
+
+COMMAND
+
+    servicest
+
+
+FUNCTION
+
+    To perform the statistics of the service
+
+
+USAGE
+
+    servicest <servicekey>
+    servicest <servicekey> [-l]
+    servicest <servicekey> -ssp <sspname>
+    servicest <servicekey> -sspm <sspname>
+    servicest <servicekey> -sspf <sspname>
+    servicest <servicekey> -mobile
+    servicest <servicekey> -fix
+    servicest <servicekey> -a <label> <infostring>
+    servicest <servicekey> -d <label>
+    servicest <servicekey> -week
+
+
+DESCRIPTION
+
+    
+
+
+    The command servicest can be used in following ways:
+    
+    1. servicest <serviceid>
+    Lists the current statistics result of a specified service where <serviceid>
+     is the identifier of the service.
+    If the service does not exist or there are no statistics, an error message 
+    will be returned; otherwise, a table will be returned with two columns:
+     the description of the statistics items and the statistics result.
+    For example:
+
+    Password_changing:  567
+    Balance_inquiries:  789
+    Called_connections: 2345
+
+    
+    2. servicest <serviceid> -l
+    Lists all the items of statistics of a specified service.
+    If the service does not exist, an error message will be returned, otherwise,
+     a table will be returned with three columns: 
+    (1) the actual step number of the corresponding service logic of the 
+    statistics item
+    (2) the step label of the corresponding service logic of the statistics 
+    item and
+    (3) the information string of the statistics item.
+    For example:
+
+    [3] 5: Password_changing
+    [10] 12a: Balance_inquiries
+    [50] 60: Called_connections
+
+    
+    3. servicest <serviceid> -a <label> <infostring>
+    Adds one statistics item to the service
+    - <serviceid> has the same meaning as above.
+    - <label> is the step label of the corresponding service logic of the 
+    statistics item, with the maximum length of 31 characters.
+    - <infostring> is the information string of the statistics item, with 
+    the maximum length of 64 characters.
+    
+    4. servicest <serviceid> -d <label> 
+    Removes a statistics item of the service
+    <serviceid> and <label> are defined as above.
+    
+    5. servicest <serviceid> -clear
+    Clear all statistics items.
+    
+    6. servicest <serviceid> -start
+    Starts statistics operation. From now on, all new calls will be counted 
+    in statistics excluding the uncompleted calls.
+    
+    7. servicest <serviceid> -stop
+    Stops statistics operation. From now on, all new calls will not be counted 
+    in statistics including the uncompleted calls. For example, to get precise 
+    statistics of service 3, carry out the following steps:
+    - Execute 'servicest 3 -stop',
+    - Continuously execute 'servicest 3' to observe until all counters remain 
+    stable (it may take a long time to wait).
+    - Execute 'servicest 3 -clear' to reset all counters to zero.
+    - Execute 'servicest 3 -start' to start statistics operation.
+    - Wait for the statistics
+    - Execute 'servicest 3 -stop'.
+    - Continuously execute 'servicest 3' to observe until all counters remain 
+    stable (it may take a long time to wait).
+    - Now, execute 'servicest 3' to list all statistics items. The results 
+    are the complete statistics since the execution of 'servicest 3 -start'
+    .
+    
+    8. servicest <serviceid> -ssp <sspname>
+    Lists the statistics of a specified SSP where <sspname> is the name 
+    of the SSP. Use <configssp> to list all the names of SSPs.
+    
+    9. servicest <serviceid> -week
+    Lists the statistics of the service volume of latest week. The horizontal 
+    coordinate is weekday (Sunday to Saturday) while the vertical coordinate 
+    is hour (0 - 24). These counters are un-related to other statistics items 
+    listed by servicest and, therefore, will not affected by them. 
+    
+
+SEE ALSO
+
+    list，lccb
+
+
+COMMAND
+
+    sipconfig
+
+
+FUNCTION
+
+    To maintain some configuration about SIP
+
+
+USAGE
+
+    sipconfig -a | -l | -clear
+
+
+DESCRIPTION
+
+    'sipconfig -a' to relaod the configuration
+    'sipconfig -l' to list the current configuration
+    'sipconfig -clear' to clear the current configuration
+
+COMMAND
+
+    state
+
+
+FUNCTION
+
+    To view the state of the FSM
+
+
+USAGE
+
+    state [<fsminstance>]
+    state -procstack [<fsminstance>]
+    state -obj <handle> [<fsminstance>]
+    state -blackbox [ <fsmid> ]
+
+
+DESCRIPTION
+
+    
+    <fsmInstance> is the instance number of the SCSM. The command will list 
+    the state of the SCSM, including the SLP step currently performed, SIB 
+    returned value and all kinds of states. If fsmInstance is omitted, the 
+    default SCSM will be the one currently being debugged.
+    
+    If a call is charging, the charging state will be listed. For example:
+    
+
+    -- scp charge 0 -----------------------------------------
+    chargeClass：     	102
+    recordID：        	1
+    charging：        	1
+    callTime：        	836
+    callCost：        	191.000000
+    nextChargePoint： 	840
+    currentSegment：  	2
+    currentUnit：     	10
+
+    chargeClass: The charging class
+    recordID: The identifier of current charging ( Several charging can 
+    be exeuted at the same time )
+    callTime: The time duration has been used from the begin of charging 
+    ( in second )
+    callCost: The cost has been charged
+    nextChargePoint: The next charging point ( If the 'callTime' reaches 
+    the point, 'callTime' will be added a unit fee, and the 'nextChargePoint'
+     will be added a duration unit) 
+    currentSegment: The current segment that being used
+    currentUnit: current unit of current segment
+    
+    'state' command can list the objects information. 'state -obj' with 
+    argument <objid> can get more detail information of a specified object
+    
+    
+    'state -procstack' can list the state of current procedure calling stack.
+    
+    
+    'state -blackbox' can list the state of current blackbox
+    
+
+SEE ALSO
+
+    debug，scmectrl
+
+
+COMMAND
+
+    statistics
+ st
+
+
+FUNCTION
+
+    To perform statistics
+
+
+USAGE
+
+    st
+    st tc [-cr  |  -cs ]
+    st inapop [-cr | -cs]
+    st inaperr [-cr | -cs]
+    st ainop [-cr | -cs]
+    st ainerr [-cr | -cs]
+    st mapop [-cr | -cs]
+    st maperr [-cr | -cs]
+    st abort
+    st sib
+
+
+DESCRIPTION
+
+    
+    'st tc' lists statistics information of TCAP primitive.
+    'st tc -cr' resets receiving statistics counter of TCAP primitive to 
+    zero.
+    'st tc -cs' resets sending statistics counter of TCAP primitive to zero.
+    
+    'st inapop' lists statistical information of INAP operations.
+    'st inapop -cr' resets receiving statistics counter of INAP operations 
+    to zero.
+    'st inapop -cs' resets sending statistics counter of INAP operations 
+    to zero.
+    'st inaperr' lists statistical information of INAP-related errors.
+    'st inaperr -cr' resets receiving statistics counter of INAP-related 
+    errors to zero.
+    'st inaperr -cs' resets sending statistics counter of INAP-related errors 
+    to zero.
+    'st ainop' lists statistical information of AIN operations.
+    'st ainop -cr' resets receiving statistics counter of AIN operations 
+    to zero.
+    'st ainop -cs' resets sending statistics counter of AIN operations to 
+    zero.
+    'st ainerr' lists statistical information of AIN-related errors.
+    'st ainerr -cr' resets receiving statistics counter of AIN errors to 
+    zero.
+    'st ainerr -cs' resets sending statistics counter of AIN errors to zero.
+    
+    'st mapop' lists statistical information of MAP operations.
+    'st mapop -cr' resets receiving statistics counter of MAP operations 
+    to zero.
+    'st mapop -cs' resets sending statistics counter of MAP operations to 
+    zero.
+    'st maperr' lists statistical information of MAP related errors. 
+    'st maperr -cr' resets receiving statistics counter of MAP errors to 
+    zero.
+    'st maperr -cs' resets sending statistics counter of MAP errors to zero.
+    
+    
+    'st sib' lists the statistics information of the SIBs that has been 
+    executed. For example:
+
+    ID NAME              EXEC       AVACOST   COST
+    1  Algorithm         6          0.011528  0.069166
+    44 Printf            6          0.001944  0.011666
+
+    'ID' is the SIB identifier
+    'NAME' is the SIB name
+    'EXEX' is the number that the SIB has been executed
+    'AVACOST' is the average time cost of the SIB
+    'COST' is the total time cost of the SIB
+
+COMMAND
+
+    stopat
+
+
+FUNCTION
+
+    To set or remove breakpoints
+
+
+USAGE
+
+    stopat <stepid>
+
+
+DESCRIPTION
+
+    
+    <stepid> indicates the SLPSTEP ID. If the breakpoint has been set, then 
+    it will be removed, otherwise, the breakpoint will be set. 20 breakpoints 
+    can be set at most.
+    
+    NOTE: <stepid> is not the step label of the service logic, but the step 
+    subscript of the service logic in the array. It is the content displayed 
+    in the first column when the command list is executed.
+    
+
+SEE ALSO
+
+    debug，list
+
+
+COMMAND
+
+    sync
+
+
+FUNCTION
+
+    To view the shared memory between the SCF process and the synchronized 
+    process
+
+
+USAGE
+
+    sync
+
+
+DESCRIPTION
+
+    
+    The result of the command sync and the related explanations are as follows:
+    
+    
+    'numberOfNotSendItems is 0'
+    Explanatory Notes: There are no SQL statements in the queue to send 
+    to SMP
+    
+    'numberOfSendingItems is 0'
+    Explanatory Notes: The number of the SQL statements that have been sent 
+    to SMP but not yet got the response.
+    
+    'writeCursor is 0'
+    Explanatory Notes: The current write cursor in the queue.
+    
+    'readCursor is 0'
+    Explanatory Notes: The current read cursor in the queue.
+    
+    'numberOfTimeOutItem is 0'
+    Explanatory Notes: The number of the SQL statements, which have been 
+    sent to SMP but are timeout for not yet getting the response.
+    
+    'saveFileName is 3997'
+    Explanatory Notes: When the socket to SMP is broken, the unsent SQL 
+    statements will be saved in the file $CIN/crash/NOTSYNC.* . Each file 
+    can save only 10 SQL statements. 3997 is the suffix of the current file 
+    name.
+    
+    'loadFileName is 3997'
+    Explanatory Notes: When the socket to SMP is restored, the SQL statements 
+    saved in the file $CIN/crash/NOTSYNC.* will be sent to SMP. Generally 
+    a file is sent per second. 3997 is the suffix of the current file name.
+    
+    
+    'saveSQLCounter is 0'
+    Explanatory Notes: The number of the SQL statements currently saved
+    
+    
+    'socket to SMS is OK'
+    Explanatory Notes: The condition of the socket to SMP
+    
+    'manuallySyncCounter is -1'
+    Explanatory Notes: the current manually sent NOTSYNC file suffix
+    
+    'total sql from SCF is 0, 0 per second'
+    Explanatory Notes: Total number and the rate of the SQL statements from 
+    SCF
+    
+    'total sql from SMP is 0, 0 per second'
+    Explanatory Notes: Total number and the rate of the SQL statements from 
+    SMP
+    
+
+COMMAND
+
+    tbt
+
+
+FUNCTION
+
+    To maintain the database connected with scf processes
+
+
+USAGE
+
+    tbt -l  |  -a
+
+
+DESCRIPTION
+
+    
+    The following is the example of the result of command 'tbt -l' :
+
+    defaultDB: scp3@shbep3
+    table ad_user at scp1@shbep1
+    table aab_user at scp1@shbep1
+    table fph_user at scp2@shbep2
+    table upt_user_00 at scp1@shbep1
+    table upt_ispn_00 at scp2@shbep2
+    current db: scp1@shbep1
+    connected db:
+       [0] scp1@shbep1
+       [1] scp2@shbep2
+       [2] scp3@shbep3
+
+    
+    Legend:
+    - table ... at ...: refers to in which database is the given table. 
+    It's configured in the shared memory and identical to all scf and sync 
+    processes. When the process performs database-related operations, the 
+    database name will be got according to the table name, then connect to 
+    this database to perform related operations.
+    - defaultDB: the database for non-existing table name. It's from the 
+    environment variable SCFDB with reference to scf.
+    - current db: the database, which has just been performed.
+    - connect db: the database, which has been connected with this process.
+    
+    
+    
+    'tbt -a' command re-configures the correspondence relationship between 
+    the tables and databases according to the configuration file $CINDIR/
+    etc/config.tabledb of which the format example is shown as follows:
+
+    ad_user scp1@shbep1
+    aab_user scp1@shbep1
+    fph_user scp2@shbep2
+    upt_user_00 scp1@shbep1
+    upt_ispn_00 scp2@shbep2
+
+    The first column is the table name and the second is the corresponding 
+    database name.
+    
+
+SEE ALSO
+
+    checkdb
+
+
+COMMAND
+
+    timediff
+
+
+FUNCTION
+
+    To view or modify the time difference between scf and the system
+
+
+USAGE
+
+    timediff [<diffsecond>]
+
+
+DESCRIPTION
+
+    
+    'timediff' without argument can list the time difference between the 
+    scf and the system. For example:
+
+    system time is Tue Jul 23 16:24:11 2002
+    time difference is 2000 seconds
+    scf time is Tue Jul 23 16:57:31 2002
+
+    It means that the scf time is 2000 seconds earlier than the system time
+    
+    
+    'timediff' with argument <diffsecond> can change the difference. A positive 
+    number makes scf time earlier than the system time, negative time makes 
+    scf later than the system time, 0 makes scf same time and system time 
+    same. The changing can be saved in file $CINDIR/etc/config.timediff
+    
+    The scf time will be used when charging or accessing the time API in 
+    SLPL.
+    
+
+COMMAND
+
+    timers
+
+
+FUNCTION
+
+    To list the detailed information about the timers
+
+
+USAGE
+
+    timers
+
+
+DESCRIPTION
+
+    
+    For example, the result of the command timers is as follows:
+
+    Second timers:
+    type fsmInstance  mark      timeDalay
+    1  : 3            30        17
+    Minute timers:
+    type fsmInstance  mark      timeDalay
+
+    There are two queues: the second timeout queue and the minute timeout 
+    queue.
+    
+    "type" refers to the type of the timeout:
+    - '1' represents the timeout set by a FSM. When timeout occurs, a timeout 
+    message will be sent to the FSM.
+    - '2' represents the timeout set by a call queuing table. When timeout 
+    occurs, a timeout message will be sent to the call queuing table.
+    
+    'fsmInstance' means the number of the FSM that sets the timeout, or 
+    the number of the corresponding FSM of the call in the queue.
+    
+    'mark' means an identifier, used for one FSM to set different timeouts.
+    
+    
+    'timeDelay' means the time left for the triggering of the timeout. It 
+    is in the unit of second for the second timers and minute for the minute 
+    timers.
+    
+
+SEE ALSO
+
+    scmectrl，msgs，queuetab
+
+
+COMMAND
+
+    transmsg
+
+
+FUNCTION
+
+    To view the buffer storage of the communication between scf processes
+
+    
+
+USAGE
+
+    transmsg -c  |  -gidlist  |  -gidload  |  -mygid  |  -listmsgs
+
+
+DESCRIPTION
+
+    
+    SCP has a block of shared memory for the communication between scf processes.
+     'transmsg -listmsgs' shows the message tree waiting for handling in 
+    the buffer area of every scf process. 'transmsg -c' clears all messages 
+    in the buffer area.
+    
+    For supporting the 3 bytes 'correlationID' parameter in the message 
+    between SCP, SSP and IP, the file 'config.globalscfid' configured the 
+    global scf id for the communication between scf processes.
+    
+    'transmsg -list' can list the configurations
+    'transmsg -gidload' can reload the configurations
+    'transmsg -mygid' can display the global scf id for this scf process
+    
+
+COMMAND
+
+    update
+
+
+FUNCTION
+
+    To update the service
+
+
+USAGE
+
+    update <serviceid> [<fileName>]
+
+
+DESCRIPTION
+
+    
+    To update the service with the <serviceid>. No more new calls will be 
+    received if some call is using this service. The old version service 
+    will be automatically removed after the current call ends. If the name 
+    of the new service file has been changed, the argument <fileName> can 
+    be added.
+    
+    If there are old FSMs not end and an old version service is existed,
+     you can not use 'update' command to update the service. You can use 
+    these solutions:
+    1. To wait all the FSMs end. Several minutes may be needed.
+    2. If you can not wait, you can use 'delete -old' command with argument 
+    <serviceKey> to end the FSMs for the service. You must do the command 
+    for every scf process.
+    3. If the old version service is still exited after the 'delete -old'
+     command, You can use 'rm -old' command with argument <serviceKey> to 
+    delete the old version service. Note: 'delete -old' command must be used 
+    before 'rm -old'
+    
+
+SEE ALSO
+
+    ls，rm，load
+
+
+COMMAND
+
+    watchall
+
+
+FUNCTION
+
+    To switch on the display switches of all the CCB
+
+
+USAGE
+
+    watchall
+
+
+DESCRIPTION
+
+
+SEE ALSO
+
+    stopat，nowatch，addwatch，delwatch，fsm,，go，next
+
+
+COMMAND
+
+    register
+
+
+FUNCTION
+
+    To register some services
+
+
+USAGE
+
+    register servername ipaddress portnumber
+    register -l
+
+
+DESCRIPTION
+
+    
+    servername :服务名，当前支持 alarm  (告警服务)
+    ipaddress  :使用该服务的主机地址
+    portnumber :udp端口号
+    
+    -l 选项列出当前已经注册的服务。
+    
+
+COMMAND
+
+    unregister
+
+
+FUNCTION
+
+    To unregister some services
+
+
+USAGE
+
+    unregister servername ipaddress portnumber
+
+
+DESCRIPTION
+
+    
+    servername :要注销的服务名，当前支持 alarm  (告警服务)
+    ipaddress  :要注销的主机地址
+    portnumber :要注销的udp端口
+    
+
+COMMAND
+
+    xmlwoods
+
+
+FUNCTION
+
+    To maintain the xml woods configuration
+
+
+USAGE
+
+    xmlwoods -list
+    xmlwoods -listtree <name>
+    xmlwoods -loadtree <name>
+    xmlwoods -deletetree <name>
+    xmlwoods -updatetree <name>
+
+
+DESCRIPTION
+
+    
+    'xmlwoods -list' lists all the names of xml trees
+    
+    'xmlwoods -listtree' with argument <name> lists the content of the xml 
+    tree specified by <name>
+    
+    'xmlwoods -loadtree' with argument <name> loads the xml tree specified 
+    by <name>. The file <name> must be existed in $CINDIR/xmlwoods. The file 
+    $CINDIR/xmlwoods/root will be changed
+    
+    'xmlwoods -deletetree' with argument <name> deletes the xml tree specified 
+    by <name>. The file $CINDIR/xmlwoods/root will be changed. The file $
+    CINDIR/xmlwoods/<name> will net be deleted.
+    
+    'xmlwoods -updatetree' with argument <name> updates the xml tree specified 
+    by <name>. The file <name> must be existed in $CINDIR/xmlwoods
+    
+
+COMMAND
+
+    about
+
+
+FUNCTION
+
+    To show the version of the program
+
+
+USAGE
+
+    about
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    To list all commands
+
+
+USAGE
+
+    help
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    listhashtab
+ lht
+
+
+FUNCTION
+
+    To view the HASH table that shows the relationship between MANAGER-managed 
+    dialogues and SCF processes
+
+
+USAGE
+
+    listhashtab -c  |  -a
+
+
+DESCRIPTION
+
+    
+    This command with argument -c lists the total dialogues of each process 
+    and lists details of HASH table with argument -a. listhashtab -a should 
+    not be used in case of a mass traffic because this command will display 
+    many contents and, therefore, may affect the operation efficiency of 
+    the system.
+    
+
+SEE ALSO
+
+    upgrade，listscdf，rmdialog
+
+
+COMMAND
+
+    listscdf
+
+
+FUNCTION
+
+    To view the SCF processes started by MANAGER
+
+
+USAGE
+
+    listscdf
+
+
+DESCRIPTION
+
+    
+    In the first line of the output result of listscdf:
+    SCF: scf process id ( 0-39 )
+    PID: system pid of scf process
+    STATE: RUN for normal, SCREEN for old
+    CALLNUM: fsm number
+    TIMER: timer value for daemon
+    
+
+SEE ALSO
+
+    upgrade，listhashtab，rmdialog
+
+
+COMMAND
+
+    quit
+
+
+FUNCTION
+
+    To quit monitoring MANAGER process
+
+
+USAGE
+
+    quit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    rmdialog
+
+
+FUNCTION
+
+    To remove some dialogues
+
+
+USAGE
+
+    rmdialog -s <scfid>
+    rmdialog -d <dialogueid>
+    rmdialog -l <linkid>
+
+
+DESCRIPTION
+
+    
+    This command is usually used after the upgrade command been executed.
+     After the upgrade command has been executed, if the residual calls still 
+    retain in the old SCF process for a long time, the efficiency of the 
+    system will be affected. And, upgrade command cannot be used again. 
+    
+    -s to remove SCF-process-related dialogs for the scf specified by <scfid>
+    .
+    -d to remove the dialogue specified by <dialogueid>
+    -l to remove socket-link-related dialogs for the socket link specified 
+    by <linkid>
+    
+
+SEE ALSO
+
+    upgrade，listscdf，listhashtab
+
+
+COMMAND
+
+    socket
+
+
+FUNCTION
+
+    To view the state of socket connection
+
+
+USAGE
+
+    socket -ssp  |  -smp
+
+
+DESCRIPTION
+
+    
+    MANAGER will generally open two socket servers waiting for client connection.
+     The port number of these two socket servers are configured in $CONDIR/
+    config.manager, e.g., 
+    SSP 23463
+    SMP 24464
+    SSP ports generally connect to processes such as ss7gateway, tcap and 
+    simulated SSF; 
+    SMP ports generally connect to SMP/INES-related processes.
+    
+    'socket -ssp' views SSP ports while 'socket -smp' views SMP ports. For 
+    example, the results of the command are displayed as follows:
+    
+    'sockWait=17'
+    the file descriptor returned when start-up socket server
+    
+    'portNumber=24464'
+    port number
+    
+    'feID=3'
+    3 refers to SMP port, and 0 will refer to SSP port
+    
+    'server state=1'
+    Is it normal to start-up a service? 1--normal, 0-abnormal
+    
+    'bind counter=0'
+    If it's abnormal to start-up a service, then this value will be re-bound 
+    every time when it reaches 10000
+    
+    'Maxconnections=100'
+    maximum number of connections permitted
+    
+    'connections=0'
+    current number of connections
+    
+    If there is an existing connection, the result will be displayed as 
+    follows:
+    
+    'connections=1'
+    The connection number becomes 1
+    
+    'socket on service:fd 19 ID=0'
+    The file descriptor of this socket link
+    
+    'client IP address:192.168.2.205 5125'
+    The IP address of the client
+    
+    'clientName=AAA'
+    INES registered name. For SMP, the name is SMPCOMMAND. In other cases,
+     it's null.
+    
+    'socketState=1'
+    1-normal, 0-abnormal
+    
+    'readState=2'
+    For SSP ports, "1" means that it is reading the head of the message;
+     "2" means it is reading the message length of the message; "3" means 
+    it is reading the type of the message; "4" means it is reading the content 
+    of the message. For SMP ports, this value is meaningless.
+    
+    'gotLength=17'
+    The number of bytes already read
+    
+    'buffer=[17-17]'
+    Only use in SMP ports. It reads the non-processed part in the buffer.
+     The starting byte to read and the end byte are quoted in the square 
+    brackets [ ].
+    
+
+COMMAND
+
+    tty
+
+
+FUNCTION
+
+    To change the output terminal
+
+
+USAGE
+
+    tty <ttyname>
+
+
+DESCRIPTION
+
+    
+    The ttyname is the name of the terminal, which can be obtained with 
+    the command tty in the operating system shell, e.g. /dev/pts/0.  The 
+    standard output of the process will be changed to the corresponding terminal 
+    after executing the command tty.
+    
+
+COMMAND
+
+    upgrade
+
+
+FUNCTION
+
+    To upgrade the SCF version or change the number of SCF processes
+
+
+USAGE
+
+    upgrade -scdf <filename> <scdfnumber>
+
+
+DESCRIPTION
+
+    
+    SCF processes are launched and safeguarded by MANAGER process.The number 
+    of SCF processes to be launched is stipulated in the configuration file 
+    $CINDIR/etc/config.manager. It is generally between 1 to 20, and not 
+    more than 10 in the commonly used hardware environment. So, SCF processes 
+    started-up by manager are usually scf0-scf9 or scf20-scf29. upgrade command 
+    can online change the number of scf processes. For example, currently 
+    there are five running processes (scf0-scf4). You can execute the command 
+    upgrade -scdf scf 7 to change the total number of processes to 7 (scf20-
+    scf26). In the mean time, if scf0 to scf4 still have calls in processing,
+     they can keep on processing (in fact, 12 processes are running at this 
+    moment. Note: upgrade command cannot be executed again in this case) 
+    but cannot receive new calls.After scf0 to scf4 have finished processing 
+    on the remaining call they will automatically exit. After a period of 
+    time, the running processes should be scf20 to scf26 only.Argument filename 
+    can be changed so as to upgrade the version of SCF program. For example,
+     if the file name of a new SCF program is scfnew, which is under the 
+    same directory of the old SCF, you can use the command upgrade -scdf 
+    scfnew 7 to upgrade the version of the SCF as well as change the number 
+    of SCF processes.  
+    
+
+SEE ALSO
+
+    listscdf，listhashtab，rmdialog
+
+
+COMMAND
+
+    about
+
+
+FUNCTION
+
+    To show the version of the program
+
+
+USAGE
+
+    about
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    checkdb
+
+
+FUNCTION
+
+    Its function and synopsis are identical to the checkdb of SCF maintenance 
+    command
+
+    end{scfcmd
+
+
+DESCRIPTION
+
+    
+
+COMMAND
+
+    display
+
+
+FUNCTION
+
+    To switch on or off the trace information display
+
+
+USAGE
+
+    display [ on  |  off ]
+
+
+DESCRIPTION
+
+    
+    'display' with no arguments displays the current state of the switch.
+    
+    
+    'display on' switches on the switch.
+    
+    'display off' switches off the switch.
+    
+    Note: 'display on' can only be used in the initial installation and 
+    debugging of the system. After the system has been put to service, it 
+    should not be used in order not to affect the system performance.
+    
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    To list all commands
+
+
+USAGE
+
+    help
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    quit
+
+
+FUNCTION
+
+    To quit monitoring scf_sync process
+
+
+USAGE
+
+    quit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    setsync
+
+
+FUNCTION
+
+    To enable scf_sync process to continue sending SQL commands
+
+
+USAGE
+
+    setsync sockok
+
+
+DESCRIPTION
+
+    
+    When scf_sync sending SQL unsuccessfully, the connection between SCP 
+    and SMP will be regarded as broken (as seen in line 'socket to SMS is ...'
+     when using 'sync' command), and from then on all statements will be 
+    stored under $CINDIR/crash. Generally, scf_sync process will consider 
+    the recovery of the connection by receiving messages from SMP. This command 
+    is to force scf_sync to acknowledge the connection recovery.
+    
+
+SEE ALSO
+
+    sync
+
+
+COMMAND
+
+    socketst
+
+
+FUNCTION
+
+    To view the state of the socket connected with SMP
+
+
+USAGE
+
+    socketst
+
+
+DESCRIPTION
+
+    
+    scf_sync process starts-up a socket port waiting for the SMP connection.
+     Following is a sample of the result of socketst command:
+    
+    'port number: 22461'
+    port number
+    
+    'socket wait fd: 15'
+    file descriptor of the socket file waiting for connection
+    
+    'socket fd: -1'
+    file descriptor returned when SMP connection succeeded
+    
+    'socket state: CLOSE'
+    state of the socket
+    
+    'receive buffer: 0 - 0'
+    state of the receiving buffer 
+    
+    'no messages in send queue'
+    no messages in the sending queue
+    
+
+COMMAND
+
+    sync
+
+
+FUNCTION
+
+    To view the shared memory between the scf process and the synchronized 
+    process
+
+
+USAGE
+
+    sync
+    sync <filenamesuffix>
+    sync list
+    sync -files <number>
+
+
+DESCRIPTION
+
+    
+    For sync with no arguments, please refer to the description of sync 
+    command in scf maintenance command in section 2.54.
+    
+    sync filenamesuffix is used to send NOTSYNC files manually, filenamesuffix 
+    is an integer.
+    
+    When SCP has calls to process, but SMP hasn't been started-up (or the 
+    connection between SCP and SMP broken), then call records or other SQL 
+    statements generated will be stored under $CINDIR/crash. When the connection 
+    between SCP and SMP recovered, scf_sync process should send these SQL 
+    statements to SMP automatically. However, if the SCP is restarted before 
+    the connection recovered, and information such as the starting file suffix,
+     the ending file suffix etc. saved by scf_sync are lost, then scf_sync 
+    will not be able to send SQL automatically, but need to send manually 
+    as shown below:
+
+    cd \$CINDIR/crash
+    ls -rt  \or  head
+
+    What will be displayed should be several earliest files, e.g.,
+
+    NOTSYNC.2345
+    NOTSYNC.2346
+    NOTSYNC.2347
+    ...
+
+    After that, use command sync 2345, and scf_sync will process these files 
+    from NOTSYNC.2345. If the suffixes of the files are sequential (general 
+    it should be like this), the sending will be completed automatically,
+     otherwise it will be paused. Therefore, during the recovery, it is necessary 
+    to check regularly (e.g., once every hour) under $CINDIR/crash with 'ls'
+     | 'wc' if the number of files keep reducing. If not, it has to re-perform 
+    form 'ls -rt' | 'head'.
+    
+    'sync -list' displays SQL statements in the buffer. Do not use this 
+    command when there are many SQL statements in order not to affect the 
+    system performance.
+    
+    'sync -files' with argument <number> can change the saveing files number 
+    per second. This command can change the file 'sync.conf'. <number> must 
+    be an integer between 1 and 100.
+    
+
+COMMAND
+
+    tbt
+
+
+FUNCTION
+
+    Its function and synopsis are identical to the tbt of scf maintenance 
+    command
+
+    end{scfcmd
+
+
+DESCRIPTION
+
+    
+    apter{ininit Maintenance Commands}
+    
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    To list all commands
+
+
+USAGE
+
+    help
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    list
+
+
+FUNCTION
+
+    To list processes safeguarded by ininit
+
+
+USAGE
+
+    list
+
+
+DESCRIPTION
+
+    
+    manager and scf_sync processes are generally safeguarded by ininit. 
+    The result of list command is xml format. The meaning of xml tags as 
+    following:
+    <command>: name of the process being safeguarded
+    <argv1>: the first argument initiated
+    <argv2>: the second argument initiated
+    <fifoname>: file name of the named pipe (used for the sensible report 
+    of the process being safeguarded)
+    <fd>: the file descriptor to open this named pipe
+    <pid>: the process id of the process being safequarded
+    <suspendTimer>: timeout value for the start-up processing
+    <checkTimer>: timeout value for the running process
+    <currentTimer>: value of the current counter
+    
+
+SEE ALSO
+
+    start，stop
+
+
+COMMAND
+
+    quit
+
+
+FUNCTION
+
+    To quit monitoring ininit process
+
+
+USAGE
+
+    quit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    start
+
+
+FUNCTION
+
+    To start-up a process being safeguarded
+
+
+USAGE
+
+    start <fifiname> <suspendtimer> <checktimer> <command> [<arg1>] [<arg2>
+    ]
+
+
+DESCRIPTION
+
+    
+    <fifoname> is the name of the named pipe used for regular report by 
+    the process being safeguarded. Before using this command, this named 
+    pipe must be established under $CINDIR/fifo.
+    <suspendtimer> is the timeout value in the start-up processing of the 
+    process being safeguarded.
+    <checktimer> is the timeout value in the running processing of the process 
+    being safeguarded.
+    <command> is the name of the process being safeguarded.
+    <arg1> is the first argument started by the process being safeguarded 
+    (can be non-existing).
+    <arg2> is the second argument started by the process being safeguarded 
+    (can be non-existing).
+    
+
+SEE ALSO
+
+    list，stop
+
+
+COMMAND
+
+    stop
+
+
+FUNCTION
+
+    To close a process being safeguarded
+
+
+USAGE
+
+    stop <command> <arg>
+
+
+DESCRIPTION
+
+    
+    <command> is the name of the process to be closed.
+    <arg> is the first argment of the processing starting command.
+    
+
+SEE ALSO
+
+    list，start
+
+
+COMMAND
+
+    cluster
+
+
+FUNCTION
+
+    Maintanence command for cluster mode
+
+
+USAGE
+
+    cluster list
+    cluster relocate <processname> <arg1> <arg2>
+    cluster delete <processname> <arg1> <arg2>
+    cluster new <timer1> <timer2> <processname> <arg1> <arg2> <bakhost>
+
+    
+
+DESCRIPTION
+
+    
+    If CIN-Cluster mode is used, this command can change the state of cluster 
+    daemon. The command 'start' and 'stop' can not be used in this mode. 
+    'list' command can be used.
+    
+    The usage of command 'cluster' is as following:
+    
+    1. 'cluster list'
+    List the base inforamtion of the CIN-Cluster members.
+    
+    2. 'cluster relocate' with arguments <processname>, <arg1> and <arg2>
+    
+    Can only be used in the host machine. This command will kill the process 
+    specified by the arguments and inform the standby machine to restart 
+    the process.
+    
+    3. 'cluster delete' with arguments <processname>, <arg1> and <arg2>
+    
+    Can only be used in the host machine. This command will kill the process 
+    specified by the arguments and inform the standby machine to clear the 
+    process daemon.
+    
+    4. 'cluster new' with arguments <timer1>, <timer2>, <processname>, <arg1>
+    , <arg2> and <bakhost>
+    To start a new process and this machine is as the host machine. This 
+    command also inform the standby machine to daemon the process.
+    
+    
+
+NAME
+
+    the-end

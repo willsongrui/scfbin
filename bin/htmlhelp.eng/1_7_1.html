@@ -1,0 +1,18 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString fgets(TString fileName, TInteger mode=0, TInteger flag=0)</div><h1>DESCRIPTION</h1>
+<div class="dc">To read a file line by line. If the file name is same as the last calling of this function, the next line of this file is returned. If the file name is changed, another new file is open and the first line is returned.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>fileName</h4>
+<div class="dc">The file name</div>
+<h4>mode</h4>
+<div class="dc">The mode of opening file. 0 is for read only, values greater than 0 are for read and write. The default value is 0</div>
+<h4>flag</h4>
+<div class="dc">The flag for processing file end. The default value is 0 for return a null string if file is end</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A string of one file line including the enter character</div><h1>EXAMPLES</h1><div class="dc">
+var TString fileName,line;<br>
+fileName=...;<br>
+line=fgets(fileName,0,1);<br>
+while(line!='')<br>
+line=fgets(fileName,0,1);<br>
+print('file is end');<br>
+</div>

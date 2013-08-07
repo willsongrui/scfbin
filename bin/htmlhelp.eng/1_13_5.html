@@ -1,0 +1,20 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger []::push(TypeOfArrayMember mem)<br>
+TypeOfArrayMember []::pop()<br>
+TInteger []::unshift(TypeOfArrayMember mem)<br>
+TypeOfArrayMember []::shift()</div><h1>DESCRIPTION</h1>
+<div class="dc">push() adds element to the end of an array, and pop() remove element from the end of an array. shift() removes the first element from the array and unshift() insert element at the beginning of an array</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>mem</h4>
+<div class="dc">push and unshift have this argument. It is the element to be added. It's type must be same as the array element</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+pop and unshift can return the element got. It's type is same as the array element</div><h1>EXAMPLES</h1><div class="dc">
+var TInteger i[] = {1,2,3};<br>
+i.push(4);<br>
+assert(i.tostr() == '1|2|3|4');<br>
+i.unshift(0);<br>
+assert(i.tostr() == '0|1|2|3|4');<br>
+assert(i.pop() == 4);<br>
+assert(i.tostr() == '0|1|2|3');<br>
+assert(i.shift() == 0);<br>
+assert(i.tostr() == '1|2|3');<br>
+</div>

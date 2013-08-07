@@ -1,0 +1,25 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TINESObj::synctoines(TString msg, TInteger timer=10)<br>
+TString TINESObj::synctoines2(TString msg, TInteger timer=10)<br>
+TInteger TINESObj::sendtoines(TString msg)</div><h1>DESCRIPTION</h1>
+<div class="dc">To send message to the INES and syncronous wait the response. During the waiting, the interruption is disabled. If timeout, an exception is thrown out. <br>
+Note: The first message of the dialogue must be begin with 'invokeservice ' to create an FSM.<br>
+synctoines2() is very similar to synctoines(). The deference is that the address format of synctoines2() is myinstanceid:objectid<br>
+sendtoines() is to send message without waiting for the response</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>msg</h4>
+<div class="dc">The message string to be sent</div>
+<h4>timer</h4>
+<div class="dc">The timer. The default value is 10 seconds</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+synctoines and synctoines2 returns the message received</div><h1>EXAMPLES</h1><div class="dc">
+var TINESObj inesobj;<br>
+var TString response;<br>
+inesobj = new TINESObj;<br>
+inesobj.init('INESC');<br>
+response=inesobj.synctoines('invokeservice 201 1', 5);<br>
+...<br>
+repines=inesobj.synctoines('serviceevent the second msg');<br>
+...<br>
+inesobj.sendtoines('serviceevent end session');<br>
+...<br>
+</div>

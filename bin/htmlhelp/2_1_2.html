@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger TObject::setid(TString id)<br>
+TString TObject::getid()</div><h1>说明</h1>
+<div class="dc">TObject的这两个方法被其它所有对象继承，起作用为用来标识一个对象的ID以便用这个ID来查询一个对象</div><h1>参数</h1>
+<div class="dc"><h4>id</h4>
+<div class="dc">要设置的对象ID</div>
+</div><h1>返回</h1><div class="dc">
+setid返回0表示成功。getid返回当前对象的ID</div><h1>示例</h1><div class="dc">
+var TXMLTree x, y;<br>
+x = new TXMLTree()<br>
+x.setid('aaa');<br>
+assert(x.getid()=='aaa');<br>
+y = findobject(TXMLTree, 'aaa');<br>
+</div>

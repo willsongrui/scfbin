@@ -1,0 +1,17 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::geterrorcase()</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the error case. This function is used for exception processing logic for synchronous etc(), pa(), pc(), pr()</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+0: Normal<br>
+1: Default error<br>
+2: ETC failure<br>
+3: Time out<br>
+4: Collecting digits failure<br>
+5: Playing announcement failure<br>
+6: Recording failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.geterrorcase ();<br>
+</div>

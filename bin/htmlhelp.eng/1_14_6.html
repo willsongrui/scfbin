@@ -1,0 +1,24 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString vxmlrun(TString arg)</div><h1>DESCRIPTION</h1>
+<div class="dc">To execute a VXML instruction</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>arg</h4>
+<div class="dc">The VXML instruction</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The vxml execution result.</div><h1>EXAMPLES</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TInteger i;<br>
+&nbsp;&nbsp;&nbsp;var TString result;<br>
+<br>
+&nbsp;&nbsp;&nbsp;for(i=0;i&lt;10000;i=i+1)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result=vxmlrun('http://192.168.2.217:31976/conf.vxml');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(pickword(result,' ',0)=='pc')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result=vxmlrun('next pcresult');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vxmlrun('next release');<br>
+&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+</div>

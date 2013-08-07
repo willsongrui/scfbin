@@ -1,0 +1,22 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString&nbsp;&nbsp;sprintf(TString format£¬...)<br>
+TString&nbsp;&nbsp;sprintbin(TString binStr)</div><h1>DESCRIPTION</h1>
+<div class="dc">sprintf is to construct a new string according to the format and some arguments. It is very similar to the printf function in C language. sprintbin is to convert a string that may include non-printable characters to a printable string.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>format</h4>
+<div class="dc">Same as the format argument of sprintf function as C language</div>
+<h4>binStr</h4>
+<div class="dc">A string that may include non-printable characters</div>
+<h4>...</h4>
+<div class="dc">Integer or string, The maximum is 30</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A new string</div><h1>EXAMPLES</h1><div class="dc">
+var TString s1 = 'aaa';<br>
+var TString s2 = 'bbb';<br>
+var TString s = sprintf('%s%s',s1,s2);<br>
+assert(s == 'aaabbb');<br>
+<br>
+var TString binStr = 'abc\00\00\01\01abc';<br>
+print(sprintbin(binStr));<br>
+// may output:<br>
+// 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;61 62 63 00 00 01 01 61&nbsp;&nbsp;62 63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abc....abc<br>
+</div>

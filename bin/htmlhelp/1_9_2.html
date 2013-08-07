@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger dosmatchpattern(TString source, TString pattern)</div><h1>说明</h1>
+<div class="dc">检查源字符串是否匹配dos模式，如果匹配返回1，不匹配返回0。是否匹配可以参照dos命令</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">被检查的字符串,如果source中确实用到?,*,那么靠右斜杠转义，用到右斜杠也靠右斜杠转义</div>
+<h4>arg2</h4>
+<div class="dc">匹配的模式</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+dosmatchpattern(&quot;abcdefghijklmn&quot;,&quot;*gh*&quot;)&nbsp;&nbsp;	返回1<br>
+dosmatchpattern(&quot;abcdefghijklmn&quot;,&quot;gh*&quot;)&nbsp;&nbsp;&nbsp;&nbsp;	返回0<br>
+dosmatchpattern(&quot;abcdefghijklmn&quot;,&quot;???de*&quot;) 	返回1<br>
+dosmatchpattern(&quot;abcdefghijklmn&quot;,&quot;??de*&quot;) 	返回0<br>
+</div>

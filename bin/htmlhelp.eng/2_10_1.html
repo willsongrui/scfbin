@@ -1,0 +1,11 @@
+<h1>SYNOPSIS</h1>
+<div class="dc"> TString&nbsp;&nbsp;decodeoid(TString s)<br>
+TString&nbsp;&nbsp;encodeoid(TString s)</div><h1>DESCRIPTION</h1>
+<div class="dc">To encode/decode the OBJECT IDENTIFIER of ASN.1</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The source string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The result string</div><h1>EXAMPLES</h1><div class="dc">
+assert(encodeoid('1.3.12.2.1107.3.3.0.0.4') == 'B2C02088353030000040');<br>
+assert(decodeoid('B2C02088353030000040') == '1.3.12.2.1107.3.3.0.0.4');<br>
+</div>

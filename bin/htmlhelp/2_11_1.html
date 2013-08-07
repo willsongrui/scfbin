@@ -1,0 +1,16 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSoap::init(TString xmlns,int isIncludeHeader,TString pi='')</div><h1>说明</h1>
+<div class="dc">初始化soap消息，一个含有Envelope,Header,Body的简单xml对象，设置了soap的命名空间(该变量为env)，设置了方法定义的命名空间（该命名空间为缺省的命名空间）。</div><h1>参数</h1>
+<div class="dc"><h4>xmlns</h4>
+<div class="dc">指方法的命名空间对应的wsdl的url地址</div>
+<h4>isIncludeHeader</h4>
+<div class="dc">是否包含header,1，包含，0，不包含</div>
+<h4>pi</h4>
+<div class="dc">xml的processInstruction,如果为''那么pi为&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div>
+</div><h1>返回</h1><div class="dc">
+返回值小于0，失败，否则成功。</div><h1>示例</h1><div class="dc">
+var TSoap s = new TSoap;<br>
+s.init('', 0);<br>
+assert(s.tostr()=='&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;env:Envelope xmlns:env=<br>
+&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;env:Body&gt;&lt;/env:Body&gt;&lt;/env:Envelope&gt;');<br>
+</div>

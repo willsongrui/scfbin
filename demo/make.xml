@@ -1,0 +1,4 @@
+xmlread: demoxml.o
+	cxx -o xmlread demoxml.o ${CINDIR}/lib/libxmlapi.a
+demoxml.o: demoxml.C
+	cxx -c -I${CINDIR}/include demoxml.C

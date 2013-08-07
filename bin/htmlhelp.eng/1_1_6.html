@@ -1,0 +1,30 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString substr (TString str, TInteger start, TInteger length=-1)<br>
+TString TString::substr (TInteger start, TInteger length=-1)</div><h1>DESCRIPTION</h1>
+<div class="dc">Get a new substring from a string according to the length and the beginning index</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>str</h4>
+<div class="dc">source string</div>
+<h4>start</h4>
+<div class="dc">The beginning index:<br>
+Greater than or equal to 0, count from the begin of the source string, 0 is the first, 1 is the second<br>
+Less than 0, count from the end of the source string, -1 is the first one, -2 is the second one...</div>
+<h4>length</h4>
+<div class="dc">The max length, default -1 for infinity</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The new substring</div><h1>EXAMPLES</h1><div class="dc">
+assert(substr('abcde', 2, 3) == 'cde');<br>
+assert(substr('abcde', -2, 3) == 'bcd');<br>
+assert('12345678'.substr(0,3) == '123');<br>
+assert('12345678'.substr(1,10) == '2345678');<br>
+assert('12345678'.substr(1) == '2345678');<br>
+assert('12345678'.substr(10,2) == '');<br>
+assert('12345678'.substr(-1) == '12345678');<br>
+assert('12345678'.substr(-1,3) == '678');<br>
+assert('12345678'.substr(-3,3) == '456');<br>
+assert('12345678'.substr(-3,10) == '123456');<br>
+assert('12345678'.substr(-10,3) == '');<br>
+assert('12345678'.substr(-7,5) == '12');<br>
+assert('12345678'.substr(-5) == '1234');<br>
+assert('12345678'.substr(-1,9) == '12345678');<br>
+assert('12345678'.substr(-1,8) == '12345678');<br>
+</div>

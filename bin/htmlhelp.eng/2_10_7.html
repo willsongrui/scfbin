@@ -1,0 +1,37 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TASNObject::addvalue(TString value, TInteger type, TInteger tag)<br>
+TInteger TASNObject::addobject(TASNObject objectid, TInteger tag)</div><h1>DESCRIPTION</h1>
+<div class="dc">To construct an ASN.1 code. You can not get value from the constructed object with tag path. addvalue() is to add a value. add object is to add an object.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>value</h4>
+<div class="dc">The value to be added</div>
+<h4>type</h4>
+<div class="dc">The value type to be added:<br>
+5: only encode tag and length 0. value can be a null string that is not used<br>
+2: convert the value to an integer and encode<br>
+4: encode value as a string without any converting<br>
+254: encode after converting value to BCD code (append 'F' for odd length)<br>
+255: encode after converting value to BCD code (append '0' for odd length)</div>
+<h4>tag</h4>
+<div class="dc">The ASN.1 encoded tag</div>
+<h4>objectid</h4>
+<div class="dc">object to add</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+returns 0 for success and other values for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TASNObject a,b,c;<br>
+<br>
+a = new TASNObject;<br>
+a.addvalue('1234',4,0x80);&nbsp;&nbsp;// a: 80 04 31 32 33 34<br>
+a.addvalue('1234',4,0x81);&nbsp;&nbsp;// a: 80 04 31 32 33 34 81 04 31 32 33 34<br>
+b = new TASNObject;<br>
+b.addobject(a,0xA0); // b: A0 0C 80 04 31 32 33 34 81 04 31 32 33 34<br>
+b.addobject(a,0xA1);<br>
+// b:<br>
+// A0 0C 80 04 31 32 33 34 81 04 31 32 33 34 A1 0C 80 04 31 32 33 34<br>
+&nbsp;&nbsp;&nbsp;81 04 31 32 33 34<br>
+c = new TASNObject;<br>
+c.addobject(b,0x30);<br>
+// c:<br>
+// 30 1C A0 0C 80 04 31 32 33 34 81 04 31 32 33 34 A1 0C 80 04 31 32<br>
+&nbsp;&nbsp;&nbsp;33 34 81 04 31 32 33 34<br>
+assert(c.getcode() == '03C10AC00840132333431840132333431AC0084013233343184013233343');<br>
+</div>

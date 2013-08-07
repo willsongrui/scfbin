@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TASNObject::TASNObject(TInteger opID, TString para)</div><h1>说明</h1>
+<div class="dc">根据指定的操作ID和操作的参数，创建一个完整的TASNObject对象，这个创建的对象的内部结构与使用TTCAPDialogue::getasnobj得到的对象是一致的，可以用同样的方法进行操作</div><h1>参数</h1>
+<div class="dc"><h4>opID</h4>
+<div class="dc">整数，操作码</div>
+<h4>para</h4>
+<div class="dc">字符串，ASC格式的参数ASN.1编码，例如ASN.1编码为30 03 80 01 01，那么这个串是'0330081010'</div>
+</div><h1>返回</h1><div class="dc">
+构造好的TASNObject的handle</div><h1>示例</h1><div class="dc">
+var TASNObject a;<br>
+var TString s;<br>
+a = new TASNObject(48,'08500212345670');<br>
+s = a.asnvalue(&lt;&lt;inap.result.receivedinformation.digitsresponse&gt;&gt;,'NULL');<br>
+assert(s == '1234567');<br>
+</div>

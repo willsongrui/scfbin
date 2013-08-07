@@ -1,0 +1,24 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSCPTable::settitle(TInteger col,TString title)<br>
+TInteger TSCPTable::cleartitle()</div><h1>DESCRIPTION</h1>
+<div class="dc">To set or unset the name of a column. If column names of a table is set, the tag of converted xml string will be this name</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>col</h4>
+<div class="dc">column index, first is 1</div>
+<h4>title</h4>
+<div class="dc">column name</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0</div><h1>EXAMPLES</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+t.settitle(1,'A');<br>
+t.settitle(2,'B');<br>
+t.settitle(3,'C');<br>
+t.settitle(4,'D');<br>
+assert(t.toxml2() ==<br>
+'&lt;table&gt;&lt;record&gt;&lt;A&gt;11&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;14&lt;/D&gt;&lt;/record&gt;&lt;record&gt;&lt;A&gt;21&lt;/A&gt;&lt;B&gt;&lt;/B&gt;<br>
+&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;record&gt;&lt;A&gt;31&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;/table&gt;');<br>
+</div>

@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallSegment::splitleg(TInteger legID)</div><h1>说明</h1>
+<div class="dc">将一个CS中的某个leg分到另一个leg中。</div><h1>参数</h1>
+<div class="dc"><h4>legID</h4>
+<div class="dc">legId</div>
+</div><h1>返回</h1><div class="dc">
+1成功，0失败</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.splitleg (2);<br>
+</div>

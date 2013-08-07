@@ -1,0 +1,19 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSCPChargeServer::stopcharge()</div><h1>DESCRIPTION</h1>
+<div class="dc">To stop the charging</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+var TSCPChargeServer ch1;<br>
+ch1 = new TSCPChargeServer;<br>
+ch1.addchargeclass(100);<br>
+ch1.setbalancesupervision(300, 0, 0);<br>
+<br>
+ch1.onlimitreached([limitReach]);<br>
+<br>
+ch1.onstop([recACR]);<br>
+ch1.startcharge();<br>
+<br>
+sleep(1000);<br>
+<br>
+ch1.stopcharge();<br>
+</div>

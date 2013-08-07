@@ -1,0 +1,12 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString THttpContent::getcontenttype()</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the value of 'Content-Type' field from the message header</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+<br>
+contObj.setbuffer('text/plain','&lt;vxml version=&quot;1.0&quot;&gt;&lt;form id=&quot;form1&quot;&gt;&lt;block&gt;&lt;prompt&gt;&lt;audio src=&quot;10006.wav&quot;/&gt;&lt;/prompt&gt;&lt;/block&gt;&lt;/form&gt;&lt;/vxml&gt;');<br>
+var TString strtmp;<br>
+strtmp=contentObj.getcontenttype();<br>
+assert(strtmp=='text/plain');<br>
+<br>
+</div>

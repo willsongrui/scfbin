@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString htmlentity2gbk(TString source)<br>
+TString htmlentity2gbk(TString source)</div><h1>DESCRIPTION</h1>
+<div class="dc">These functions is to replace the html entities in the source string to the GBK character or UTF8 character and return a new string. It will not be replaced if the html entity format is not valid or no GBK character defined (for htmlentity2gbk()). The 253 html entity names defined in HTML4.0 are supported.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>source</h4>
+<div class="dc">The string to be converted</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The result string</div><h1>EXAMPLES</h1><div class="dc">
+s = htmlentity2gbk('&amp;amp;&amp;gt;&amp;&amp;&amp;&amp;#x61&amp;#x61;&amp;#x54C8;');<br>
+assert(s == '&amp;&gt;&amp;&amp;&amp;&amp;#x61a\B9\FE', s);<br>
+s = htmlentity2gbk('&amp;amp;&amp;gt;&amp;&amp;&amp;&amp;#x61&amp;#x61;&amp;#x54C8;');<br>
+assert(s == '&amp;&gt;&amp;&amp;&amp;&amp;#x61a\E5\93\88', s);<br>
+</div>

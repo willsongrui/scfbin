@@ -1,0 +1,16 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;xmlwoodscc(TString path, TString tag='')</div><h1>说明</h1>
+<div class="dc">获取xmlwoods配置中某个子元素下某个tag的孩子的个数</div><h1>参数</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">路径</div>
+<h4>tag</h4>
+<div class="dc">某个tag的名字，如果为空，则获取所有孩子的个数</div>
+</div><h1>返回</h1><div class="dc">
+整数，孩子的个数</div><h1>示例</h1><div class="dc">
+var TInteger irule = xmlwoodscc('diameterconfig:config/rule2');<br>
+assert(irule == 5);<br>
+<br>
+var TInteger ichargenum = xmlwoodscc('diameterconfig:config/rule2','chargenum');<br>
+assert(ichargenum == 3);<br>
+<br>
+</div>

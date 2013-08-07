@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TObject::setid(TString id)<br>
+TString TObject::getid()</div><h1>DESCRIPTION</h1>
+<div class="dc">Other object can derive these two method of TObject. It is to identify an object and search an object according to the ID.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>id</h4>
+<div class="dc">The ID to set</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+setid() returns 0 for success. getid() returns the object ID string</div><h1>EXAMPLES</h1><div class="dc">
+var TXMLTree x, y;<br>
+x = new TXMLTree()<br>
+x.setid('aaa');<br>
+assert(x.getid()=='aaa');<br>
+y = findobject(TXMLTree, 'aaa');<br>
+</div>

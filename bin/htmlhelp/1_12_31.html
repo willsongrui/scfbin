@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc">TInteger usebakdb(TInteger flag)</div><h1>说明</h1>
+<div class="dc">业务逻辑中可以强制设置使用主数据库还是备数据库操作</div><h1>参数</h1>
+<div class="dc"><h4>flag</h4>
+<div class="dc">1设置使用备库，0设置使用主库</div>
+</div><h1>返回</h1><div class="dc">
+0</div><h1>示例</h1><div class="dc">
+var TString&nbsp;&nbsp;fsmnum = getfsmidstr();<br>
+var TInteger useId = isfsmusing(fsmnum);<br>
+assert(useId == 1);<br>
+</div>

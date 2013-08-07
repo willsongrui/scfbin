@@ -1,0 +1,23 @@
+<h1>原型</h1>
+<div class="dc">TString TSCPTable::colname(TInteger colid)<br>
+TInteger TSCPTable::colid(TString colname)</div><h1>说明</h1>
+<div class="dc">根据列号获得列名，根据列名获得列号</div><h1>参数</h1>
+<div class="dc"><h4>colid</h4>
+<div class="dc">列号</div>
+<h4>colname</h4>
+<div class="dc">列名，即title</div>
+</div><h1>返回</h1><div class="dc">
+返回的列号或者列名</div><h1>示例</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+t.settitle(1,'A');<br>
+t.settitle(2,'B');<br>
+t.settitle(3,'C');<br>
+t.settitle(4,'D');<br>
+assert(t.colid('A') == 1);<br>
+assert(t.colname(3) == 'C');<br>
+</div>

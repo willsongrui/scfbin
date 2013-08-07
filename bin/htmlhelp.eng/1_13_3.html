@@ -1,0 +1,16 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger []::index(TypeOfArrayMember mem)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the index of an element of a array</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>mem</h4>
+<div class="dc">element content of the array. The type of this argument must be the same as the array element. If the array is a TString array, the type of this argument must be TString. If the array is a TInteger array, the type of this argument must be a TInteger.</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+integer, the index. The first one is 0. If the element cannot be found, -1 will be returned</div><h1>EXAMPLES</h1><div class="dc">
+var TInteger i[] = {1,2,3};<br>
+assert(i.index(1) == 0);<br>
+assert(i.index(2) == 1);<br>
+assert(i.index(5) == -1);<br>
+var TString s[] = {'aa','bb','cc'};<br>
+assert(s.index('aa') == 0);<br>
+assert(s.index('bb') == 1);<br>
+assert(s.index('ddd') == -1);<br>
+</div>

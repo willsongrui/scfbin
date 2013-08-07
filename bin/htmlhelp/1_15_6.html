@@ -1,0 +1,17 @@
+<h1>原型</h1>
+<div class="dc">TString []::tojson()<br>
+TInteger []::parsejson(TString jsonStr)</div><h1>说明</h1>
+<div class="dc">tojson将数组的内容转换为JSON格式的字符串返回。parsejson将一个JSON格式的字符串解析到数组中，数组中的原有成员将会被清掉</div><h1>参数</h1>
+<div class="dc"><h4>jsonStr</h4>
+<div class="dc">JSON数组格式的字符串</div>
+</div><h1>返回</h1><div class="dc">
+tojson返回JSON格式的字符串。parsejson如果解析正确返回1，否则返回0</div><h1>示例</h1><div class="dc">
+var TInteger a[] = {123, 456, 789};<br>
+assert(a.tojson() == '[123,456,789]');<br>
+a.parsejson('[1,2,3,4]');<br>
+assert(a.length() == 4);<br>
+assert(a[0] == 1);<br>
+assert(a[1] == 2);<br>
+assert(a[2] == 3);<br>
+assert(a[3] == 4);<br>
+</div>

@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString switchtranslate(TString s, TString&nbsp;&nbsp;defaultValue, ... )</div><h1>DESCRIPTION</h1>
+<div class="dc">To translate a string according to the match result</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The string to be matched</div>
+<h4>defaultValue</h4>
+<div class="dc">The default value. If no string is matched, this value is returned</div>
+<h4>...</h4>
+<div class="dc">The following arguments are always used in pairs. The former is matching string and the later is the translated string if matched.</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The translated string</div><h1>EXAMPLES</h1><div class="dc">
+s1 = 'ACR_RECORD';<br>
+s = switchtranslate(s1,'null','ACR_RECORD','AA','ACR_RECORD_01','BB');<br>
+assert(s == 'AA');<br>
+</div>

@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TString descrypt(TString arg1, TString arg2, TInteger arg3, TInteger arg4=0)<br>
+TString descbccrypt(TString arg1, TString arg2, TInteger arg3, TInteger arg4=0)</div><h1>说明</h1>
+<div class="dc">descrypt实现des加解密，descbccrypt与descrypt类似，但这个函数使用的是基于CBC的des加解密算法。</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">源字符串（8字节）</div>
+<h4>arg2</h4>
+<div class="dc">key字符串（8字节），</div>
+<h4>arg3</h4>
+<div class="dc">源字符串长度，</div>
+<h4>arg4</h4>
+<div class="dc">模式（默认0表示加密， 否则为解密）</div>
+</div><h1>返回</h1><div class="dc">
+返回加/解密后的结果字符串（8字节）</div>

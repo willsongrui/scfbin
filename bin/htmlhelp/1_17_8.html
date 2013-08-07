@@ -1,0 +1,10 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;arifsmid (TString arg1)</div><h1>说明</h1>
+<div class="dc">将ari操作中的correlationID转换为发送etc操作的InstanceID，规则是这样的：如果系统没有配置globalscfid，那么直接去掉前两个字符；如果系统配置了globalscfid，那么把前两位globalscfid转换为local的scfid。</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">ari操作中的correlationID</div>
+</div><h1>返回</h1><div class="dc">
+曾经发送ETC操作的那个FSM的InstanceID，两位进程号+自动机号</div><h1>示例</h1><div class="dc">
+s = arifsmid('12345')<br>
+结果：s: 345<br>
+</div>

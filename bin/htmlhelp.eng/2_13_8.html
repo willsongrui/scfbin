@@ -1,0 +1,17 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::connect(TString calledNumber, TInteger legID, TString callingNumber)</div><h1>DESCRIPTION</h1>
+<div class="dc">To connect to the called party</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>calledNumber</h4>
+<div class="dc">called party number</div>
+<h4>legID</h4>
+<div class="dc">leg ID of called party (must be 2)</div>
+<h4>callingNumber</h4>
+<div class="dc">calling party number</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+1 for success, 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.connect ('9999',1,' ');<br>
+</div>

@@ -1,0 +1,38 @@
+<h1>原型</h1>
+<div class="dc">TString TSipMsg::getcontent()<br>
+TInteger TSipMsg::setcontent(TString content)</div><h1>说明</h1>
+<div class="dc">获得/设置SIP消息的消息体的内容</div><h1>参数</h1>
+<div class="dc"><h4>content</h4>
+<div class="dc">要设置的SIP消息体的内容</div>
+</div><h1>返回</h1><div class="dc">
+setcontent返回0成功，-1失败。getcontent返回字符串类型的消息体内容</div><h1>示例</h1><div class="dc">
+/* For example:<br>
+INVITE sip:7434@10.20.200.227:5060 SIP/2.0<br>
+Call-ID: 7764053628133e4b65b609e7160e555e@10.20.200.227<br>
+From: &lt;sip:07312910430@10.20.200.227:5060&gt;;tag=00143-0b1006b1010684d6<br>
+...<br>
+P-Asserted-Identity: &lt;sip:07312910430@10.20.201.5&gt;<br>
+Supported: 100rel,timer,diversion<br>
+<br>
+v=0<br>
+o=- 1 1 IN IP4 10.20.200.227<br>
+s=-<br>
+c=IN IP4 10.20.201.168<br>
+t=0 0<br>
+m=audio 30000 RTP/AVP 8<br>
+a=rtpmap:8 PCMA/8000<br>
+a=ptime:20<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getcontent() == 'v=0<br>
+o=- 1 1 IN IP4 10.20.200.227<br>
+s=-<br>
+c=IN IP4 10.20.201.168<br>
+t=0 0<br>
+m=audio 30000 RTP/AVP 8<br>
+a=rtpmap:8 PCMA/8000<br>
+a=ptime:20<br>
+');<br>
+}<br>
+</div>

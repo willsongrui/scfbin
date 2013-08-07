@@ -1,0 +1,17 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString []::tojson()<br>
+TInteger []::parsejson(TString jsonStr)</div><h1>DESCRIPTION</h1>
+<div class="dc">tojson() is to convert the array contents to a JSON string. parsejson() is to parse a JSON string into the array and the former members of the array will be cleared.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>jsonStr</h4>
+<div class="dc">JSON string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+tojson() returns the JSON string. parsejson() returns 1 for success and 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TInteger a[] = {123, 456, 789};<br>
+assert(a.tojson() == '[123,456,789]');<br>
+a.parsejson('[1,2,3,4]');<br>
+assert(a.length() == 4);<br>
+assert(a[0] == 1);<br>
+assert(a[1] == 2);<br>
+assert(a[2] == 3);<br>
+assert(a[3] == 4);<br>
+</div>

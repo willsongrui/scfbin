@@ -1,0 +1,12 @@
+<h1>原型</h1>
+<div class="dc">TString encrypt(TString src, TString key)</div><h1>说明</h1>
+<div class="dc">加密，如果key的长度为2，则调用unix的crypt标准函数加密。否则使用一个欣方与冠日公司制定的一个加密算法，只针对6位数字串加密，用于智能公话业务</div><h1>参数</h1>
+<div class="dc"><h4>src</h4>
+<div class="dc">要加密的字符串</div>
+<h4>key</h4>
+<div class="dc">密钥</div>
+</div><h1>返回</h1><div class="dc">
+加密结果</div><h1>示例</h1><div class="dc">
+assert(encrypt('abcd', '12') == '12UhNQxwwKQ7c');<br>
+assert(encrypt('123456', '123456') == '635204');<br>
+</div>

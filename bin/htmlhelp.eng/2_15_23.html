@@ -1,0 +1,10 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TTCAPDialogue::waitlinked(TInteger timeOut=5, TInteger disableInt=1)</div><h1>DESCRIPTION</h1>
+<div class="dc">waitresult() is to synchronous wait the RESULT. This function is called after calling the invokereq() and expecting the RESULT of the operation. For example in INAP, RESULT is expected after sending PC<br>
+waitlinked() is to synchronous wait the linked INVOKE. This function is called after calling the invokereq() and expecting the linked operation. For example in INAP, SRR is expected after sending PA</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>timeOut</h4>
+<div class="dc">integer. The timer for waiting. The unit is second. The default value is 5 seconds.</div>
+<h4>disableInt</h4>
+<div class="dc">integer. It is indicate whether disable the interrupt for other event or not. The default value is 1 for disable</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+18 for received RESULT, 0 for received INVOKE and 1 for received ERROR</div>

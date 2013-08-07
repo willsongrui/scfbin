@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TFTPClient::listdir(TString dirname)</div><h1>DESCRIPTION</h1>
+<div class="dc">To list the directory.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>dirname</h4>
+<div class="dc">The remote directory name</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+TFTPClient ftp;<br>
+TString fileList;<br>
+ftp = new TFTPClient;<br>
+ftp.init('ahost'£¬21£¬'user'£¬'password');<br>
+ftp.listdir('dirname');<br>
+fileList = ftp.getlastinfo(); // get the file list string<br>
+print(fileList)<br>
+</div>

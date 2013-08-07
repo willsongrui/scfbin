@@ -1,0 +1,27 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger tosec(TString ascTime)<br>
+TString tosec2(TString ascTime)<br>
+TString sectoasctime(TInteger t)</div><h1>DESCRIPTION</h1>
+<div class="dc">tosec() is to get the seconds between 1970-1-1 00:00:00 and ascTime. tosec2() is to get the seconds between 1900-1-1 00:00:00 and ascTime. tosec2() will return a string because the result may be greater than the maximun of 4 bytes integer. <br>
+sectoasctime() is the inverse function of tosec(). It is to get the asc format time according a seconds integer</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>ascTime</h4>
+<div class="dc">The time string. The format is YYYYMMDDHHmmSS</div>
+<h4>t</h4>
+<div class="dc">The seconds integer from 1970-1-1 00:00:00</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+tosec() returns a integer. tosec2() returns a decimal string<br>
+sectoasctime() returns a time string and the format is YYYYMMDDHHmmSS</div><h1>EXAMPLES</h1><div class="dc">
+var TInteger i = tosec('20040401102030');<br>
+var TInteger j = tosec('20040401112030');<br>
+assert(j - i == 3600);<br>
+<br>
+assert(tosec('20070723093100') == 1185154260);<br>
+assert(tosec2('20070723093100') == '3394143060');<br>
+<br>
+var TString time,time1;<br>
+var TInteger sec;<br>
+var TString time = currentdate8andtime();<br>
+var TInteger sec = tosec(time);<br>
+var TString time1 = sectoasctime(sec);<br>
+assert(time == time1);<br>
+</div>

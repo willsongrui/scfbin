@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString THttpContent::getbuffer(TInteger isInlucdeHedaer=0)<br>
+TXMLTree THttpContent::getxmlbody()<br>
+TSoap THttpContent::getsoapbody()</div><h1>DESCRIPTION</h1>
+<div class="dc">getbuffer() is to get the whole content and return a string.<br>
+If the Content-Type is Text/xml, getxmlbody() can be used to get the TXMLTree object according to the content.<br>
+If the Content-Type is Text/xml and it is a soap message, getsoapbody() can be used to get the TSoap object.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>isInlucdeHedaer</h4>
+<div class="dc">0 means not including the header. Values not equal to 0 means including the header. The default value is 0</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+getbuffer() returns a string. getxmlbody() returns the handle of TXMLTree object. getsoapbody() returns the handle of TSoap object</div><h1>EXAMPLES</h1><div class="dc">
+contentObj.getbuffer();<br>
+contentObj.getsoapbody();<br>
+<br>
+</div>

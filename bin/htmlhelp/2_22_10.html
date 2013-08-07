@@ -1,0 +1,39 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSCPTable::filter(TInteger col, TString pattern, TInteger mode=1)</div><h1>说明</h1>
+<div class="dc">按照指定列过滤/筛选，筛选后原表保留，只是此时再操作就是在筛选的记录集进行了。当pattern='*'时，可以取消筛选，恢复原始记录集。注意：筛选可以加强，就是在筛选的记录上再进行筛选，取消的时候直接恢复原始记录集合</div><h1>参数</h1>
+<div class="dc"><h4>col</h4>
+<div class="dc">参与筛选的列号</div>
+<h4>pattern</h4>
+<div class="dc">筛选的匹配规则，支持通配符'*'&nbsp;&nbsp;'?'等，能力同函数dosmatchpattern()。当mode为1时，'*'取消筛选操作</div>
+<h4>mode</h4>
+<div class="dc">1表示匹配pattern的被选中，0表示不匹配pattern的被选中</div>
+</div><h1>返回</h1><div class="dc">
+整数0</div><h1>示例</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+t.settitle(1,'A');<br>
+t.settitle(2,'B');<br>
+t.settitle(3,'C');<br>
+t.settitle(4,'D');<br>
+<br>
+// select the rows that first column is begin with '1'<br>
+t.filter(1,'1*');<br>
+assert(t.toxml2() ==<br>
+'&lt;table&gt;&lt;record&gt;&lt;A&gt;11&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;14&lt;/D&gt;&lt;/record&gt;&lt;/table&gt;');<br>
+<br>
+// undo the filter action<br>
+t.filter(1,'*');<br>
+assert(t.toxml2() ==<br>
+'&lt;table&gt;&lt;record&gt;&lt;A&gt;11&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;14&lt;/D&gt;&lt;/record&gt;&lt;record&gt;&lt;A&gt;21&lt;/A&gt;&lt;B&gt;&lt;/B&gt;<br>
+&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;record&gt;&lt;A&gt;31&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;/table&gt;');<br>
+<br>
+// select the rows that first column is not begin with '1'<br>
+t.filter(1, '1*', 0);<br>
+assert(t.toxml2() ==<br>
+'&lt;table&gt;&lt;record&gt;&lt;A&gt;21&lt;/A&gt;&lt;B&gt;&lt;/B&gt;&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;record&gt;&lt;A&gt;31&lt;/A&gt;&lt;B&gt;&lt;/B&gt;<br>
+&lt;C&gt;&lt;/C&gt;&lt;D&gt;&lt;/D&gt;&lt;/record&gt;&lt;/table&gt;');<br>
+</div>

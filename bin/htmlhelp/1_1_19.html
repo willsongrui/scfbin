@@ -1,0 +1,17 @@
+<h1>原型</h1>
+<div class="dc">TString strhtmlwrap(TString s)<br>
+TString htmltextencode(TString s, TInteger type=7)</div><h1>说明</h1>
+<div class="dc">strhtmlwrap只将字符串中的回车符转换为&lt;br&gt;。这个函数针对含有回车的文本嵌入到html中让浏览器正确显示。如果文本中除了含有回车之外，还有一些html特殊字符，则需要使用htmltextencode转换，将相关的特殊字符转换为html实体</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要被转换的字符串</div>
+<h4>type</h4>
+<div class="dc">如果type为7则有连接符，大于号，小于号，单引号，双引号，空白，回车这7种字符被处理。如果type为5，则空白和回车不处理，只有其余5个字符处理。缺省为7</div>
+</div><h1>返回</h1><div class="dc">
+转换之后的字符串。注意htmltextencode除了将回车转换为&lt;br&gt;之外，回车仍然保留，并不删掉</div><h1>示例</h1><div class="dc">
+var TString s = 'lkjsaf\nasdlkfsdf\naslkdjfh\n asdlkfjhsadf\nasdlfk\n';<br>
+s = strhtmlwrap(s);<br>
+assert(s == 'lkjsaf&lt;br&gt;asdlkfsdf&lt;br&gt;aslkdjfh&lt;br&gt; asdlkfjhsadf&lt;br&gt;asdlfk&lt;br&gt;');<br>
+s = 'ab\nc&amp;def&lt;g&gt;\n';<br>
+assert(htmltextencode(s) == 'ab&lt;br&gt;\nc&amp;amp;def&amp;lt;g&amp;gt;&lt;br&gt;\n');<br>
+assert(htmltextencode(s,5) == 'ab\nc&amp;amp;def&amp;lt;g&amp;gt;\n');<br>
+</div>

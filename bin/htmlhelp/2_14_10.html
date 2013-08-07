@@ -1,0 +1,18 @@
+<h1>原型</h1>
+<div class="dc">TString TSipMsg::getrequesturl()<br>
+TString TSipMsg::geturladdr()<br>
+TString TSipMsg::geturlnum()</div><h1>说明</h1>
+<div class="dc">getrequesturl获得请求对象的请求URL，geturladdr则仅获得这个URL的地址部分，geturlnumber则仅获得这个URL的地址部分中的用户名部分</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+字符串，URL或者URL地址或者URL地址中的用户名</div><h1>示例</h1><div class="dc">
+/* For example:<br>
+INVITE sip:7434@10.20.200.227:5060;play=222.wav;user=phone SIP/2.0<br>
+...<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getrquesturl() == 'sip:7434@10.20.200.227:5060;play=222.wav;user=phone');<br>
+&nbsp;&nbsp;&nbsp;assert(req.geturladdr() == 'sip:7434@10.20.200.227:5060');<br>
+&nbsp;&nbsp;&nbsp;assert(req.geturlnum() == '7434');<br>
+}<br>
+</div>

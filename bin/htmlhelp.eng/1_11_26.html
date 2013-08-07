@@ -1,0 +1,50 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger setkey(TString keyName,TString keyValue)<br>
+TInteger deletekey(TString keyName,TString keyValue)<br>
+TString searchkey(TString keyName,TString keyValue)</div><h1>DESCRIPTION</h1>
+<div class="dc">setkey(), clearkey() and searchekey() are for the correlation of FSMs.<br>
+The rules:<br>
+1. Key is a key-pair that is consist of keyName and keyValue. A key-pair is unique in one scf process.<br>
+2. More than one key-pair can be set in one FSM. For same keyName, more than one keyValue can be set in one FSM<br>
+3. For deletekey, if the keyValue is null string, all key-pair for the keyName will be deleted<br>
+4. Key-pair can only be deleted by the FSM which set the key-pair before.<br>
+5. All key-pair for one FSM will be cleared when the FSM is deleted.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>keyName</h4>
+<div class="dc">The name of the key. If it is null string, it is the default key</div>
+<h4>keyValue</h4>
+<div class="dc">The value of the key. It can not be null string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+setkey() and deletekey() return 1 for success and return 0 for failure. searchkey() returns the fsm id string (format: xxyyyy, xx is scf id, yyyy is fsm id) and returns null string if the key is invalid.</div><h1>EXAMPLES</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString key1, key2, key3;<br>
+&nbsp;&nbsp;&nbsp;var TString value1, value2, value3, value4;<br>
+&nbsp;&nbsp;&nbsp;var TInteger re;<br>
+&nbsp;&nbsp;&nbsp;var TString s;<br>
+<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('myinstanceid :%s',myinstanceid));<br>
+&nbsp;&nbsp;&nbsp;key1='AAA';<br>
+&nbsp;&nbsp;&nbsp;key2='BBB';<br>
+&nbsp;&nbsp;&nbsp;key3='CCC';<br>
+&nbsp;&nbsp;&nbsp;value1='a';<br>
+&nbsp;&nbsp;&nbsp;value2='b';<br>
+&nbsp;&nbsp;&nbsp;value3='c';<br>
+&nbsp;&nbsp;&nbsp;value4='d';<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key1,value1);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('set value1 re:%d',re));<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key1,value1);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('set value1 re:%d',re));<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key2,value2);<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key3,value3);<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key1,value4);<br>
+&nbsp;&nbsp;&nbsp;s=searchkey(key1,value1);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('search value1 re:%s',s));<br>
+&nbsp;&nbsp;&nbsp;s=searchkey(key1,value4);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('search value1 re:%s',s));<br>
+&nbsp;&nbsp;&nbsp;re=deletekey(key1,value4);<br>
+&nbsp;&nbsp;&nbsp;s=searchkey(key1,value4);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('search value4 re:%s',s));<br>
+&nbsp;&nbsp;&nbsp;sleep(30);<br>
+}<br>
+</div>

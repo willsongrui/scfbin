@@ -1,0 +1,33 @@
+<h1>原型</h1>
+<div class="dc">TInteger TString::collectnumber(TString addNumber, TString ruleTag)</div><h1>说明</h1>
+<div class="dc">收集可变长的号码，根据规则决定收集的长度，根据返回值判断是否收齐</div><h1>参数</h1>
+<div class="dc"><h4>addNumber</h4>
+<div class="dc">本次收集的部分号码</div>
+<h4>ruleTag</h4>
+<div class="dc">判断号码长度的规则在numbertab文件中配置的字冠</div>
+</div><h1>返回</h1><div class="dc">
+整数，返回0表示号码收集已经完整，返回大于0表示目前根据规则判断尚缺的位数</div><h1>示例</h1><div class="dc">
+# the numbertab file configuration:<br>
+A010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11<br>
+A01011&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6<br>
+A02[0-9]11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6<br>
+A01012[0-2]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6<br>
+A02[0-9]12[0-2]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6<br>
+A010123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8<br>
+A02[0-9]123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8<br>
+A01095&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8<br>
+A02[0-9]95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8<br>
+A013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12<br>
+A0[3-9][0-9][0-9]11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7<br>
+A0[3-9][0-9][0-9]12[0-2] 7<br>
+A0[3-9][0-9][0-9]123&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9<br>
+A0[3-9][0-9][0-9]95&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9<br>
+A0451&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12<br>
+配置的第一列是字冠匹配规则，第二列是匹配上这个字冠规则的号码需要收集的位数。<br>
+例如上面的意思是，010开头的号码需要手记11位，01011开头的号码需要收集6位等等。<br>
+然后程序中可以定义一个TString类型的变量存储收集的号码，例如：<br>
+var TString number;<br>
+然后可以根据情况循环调用TString::collectnumber函数，例如：<br>
+number.collectnumber(s,'A');<br>
+'A'是上面配置的规则字冠，s是每次收到的一部分号码。<br>
+</div>

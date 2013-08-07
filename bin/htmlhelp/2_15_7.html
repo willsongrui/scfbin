@@ -1,0 +1,41 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallSegment::onfail([eventProcessLabel])<br>
+TInteger TSipCallSegment::onbusy([eventProcessLabel])<br>
+TInteger TSipCallSegment::onnoanswer([eventProcessLabel], TInteger time=30 )<br>
+TInteger TSipCallSegment::ondisconnect([eventProcessLabel])<br>
+TInteger TSipCallSegment::onanswer([eventProcessLabel])<br>
+TInteger TSipCallSegment::onringing([eventProcessLabel])<br>
+TInteger TSipCallSegment::ontransfer([eventProcessLabel])<br>
+TInteger TSipCallSegment::onreplaces([eventProcessLabel])<br>
+TInteger TSipCallSegment::onpassivehold([eventProcessLabel])</div><h1>说明</h1>
+<div class="dc">onfail: 设置路由失败入口。<br>
+onbusy: 设置被叫忙入口。<br>
+onnoanswer: 设置被叫无应答入口。<br>
+ondisconnect: 设置挂机入口（通话后主被叫挂机）。<br>
+onanswer: 设置被叫应答入口（包括ica的主叫应答）。<br>
+onringing: 设置被叫振铃入口（包括ica的主叫振铃）。<br>
+ontransfer: 设置呼叫转移监视入口<br>
+onreplace: 监视代答(replaces)事件入口<br>
+onpassivehold: 设置捕获终端进行HOLD操作的事件入口</div><h1>参数</h1>
+<div class="dc"><h4>eventProcessLabel</h4>
+<div class="dc">接收处理该事件的入口名称</div>
+<h4>time</h4>
+<div class="dc">无应答时长，默认30秒</div>
+</div><h1>返回</h1><div class="dc">
+1成功，0失败</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.onfail([routingfailed]);<br>
+cs.onfail([calledbusy]);<br>
+<br>
+on([routingfailed], TSipCallSegment cs)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+on([calledbusy], TSipCallSegment cs)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

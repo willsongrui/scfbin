@@ -1,0 +1,19 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TTCAPDialogue::invokereq(TInteger opID, TInteger opType, TInteger timeout, TString para, TInteger linkedid=-1)</div><h1>DESCRIPTION</h1>
+<div class="dc">To send the INVOKE request</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>opID</h4>
+<div class="dc">integer. The operation code of the operation to be sent</div>
+<h4>opType</h4>
+<div class="dc">integer. The operation type:<br>
+1: Both success and failure reported<br>
+2: Only failure reported<br>
+3: Only success reported<br>
+4: Neither success nor failure reported</div>
+<h4>timeout</h4>
+<div class="dc">integer, The timer of the operation to be sent. Its unit is second</div>
+<h4>papa</h4>
+<div class="dc">the ASC string that is the parameter of the error to be sent. Its length must be even. For example '0330081010' indicates that the parameter is 5 bytes: 30 03 80 01 01</div>
+<h4>linkedID</h4>
+<div class="dc">integer. If this operation to be sent is the linked operation of another operation received, this argument is the invoke ID of the operation received. For example in INAP, If SRR is sent by calling this function, this argument is the invoke id of PA received before</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0</div>

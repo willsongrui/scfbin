@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString xmltextencode(TString arg1)<br>
+TString xmltextdecode(TString arg1)<br>
+TString vxmltextencode(TString arg1)<br>
+TString vxmltextdecode(TString arg1)</div><h1>DESCRIPTION</h1>
+<div class="dc">encode() is to translate some special character to the xml entity. For example, &lt; to '&amp;lt;', &gt; to '&amp;gt;'. decode() is opposite. vxml is stricter than xml</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">The string to be converted</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The translate result string</div><h1>EXAMPLES</h1><div class="dc">
+s = xmltextencode('&lt;a/b[0]&gt;');<br>
+assert(s == '&amp;lt;a/b[0]&amp;gt;');<br>
+</div>

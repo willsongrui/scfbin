@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString nextweekday(TString t1, TInteger s)</div><h1>说明</h1>
+<div class="dc">得到指定日期后的指定周索引的日期， 字符串是有效日期，且周索引有效(0-6，周日对应0，是一周的第一天)，则返回响应的日期；否则抛出异常。注意：nextweekday总是向前查找，如果传入日期就是要查找的周索引，返回的日期为传人日期＋7天。</div><h1>参数</h1>
+<div class="dc"><h4>t1</h4>
+<div class="dc">表示时间的字符串，格式为YYYYMMDDHHmmSS</div>
+<h4>s</h4>
+<div class="dc">周索引，整数，0-6之间，表示周日到周六</div>
+</div><h1>返回</h1><div class="dc">
+一个新的时间字符串，格式为YYYYMMDDHHmmSS</div><h1>示例</h1><div class="dc">
+// for example, 2002-5-20 is Monday<br>
+assert(nextweekday('20020520000000', 6) == '20020525000000'); // get next Saturday<br>
+assert(nextweekday('20020520000000', 5) == '20020524000000'); // get next Friday<br>
+</div>

@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString asctobcd(TString s)<br>
+TString bcdtoasc(TString s, TInteger mode=1)</div><h1>说明</h1>
+<div class="dc">asc格式和bcd格式的字符串的相互转换</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要转换的字符串，asc字符串必须是0-9A-Fa-f或者星号井号的组合，其中星号代表B，井号代表C</div>
+<h4>mode</h4>
+<div class="dc">转换后的asc字符串的格式，如果为1那么BC用星号井号代替，如果为0，则直接返回BC，缺省为1</div>
+</div><h1>返回</h1><div class="dc">
+转换后的字符串。如果asc字符串长度为奇数，那么转换后的BCD字符串最后的填充位为0</div><h1>示例</h1><div class="dc">
+assert(asctobcd('126') == '\21\06');<br>
+assert(bcdtoasc('\02\50\90\51\71\23\52') == '20050915173225');<br>
+</div>

@@ -1,0 +1,28 @@
+<h1>原型</h1>
+<div class="dc">TString TSCPTable::tostr(TString rowsep=回车,TString colsep='|',TString colFilter='')</div><h1>说明</h1>
+<div class="dc">将字符串表整体转换为一个字符串返回</div><h1>参数</h1>
+<div class="dc"><h4>rowsep</h4>
+<div class="dc">每一行的分割符，缺省为单个回车</div>
+<h4>colsep</h4>
+<div class="dc">每一列的分割符，缺省为竖线</div>
+<h4>colFilter</h4>
+<div class="dc">列过滤器，是一个字符串，由数字0或者1组成，如果列号小于等于字符串的长度，那么colFilter相应位置为0的列将不被构造到返回字符串中。</div>
+</div><h1>返回</h1><div class="dc">
+构造好的字符串</div><h1>示例</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+print(t.tostr());<br>
+将显示：<br>
+11|||14|<br>
+21||||<br>
+31||||<br>
+print(t.tostr('\n','|','1000');<br>
+将只显示第一列：<br>
+11|<br>
+21|<br>
+31|<br>
+</div>

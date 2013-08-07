@@ -1,0 +1,17 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger hxmlchangecontent(TXMLtree handle, TString path, TString value)<br>
+TInteger TXMLTree::changecontent(TString path, TString value)</div><h1>DESCRIPTION</h1>
+<div class="dc">To change the content of an element</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">The handle of the TXMLTree</div>
+<h4>path</h4>
+<div class="dc">The element path</div>
+<h4>value</h4>
+<div class="dc">the new content string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0 is for success and -1 is for failure</div><h1>EXAMPLES</h1><div class="dc">
+i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+hxmlchangecontent(i,'x/y','test');<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;x&gt;xxx&lt;y&gt;test&lt;/y&gt;&lt;/x&gt;');<br>
+</div>

@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::disconnectleg(TInteger legID)</div><h1>DESCRIPTION</h1>
+<div class="dc">To disconnect the call leg from the CS</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>legID</h4>
+<div class="dc">leg id of called party. It must be 2</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+1 for success, 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.disconnectleg (2);<br>
+</div>

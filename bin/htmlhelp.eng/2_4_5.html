@@ -1,0 +1,27 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger THttpContent::getsubcount()<br>
+THttpContent THttpContent::getsubcontent(TInteger index)<br>
+TInteger THttpContent::insertsubbody(TString conteType, THttpContent handle)<br>
+TInteger THttpContent::removesubbody(TInteger index)</div><h1>DESCRIPTION</h1>
+<div class="dc">If the Content-Type is 'multipart/...', these functions can be used.<br>
+getsubcount() is to get the count of the sub-content<br>
+getsubcontent() is to get a sub-content and return a THttpContent object<br>
+insertsubbody() is to insert a sub-content<br>
+removesubbody() is to remove a sub-content</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>index</h4>
+<div class="dc">The index of the sub-content. 0 is the first one</div>
+<h4>contentType</h4>
+<div class="dc">the Content-Type to be set</div>
+<h4>handle</h4>
+<div class="dc">The handle of THttpContent object to be inserted</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+getsubcount() returns the count of the sub-content. 0 is returned if the Content-Type is not 'multipart/...'.<br>
+getsubcontent() returns the handle of THttpContent object for a sub-content.<br>
+insertsubbody() retruns values less than 0 for failure. Other values are for success.<br>
+removesubbody() retruns values less than 0 for failure or returns the handle of the THttpContent object for sub-content</div><h1>EXAMPLES</h1><div class="dc">
+contObj.getsubcount();<br>
+contObj.getsubcontent(1);<br>
+contSubObj.setbuffer('text/plain','&lt;vxml version=&quot;1.0&quot;&gt;&lt;form id=&quot;form1&quot;&gt;&lt;block&gt;&lt;prompt&gt;&lt;audio src=&quot;10006.wav&quot;/&gt;&lt;/prompt&gt;&lt;/block&gt;&lt;/form&gt;&lt;/vxml&gt;');<br>
+contObj.insertsubbody('multipart/related',contSubObj);<br>
+contObj.removesubbody(1);<br>
+</div>

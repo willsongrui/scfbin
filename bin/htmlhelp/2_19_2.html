@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TString TTCAPDialogue::getacname()<br>
+TInteger TTCAPDialogue::setacname(TString ascACName)</div><h1>说明</h1>
+<div class="dc">获得一个对话的ac对应的ASC码字符串，设置一个对话的ACName。一般来说应该使用getac和setac来获取或者设置AC，但是对于一些AC非常繁杂无法在config.ac中一一设置的情况，可以直接使用这个函数来设置AC以便发送TC-Begin或者TC-Uni</div><h1>参数</h1>
+<div class="dc"><h4>ascACName</h4>
+<div class="dc">ASC格式的AC名字串，格式与getacname返回的是一致的</div>
+</div><h1>返回</h1><div class="dc">
+getacname返回ac对应的ASC码字符串，setacname返回整数0</div><h1>示例</h1><div class="dc">
+// for received the InitiDP operation of INAP<br>
+void main(TTCAPDialogue d)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(d.getacname() == '03A37D0101010000');<br>
+}<br>
+</div>

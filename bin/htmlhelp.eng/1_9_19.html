@@ -1,0 +1,73 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString xmlwoods(TString path, TString defaultValue, TInteger useCache=1)<br>
+TString xmlwoodsaggign(TString path, TString var1, TString subPath1, ...)<br>
+TString TXMLtree::query(TString path, TString var1, TString subPath1, ...)</div><h1>DESCRIPTION</h1>
+<div class="dc">xmlwoods and xmlwoods assign functions are to get the value from the xmlwoods configuration. The value can be get by a xml path. A query condition can be used in the path. xmlwoods function returns the value got. the xmlwoodsassign can get a xml node according to the path, and can assign several variables to the attribute values of this node. <br>
+TXMLTree::query is to get value from a xml tree. The arguments and return values is same as xmlwoodsassign function</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">The path. A query condition enclosed in [] can be used in the path. The grammar of the condition is:<br>
+EXPRESSION: TERM&nbsp;&nbsp; '||' TERM <br>
+TERM: FACTOR&nbsp;&nbsp;'&amp;&amp;' FACTOR<br>
+FACTOR:&nbsp;&nbsp;'@'NAME OP VALUE | '(' EXPRESSION&nbsp;&nbsp;')'<br>
+OP: '=' | '&gt;' | '&lt;' | '&gt;=' | '&lt;=' | '!='<br>
+For example:<br>
+PPC:service/config[0]/menu[@level=1 &amp;&amp; @key=2]<br>
+PPC:service/config[0]/menu[@level=1 ]/submenu[(@level=1 || @level=2) &amp;&amp; @key=3]</div>
+<h4>defaultValue</h4>
+<div class="dc">The default value, If the path is not valid, return the default value</div>
+<h4>useCache</h4>
+<div class="dc">Indicate using cache or not. The catch will be used by default. If the query condition includes variable ( for example the phone number), 0 will be used for not using the catch.</div>
+<h4>var1,var2...</h4>
+<div class="dc">String variables will be assigned</div>
+<h4>subPath1,subPath2...</h4>
+<div class="dc">Sub path for the attributes to assign</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+For xmlwoods return the value. for xmlwoodsassign or TXMLTree::query return the number of variables that is assigned value successfully.</div><h1>EXAMPLES</h1><div class="dc">
+/*<br>
+For example the xml file: $CINDIR/xmlwoods/PPC<br>
+&lt;service&gt;<br>
+&lt;config&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;1&quot;&nbsp;&nbsp;key=&quot;1&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;1&quot; key=&quot;1&quot; desc=&quot;PROMPT_CCARD1&quot; msgid=&quot;1111&quot; func=&quot;PCCARD1&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;1&quot;&nbsp;&nbsp;key=&quot;2&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;1&quot; key=&quot;2&quot; desc=&quot;PROMPT_CCARD2&quot; msgid=&quot;1212&quot; func=&quot;PCCARD2&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;1&quot;&nbsp;&nbsp;key=&quot;1&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;1&quot; key=&quot;4&quot; desc=&quot;PROMPT_CCARD1&quot; msgid=&quot;1114&quot; func=&quot;PCCARD1&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;1&quot;&nbsp;&nbsp;key=&quot;2&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;1&quot; key=&quot;3&quot; desc=&quot;PROMPT_CCARD2&quot; msgid=&quot;1213&quot; func=&quot;PCCARD2&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;2&quot;&nbsp;&nbsp;key=&quot;1&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;2&quot; key=&quot;1&quot; desc=&quot;PROMPT_CCARD5&quot; msgid=&quot;2121&quot; func=&quot;PCCARD5&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&nbsp;&nbsp;&lt;menu level=&quot;2&quot;&nbsp;&nbsp;key=&quot;2&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;submenu level=&quot;2&quot; key=&quot;2&quot; desc=&quot;PROMPT_CCARD6&quot; msgid=&quot;2222&quot; func=&quot;PCCARD6&quot;/&gt;<br>
+&nbsp;&nbsp;&lt;/menu&gt;<br>
+&lt;/config&gt;<br>
+&lt;/service&gt;<br>
+*/<br>
+var TString query, msgid, func, desc;<br>
+query = 'PPC:service/config[0]/menu[@level=1&amp;&amp;@key=2]/submenu[@level=1&amp;&amp;@key=3]';<br>
+var TInteger n = xmlwoodsassign(query<br>
+&nbsp;&nbsp;&nbsp;, msgid, 'msgid' // submenu/msgid -&gt; var msgid<br>
+&nbsp;&nbsp;&nbsp;, func, 'func'&nbsp;&nbsp;// submenu/func -&gt; var func<br>
+&nbsp;&nbsp;&nbsp;, desc,'desc' // submenu/desc -&gt; var desc<br>
+&nbsp;&nbsp;&nbsp;);<br>
+assert(n == 3);<br>
+assert(msgid == '1213');<br>
+assert(func == 'PCCARD2');<br>
+assert(desc == 'PROMPT_CCARD2');<br>
+<br>
+var TXMLTree x = new TXMLTree('&lt;a&gt;<br>
+&lt;b a=&quot;1&quot; b=&quot;a&quot;/&gt;<br>
+&lt;b a=&quot;2&quot; b=&quot;b&quot;/&gt;<br>
+&lt;b a=&quot;3&quot; b=&quot;c&quot;/&gt;<br>
+&lt;b a=&quot;4&quot; b=&quot;d&quot;/&gt;<br>
+&lt;/a&gt;');<br>
+var TString s1, s2;<br>
+x.query('a/b[@a=1]', s1, 'b', s2, 'a');<br>
+assert(s1 == 'a');<br>
+assert(s2 == '1');<br>
+</div>

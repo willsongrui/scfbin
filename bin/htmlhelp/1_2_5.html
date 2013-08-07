@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TString ipaddressd2h(TString sd)<br>
+TString ipaddressh2d(TString sh)</div><h1>说明</h1>
+<div class="dc">ipaddressd2h将表示10进制IP地址字符串转换为16进制格式<br>
+ipaddressh2dh将16进制格式的IP地址字符串转换为表示10进制IP地址字符串</div><h1>参数</h1>
+<div class="dc"><h4>sd</h4>
+<div class="dc">十进制格式的IP地址字符串，例如'192.168.2.217'</div>
+<h4>sh</h4>
+<div class="dc">16制格式的IP地址字符串，固定6个字节，前两个字节是00,01，后面4个字节是IP地址的4个字节</div>
+</div><h1>返回</h1><div class="dc">
+转换后的返回结果</div><h1>示例</h1><div class="dc">
+assert(ipaddressd2h('192.168.2.217') == '\00\01\C0\A8\02\D9');<br>
+assert(ipaddressh2d('\00\01\C0\A8\02\D9') == '192.168.2.217');<br>
+</div>

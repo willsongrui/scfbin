@@ -1,0 +1,27 @@
+<h1>原型</h1>
+<div class="dc">TInteger tosec(TString ascTime)<br>
+TString tosec2(TString ascTime)<br>
+TString sectoasctime(TInteger t)</div><h1>说明</h1>
+<div class="dc">tosec是求参数时间与1970年1月1日零点的时间差的秒数。这个功能主要用来求得两个时间的时间差值。而tosec2是求得参数时间与1900年1月1日零时之间的秒数，由于这个数超过了4字节整数的表示范围，所以返回字符串。二者相差70年，也就是2208988800秒<br>
+sectoasctime是tosec的逆过程，根据与1970年1月1日零点的时间差的秒数求ASC格式的时间字符串</div><h1>参数</h1>
+<div class="dc"><h4>ascTime</h4>
+<div class="dc">表示时间的字符串，格式为YYYYMMDDHHmmSS</div>
+<h4>t</h4>
+<div class="dc">与1970年1月1日零点的时间差的秒数</div>
+</div><h1>返回</h1><div class="dc">
+对tosec是一个整数；对tosec2是一个字符串，十进制表示<br>
+sectoasctime返回表示时间的字符串，格式为YYYYMMDDHHmmSS</div><h1>示例</h1><div class="dc">
+var TInteger i = tosec('20040401102030');<br>
+var TInteger j = tosec('20040401112030');<br>
+assert(j - i == 3600);<br>
+<br>
+assert(tosec('20070723093100') == 1185154260);<br>
+assert(tosec2('20070723093100') == '3394143060');<br>
+<br>
+var TString time,time1;<br>
+var TInteger sec;<br>
+var TString time = currentdate8andtime();<br>
+var TInteger sec = tosec(time);<br>
+var TString time1 = sectoasctime(sec);<br>
+assert(time == time1);<br>
+</div>

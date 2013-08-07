@@ -1,0 +1,39 @@
+<h1>原型</h1>
+<div class="dc">TString TSCPTable::toxml()<br>
+TString TSCPTable::toxml2()</div><h1>说明</h1>
+<div class="dc">将字符串表中的所有内容转换为xml格式，toxml返回的是带回车缩进的xml串，toxml2返回的是紧缩格式的xml串</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+转换之后的xml格式的字符串</div><h1>示例</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+assert(t.toxml() ==<br>
+'&lt;table&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;row&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;11&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;14&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/row&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;row&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;21&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/row&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;row&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;31&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col&gt;&lt;/col&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/row&gt;<br>
+&lt;/table&gt;');<br>
+<br>
+assert(t.toxml2() ==<br>
+'&lt;table&gt; &lt;row&gt;&lt;col&gt;11&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;14&lt;/col&gt;&lt;/row&gt; &lt;row&gt;&lt;col&gt;21<br>
+&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/row&gt; &lt;row&gt;&lt;col&gt;31&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;col&gt;<br>
+&lt;/col&gt;&lt;col&gt;&lt;/col&gt;&lt;/row&gt;&lt;/table&gt;');<br>
+</div>

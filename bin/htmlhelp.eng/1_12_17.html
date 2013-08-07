@@ -1,0 +1,24 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString tldntomscid(TString tldn)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the MSCID according to the config.mscid configuration</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>tldn</h4>
+<div class="dc">the TLDN number</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The MSCID</div><h1>EXAMPLES</h1><div class="dc">
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString tldn,mscid;<br>
+&nbsp;&nbsp;&nbsp;tldn = '13334710';<br>
+&nbsp;&nbsp;&nbsp;mscid = tldntomscid(tldn);<br>
+&nbsp;&nbsp;&nbsp;assert(mscid == '37288A');<br>
+&nbsp;&nbsp;&nbsp;tldn = '8613334710'<br>
+&nbsp;&nbsp;&nbsp;mscid = tldntomscid(tldn);<br>
+&nbsp;&nbsp;&nbsp;assert(mscid == '37288A');<br>
+&nbsp;&nbsp;&nbsp;tldn = '013334710';<br>
+&nbsp;&nbsp;&nbsp;mscid = tldntomscid(tldn);<br>
+&nbsp;&nbsp;&nbsp;assert(mscid == '37288A');<br>
+&nbsp;&nbsp;&nbsp;tldn = '13334710999';<br>
+&nbsp;&nbsp;&nbsp;mscid = tldntomscid(tldn);<br>
+&nbsp;&nbsp;&nbsp;assert(mscid == '37288A');<br>
+}<br>
+</div>

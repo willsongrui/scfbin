@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString strstr(TString arg1 ,TString arg2)<br>
+TString strcasestr (TString arg1 ,TString arg2)</div><h1>说明</h1>
+<div class="dc">字符串中查找子串，strstr区分大小写，strcasestr不区分大小写</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">源字符串</div>
+<h4>arg2</h4>
+<div class="dc">匹配字符串</div>
+</div><h1>返回</h1><div class="dc">
+匹配位置之后的子串，如果没有查到，返回空串</div><h1>示例</h1><div class="dc">
+assert(strstr('abcd', 'c') == 'cd');<br>
+assert(strcasestr('abCd', 'c') == 'Cd');<br>
+</div>

@@ -1,0 +1,20 @@
+<h1>原型</h1>
+<div class="dc">TInteger THttpClient::sendget(TString url, int timeout=60)<br>
+TInteger THttpClient::sendpost(TString url, THttpContent contentid, int timeout=60)</div><h1>说明</h1>
+<div class="dc">sendget发送带有get方法的请求消息。sendpost发送带有post方法的请求消息</div><h1>参数</h1>
+<div class="dc"><h4>url</h4>
+<div class="dc">请求消息的url</div>
+<h4>timeout</h4>
+<div class="dc">参数timeout为请求超时时长,单位秒,缺省60</div>
+</div><h1>返回</h1><div class="dc">
+如果返回值小于0代表失败, 大等于0代表成功</div><h1>示例</h1><div class="dc">
+var TString&nbsp;&nbsp;strURL;<br>
+strURL = 'http://192.168.2.237:51289/httpservertest';<br>
+contentObj.setbuffer('text/xml','&lt;vxml version=&quot;1.0&quot;&gt;&lt;form id=&quot;form3&quot;&gt;&lt;block&gt;&lt;prompt&gt;<br>
+&lt;audio src=&quot;10004.wav&quot;/&gt;&lt;/prompt&gt;&lt;/block&gt;&lt;/form&gt;&lt;/vxml&gt;');		<br>
+contentObj.setsoapbody(soapObj);<br>
+	<br>
+resultCode=httpclientobj.sendpost(strURL,contentObj);<br>
+<br>
+resultCode=httpclientobj.sendget(strURL);<br>
+</div>

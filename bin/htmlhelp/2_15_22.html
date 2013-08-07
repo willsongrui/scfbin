@@ -1,0 +1,17 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallSegment::geterrorcase()</div><h1>说明</h1>
+<div class="dc">取得错误的响应码，如果在同步etc，pa，pc操作时，sib走错误出口，可以使用该函数。</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+0 正常<br>
+1 默认错误<br>
+2 ETC失败<br>
+3 超时<br>
+4 收号失败<br>
+5 放音失败<br>
+6 录音失败</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.geterrorcase ();<br>
+</div>

@@ -1,0 +1,28 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::ica(TString called, TString calling)<br>
+TInteger TSipCallSegment::icawitharg(TString connectType, TString urlCalled, TString calling, TString toCalled, TString other='')</div><h1>DESCRIPTION</h1>
+<div class="dc">สิบ๔</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>called</h4>
+<div class="dc">called party number</div>
+<h4>calling</h4>
+<div class="dc">calling party number to display</div>
+<h4>connectType</h4>
+<div class="dc">connecting type, 1 for connecting to the media<br>
+2,3&nbsp;&nbsp;the destinationAddr is an userNumber or url,state=initialorderms, order audio 2 and video 3<br>
+4 the destinationAddr is an userNumber or url,state=initialorderms,mode=audio,ms not do reinvite<br>
+5 the destinationAddr is an userNumber or url,state=initialorderms, mode=video,ms not do reinvite<br>
+6 the destinationAddr is an userNumber or url,state=initial,invite with nosdp</div>
+<h4>urlCalled</h4>
+<div class="dc">called party number in the url</div>
+<h4>toCalled</h4>
+<div class="dc">called party number in the &quot;To&quot; parameter, default is same with the number in url</div>
+<h4>other</h4>
+<div class="dc">other argument, default is null string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+1 for success, 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.ica('6666','7777');<br>
+</div>

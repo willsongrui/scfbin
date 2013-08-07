@@ -1,0 +1,25 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString bigintoper(TString i1,TString i2 ,TString op, TInteger type=10 )</div><h1>DESCRIPTION</h1>
+<div class="dc">To do the calculation for the big integer in string format</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>i1</h4>
+<div class="dc">The operand</div>
+<h4>i2</h4>
+<div class="dc">The operand</div>
+<h4>op</h4>
+<div class="dc">The operator. It can be '+' '-' '*' '/' '%'</div>
+<h4>type</h4>
+<div class="dc">Default value is 10 for decimal</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The calculation result</div><h1>EXAMPLES</h1><div class="dc">
+var TString s;<br>
+s = bigintoper('666666666666666666666666666','37483473847384748347384','+',10);<br>
+assert(s == '666704150140514051415014050');<br>
+s = bigintoper('666666666666666666666666666','37483473847384748347384','-',10);<br>
+assert(s == '666629183192819281918319282');<br>
+s = bigintoper('666666666666666666666666666','37483473847384748347384','*',10);<br>
+assert(s == '24988982564923165564922666641677684101743501101744');<br>
+s = bigintoper('666666666666666666666666666','37483473847384748347384','/',10);<br>
+assert(s == '17785');<br>
+s = bigintoper('666666666666666666666666666','37483473847384748347384','%',10);<br>
+assert(s == '23084290928917308442226');<br>
+</div>

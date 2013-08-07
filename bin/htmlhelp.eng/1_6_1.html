@@ -1,0 +1,11 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString sqltable(TString sql)<br>
+TString sqlclass(TString sql)</div><h1>DESCRIPTION</h1>
+<div class="dc">sqltable() is to get the table name from the sql statement. sqlclass() is to get the operation class from the sql statement</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>sql</h4>
+<div class="dc">The sql statement string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The string for table name or operation class name</div><h1>EXAMPLES</h1><div class="dc">
+assert(sqltable('select * from acr_record') == 'ACR_RECORD');<br>
+assert(sqlclass('select * from acr_record') == 'SELECT');<br>
+</div>

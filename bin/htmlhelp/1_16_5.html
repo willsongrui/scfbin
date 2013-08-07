@@ -1,0 +1,30 @@
+<h1>原型</h1>
+<div class="dc">TInteger memcachepkget(TString tableName, TString key, TInteger scptable, TInteger limit, TString dbName='')<br>
+TInteger memcachegetnext(TString tableName, TString key, TInteger scptable, TInteger limit, TString dbName='')<br>
+TInteger memcachegetprev(TString tableName, TString key, TInteger scptable, TInteger limit, TString dbName='') </div><h1>说明</h1>
+<div class="dc">这几个函数用于与memcachedb交互. <br>
+memcachedb 是一个 key-value 结构的存储系统, 能够提供数据持久化和实时异机复制能力. <br>
+scf通过配置文件config.memcachedb可以操作多个memcachedb, config.memcachedb示例如下: <br>
+&nbsp;&nbsp;&nbsp;groupname memcache1 <br>
+&nbsp;&nbsp;&nbsp;192.168.2.237 21211 <br>
+&nbsp;&nbsp;&nbsp;192.168.2.237 21212 <br>
+&nbsp;&nbsp;&nbsp;groupname memcache2 <br>
+&nbsp;&nbsp;&nbsp;192.168.3.162 32311 <br>
+&nbsp;&nbsp;&nbsp;192.168.3.162 32312 <br>
+其中memcache1，memcache2类似于传统的数据库名，config.memcache中可以配置10个group.由于memcachedb可以支持主从复制， 因此一个组内可以出现多个主机或端口（最多10个）。<br>
+根据业务开发习惯， 在业务中通过函数操作memcachedb时, 仍保留database, table概念。<br>
+memcachepkget: 按前缀查询memcachedb中的记录, 最多一次返回500条. <br>
+memcachegetnext: 查询memcachedb指定记录之后的记录, 最多一次返回500条. <br>
+memcachegetprev: 查询memcachedb指定记录之后的记录, 最多一次返回500条.</div><h1>参数</h1>
+<div class="dc"><h4>tableName</h4>
+<div class="dc">字符串，必须以大写字母开头, 并且不能包含上箭头和空格字符</div>
+<h4>key</h4>
+<div class="dc">字符串，不能包含' '字符, scf使用tableName和key构造查询条件</div>
+<h4>scptable</h4>
+<div class="dc">SCPTable变量, 用于保存查询结果</div>
+<h4>limit</h4>
+<div class="dc">整数, 用于限制最多返回多少条记录</div>
+<h4>dbName</h4>
+<div class="dc">字符串, scf根据dbName查找config.memcachedb配置, 找到对应的memcachedb端口. 如果dbName为空则轮选</div>
+</div><h1>返回</h1><div class="dc">
+整数, 成功返回0, 否则抛出异常</div>

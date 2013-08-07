@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallSegment::etc()<br>
+TInteger TSipCallSegment::ctr(TInteger resCode=183)</div><h1>说明</h1>
+<div class="dc">同步连接媒体操作，ctr和etc的区别是，ctr没有应答因此不会导致计费</div><h1>参数</h1>
+<div class="dc"><h4>resCode</h4>
+<div class="dc"></div>
+</div><h1>返回</h1><div class="dc">
+1成功，0失败</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.etc();<br>
+</div>

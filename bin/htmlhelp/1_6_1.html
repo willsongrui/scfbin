@@ -1,0 +1,12 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;crstartdate8andtime()<br>
+TString&nbsp;&nbsp;crstopdate8andtime()<br>
+TString&nbsp;&nbsp;crtimestamp()</div><h1>说明</h1>
+<div class="dc">这几个函数只有当旧的解码方式InitialDP触发的业务逻辑中使用，当收到ACR事件的时候可以得到ACR参数中的几个时间变量的值。同对应的静态CCB变量等价，只不过返回的是ASC格式，而静态CCB变量是BCD格式</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+ASC码，YYYYMMDDHHmmSS格式的时间</div><h1>示例</h1><div class="dc">
+s1 = crstartdate8andtime();<br>
+s2 = crstopdate8andtime();<br>
+s3 = crtimestamp();<br>
+执行结果可能是：s1: '20040405163207'; s2: '20040405164031'; s3: '20040405164030'<br>
+</div>

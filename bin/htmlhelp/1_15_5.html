@@ -1,0 +1,20 @@
+<h1>原型</h1>
+<div class="dc">TInteger []::push(TypeOfArrayMember mem)<br>
+TypeOfArrayMember []::pop()<br>
+TInteger []::unshift(TypeOfArrayMember mem)<br>
+TypeOfArrayMember []::shift()</div><h1>说明</h1>
+<div class="dc">push在数组尾部增加一个成员，pop从数组尾部取出一个成员，unshift在数组头部增加一个成员，shift从数组头部取出一个成员</div><h1>参数</h1>
+<div class="dc"><h4>mem</h4>
+<div class="dc">push和unshift有这个参数，是增加的成员，其类型必须与数组成员的类型一致</div>
+</div><h1>返回</h1><div class="dc">
+pop和unshift返回取出的成员，其类型与数组成员的类型一致</div><h1>示例</h1><div class="dc">
+var TInteger i[] = {1,2,3};<br>
+i.push(4);<br>
+assert(i.tostr() == '1|2|3|4');<br>
+i.unshift(0);<br>
+assert(i.tostr() == '0|1|2|3|4');<br>
+assert(i.pop() == 4);<br>
+assert(i.tostr() == '0|1|2|3');<br>
+assert(i.shift() == 0);<br>
+assert(i.tostr() == '1|2|3');<br>
+</div>

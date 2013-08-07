@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString THttpContent::getheadervalue(TString key)<br>
+TInteger THttpContent::setheadervalue(TString key ,TString value)</div><h1>DESCRIPTION</h1>
+<div class="dc">getheadervalue() is to get the value of message header<br>
+serheadervalue() is to set the value of message header</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>key</h4>
+<div class="dc">The field name of message header. For example: 'Content-Type', 'Content-Length'</div>
+<h4>value</h4>
+<div class="dc">The value to be set</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+getheadervalue() returns the value of message header</div><h1>EXAMPLES</h1><div class="dc">
+contSubObj3.setheadervalue('Content-Type','text/xml');<br>
+assert(contSubObj3.getheadervalue('Content-Type')=='text/xml');<br>
+</div>

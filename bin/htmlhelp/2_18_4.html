@@ -1,0 +1,50 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipConference::pa(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat, TInteger interval, TInteger timer=60)<br>
+TInteger TSipConference::asynpa(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat, TInteger interval)<br>
+TInteger TSipConference::pr(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat, TInteger interval, TString endDigit, TInteger duration, TString fileName, TString fileFormat, TInteger dupTreat, TInteger timer=60)<br>
+TInteger TSipConference::asynpr(TString msgIDBase, TString msgID, TInteger type, TString varPart, TInteger repeat, TInteger interval, TString endDigit, TInteger duration, TString fileName, TString fileFormat, TInteger dupTreat)</div><h1>说明</h1>
+<div class="dc">对会议进行同步/异步放音/录音操作</div><h1>参数</h1>
+<div class="dc"><h4>msgIDBase</h4>
+<div class="dc">语音基数</div>
+<h4>msgID</h4>
+<div class="dc">语音号，字符串，可以是一个数字串，也可以是一个文件名。如果是TTS等方式，这里可以是空串</div>
+<h4>type</h4>
+<div class="dc">语音类型：<br>
+0: 固定语音<br>
+1: 整数<br>
+2: 数字<br>
+3: HHMM格式的时间<br>
+4: YYYYMMDD格式的日期<br>
+5: 价格，是一个特定货币最小单位为单位的整数<br>
+6: 时长，以秒为单位的整数<br>
+7: TTS合成的语音<br>
+8: dtmf数字<br>
+9: fsk数字<br>
+10: 发送传真</div>
+<h4>varPart</h4>
+<div class="dc">可变音内容:<br>
+- 如果是TTS，这里是文本的内容<br>
+- 如果是固定语音或者传真，这里为空<br>
+- 其它默认为中文，如果有其他语言或子类型，使用如下格式&quot;lang-value-subtype&quot;, 例如 &quot;eng-12833-gen&quot;, &quot;chi-1234-ord&quot;</div>
+<h4>repeat</h4>
+<div class="dc">重复次数</div>
+<h4>interval</h4>
+<div class="dc">时间间隔</div>
+<h4>timer</h4>
+<div class="dc">超时时长, 默认60秒</div>
+<h4>endDigit</h4>
+<div class="dc">录音结束符</div>
+<h4>duration</h4>
+<div class="dc">录音最大时长</div>
+<h4>fileName</h4>
+<div class="dc">录音文件名</div>
+<h4>fileFormat</h4>
+<div class="dc">录音文件格式，可以是：<br>
+- audio/wav<br>
+- audio/x-wav<br>
+- audio/vnd.wave;codec=x, x=1:PCM, 6:G711a, 7:G711u, 83:G729, 8C:Convedia G729c<br>
+- video/quicktime;Codecs=&quot;h263,ulaw&quot;</div>
+<h4>dupTreat</h4>
+<div class="dc">重名处理(0覆盖已存在的文件;1追加到已存在文件的尾部)</div>
+</div><h1>返回</h1><div class="dc">
+</div>

@@ -1,0 +1,21 @@
+<h1>原型</h1>
+<div class="dc">TString strreplace(TString source, TString from, TString to)<br>
+TInteger TString::replace(TString from, TString to)</div><h1>说明</h1>
+<div class="dc">替换字符串，将source中的所有的from全部替换成to，返回替换后的结果(区分大小写)。strreplace并不改变源串，返回替换后的字符串。而TString::replace直接在源串上替换，并且可以支持含有普通字符串结束符0的字符串</div><h1>参数</h1>
+<div class="dc"><h4>source</h4>
+<div class="dc">源字符串</div>
+<h4>from</h4>
+<div class="dc">源字符串中被替换的字符</div>
+<h4>to</h4>
+<div class="dc">替换后的字符</div>
+</div><h1>返回</h1><div class="dc">
+strreplace返回替换之后的字符串，TString::replace返回0</div><h1>示例</h1><div class="dc">
+assert(strreplace('abcdABcd','ab','cc') == 'cccdABcd');<br>
+s='111111';<br>
+s.replace('1', '2');<br>
+assert(s == '222222');<br>
+s.replace('2', '\00\01');<br>
+assert(s == '\00\01\00\01\00\01\00\01\00\01\00\01');<br>
+s.replace('\01', '\02\03');<br>
+assert(s == '\00\02\03\00\02\03\00\02\03\00\02\03\00\02\03\00\02\03');<br>
+</div>

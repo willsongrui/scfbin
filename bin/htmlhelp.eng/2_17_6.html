@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TRadius::encode()</div><h1>DESCRIPTION</h1>
+<div class="dc">To encode the radius message</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+the returned string can be sent directly</div><h1>EXAMPLES</h1><div class="dc">
+var TRadius r;<br>
+var TString s, sr;<br>
+r = new TRadius;<br>
+r.setcommandcode(2);<br>
+r.setid(10);<br>
+r.setauth('1234567890123456'); // a string after md5 encryption<br>
+r.setcontent(s); // s is constructed by xmlsib<br>
+sr=r.encode();<br>
+udpsend(argv0,atoi(argv1),sr); // send the messagae<br>
+</div>

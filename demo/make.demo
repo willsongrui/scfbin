@@ -1,0 +1,8 @@
+
+EXE=    ${CINDIR}/bin/scfdemoines
+SRC=    demoines.C
+INCLUDEDIR=-I${CINDIR}/include
+
+${EXE}: ${LIBSCF} ${SRC}
+	${CC} -o ${EXE} ${CFLAGS} ${SRC} ${INCLUDEDIR} ${LIBSCF} ${LIB}
+

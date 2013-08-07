@@ -1,0 +1,11 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString THttpServer::geturlvalue(TString name)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the value of a parameter from the request URL</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>name</h4>
+<div class="dc">The name of the parameter</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The value of the parameter</div><h1>EXAMPLES</h1><div class="dc">
+// For example, the URL: http://192.168.2.205:8080?a=1&amp;b=c<br>
+assert(httpServer.geturlvalue('a') == '1');<br>
+assert(httpServer.geturlvalue('b') == 'c');<br>
+</div>

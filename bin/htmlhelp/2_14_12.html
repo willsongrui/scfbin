@@ -1,0 +1,23 @@
+<h1>原型</h1>
+<div class="dc">TString TSipMsg::getfromtag()<br>
+TInteger TSipMsg::setfromtag(TString tagValue)<br>
+TString TSipMsg::gettotag()<br>
+TInteger TSipMsg::settotag(TString tagValue)</div><h1>说明</h1>
+<div class="dc">取得/设置消息头中From或者To参数的tag值，tag值之的是From或者To参数行的&quot;tag=&quot;之后的内容</div><h1>参数</h1>
+<div class="dc"><h4>tagValue</h4>
+<div class="dc">要设置的tag的值</div>
+</div><h1>返回</h1><div class="dc">
+对于getfromtag和gettotag返回From中的tag的值，对于setfromtag和settotag，返回0表示成功，-1表示失败</div><h1>示例</h1><div class="dc">
+/* For example:<br>
+INVITE sip:7434@10.20.200.227:5060 SIP/2.0<br>
+Call-ID: 7764053628133e4b65b609e7160e555e@10.20.200.227<br>
+From: &lt;sip:07312910430@10.20.200.227:5060&gt;;tag=00143-0b1006b1010684d6<br>
+To: &lt;sip:7434@10.20.200.227:5060&gt;;tag=972x833x<br>
+...<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getfromtag() == '00143-0b1006b1010684d6');<br>
+&nbsp;&nbsp;&nbsp;assert(req.gettotag() == '972x833x');<br>
+}<br>
+</div>

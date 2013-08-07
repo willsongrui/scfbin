@@ -1,0 +1,18 @@
+<h1>原型</h1>
+<div class="dc">TString fgets(TString fileName, TInteger mode=0, TInteger flag=0)</div><h1>说明</h1>
+<div class="dc">从文件中一行一行的读，如果文件名和上一个fgets指示的文件一样，那么接着处理下一行，如果不一样，那么重新打开另一个文件。</div><h1>参数</h1>
+<div class="dc"><h4>fileName</h4>
+<div class="dc">指示文件名</div>
+<h4>mode</h4>
+<div class="dc">打开文件模式，0只读，大于0读写，默认为0</div>
+<h4>flag</h4>
+<div class="dc">文件末尾返回指示，0导致抛出异常,大于0返回NULL，默认为0</div>
+</div><h1>返回</h1><div class="dc">
+读出的一行字符串，字符串包括行末的回车</div><h1>示例</h1><div class="dc">
+var TString fileName,line;<br>
+fileName=...;<br>
+line=fgets(fileName,0,1);<br>
+while(line!='')<br>
+line=fgets(fileName,0,1);<br>
+print('file is end');<br>
+</div>

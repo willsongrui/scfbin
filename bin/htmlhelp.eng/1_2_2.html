@@ -1,0 +1,12 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString itoa(TInteger i)<br>
+TString itoa2(TInteger i)</div><h1>DESCRIPTION</h1>
+<div class="dc">To convert a integer to a string. itoa() returns decimal string. itoa2() returns binary string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>i</h4>
+<div class="dc">The integer to be converted. for itoa2(), this integer must be between 0-255</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The result string. For itoa2(), the string length is fixed at 8</div><h1>EXAMPLES</h1><div class="dc">
+assert(itoa(255) == '255');<br>
+assert(itoa2(255) == '11111111');<br>
+assert(itoa2(1) == '00000001');<br>
+</div>

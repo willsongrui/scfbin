@@ -1,0 +1,19 @@
+<h1>原型</h1>
+<div class="dc">TInteger THttpContent::writefile(TString filename)<br>
+TInteger THttpContent::readfile(TString filename)</div><h1>说明</h1>
+<div class="dc">writefile用来写二进制文件，路径放在cin/webxml下，即把THttpContent的内容整个写到二进制文件中<br>
+readfile读二进制文件，路径cin/webxml下的文件，writefile的逆函数，读后不做分析，直接得到THttpContent的树，然后可以做getcontenttype,getsubcount等操作</div><h1>参数</h1>
+<div class="dc"><h4>filename</h4>
+<div class="dc">文件名</div>
+</div><h1>返回</h1><div class="dc">
+成功返回1，失败返回0</div><h1>示例</h1><div class="dc">
+contObj=new (THttpContent);<br>
+......<br>
+contSubObj.setbuffer('text/plain','&lt;vxml version=&quot;1.0&quot;&gt;&lt;form id=&quot;form1&quot;&gt;&lt;block&gt;&lt;prompt&gt;&lt;audio src=&quot;10006.wav&quot;/&gt;&lt;/prompt&gt;&lt;/block&gt;&lt;/form&gt;&lt;/vxml&gt;');<br>
+itmp=contObj.insertsubbody('multipart/related',contSubObj);<br>
+......<br>
+contObj.writefile('test.bin');<br>
+contObj.readfile('test.bin');<br>
+contObj.getcontenttype();<br>
+<br>
+</div>

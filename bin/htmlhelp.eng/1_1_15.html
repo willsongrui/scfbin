@@ -1,0 +1,39 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger strtoargvs(TString str, TInteger beginArgv)<br>
+TString[] TString::split(TString dataBegin='', TString dataEnd='')</div><h1>DESCRIPTION</h1>
+<div class="dc">strtoargvs() is to split a string to the static variable argv. The separator is space, enter or table character. TString::split() can split string using the same rule, but the result is a TString array</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>str</h4>
+<div class="dc">the string to be split</div>
+<h4>beginArgvi</h4>
+<div class="dc">the first argv index to save the split result. For example, 3 indicates the first splitting result saved into variable argv3</div>
+<h4>dataBegin</h4>
+<div class="dc">no-parse section begin flag. default is a null string that means the flag is same as the xml standard</div>
+<h4>dataEnd</h4>
+<div class="dc">no-parse section end flag. The section between dataBegin and dataEnd will not be parsed and the separator will be ignored. default is a null string that mains same as dataBegin or same as xml standard.</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+strtoargv() returns the number of strings split. TString::split() returns a TString array</div><h1>EXAMPLES</h1><div class="dc">
+s = 'a b cc 00123';<br>
+i = strtoargvs(s,3);<br>
+assert(i == 4);<br>
+assert(argv3 == 'a');<br>
+assert(argv4 == 'b');<br>
+assert(argv5 == 'cc');<br>
+assert(argv6 == '00123');<br>
+assert(argv7 == '');<br>
+<br>
+var TString s3 = 'aaa bbb&nbsp;&nbsp;&nbsp;&nbsp;ccc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ddd\neee &lt;!CDATA[[a a a a a]]&gt;fff gg';<br>
+var TString s4[] = s3.split();<br>
+assert(s4.length()==8, itoa(s4.length()));<br>
+assert(s4[0]=='aaa', s4[0]);<br>
+assert(s4[1]=='bbb', s4[1]);<br>
+assert(s4[2]=='ccc', s4[2]);<br>
+assert(s4[3]=='ddd', s4[3]);<br>
+assert(s4[4]=='eee', s4[4]);<br>
+assert(s4[5]=='a a a a a', s4[5]);<br>
+assert(s4[6]=='fff', s4[6]);<br>
+assert(s4[7]=='gg', s4[7]);<br>
+<br>
+assert('111 222 222'.split()[1]=='222');<br>
+assert('111 &quot;222 222&quot;'.split('&quot;')[1]=='222 222');<br>
+assert('111 &lt;222 222&gt;'.split('&lt;', '&gt;')[1]=='222 222');<br>
+</div>

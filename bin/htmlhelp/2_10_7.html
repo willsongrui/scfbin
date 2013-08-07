@@ -1,0 +1,37 @@
+<h1>原型</h1>
+<div class="dc">TInteger TASNObject::addvalue(TString value, TInteger type, TInteger tag)<br>
+TInteger TASNObject::addobject(TASNObject objectid, TInteger tag)</div><h1>说明</h1>
+<div class="dc">这两个函数用来构造一个ASN编码，构造之后的对象和前面提到的对象有区别，并没有树形结构，仅仅是编码，不能用tag path取值。addvalue在自身编码之后追加一个编码的值，addobject在对象本身编码之后追加另一个对象的编码的值</div><h1>参数</h1>
+<div class="dc"><h4>value</h4>
+<div class="dc">要追加的参数的值，必须是一个基本类型的值</div>
+<h4>type</h4>
+<div class="dc">要追加的参数的type:<br>
+5: 只编tag和长度0，value不处理，允许为空串<br>
+2: 将value转换为整数编码<br>
+4: 将value按照字符串原样编码<br>
+254: 将value转换为BCD码，如果是奇数位，补F<br>
+255: 将value转换为BCD码，如果是奇数位，补0</div>
+<h4>tag</h4>
+<div class="dc">要追加的参数的tag，这个必须是ASN.1编码之后的实际tag</div>
+<h4>objectid</h4>
+<div class="dc">要追加的对象的handle</div>
+</div><h1>返回</h1><div class="dc">
+返回0代表成功，其余代表失败</div><h1>示例</h1><div class="dc">
+var TASNObject a,b,c;<br>
+<br>
+a = new TASNObject;<br>
+a.addvalue('1234',4,0x80);&nbsp;&nbsp;// a: 80 04 31 32 33 34<br>
+a.addvalue('1234',4,0x81);&nbsp;&nbsp;// a: 80 04 31 32 33 34 81 04 31 32 33 34<br>
+b = new TASNObject;<br>
+b.addobject(a,0xA0); // b: A0 0C 80 04 31 32 33 34 81 04 31 32 33 34<br>
+b.addobject(a,0xA1);<br>
+// b:<br>
+// A0 0C 80 04 31 32 33 34 81 04 31 32 33 34 A1 0C 80 04 31 32 33 34<br>
+&nbsp;&nbsp;&nbsp;81 04 31 32 33 34<br>
+c = new TASNObject;<br>
+c.addobject(b,0x30);<br>
+// c:<br>
+// 30 1C A0 0C 80 04 31 32 33 34 81 04 31 32 33 34 A1 0C 80 04 31 32<br>
+&nbsp;&nbsp;&nbsp;33 34 81 04 31 32 33 34<br>
+assert(c.getcode() == '03C10AC00840132333431840132333431AC0084013233343184013233343');<br>
+</div>

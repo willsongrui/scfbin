@@ -1,0 +1,22 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;sprintf(TString format，...)<br>
+TString&nbsp;&nbsp;sprintbin(TString binStr)</div><h1>说明</h1>
+<div class="dc">sprintf根据格式构造一个字符串，同c语言中sprintf函数。sprintbin则是把一个可能含有不可打印字符的字符串构造一个可以打印的字符串返回，sprintbin函数一般和print配合使用用于trace输出</div><h1>参数</h1>
+<div class="dc"><h4>format</h4>
+<div class="dc">同c语言参数的sprintf函数</div>
+<h4>binStr</h4>
+<div class="dc">可能含有不可打印字符的字符串</div>
+<h4>...</h4>
+<div class="dc">同c语言参数的sprintf函数，但是参数列表的个数有限制，最多30个</div>
+</div><h1>返回</h1><div class="dc">
+构造的字符串</div><h1>示例</h1><div class="dc">
+var TString s1 = 'aaa';<br>
+var TString s2 = 'bbb';<br>
+var TString s = sprintf('%s%s',s1,s2);<br>
+assert(s == 'aaabbb');<br>
+<br>
+var TString binStr = 'abc\00\00\01\01abc';<br>
+print(sprintbin(binStr));<br>
+// may output:<br>
+// 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;61 62 63 00 00 01 01 61&nbsp;&nbsp;62 63&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abc....abc<br>
+</div>

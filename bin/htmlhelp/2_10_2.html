@@ -1,0 +1,16 @@
+<h1>原型</h1>
+<div class="dc">TString asnvalue( tagpath, TString defaultValue)<br>
+TInteger asnvalue( tagpath, TInteger defaulValue)<br>
+TString asnrawvalue ( tagpath )</div><h1>说明</h1>
+<div class="dc">该函数用于根据tagpath所规定的路径取到ASN的值。</div><h1>参数</h1>
+<div class="dc"><h4>tagpath</h4>
+<div class="dc">ANS.1参数取值路径</div>
+<h4>defaultValue</h4>
+<div class="dc">如果路径不存在，返回缺省值</div>
+</div><h1>返回</h1><div class="dc">
+asnvalue根据数据类型的不同取到的是解码后的值，可以设置缺省值用于tagpath无效的情况，asnrawvalue取到的是解码之前的原始值，肯定是字符串形式。</div><h1>示例</h1><div class="dc">
+i = asnvalue(&lt;&lt;inap.invoke.promptandcollectuserinformation.collectedinfo.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;collecteddigits.interruptableannind&gt;&gt;,-2)<br>
+s = asnrawvalue(&lt;&lt;inap.invoke.promptandcollectuserinformation.collectedinfo.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;collecteddigits.interruptableannind&gt;&gt;)<br>
+</div>

@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc">TInteger TTCAPDialogue::waitresult(TInteger timeOut=5, TInteger disableInt=1)<br>
+TInteger TTCAPDialogue::waitlinked(TInteger timeOut=5, TInteger disableInt=1)</div><h1>说明</h1>
+<div class="dc">waitresult用于同步等待RESULT，一般在invokereq发送了类型为1或者3的操作之后调用，例如INAP协议中，发了PC操作之后可以调用这个函数等待RESULT。<br>
+waitlinked用于同步等待Linked的INVOKE，一般在invokereq发送了需要Linked操作的操作之后调用，例如INAP协议中，发了PA操作之后可以调用这个函数等待SRR</div><h1>参数</h1>
+<div class="dc"><h4>timeOut</h4>
+<div class="dc">整数，等待的时长，秒为单位，缺省为5秒</div>
+<h4>disableInt</h4>
+<div class="dc">整数，是否屏蔽其他事件的打断，缺省为屏蔽</div>
+</div><h1>返回</h1><div class="dc">
+返回18表示收到了RESULT，返回0表示收到了INVOKE，返回2表示收到了ERROR</div>

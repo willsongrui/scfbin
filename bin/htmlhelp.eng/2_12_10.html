@@ -1,0 +1,18 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSipMsg::getrequesturl()<br>
+TString TSipMsg::geturladdr()<br>
+TString TSipMsg::geturlnum()</div><h1>DESCRIPTION</h1>
+<div class="dc">getrequesturl() is to get the URL of the request message. geturladdr() only get the address part (before &quot;;&quot;) of the URL. geturlnumber() only get the user name part (between &quot;sip:&quot; and &quot;@&quot;) of the address</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+a string</div><h1>EXAMPLES</h1><div class="dc">
+/* For example:<br>
+INVITE sip:7434@10.20.200.227:5060;play=222.wav;user=phone SIP/2.0<br>
+...<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getrquesturl() == 'sip:7434@10.20.200.227:5060;play=222.wav;user=phone');<br>
+&nbsp;&nbsp;&nbsp;assert(req.geturladdr() == 'sip:7434@10.20.200.227:5060');<br>
+&nbsp;&nbsp;&nbsp;assert(req.geturlnum() == '7434');<br>
+}<br>
+</div>

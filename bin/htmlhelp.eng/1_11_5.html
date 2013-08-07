@@ -1,0 +1,10 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString getfsmidstr()</div><h1>DESCRIPTION</h1>
+<div class="dc">To get a string include scf ID and fsm ID</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+A string. The first 2 bytes is scf ID, and the other bytes is fsm ID</div><h1>EXAMPLES</h1><div class="dc">
+var TInteger fsmid;<br>
+var TString fsmidstr;<br>
+fsmid = getfsmid(); // may be 1, fsmid<br>
+fsmidstr = getfsmidstr(); // may be '001', '00' is scf ID<br>
+</div>

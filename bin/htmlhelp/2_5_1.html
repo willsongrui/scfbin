@@ -1,0 +1,12 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSCPTimer::settimer( TInteger t)</div><h1>说明</h1>
+<div class="dc">设置timer的时间，并同时启动timer。 settimer 当次有效，类似unix系统的alarm()，需要再次调用settimer()启动。</div><h1>参数</h1>
+<div class="dc"><h4>t</h4>
+<div class="dc">设置的时间，当参数为0或小于0表示清除该timer，相当于调用timer.clean() 。</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TSCPTimer timer;<br>
+timer = new TSCPTimer;<br>
+timer.timeout([timeout]);<br>
+timer.settimer(10);<br>
+</div>

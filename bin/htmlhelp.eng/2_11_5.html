@@ -1,0 +1,22 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSoap::getsubcount(TString path)<br>
+TString TSoap::getsubname(TInteger index, TString path)</div><h1>DESCRIPTION</h1>
+<div class="dc">getsubcount() is to get the children count for an element<br>
+getsubname() is to get a child tag name for an element</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">The path of the element. It is a relative path to the current path set by setcurrentpath()</div>
+<h4>index</h4>
+<div class="dc">The child index. The index of the first child is 0</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+getsubcount() returns the children count or returns negative integer for failure.<br>
+getsubname() returns the child tag name string.</div><h1>EXAMPLES</h1><div class="dc">
+ssubname = soapObj.getsubname(0,'third');<br>
+assert(ssubname == 'third1');<br>
+print('a third subname:'+ssubname);<br>
+ssubname = soapObj.getsubname(1,'third');<br>
+assert(ssubname == 'third2');<br>
+print('a third subname2:'+ssubname);<br>
+<br>
+isubcount = soapObj.getsubcount('third');<br>
+assert(isubcount == 3);<br>
+</div>

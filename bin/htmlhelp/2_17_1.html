@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallLeg::onevent([eventProcessLabel])</div><h1>说明</h1>
+<div class="dc">在生成某呼叫方相应的TSipCallLeg对象后，调用该函数可以监听来自该呼叫方的所有消息事件。</div><h1>参数</h1>
+<div class="dc"><h4>eventProcessLabel</h4>
+<div class="dc">收处理该事件的标签名</div>
+</div><h1>返回</h1><div class="dc">
+1成功，0失败</div><h1>示例</h1><div class="dc">
+var TSipCallLeg oleg;<br>
+...<br>
+oleg.onevent([oleg]);<br>
+on([olen], TSipCallLeg leg)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

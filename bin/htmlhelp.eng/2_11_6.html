@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSoap::getvalue(TString path)<br>
+TString TSoap::getattrvalue(TString attrName, TString path)</div><h1>DESCRIPTION</h1>
+<div class="dc">getvalue() is to get the content value of an element<br>
+getattrvalue() is to get the attribute value of an element</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">The path of the element. It is a relative path to the current path set by setcurrentpath()</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+ssoapattrvalue = soapObj.getattrvalue('attr1 ','');<br>
+assert(ssoapattrvalue == 'get');<br>
+<br>
+ssoapvalue = soapObj.getvalue('first');<br>
+assert(ssoapvalue == '123');<br>
+</div>

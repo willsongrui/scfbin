@@ -1,0 +1,17 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSoap::addchild(TString name,TString value, TString path)<br>
+TInteger TSoap::addattr(TString attrName,TString value, TString path)</div><h1>DESCRIPTION</h1>
+<div class="dc">addchild() is to add a child for an element<br>
+addattr() is to add an attribute for an element</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>name</h4>
+<div class="dc">The name of child tag or attribute name including name space prefix</div>
+<h4>value</h4>
+<div class="dc">The value of child content of attribute to be set</div>
+<h4>path</h4>
+<div class="dc">The path of the element. It is a relative path to the current path set by setcurrentpath()</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+Integer less than 0 is returned for failure. Other values for success</div><h1>EXAMPLES</h1><div class="dc">
+soapObj.addchild('third2','two','Body/third');<br>
+soapObj.addchild('third2','three','Body/third');<br>
+soapObj.addattr('env:attr1','get','Body');<br>
+</div>

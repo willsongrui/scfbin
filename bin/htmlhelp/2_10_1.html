@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc"> TString&nbsp;&nbsp;decodeoid(TString s)<br>
+TString&nbsp;&nbsp;encodeoid(TString s)</div><h1>说明</h1>
+<div class="dc">用于对object&nbsp;&nbsp;identifier类型进行编解码，该类型是ASN.1的基本类型之一。</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要编码或者解码的字符串</div>
+</div><h1>返回</h1><div class="dc">
+编码或者解码的结果</div><h1>示例</h1><div class="dc">
+assert(encodeoid('1.3.12.2.1107.3.3.0.0.4') == 'B2C02088353030000040');<br>
+assert(decodeoid('B2C02088353030000040') == '1.3.12.2.1107.3.3.0.0.4');<br>
+</div>

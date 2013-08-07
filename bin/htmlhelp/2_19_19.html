@@ -1,0 +1,19 @@
+<h1>原型</h1>
+<div class="dc">TInteger TTCAPDialogue::invokereq(TInteger opID, TInteger opType, TInteger timeout, TString para, TInteger linkedid=-1)</div><h1>说明</h1>
+<div class="dc">请求INVOKE原语</div><h1>参数</h1>
+<div class="dc"><h4>opID</h4>
+<div class="dc">整数，要发送的操作的操作码</div>
+<h4>opType</h4>
+<div class="dc">整数，要发送操作的操作类型:<br>
+1: 是正确有结果返回，错误有错误返回，<br>
+2: 是无结果返回，如果错误有错误返回，<br>
+3: 是正确有结果返回，错误无返回，<br>
+4: 正确错误都无返回</div>
+<h4>timeout</h4>
+<div class="dc">整数，要发送操作的超时设置值，以秒为单位</div>
+<h4>papa</h4>
+<div class="dc">字符串，要发送操作的参数的ASC码形式的字符串，长度必须为偶数。例如要发送30 03 80 01 01，那么这个字符串是'0330081010'</div>
+<h4>linkedID</h4>
+<div class="dc">整数，如果这个操作时前面某个对方发过来的操作的链接操作，那么这里需要填写彼操作的InvokeID，例如INAP协议中，如果请求SRR的时候，这里需要填写前面收到的PA操作的InvokeID。缺省-1，不填写</div>
+</div><h1>返回</h1><div class="dc">
+0</div>

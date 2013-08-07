@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TFTPClient::getlastinfo()</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the last information from the server. It is used for check the reason of the failure</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+var TFTPClient ftp;<br>
+var TString tmpStr;<br>
+ftp = new TFTPClient;<br>
+ftp.init('ahost'£¬21£¬'user'£¬'password');<br>
+ftp.rename('oldname'£¬ 'newname');<br>
+tmpStr = ftp.getlastinfo();<br>
+print(tmpStr)<br>
+</div>

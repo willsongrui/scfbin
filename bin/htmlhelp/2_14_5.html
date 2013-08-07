@@ -1,0 +1,12 @@
+<h1>原型</h1>
+<div class="dc">TSipCallSegment TSipMsg::createcallsegment()</div><h1>说明</h1>
+<div class="dc">在SIP业务逻辑开始或收到SIP消息后，调用该函数可以构造一个相应的TSipCallSegment对象来处理请求。</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+返回的TSipCallSegment对象的handle</div><h1>示例</h1><div class="dc">
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TSipCallSegment cs;<br>
+&nbsp;&nbsp;&nbsp;cs = req.createcallsegment();<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

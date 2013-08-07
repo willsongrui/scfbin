@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger tcpconnectsend(TString logicName, TString host, TInteger port, TString s, TInteger length)</div><h1>DESCRIPTION</h1>
+<div class="dc">To connect a socket server according to the host and port and send a message to the server</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>logicName</h4>
+<div class="dc">The logic name. It is configured in config.client.* file</div>
+<h4>host</h4>
+<div class="dc">The host name. If it is a null string, the host name and port configured in the config.client.* file will be used.</div>
+<h4>port</h4>
+<div class="dc">The port number</div>
+<h4>s</h4>
+<div class="dc">The string to be sent</div>
+<h4>length</h4>
+<div class="dc">The length to be sent. If the value is 0, the whole s will be sent and one byte that the value is 0 will be sent for string end. If the value is greater than the length of s, the whole s will be sent</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+If success, the new link ID will be returned. A negative is returned for failure</div>

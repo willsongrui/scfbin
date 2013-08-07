@@ -1,0 +1,16 @@
+<h1>原型</h1>
+<div class="dc">TInteger []::index(TypeOfArrayMember mem)</div><h1>说明</h1>
+<div class="dc">求一个成员在数组中的位置</div><h1>参数</h1>
+<div class="dc"><h4>mem</h4>
+<div class="dc">成员，其数据类型必须使数组的成员的类型，如果是字符串数组，那么这个参数必须是字符串，如果是整数数组，那么这个参数必须是整数</div>
+</div><h1>返回</h1><div class="dc">
+整数，在数组中的位置，从0开始，如果返回-1表示找不到</div><h1>示例</h1><div class="dc">
+var TInteger i[] = {1,2,3};<br>
+assert(i.index(1) == 0);<br>
+assert(i.index(2) == 1);<br>
+assert(i.index(5) == -1);<br>
+var TString s[] = {'aa','bb','cc'};<br>
+assert(s.index('aa') == 0);<br>
+assert(s.index('bb') == 1);<br>
+assert(s.index('ddd') == -1);<br>
+</div>

@@ -1,0 +1,23 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSCPTable::colname(TInteger colid)<br>
+TInteger TSCPTable::colid(TString colname)</div><h1>DESCRIPTION</h1>
+<div class="dc">colname() is to get column name according to the column index. colid() is to get column index according to the column name</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>colid</h4>
+<div class="dc">column index</div>
+<h4>colname</h4>
+<div class="dc">column name</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+returned column name or index</div><h1>EXAMPLES</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+t.settitle(1,'A');<br>
+t.settitle(2,'B');<br>
+t.settitle(3,'C');<br>
+t.settitle(4,'D');<br>
+assert(t.colid('A') == 1);<br>
+assert(t.colname(3) == 'C');<br>
+</div>

@@ -1,0 +1,25 @@
+<h1>原型</h1>
+<div class="dc">TString TSCPTable::coltostr(TInteger index,TString sep='|')<br>
+TString TSCPTable::coltostr(TString colTitle,TString sep='|')<br>
+TString TSCPTable::rowtostr(TInteger index,TString sep='|')</div><h1>说明</h1>
+<div class="dc">将字符串表的某一列或者某一行转换为一个字符串返回</div><h1>参数</h1>
+<div class="dc"><h4>index</h4>
+<div class="dc">列号或者行号，从1开始</div>
+<h4>colTital</h4>
+<div class="dc">列的名字</div>
+<h4>sep</h4>
+<div class="dc">分割符，缺省为竖线</div>
+</div><h1>返回</h1><div class="dc">
+返回构造好的字符串</div><h1>示例</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+// 11&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;14<br>
+// 21&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-<br>
+// 31&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-<br>
+assert(t.coltostr(1,'|') == '11|21|31');<br>
+assert(t.rowtostr(1,'|') == '11|||14');<br>
+</div>

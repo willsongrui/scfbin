@@ -1,0 +1,22 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallSegment::onpa([eventProcessLabel])<br>
+TInteger TSipCallSegment::onpc([eventProcessLabel])<br>
+TInteger TSipCallSegment::onpr([eventProcessLabel])</div><h1>说明</h1>
+<div class="dc">onpa: 设置pa播放完成事件入口，仅仅用于异步的PA操作<br>
+onpc: 设置pc收号完成事件入口，仅仅用于异步的PC操作<br>
+onpr: 设置pr录音完成事件入口，仅仅用于异步的PR操作</div><h1>参数</h1>
+<div class="dc"><h4>eventProcessLabel</h4>
+<div class="dc">接收处理该事件的入口名称</div>
+</div><h1>返回</h1><div class="dc">
+1成功，0失败</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.onpa ([padone]);<br>
+cs.asynpa('0','10001',0,' ',1,0);<br>
+on([padone], TSipCallSegment cs)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

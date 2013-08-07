@@ -1,0 +1,17 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallSegment::connect(TString calledNumber, TInteger legID, TString callingNumber)</div><h1>说明</h1>
+<div class="dc">连接一个被叫。</div><h1>参数</h1>
+<div class="dc"><h4>calledNumber</h4>
+<div class="dc">被叫号码</div>
+<h4>legID</h4>
+<div class="dc">被叫的legID（目前只能填2。默认主叫legID为1， 被叫legID为2）</div>
+<h4>callingNumber</h4>
+<div class="dc">主叫号码</div>
+</div><h1>返回</h1><div class="dc">
+1成功，0失败</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.connect ('9999',1,' ');<br>
+</div>

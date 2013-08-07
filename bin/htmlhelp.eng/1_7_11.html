@@ -1,0 +1,17 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString[] listdirectory(TString path, TInteger start=0, TInteger max=500)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the file name list according to a directory path</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">The directory path</div>
+<h4>start</h4>
+<div class="dc">The begin index.</div>
+<h4>max</h4>
+<div class="dc">The max file name number to return</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A string array. If the directory is not existed, the length of the array is 0</div><h1>EXAMPLES</h1><div class="dc">
+// For example, there are 'aa' file and 'bb' file in the directory<br>
+assert(listdirectory(path).tostr() == '.|..|aa|bb');<br>
+assert(listdirectory(path,0,1).tostr() == '.');<br>
+assert(listdirectory(path,0,3).tostr() == '.|..|aa');<br>
+assert(listdirectory(path,2,2).tostr() == 'aa|bb');<br>
+</div>

@@ -1,0 +1,30 @@
+<h1>原型</h1>
+<div class="dc">TString convertlabel(TString source, TString fromdigits, TString todigits, TInteger colindex, TString defaultdigits)</div><h1>说明</h1>
+<div class="dc">转化显示字符串，返回转化后的结果</div><h1>参数</h1>
+<div class="dc"><h4>source</h4>
+<div class="dc">转化前的字符串</div>
+<h4>fromdigits</h4>
+<div class="dc">被转化的字符</div>
+<h4>todigits</h4>
+<div class="dc">转化后的字符</div>
+<h4>colindex</h4>
+<div class="dc">转化的列的索引,注意第一列从0开始</div>
+<h4>defaultdigits</h4>
+<div class="dc">如果转化的列，找不到与fromdigits匹配的，那么转化成defaultdigits</div>
+</div><h1>返回</h1><div class="dc">
+转化后的字符串</div><h1>示例</h1><div class="dc">
+var TString sourData = '11111111|1|20040404<br>
+22222222|2|20040504<br>
+33333333|3|20050404';<br>
+// 其中的第二列的1,2,3,分别代表A类卡,B类卡,C类卡<br>
+<br>
+var TString result;<br>
+result = convertlabel(sourData,&quot;1|2&quot;,&quot;A类卡|B类卡&quot;,1,&quot;C类卡&quot;);<br>
+// or<br>
+result = convertlabel(sourData,&quot;1|2|3&quot;,&quot;A类卡|B类卡|C类卡&quot;,1,&quot;&quot;)<br>
+<br>
+// 转化后的结果:<br>
+assert(result = '11111111|A类卡|20040404<br>
+22222222|B类卡|20040504<br>
+33333333|C类卡|20050404');<br>
+</div>

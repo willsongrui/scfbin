@@ -1,0 +1,12 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TSipCallSegment TSipMsg::createcallsegment()</div><h1>DESCRIPTION</h1>
+<div class="dc">After the service logic received the sip message, calling this function can construct a TSipCallSegment object to process the request.</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+the handle of the TSipCallSegment object</div><h1>EXAMPLES</h1><div class="dc">
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TSipCallSegment cs;<br>
+&nbsp;&nbsp;&nbsp;cs = req.createcallsegment();<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

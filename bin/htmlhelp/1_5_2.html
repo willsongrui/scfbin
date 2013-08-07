@@ -1,0 +1,12 @@
+<h1>原型</h1>
+<div class="dc">TString ntptimestamp(TInteger t)</div><h1>说明</h1>
+<div class="dc">根据1970年1月1日0时到某时间的秒数，返回某时间的NTP时间戳，NTP时间戳是1900年1月1日0时到某时间的秒数的2进制表示形式</div><h1>参数</h1>
+<div class="dc"><h4>t</h4>
+<div class="dc">一个秒数，一般是tosec函数的返回结果</div>
+</div><h1>返回</h1><div class="dc">
+固定4个字节，不一定是可打印串</div><h1>示例</h1><div class="dc">
+assert(tosec('20070723093100') == 1185154260);<br>
+assert(tosec2('20070723093100') == '3394143060');<br>
+assert(ntptimestamp(1185154260) == '\CA\4E\83\54');<br>
+assert(strh2u('CA4E8354') == '3394143060'); // 3394143060 = 1185154260 + 2208988800<br>
+</div>

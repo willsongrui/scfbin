@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger isfsmusing(TString fsmid)</div><h1>说明</h1>
+<div class="dc">判断一个自动机ID是不是正在使用</div><h1>参数</h1>
+<div class="dc"><h4>fsmid</h4>
+<div class="dc">自动机ID，3-6个字节，前两个字节是scf进程id，后1-4个字节是自动机号</div>
+</div><h1>返回</h1><div class="dc">
+如果在用返回1，否则返回0</div><h1>示例</h1><div class="dc">
+var TInteger fsmid = getfsmid();<br>
+var TInteger fsmpid = getparentfsmid();<br>
+var TString&nbsp;&nbsp;fsmnum = getfsmidstr();&nbsp;&nbsp;//本例返回'007'<br>
+var TInteger useId = isfsmusing(fsmnum);<br>
+assert(useId == 1);<br>
+print(fsmnum);<br>
+</div>

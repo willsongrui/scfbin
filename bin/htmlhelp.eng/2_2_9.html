@@ -1,0 +1,11 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger THttpServer::sendresponse (THttpContent contentid)</div><h1>DESCRIPTION</h1>
+<div class="dc">To send the response message</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>contentid</h4>
+<div class="dc">The handle of the THTTPContent to be sent</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+Values less than 0 are returned for failure. Other values are returned for success</div><h1>EXAMPLES</h1><div class="dc">
+var THttpContent cntObj;<br>
+cntObj=serverObj.getcontent();<br>
+serverObj.sendresponse(cntObj);<br>
+</div>

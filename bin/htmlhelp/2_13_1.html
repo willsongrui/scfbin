@@ -1,0 +1,7 @@
+<h1>原型</h1>
+<div class="dc">TInteger TCorbaClient::setior(TString iorContent)</div><h1>说明</h1>
+<div class="dc">当向corba server发送消息时，必须先得到对端的object key, corba version, IP, port等信息，而这些信息都是保存在corba server提供的ior文件里，因此要想往corbaserver发送请求消息，系统必须先得到这些值，也就是先要执行serior这个函数。</div><h1>参数</h1>
+<div class="dc"><h4>iorContent</h4>
+<div class="dc">可以是一个ior文件，也可以是ior的内容，当iorContent的值前四个字符为&quot;IOR:&quot;时，认为是ior的内容，否则认为是文件。Ior的文件必须放在cin/corba目录里边。</div>
+</div><h1>返回</h1><div class="dc">
+返回值0代表成功，其余代表失败。</div>

@@ -1,0 +1,16 @@
+<h1>原型</h1>
+<div class="dc">TString TSipCallSegment::getid()<br>
+TInteger TSipCallSegment::setid(TString csID)</div><h1>说明</h1>
+<div class="dc">取得/设置TCallSegment对象的ID</div><h1>参数</h1>
+<div class="dc"><h4>csID</h4>
+<div class="dc">要设置的ID值</div>
+</div><h1>返回</h1><div class="dc">
+对于serid，返回1成功，0失败。对于getid返回callsegment的ID</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+var TString idValue;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.setid(idValue);<br>
+idValue = cs.getid();<br>
+</div>

@@ -1,0 +1,26 @@
+<h1>原型</h1>
+<div class="dc">TInteger hxmladdhead(TXMLTree i, TString path, TXMLTree j)<br>
+TInteger TXMLTree::addhead(TString path, TXMLTree j)<br>
+TInteger hxmladdtail(TXMLTree i, TString path, TXMLTree j)<br>
+TInteger TXMLTree::addtail(TString path, TXMLTree j)</div><h1>说明</h1>
+<div class="dc">将一个XML树复制，并且作为一个子节点，加入到另一个XML树的指定子树。addhead加在所有子节点之前，addtail加在所有子节点之后</div><h1>参数</h1>
+<div class="dc"><h4>i</h4>
+<div class="dc">目标XML树的handle</div>
+<h4>path</h4>
+<div class="dc">目标XML树的子树的路径</div>
+<h4>j</h4>
+<div class="dc">要复制的XML树的handle</div>
+</div><h1>返回</h1><div class="dc">
+成功返回0，失败返回-1</div><h1>示例</h1><div class="dc">
+i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+j = hxmlparse('&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;');<br>
+hxmladdhead (i,'x',j);<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;x&gt;xxx&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+<br>
+i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+j = hxmlparse('&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;');<br>
+hxmladdtail (i,'x',j);<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;&lt;/x&gt;');<br>
+</div>

@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;sqlxml (TString arg1)</div><h1>说明</h1>
+<div class="dc">将简单的insert SQL语句输出为xml格式</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">要输出的sql字符串</div>
+</div><h1>返回</h1><div class="dc">
+xml格式字符串，&lt;nf&gt;表示是否没有字段名，0表示有字段名</div><h1>示例</h1><div class="dc">
+assert(sqlxml('insert into acr_record(skey,callcost) values(1,100)') ==<br>
+'&lt;insert&gt;&lt;table&gt;acr_record&lt;/table&gt;&lt;nf&gt;0&lt;/nf&gt;&lt;values&gt;&lt;skey&gt;1&lt;/skey&gt;&lt;callcost&gt;100&lt;/callcost&gt;<br>
+&lt;/values&gt;&lt;/insert&gt;');<br>
+</div>

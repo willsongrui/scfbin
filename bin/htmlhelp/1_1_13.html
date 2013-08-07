@@ -1,0 +1,18 @@
+<h1>原型</h1>
+<div class="dc">TString alignstr(TString arg1, TString arg2, TInteger i)</div><h1>说明</h1>
+<div class="dc">字符串对齐</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">要处理的字符串</div>
+<h4>arg2</h4>
+<div class="dc">要补的字符</div>
+<h4>i</h4>
+<div class="dc">对齐方式，负数表示左对齐，正数表示右对齐，如果要处理的字符串长度大于对齐长度，多余部分被截掉</div>
+</div><h1>返回</h1><div class="dc">
+对齐后的字符串</div><h1>示例</h1><div class="dc">
+assert(alignstr('1100', 'F',6) == 'FF1100');<br>
+assert(alignstr('1100', 'F',3) == '100');<br>
+assert(alignstr('1100', 'F',4) == '1100');<br>
+assert(alignstr('1100', 'F',-6) == '1100FF');<br>
+assert(alignstr('1100', 'F',-3) == '110');<br>
+assert(alignstr('1100', 'F',-4) == '1100');<br>
+</div>

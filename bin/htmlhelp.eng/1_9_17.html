@@ -1,0 +1,26 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TXMLTree hxmlelem(TString tagname, ... )<br>
+TXMLTree hxmlattr(TString attrname, TString attrvalue)</div><h1>DESCRIPTION</h1>
+<div class="dc">These two functions is to construct a complex TXMLTree object</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>tagname</h4>
+<div class="dc">The tag name to construct element</div>
+<h4>attrname</h4>
+<div class="dc">The attribute name to construct attribute</div>
+<h4>attrvalue</h4>
+<div class="dc">The attribute value to construct attribute</div>
+<h4>...</h4>
+<div class="dc">A content string, or an element, or an attribute</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The handle of a TXMLTree object</div><h1>EXAMPLES</h1><div class="dc">
+i = hxmlelem('authorize',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hxmlelem('accountnumber',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'11111111111',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hxmlattr('password', '123')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hxmlelem('pin', '1111')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;);<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;authorize&gt;&lt;accountnumber password=&quot;123&quot;&gt;11111111111&lt;/accountnumber&gt;<br>
+&lt;pin&gt;1111&lt;/pin&gt;&lt;/authorize&gt;', s);<br>
+delete(i);<br>
+</div>

@@ -1,0 +1,51 @@
+<h1>原型</h1>
+<div class="dc">TInteger setkey(TString keyName,TString keyValue)<br>
+TInteger deletekey(TString keyName,TString keyValue)<br>
+TString searchkey(TString keyName,TString keyValue)</div><h1>说明</h1>
+<div class="dc">setkey、clearkey 和 searchekey是为了解决自动机通过correlationKey方式关联，多种业务混合可能出现冲突情况。<br>
+key的设置和清除规则：<br>
+1. key是一个key-pair,由keyName、keyValue组成，一个key-pair是全局(SCF单个进程)唯一。keyValue不能为空，调用setkey成功返回1，失败返回0，失败情况可能是keyName、keyValue格式问题或key-pair重复导致，没有区分返回码，统一返回0。<br>
+2. 一个自动机可以设置多个key-pair, keyName相同允许设置多个keyValue。<br>
+3. 删除key的方法，指定keyName和keyValue确定删除一个key-pair。只指定keyName, keyValue为''，删除该自动机所有keyName相同的key.<br>
+4. key-pair只能由设置的自动机删除。<br>
+5. searchKey 输入keyPair ，返回设置该key的自动机号字符串,key没有设置返回''.字符串格式同myinstanceID(scfID+fsmInstanceID)<br>
+6. 所有自动机设置的key，当自动机退出时自动清除。</div><h1>参数</h1>
+<div class="dc"><h4>keyName</h4>
+<div class="dc">key的名字，可以为空，表示设置缺省key</div>
+<h4>keyValue</h4>
+<div class="dc">key的值</div>
+</div><h1>返回</h1><div class="dc">
+对于setkey和deletekey，成功返回1，失败返回0。对于searchkey，返回字符串格式的自动机号</div><h1>示例</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString key1, key2, key3;<br>
+&nbsp;&nbsp;&nbsp;var TString value1, value2, value3, value4;<br>
+&nbsp;&nbsp;&nbsp;var TInteger re;<br>
+&nbsp;&nbsp;&nbsp;var TString s;<br>
+<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('myinstanceid :%s',myinstanceid));<br>
+&nbsp;&nbsp;&nbsp;key1='AAA';<br>
+&nbsp;&nbsp;&nbsp;key2='BBB';<br>
+&nbsp;&nbsp;&nbsp;key3='CCC';<br>
+&nbsp;&nbsp;&nbsp;value1='a';<br>
+&nbsp;&nbsp;&nbsp;value2='b';<br>
+&nbsp;&nbsp;&nbsp;value3='c';<br>
+&nbsp;&nbsp;&nbsp;value4='d';<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key1,value1);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('set value1 re:%d',re));<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key1,value1);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('set value1 re:%d',re));<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key2,value2);<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key3,value3);<br>
+&nbsp;&nbsp;&nbsp;re=setkey(key1,value4);<br>
+&nbsp;&nbsp;&nbsp;s=searchkey(key1,value1);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('search value1 re:%s',s));<br>
+&nbsp;&nbsp;&nbsp;s=searchkey(key1,value4);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('search value1 re:%s',s));<br>
+&nbsp;&nbsp;&nbsp;re=deletekey(key1,value4);<br>
+&nbsp;&nbsp;&nbsp;s=searchkey(key1,value4);<br>
+&nbsp;&nbsp;&nbsp;print(sprintf('search value4 re:%s',s));<br>
+&nbsp;&nbsp;&nbsp;sleep(30);<br>
+}<br>
+</div>

@@ -1,0 +1,20 @@
+<h1>原型</h1>
+<div class="dc">TInteger sscanf(TString strSrc, TString format, ...)</div><h1>说明</h1>
+<div class="dc">sscanf从源字符串中分离出各个字段，并且不会改变原来字符串</div><h1>参数</h1>
+<div class="dc"><h4>strSrc</h4>
+<div class="dc">源字符串</div>
+<h4>format</h4>
+<div class="dc">同c语言参数的sscanf函数</div>
+<h4>...</h4>
+<div class="dc">同c语言参数的sscanf函数，但是参数列表的个数有限制，最多80个</div>
+</div><h1>返回</h1><div class="dc">
+返回分离的字段数</div><h1>示例</h1><div class="dc">
+var TString str1;<br>
+&nbsp;&nbsp;&nbsp;var TString str2;<br>
+&nbsp;&nbsp;&nbsp;var TString str3;<br>
+&nbsp;&nbsp;&nbsp;str1=’how are you’;<br>
+&nbsp;&nbsp;&nbsp;sscanf(str1,’%s %s %s’,str2,str3);<br>
+&nbsp;&nbsp;&nbsp;......<br>
+<br>
+&nbsp;&nbsp;&nbsp;本例返回str2=how, str3=are you<br>
+</div>

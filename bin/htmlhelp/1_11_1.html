@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TInteger tcpsend(TString logicName, TInteger linkID, TString s, TInteger length)</div><h1>说明</h1>
+<div class="dc">向指定的逻辑名和linkID发送TCP消息。这个函数用于长连接，Client/Server都可以用</div><h1>参数</h1>
+<div class="dc"><h4>logicName</h4>
+<div class="dc">logicName，在config.server.* 或config.client.*中配置</div>
+<h4>linkID</h4>
+<div class="dc">linkID</div>
+<h4>s</h4>
+<div class="dc">发送字符串</div>
+<h4>length</h4>
+<div class="dc">发送的长度，如果为0，则最后加0发送，如果超过s的长度，那么按照s的实际长度发送</div>
+</div><h1>返回</h1><div class="dc">
+0表示成功，负数表示失败</div>

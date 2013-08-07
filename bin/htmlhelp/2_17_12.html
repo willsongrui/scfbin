@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallLeg::setheadertores(TString name, TString value)<br>
+TInteger TSipCallLeg::addheadertores(TString name, TString value)</div><h1>说明</h1>
+<div class="dc">setheadertores为设置响应消息的某种头字段的第一个值，如果已经有值，则修改该值。addheadertores为增加响应消息的某种头字段的值，后增加的头字段值在消息中位于先增加的值的前列（该类头字段的第一个值推荐用setheadertores）。注意：主要用于设置除常用头字段以外的头字段值，如Accept、Supported、Require等等。不推荐用此函数增加Record-Route, Route头，除非业务明确需要增加。</div><h1>参数</h1>
+<div class="dc"><h4>name</h4>
+<div class="dc">字段名</div>
+<h4>value</h4>
+<div class="dc">应头字段的值</div>
+</div><h1>返回</h1><div class="dc">
+1成功，0失败</div><h1>示例</h1><div class="dc">
+var TSipCallLeg oleg;<br>
+...<br>
+oleg.addheadertores('Accept', 'application/sdp');<br>
+oleg.setheadertores('Accept', 'application/sdp');<br>
+</div>

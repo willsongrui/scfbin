@@ -1,0 +1,16 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString getsipnodeaddress(TString arg)</div><h1>DESCRIPTION</h1>
+<div class="dc">get node's ip according to node name</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>arg</h4>
+<div class="dc">node name</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The ip of node</div><h1>EXAMPLES</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString addresshost;<br>
+&nbsp;&nbsp;&nbsp;addresshost =getsipnodeaddress('ms1');<br>
+&nbsp;&nbsp;&nbsp;assert(addresshost=='192.168.2.237:50914');<br>
+<br>
+}<br>
+</div>

@@ -1,0 +1,56 @@
+<h1>原型</h1>
+<div class="dc">TString ideaecb(TString s,TString c,TInteger&amp; length,TInteger mode,TString key)</div><h1>说明</h1>
+<div class="dc">IDEA加解密函数，ecb模式。该函数与idea函数的区别在于：如果s的长度不满8的倍数，则自动用c填充。<br>
+另外ecb模式不使用初始向量，即对于相同的8字节内容和key，加密出来的密文是相同的</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要加密的字符串</div>
+<h4>c</h4>
+<div class="dc">s长度不满8的倍数时用字符c填充，注意c必须是单字节的字符串</div>
+<h4>length</h4>
+<div class="dc">变参，初值可以设置为0，返回值为填充后的长度，也就是密文的长度</div>
+<h4>mode</h4>
+<div class="dc">1:加密 0:解密</div>
+<h4>key</h4>
+<div class="dc">密钥，必须为16字节128比特，通常可以通过一字符串的md5值得到</div>
+</div><h1>返回</h1><div class="dc">
+返回结果为16进制格式，长度为length</div><h1>示例</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString plain,cipher,cipher1,plain1,cipher2,plain2,plain3;<br>
+&nbsp;&nbsp;&nbsp;var TString key,ivec;<br>
+&nbsp;&nbsp;&nbsp;var TInteger mode,length,newlen;<br>
+<br>
+&nbsp;&nbsp;plain='This is the plain i want to encrypt by ideaecb algorithm.';<br>
+&nbsp;&nbsp;&nbsp;key=md5('222222');<br>
+&nbsp;&nbsp;&nbsp;printbin(key);<br>
+<br>
+&nbsp;&nbsp;&nbsp;length=strlen(plain);<br>
+&nbsp;&nbsp;&nbsp;print('length='+itoa(length));<br>
+<br>
+&nbsp;&nbsp;&nbsp;mode=1;//encrypt<br>
+&nbsp;&nbsp;&nbsp;cipher=ideaecb(plain,' ',newlen,mode,key);<br>
+&nbsp;&nbsp;&nbsp;print('newlen='+itoa(newlen));<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher);<br>
+<br>
+&nbsp;&nbsp;&nbsp;mode=0; // decryption<br>
+&nbsp;&nbsp;&nbsp;plain1=ideaecb(cipher,' ',newlen,mode,key);<br>
+&nbsp;&nbsp;&nbsp;print('newlen='+itoa(newlen));<br>
+&nbsp;&nbsp;&nbsp;printbin(plain1);<br>
+<br>
+&nbsp;&nbsp;&nbsp;plain=plain+' '+' ';<br>
+&nbsp;&nbsp;&nbsp;printbin(plain);<br>
+&nbsp;&nbsp;&nbsp;if(strcmp(plain, plain1)==0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('ok.');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('error!');<br>
+<br>
+&nbsp;&nbsp;&nbsp;plain2='1234567812345678';<br>
+&nbsp;&nbsp;&nbsp;cipher2=ideaecb(plain2,' ',newlen,1,key);<br>
+&nbsp;&nbsp;&nbsp;print('newlen='+itoa(newlen));<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher2);//fisrt 8 bytes and last 8 bytes are equal<br>
+&nbsp;&nbsp;&nbsp;ivec='11111111';<br>
+&nbsp;&nbsp;&nbsp;cipher1=idea(plain2,16,1,key,ivec);<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher1);//fisrt 8 bytes and last 8 bytes are different<br>
+}<br>
+</div>

@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc">TString TASNObject::getcode()</div><h1>说明</h1>
+<div class="dc">取得一个ASN对象的编码的ASC形式</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+ASC格式的编码，例如ASN.1编码为30 03 80 01 01，那么这个串是'0330081010'</div><h1>示例</h1><div class="dc">
+var TASNObject a;<br>
+var TString s;<br>
+a = new TASNObject(48,'08500212345670');<br>
+s = a.getcode();<br>
+assert(s == '08500212345670');<br>
+</div>

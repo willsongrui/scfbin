@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">ASNHandle = TagPath</div><h1>说明</h1>
+<div class="dc">这个功能的作用是，简化长路径的书写，设置的一个路径可以多次重用。这个函数不能直接调用，而是使用赋值语句进行操作</div><h1>参数</h1>
+<div class="dc"><h4>ASNHandle</h4>
+<div class="dc">等号左边是一个ASNHandle</div>
+<h4>TagPath</h4>
+<div class="dc">等号右边是一个ASN.1参数取值路径</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var &lt;&lt;inap.invoke.PromptAndCollectUserInformation.informationToSend&gt;&gt; itsHandle;<br>
+itsHandle = &lt;&lt;inap.invoke.PlayAnnouncement.informationToSend&gt;&gt;<br>
+i = asnvalue(&lt;&lt;$itsHandle.inbandinfo.numberOfRepetitions&gt;&gt;)<br>
+</div>

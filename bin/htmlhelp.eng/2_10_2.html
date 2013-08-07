@@ -1,0 +1,16 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString asnvalue( tagpath, TString defaultValue)<br>
+TInteger asnvalue( tagpath, TInteger defaulValue)<br>
+TString asnrawvalue ( tagpath )</div><h1>DESCRIPTION</h1>
+<div class="dc">To get value from an ASN.1 tree according to a path.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>tagpath</h4>
+<div class="dc">The tag path of ASN.1 tree</div>
+<h4>defaultValue</h4>
+<div class="dc">asnvalue() returns this default value if the tag path is not valid</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+asnvalue() returns the decoded value or the default value. asnrawvalue returns the raw hex string or 'NULL'</div><h1>EXAMPLES</h1><div class="dc">
+i = asnvalue(&lt;&lt;inap.invoke.promptandcollectuserinformation.collectedinfo.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;collecteddigits.interruptableannind&gt;&gt;,-2)<br>
+s = asnrawvalue(&lt;&lt;inap.invoke.promptandcollectuserinformation.collectedinfo.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;collecteddigits.interruptableannind&gt;&gt;)<br>
+</div>

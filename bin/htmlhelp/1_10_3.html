@@ -1,0 +1,17 @@
+<h1>原型</h1>
+<div class="dc">TInteger xmlcc(TString path)<br>
+TInteger hxmlcc(TXMLTree handle, TString path)<br>
+TInteger TXMLtree::childcount(TString path)</div><h1>说明</h1>
+<div class="dc">xmlcc获取handle为0的XML树的指定路经的xml节点的直接子元素个数，hxmlcc和TXMLTree::childcount则可以指定TXMLTree对象</div><h1>参数</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">TXMLTree对象的handle</div>
+<h4>path</h4>
+<div class="dc">路径</div>
+</div><h1>返回</h1><div class="dc">
+xml节点的直接孩子个数</div><h1>示例</h1><div class="dc">
+var TXMLTree i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+var TInteger j = hxmlcc (i, 'x');<br>
+assert(j == 1);<br>
+j = i.childcount('x');<br>
+assert(j == 1);<br>
+</div>

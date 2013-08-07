@@ -1,0 +1,9 @@
+<h1>原型</h1>
+<div class="dc"> TString getariinfo()<br>
+TInteger setariinfo(TString s)</div><h1>说明</h1>
+<div class="dc"> getariinfo，得到ui SIB使用etc操作获得的ARI业务的自动机号。setariinfo，设置ui SIB所需的ARI业务自动机号。这两个函数是为了支持同一个ETC下ui SIB方式和printf+ARI业务方式混用，以下几种情况会用到这两个函数：<br>
+如果使用xmlsib发送ETC, 显式等待内部事件得到ARI业务的自动机号，如果此后的流程中如果使用ui SIB对老方式驱动IP操作，那么之前必须调用setariinfo将得到的这个自动机号告诉老的ui等SIB。<br>
+如果使用ui sib发送ETC, 此后的流程中如果直接使用printf等SIB直接发消息给ARI业务，那么必须使用getariinfo得到当前的ARI业务的自动机号。<br>
+上述两种情况下，因为内部知道了ARI业务的自动机号，自动机删除的时候会自动给ARI业务发送TCEnd内部消息。主业务中就不必显式发送TCEnd内部消息了。否则可能发送两次。setariinfo('')可以清除此前setariinfo('...')的设置，清除了之后，自动机删除的时候不会自动给ARI业务发送TCEnd 内部消息。</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+</div>

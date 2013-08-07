@@ -1,0 +1,73 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger sqlfetch(TSCPTable t, TString sql, TInteger maxRows=500, beginRow=0)<br>
+TInteger sqlrun(TString sql, TInteger notSync=0)</div><h1>DESCRIPTION</h1>
+<div class="dc">To execute a sql statement. sqlfetch() is for select statement. sqlrun() is for other statement</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>t</h4>
+<div class="dc">The handle of TSCPTable object to save the select result. It must be constructed before calling this function</div>
+<h4>sql</h4>
+<div class="dc">The sql statement to be executed</div>
+<h4>maxRows</h4>
+<div class="dc">The maximum returning rows for select. The value must between 1-500. The default value is 500. <br>
+If the value of this argument is 0, cursor mode is used. For cursor mode, the cursor will be opened and the first record will be returned when first time calling sqlfetch() function. The next record will be returned when the next time calling sqlfetch() function. The cursor will be closed when fetched the last record.<br>
+If the value of this argument is -1, the cursor will be force closed. </div>
+<h4>beginRow</h4>
+<div class="dc">The first record index to fetch. This argument is not support for all database. This argument is not used for cursor mode</div>
+<h4>notSync</h4>
+<div class="dc">Whether synchronous the sql execution to SMP. 0 is for yes, 1 is for no. The default value is 0.</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+It is success if the return value is greater than or equal to 0. The value is the records effected. It is failure if the return value is less than 0. -39 will be returned when no record match the condition of select, update or delete statement.</div><h1>EXAMPLES</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString sql;<br>
+&nbsp;&nbsp;&nbsp;var TInteger i,j,k;<br>
+&nbsp;&nbsp;&nbsp;var TSCPTable t;<br>
+<br>
+&nbsp;&nbsp;&nbsp;sql='drop table sqlfunctest';<br>
+&nbsp;&nbsp;&nbsp;i=sqlrun(sql);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('drop failure');<br>
+<br>
+&nbsp;&nbsp;&nbsp;sql='create table sqlfunctest (a int, b char(10))';<br>
+&nbsp;&nbsp;&nbsp;i=sqlrun(sql);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('create failure');<br>
+<br>
+&nbsp;&nbsp;&nbsp;sql='insert into sqlfunctest(a,b) values (100, \'12345\')';<br>
+&nbsp;&nbsp;&nbsp;i=sqlrun(sql);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('insert failure');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(sprintf('insert %d records',i));<br>
+<br>
+&nbsp;&nbsp;&nbsp;sql='insert into sqlfunctest(a,b) values (200, \'abcd3\')';<br>
+&nbsp;&nbsp;&nbsp;i=sqlrun(sql);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('insert failure');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(sprintf('insert %d records',i));<br>
+<br>
+&nbsp;&nbsp;&nbsp;t=new TSCPTable;<br>
+&nbsp;&nbsp;&nbsp;sql='select * from sqlfunctest';<br>
+&nbsp;&nbsp;&nbsp;i=sqlfetch(t, sql, 10);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('select failure');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k=t.rowcount();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(sprintf('return %d, rowcount %d',i,k));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(j=1;j&lt;=k;j=j+1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(sprintf('row %d: %s',j,t.rowtostr(j)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;//SCF6.5(08.12)以上版本支持informix数据库对sqlfetch操作存储过程的调用及返回<br>
+&nbsp;&nbsp;&nbsp;sqlrun('create procedure slpltest(i integer, j integer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returning integer, integer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return i+j, i-j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end procedure');<br>
+&nbsp;&nbsp;&nbsp;sqlfetch(t, 'execute procedure slpltest(10, 20)', 10);<br>
+&nbsp;&nbsp;&nbsp;assert(t.tostr()=='30|-10', t.tostr());<br>
+<br>
+}<br>
+</div>

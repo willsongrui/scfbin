@@ -1,0 +1,16 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSipMsg::getmethod()</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the method of the sip message. For example: 'INVITE', 'BYE'...</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+method name</div><h1>EXAMPLES</h1><div class="dc">
+/* For example:<br>
+INVITE sip:7434@10.20.200.227:5060 SIP/2.0<br>
+Call-ID: 7764053628133e4b65b609e7160e555e@10.20.200.227<br>
+From: &lt;sip:07312910430@10.20.200.227:5060&gt;;tag=00143-0b1006b1010684d6<br>
+...<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getmethod() == 'INVITE');<br>
+}<br>
+</div>

@@ -1,0 +1,18 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallSegment::moveleg(TInteger newLegID,TSipCallSegment srcCS, TInteger srcLeg)</div><h1>说明</h1>
+<div class="dc">将另一个CS的某个Leg迁移到自身</div><h1>参数</h1>
+<div class="dc"><h4>newLegID</h4>
+<div class="dc">指定的新legID</div>
+<h4>srcCS</h4>
+<div class="dc">被迁移的Leg所在的TSipCallSegment对象</div>
+<h4>srcLeg</h4>
+<div class="dc">被迁移的LegID</div>
+</div><h1>返回</h1><div class="dc">
+1成功，0失败</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipCallSegment cs2;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.moveleg(2,cs2,1);<br>
+</div>

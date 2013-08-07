@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TINESObj::clean()</div><h1>DESCRIPTION</h1>
+<div class="dc">To clear the dialogue information and to initialize a new dialogue</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+var TINESObj inesobj;<br>
+var TString response;<br>
+inesobj = new TINESObj;<br>
+inesobj.init('FSM');<br>
+response=inesobj.synctofsm('invokeservice 201 1', 5);<br>
+inesobj.clean()<br>
+response=inesobj.synctofsm('invokeservice 202 1', 5);<br>
+бн<br>
+</div>

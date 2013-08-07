@@ -1,0 +1,17 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString&nbsp;&nbsp;pickword(TString str, TString sepStr, TInteger index)</div><h1>DESCRIPTION</h1>
+<div class="dc">To pick sub-string from a string according to the separator string.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>str</h4>
+<div class="dc">Source string</div>
+<h4>sepStr</h4>
+<div class="dc">Separation string</div>
+<h4>index</h4>
+<div class="dc">An integer for index. If a string can be split into N sub-string by a separator string, the index can be between 0 and N-1. <br>
+If index is bigger than N-1, a null string will be returned.<br>
+If index is -1, index will be assumed a random integer between 0 and N-1</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The sub-string that is picked</div><h1>EXAMPLES</h1><div class="dc">
+assert(pickword('aaa/bbb/ccc/ddd ', '/', 2) == 'ccc');<br>
+var s = pickword('aaa/bbb/ccc/ddd ', '/', -1); // random return<br>
+assert(s == 'aaa' || s == 'bbb' || s == 'ccc' || s == 'ddd');<br>
+</div>

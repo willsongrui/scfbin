@@ -1,0 +1,21 @@
+<h1>原型</h1>
+<div class="dc">TString trimfloatstr2(TString f, TInteger e)<br>
+TString floattosciense(TString f)</div><h1>说明</h1>
+<div class="dc">trimfloatstr2将一个科学计数法的浮点数转换为带小数点的浮点数字符串。而floattosciense则将一个浮点字符串转换为科学计数法表示。这两个函数都不丧失任何有效数字</div><h1>参数</h1>
+<div class="dc"><h4>f</h4>
+<div class="dc">输入的浮点字符串</div>
+<h4>e</h4>
+<div class="dc">10的多少次方</div>
+</div><h1>返回</h1><div class="dc">
+对trimfloatstr2，返回一个带小数点的浮点字符串。对floattosciense返回一个不带小数点的串加一个竖线和一个10的几次方</div><h1>示例</h1><div class="dc">
+assert(floattosciense('1.1') == '11|-1');<br>
+assert(floattosciense('1.11111') == '111111|-5');<br>
+assert(floattosciense('11111') == '11111|0');<br>
+assert(floattosciense('100000') == '1|5');<br>
+assert(floattosciense('11100000') == '111|5');<br>
+assert(trimfloatstr2('111',5) == '11100000');<br>
+assert(trimfloatstr2('1',5) == '100000');<br>
+assert(trimfloatstr2('11111',0) == '11111');<br>
+assert(trimfloatstr2('111111',-5) == '1.11111');<br>
+assert(trimfloatstr2('1.11111',-5) == '0.0000111111');<br>
+</div>

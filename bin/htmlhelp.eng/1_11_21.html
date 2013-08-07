@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger alarm(TString s)<br>
+TInteger alarminfo(TInteger id, TInteger level, TString s)<br>
+TInteger log(TString s)</div><h1>DESCRIPTION</h1>
+<div class="dc">To output a warning information to the screen and the SCF.INFO.* file. alarm() use the fix error ID 11000. alarminfo() can define the error ID and level. log() use the fix error ID 10708 and can output some information of this fsm. output of log() can be switched on or switch off using 'display -servicelog|-noservicelog' command.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>id</h4>
+<div class="dc">The user defined error ID. The value must be between 90000-99999</div>
+<h4>level</h4>
+<div class="dc">The user defined error level. The value must be between 0-6</div>
+<h4>s</h4>
+<div class="dc">The information to be output</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0</div><h1>EXAMPLES</h1><div class="dc">
+alarminfo(90000, 1, 'connect fail');<br>
+</div>

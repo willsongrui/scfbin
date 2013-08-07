@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TSipMsg TSipMsg::getres(TInteger resCode)</div><h1>DESCRIPTION</h1>
+<div class="dc">To construct a response message according to the request message. Normally, after received a request, the service logic need construct a resonse to send using this request message. <br>
+Note: For UA(MS, sipphone), The Contract parameter of the 180 or 200 response message must be reset after calling this function</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>resCode</h4>
+<div class="dc">The response code</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The constructed response message</div><h1>EXAMPLES</h1><div class="dc">
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TSipMsg res;<br>
+&nbsp;&nbsp;&nbsp;res = req.getres(100);<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

@@ -1,0 +1,52 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger THttpServer::sendstatusresponse(TInteger status,THttpContent contentid)</div><h1>DESCRIPTION</h1>
+<div class="dc">To send the response message with response status</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>status</h4>
+<div class="dc">The status values:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100: &quot;Continue&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;101: &quot;Switching Protocols&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;200: &quot;OK&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;201: &quot;Created&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;202: &quot;Accepted&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;203: &quot;Non-Authoritative Information&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;204: &quot;No Content&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;205: &quot;Reset Content&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;206: &quot;Partial Content&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;300: &quot;Multiple Choices&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;301: &quot;Moved Permanently&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;302: &quot;Found&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;303: &quot;See Other&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;304: &quot;Not Modified&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;305: &quot;Use Proxy&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;307: &quot;Temporary Redirect&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400: &quot;Bad Request&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;401: &quot;Unauthorized&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;402: &quot;Payment Required&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;403: &quot;Forbidden&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;404: &quot;Not Found&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;405: &quot;Method Not Allowed&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;406: &quot;Not Acceptable&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;407: &quot;Proxy Authentication Required&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;408: &quot;Request Timeout&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;409: &quot;Conflict&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;410: &quot;Gone&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;411: &quot;Length Required&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;412: &quot;Precondition Failed&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;413: &quot;Request Entity Too Large&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;414: &quot;Request-URI Too Long&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;415: &quot;Unsupported Media Type&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;416: &quot;Requested Range Not Satisfiable&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;417: &quot;Expectation Failed&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;500: &quot;Internal Server Error&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;501: &quot;Not Implemented&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;502: &quot;Bad Gateway&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;503: &quot;Service Unavailable&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;504: &quot;Gateway Timeout&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;505: &quot;Http Version Not Supported&quot;</div>
+<h4>contentid</h4>
+<div class="dc">The handle of the THttpContent object to be sent</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+Values less than 0 are returned for failure. Other values are returned for success</div><h1>EXAMPLES</h1><div class="dc">
+......<br>
+serverObj.sendstatusresponse(401,contObj);<br>
+</div>

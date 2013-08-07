@@ -1,0 +1,11 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TASNObject::getcode()</div><h1>DESCRIPTION</h1>
+<div class="dc">To get an encoded ASC string of this object</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+For example '0330081010' is returned for 5 bytes ASN.1 code: 30 03 80 01 01</div><h1>EXAMPLES</h1><div class="dc">
+var TASNObject a;<br>
+var TString s;<br>
+a = new TASNObject(48,'08500212345670');<br>
+s = a.getcode();<br>
+assert(s == '08500212345670');<br>
+</div>

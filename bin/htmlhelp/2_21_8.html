@@ -1,0 +1,28 @@
+<h1>原型</h1>
+<div class="dc">TString TRadius::getvalue(tagpath, TString defaultValue)<br>
+TInteger TRadius::getvalue(tagpath, TInteger defaultValue)</div><h1>说明</h1>
+<div class="dc">获取Radius消息具体参数的值</div><h1>参数</h1>
+<div class="dc"><h4>tagpath</h4>
+<div class="dc">需要取值参数的TagPath</div>
+<h4>defaultValue</h4>
+<div class="dc">如果取值不成功，返回的默认值</div>
+</div><h1>返回</h1><div class="dc">
+取值的结果</div><h1>示例</h1><div class="dc">
+var TRadius r = new TRadius();<br>
+r.decode(s); // s a complete radius message from UDP<br>
+<br>
+// get the string parameter<br>
+var TString s1=r.getvalue(&lt;&lt;radius.invoke.access-request.user-name&gt;&gt;,'null');<br>
+var TString s2=r.getvalue(&lt;&lt;radius.invoke.access-request.user-password&gt;&gt;,'null');<br>
+var TString s3=r.getvalue(&lt;&lt;radius.invoke.access-request.nas-ip-address&gt;&gt;,'null');<br>
+<br>
+// get the integer parameter<br>
+var TInteger i1=r.getvalue(&lt;&lt;radius.invoke.access-request.nas-port&gt;&gt;,-1);<br>
+<br>
+// get one parameter array element<br>
+var TString s5=r.getvalue(&lt;&lt;radius.invoke.access-request.framed-compression[1]&gt;&gt;,'null');<br>
+var TString s6=r.getvalue(&lt;&lt;radius.invoke.access-request.framed-compression[2]&gt;&gt;,'null');<br>
+<br>
+// get parameter array elements number<br>
+i2=r.getvalue(&lt;&lt;radius.invoke.access-request.framed-compression&gt;&gt;,0);<br>
+</div>

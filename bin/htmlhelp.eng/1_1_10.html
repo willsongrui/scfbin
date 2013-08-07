@@ -1,0 +1,25 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString::foreachbyte(TString operater, TInteger value)</div><h1>DESCRIPTION</h1>
+<div class="dc">To do an operation for each byte of a string. This function can be used for simple string encryption/decryption</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>operator</h4>
+<div class="dc">operator, can be<br>
+'+' for addition<br>
+'-' for subtraction<br>
+'*' for multiplication<br>
+'/' for division<br>
+'%' for mod<br>
+'&amp;' for AND<br>
+'|' for OR<br>
+or an up-arrow for XOR</div>
+<h4>value</h4>
+<div class="dc">operation value</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0</div><h1>EXAMPLES</h1><div class="dc">
+var TString s;<br>
+s.init(10, `A`);<br>
+assert(s == 'AAAAAAAAAA');<br>
+s.foreachbyte('+', 3);<br>
+assert(s == 'DDDDDDDDDD');<br>
+s.foreachbyte('-', 1);<br>
+assert(s == 'CCCCCCCCCC');<br>
+</div>

@@ -1,0 +1,41 @@
+<h1>原型</h1>
+<div class="dc">TInteger xmlparse(TString xmlStr)<br>
+TXMLTree hxmlparse(TString xmlStr)<br>
+TXMLTree::TXMLTree(TString xmlStr, TInteger parseType=0, TString wbxmlCfg='')</div><h1>说明</h1>
+<div class="dc">解析参数中的xml串，形成xml树，固定返回handle为0，如果handle 0中已经存在XML树，则删除，用新树替换。</div><h1>参数</h1>
+<div class="dc"><h4>xmlStr</h4>
+<div class="dc">需要解析的xml串，或者wbxml串（仅对TXMLTree::TXMLTree函数parseType为2的时候）</div>
+<h4>parseType</h4>
+<div class="dc">解析的几种类型：<br>
+0: 仅用于元素的内容没有被子元素分割的情况。否则，这个分割的片断会被合并为一个字符串<br>
+1: 当元素的内容有被子元素分割的时候，使用这种解析类型，tostr的时候可以保证还原<br>
+2: 被解析的字符串为wbxml（Wireless Binary XML）编码格式<br>
+3: 被解析的字符串为JSON字符串</div>
+<h4>wbxmlCfg</h4>
+<div class="dc">当被解析的字符串是wbxml格式的时候，这个参数指示一个配置名称，这个配置在xmlwoods中</div>
+</div><h1>返回</h1><div class="dc">
+xmlparse固定返回0，如果handle0中已经存在xml树，则删除用新树替换。hxmlparse和TXMLTree构造函数则返回新的handle，失败返回-1</div><h1>示例</h1><div class="dc">
+var TXMLTree x;<br>
+x = hxmlparse('&lt;a&gt;&lt;b&gt;AABBCC&lt;/b&gt;&lt;b&gt;22222&lt;/b&gt;&lt;c&gt;33333&lt;/c&gt;&lt;/a&gt;');<br>
+x = new TXMLTree('&lt;a&gt;&lt;b&gt;AABBCC&lt;/b&gt;&lt;b&gt;22222&lt;/b&gt;&lt;c&gt;33333&lt;/c&gt;&lt;/a&gt;');<br>
+<br>
+x = new TXMLTree('&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;AAA&lt;/a&gt;');<br>
+assert(x.tostr()=='&lt;a&gt;aaaAAA&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;'); // 'aaa',&nbsp;&nbsp;'AAA' -&gt; 'aaaAAA'<br>
+x = new TXMLTree('&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;AAA&lt;/a&gt;', 1);<br>
+assert(x.tostr()=='&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;AAA&lt;/a&gt;');<br>
+<br>
+/* For example the following is the WBXML tag configuration file<br>
+&nbsp;&nbsp;&nbsp;&lt;token&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tag&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;aaa&quot; id=&quot;5&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;bbb&quot; id=&quot;6&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;item name=&quot;ccc&quot; id=&quot;7&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tag&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;/token&gt;<br>
+&nbsp;&nbsp;&nbsp;The file name is wbxmltest<br>
+ */<br>
+var TString s =<br>
+'\01\01\03\00\45\03\31\31\31\00\46\03\32\32\32\00\01\47\03\33\33\33\00\01\01';<br>
+x = new TXMLTree(s, 2, 'wbxmltest');<br>
+assert(x.tostr() == '&lt;aaa&gt;111&lt;bbb&gt;222&lt;/bbb&gt;&lt;ccc&gt;333&lt;/ccc&gt;&lt;/aaa&gt;');<br>
+</div>

@@ -1,0 +1,23 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TINESObj::init(TString inesname, TString fsmid='*')</div><h1>DESCRIPTION</h1>
+<div class="dc">To initialize the TINESObj</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>inesname</h4>
+<div class="dc">An identifier, It can be:<br>
+- The logic name: The peer process is socket server<br>
+- The registered name: The peer process is socket client<br>
+- 'FSM': The peer side is another FSM in this process<br>
+- '*' or '**' for loop back communication using INES method</div>
+<h4>fsmid</h4>
+<div class="dc">The peer fsm ID. '*' is for first message of the dialogue. The default value is '*'<br>
+If a new TINESObject is initialized and the application knows the peer fsm ID or the peer CorrelationKey, the inesname argument can not be 'FSM' and the inesname argument must be:<br>
+For peer fsm ID, the format is xxyyyy that the xx is the 2 bytes scf id and the yyyy is the fsm ID.<br>
+For peer CorrelationID, the format is xxAyyyyy that the xx is the 2 bytes scf id and the 'A' is a flag and the yyyyy is a multy bytes CorrelationID.</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+var TINESObj inesobj;<br>
+inesobj = new TINESObj;<br>
+inesobj.init('INESC'); // This side is server. The registered name is 'INESC'<br>
+// ...<br>
+inesobj.init('FSM'); // TINESObj can be re-intialized<br>
+// ...<br>
+</div>

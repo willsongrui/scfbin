@@ -1,0 +1,24 @@
+<h1>原型</h1>
+<div class="dc">TString TASNObject::asnvalue( tagpath, TString default)<br>
+TInteger TASNObject::asnvalue( tagpath, TInteger default)<br>
+TString TASNObject::asnrawvalue ( tagpath )</div><h1>说明</h1>
+<div class="dc">该函数用于根据tagpath所规定的路径取到ASN的值。asnvalue根据数据类型的不同取到的是解码后的值，可以设置缺省值用于tagpath无效的情况，asnrawvalue取到的是解码之前的原始值，肯定是字符串形式。</div><h1>参数</h1>
+<div class="dc"><h4>tagpath</h4>
+<div class="dc">ANS.1参数取值路径</div>
+<h4>default</h4>
+<div class="dc">如果路径不存在，返回缺省值</div>
+</div><h1>返回</h1><div class="dc">
+取到的结果，整数或者字符串</div><h1>示例</h1><div class="dc">
+// For example, this logic is invoked by INAP IDP...<br>
+void main(TTCAPDialogue t)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TASNObject a;<br>
+&nbsp;&nbsp;&nbsp;var TString s;<br>
+&nbsp;&nbsp;&nbsp;var TInteger i;<br>
+&nbsp;&nbsp;&nbsp;a = t.getasnobj();<br>
+&nbsp;&nbsp;&nbsp;s = a.asnvalue(&lt;&lt;inap.invoke.initialdp.calledPartyNumber&gt;&gt;,'NULL');<br>
+&nbsp;&nbsp;&nbsp;i = a.asnvalue(&lt;&lt;inap.invoke.initialdp.serviceKey&gt;&gt;,-1);<br>
+&nbsp;&nbsp;&nbsp;s = a.asnrawvalue(&lt;&lt;inap.invoke.initialdp.serviceKey&gt;&gt;);<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TInteger alarm(TString s)<br>
+TInteger alarminfo(TInteger id, TInteger level, TString s)<br>
+TInteger log(TString s)</div><h1>说明</h1>
+<div class="dc">将告警信息输出到终端屏幕以及SCF.INFO.*文件。对alarm来说，错误号为11000。而alarminfo可以自己定义错误号以及级别。log函数则固定错误号10708，并且附加了一些自动机的信息，并且使用display -servicelog|-noservicelog可以控制</div><h1>参数</h1>
+<div class="dc"><h4>id</h4>
+<div class="dc">自定义的errorid, errorid 为 90000 到 99999</div>
+<h4>level</h4>
+<div class="dc">自定义的errorLevel，errorLevel为0到6</div>
+<h4>s</h4>
+<div class="dc">要输出的信息</div>
+</div><h1>返回</h1><div class="dc">
+0</div><h1>示例</h1><div class="dc">
+alarminfo(90000, 1, 'connect fail');<br>
+</div>

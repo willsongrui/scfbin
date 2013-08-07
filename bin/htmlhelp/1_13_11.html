@@ -1,0 +1,21 @@
+<h1>原型</h1>
+<div class="dc">TInteger min(TInteger i, ... )<br>
+TDouble min(TDouble i, ... )<br>
+TInteger max(TInteger i, ... )<br>
+TDouble max(TDouble i, ... )</div><h1>说明</h1>
+<div class="dc">求最小值，最大值，参数是整数或者浮点数，至少2个参数，最多30个参数。</div><h1>参数</h1>
+<div class="dc"><h4>i</h4>
+<div class="dc">参与比较的整数或者浮点数</div>
+</div><h1>返回</h1><div class="dc">
+最小值或者最大值</div><h1>示例</h1><div class="dc">
+var TInteger i;<br>
+var TDouble x;<br>
+i = min(10, 5, 8, 12, 4, 6);<br>
+assert(i == 4);<br>
+i = max(10, 5, 8, 12, 4, 6);<br>
+assert(i == 12);<br>
+x = min(10, 5.1, 8, 12, 4.2, 6);<br>
+assert(x == 4.2);<br>
+x = max(10, 5.1, 8, 12.2, 4, 6);<br>
+assert(x == 12.2);<br>
+</div>

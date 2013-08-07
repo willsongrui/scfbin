@@ -1,0 +1,23 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TObject::type()</div><h1>DESCRIPTION</h1>
+<div class="dc">TObject is the parent object of all other objects. Other objects can derive all methods of TObject. type() is to get the object type. </div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+The object type. For example, TObject::HttpServerType, TObject::CommandLineType or TObject::TCAPDialogueType</div><h1>EXAMPLES</h1><div class="dc">
+void main(TObject obj)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TCommandLine cmd;<br>
+&nbsp;&nbsp;&nbsp;var THttpServer httpServer;<br>
+&nbsp;&nbsp;&nbsp;if(obj.type() == TObject::CommandLineType)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd = (TCommandLine)obj;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;else if(obj.type() == TObject::HttpServerType)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpServer = (THttpServer)obj;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+<br>
+</div>

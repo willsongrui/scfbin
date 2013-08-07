@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString monthlastday(TString t1)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the last day of the month that t1 indicated</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>t1</h4>
+<div class="dc">The time string that format is YYYYMMDDHHmmSS</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A new time string that format is YYYYMMDDHHmmSS</div><h1>EXAMPLES</h1><div class="dc">
+var TString stmp;<br>
+stmp =monthlastday('20101020');<br>
+print(stmp);<br>
+本例返回时间：20101031142135<br>
+142135为系统本天当前时间<br>
+参数具体到秒时，返回的结果为查找月最后一天的相应时间。否则返回最后一天的与当前时间一样的时间<br>
+</div>

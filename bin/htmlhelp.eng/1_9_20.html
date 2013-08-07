@@ -1,0 +1,16 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString&nbsp;&nbsp;xmlwoodscc(TString path, TString tag='')</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the children number with the same tag name from an element of the xmlwoods</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">The element path</div>
+<h4>tag</h4>
+<div class="dc">The tag name. This value can be a null string for getting the number of all children</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The children number</div><h1>EXAMPLES</h1><div class="dc">
+var TInteger irule = xmlwoodscc('diameterconfig:config/rule2');<br>
+assert(irule == 5);<br>
+<br>
+var TInteger ichargenum = xmlwoodscc('diameterconfig:config/rule2','chargenum');<br>
+assert(ichargenum == 3);<br>
+<br>
+</div>

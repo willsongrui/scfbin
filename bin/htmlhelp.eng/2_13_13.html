@@ -1,0 +1,22 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::onpa([eventProcessLabel])<br>
+TInteger TSipCallSegment::onpc([eventProcessLabel])<br>
+TInteger TSipCallSegment::onpr([eventProcessLabel])</div><h1>DESCRIPTION</h1>
+<div class="dc">onpa: set the event processing entry for finished the asynchronous pa<br>
+onpc: set the event processing entry for finished the asynchronous pc<br>
+onpr: set the event processing entry for finished the asynchronous pr</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>eventProcessLabel</h4>
+<div class="dc">the entry name for processing event</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+1 for success, 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.onpa ([padone]);<br>
+cs.asynpa('0','10001',0,' ',1,0);<br>
+on([padone], TSipCallSegment cs)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

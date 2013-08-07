@@ -1,0 +1,17 @@
+<h1>原型</h1>
+<div class="dc">TString[] listdirectory(TString path, TInteger start=0, TInteger max=500)</div><h1>说明</h1>
+<div class="dc">根据指定的路径的目录，返回这个目录下的所有文件名</div><h1>参数</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">文件的路径</div>
+<h4>start</h4>
+<div class="dc">整数，开始位置，返回的时候将跳过这么多文件</div>
+<h4>max</h4>
+<div class="dc">整数，最大文件数目，从开始位置开始最多返回这么多文件名，其余不返回</div>
+</div><h1>返回</h1><div class="dc">
+字符串数组，如果目录不存在，返回length为0的数组</div><h1>示例</h1><div class="dc">
+// For example, there are 'aa' file and 'bb' file in the directory<br>
+assert(listdirectory(path).tostr() == '.|..|aa|bb');<br>
+assert(listdirectory(path,0,1).tostr() == '.');<br>
+assert(listdirectory(path,0,3).tostr() == '.|..|aa');<br>
+assert(listdirectory(path,2,2).tostr() == 'aa|bb');<br>
+</div>

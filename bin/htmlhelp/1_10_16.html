@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TInteger hxmlelement(TString tag, TString content)</div><h1>说明</h1>
+<div class="dc">简单构造一个单元素的XML树，形成一个XML树，返回handle。</div><h1>参数</h1>
+<div class="dc"><h4>tag</h4>
+<div class="dc">表示元素的tag的字符串</div>
+<h4>content</h4>
+<div class="dc">表示元素内容的字符串</div>
+</div><h1>返回</h1><div class="dc">
+新的XML树的handle</div><h1>示例</h1><div class="dc">
+i = hxmlelement('aaa', 'bbb');<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;aaa&gt;bbb&lt;/aaa&gt;');<br>
+</div>

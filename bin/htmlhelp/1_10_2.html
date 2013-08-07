@@ -1,0 +1,28 @@
+<h1>原型</h1>
+<div class="dc">TString xml(TString path, TString default)<br>
+TString hxml(TXMLTree handle, TString path, TString default)<br>
+TString TXMLtree::getvalue(TString path, TString default)</div><h1>说明</h1>
+<div class="dc">xml取得handle为0的XML树指定路径对应的xml元素的内容，hxml和TXMLTree::getvalue则取得指定TXMLTree对象的指定xml元素内容</div><h1>参数</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">TXMLTree对象的handle</div>
+<h4>path</h4>
+<div class="dc">路径</div>
+<h4>default</h4>
+<div class="dc">没取到值时返回的默认值</div>
+</div><h1>返回</h1><div class="dc">
+取到的xml元素的内容，否则返回default</div><h1>示例</h1><div class="dc">
+var TXMLTree i = hxmlparse('&lt;x cvd:attr1=&quot;hello&quot;&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s1 = hxml(i,'x/y','null');<br>
+s2 = hxml(i,'x/z','null');<br>
+s3 = hxml(i,'x/cvd:attr1','null');<br>
+assert(s1 == 'yyy');<br>
+assert(s2 == 'null');<br>
+assert(s3 == 'hello');<br>
+<br>
+s1 = i.getvalue('x/y','null');<br>
+s2 = i.getvalue('x/z','null');<br>
+s3 = i.getvalue('x/cvd:attr1','null');<br>
+assert(s1 == 'yyy');<br>
+assert(s2 == 'null');<br>
+assert(s3 == 'hello');<br>
+</div>

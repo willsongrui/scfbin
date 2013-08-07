@@ -1,0 +1,18 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger hxmlsetattr(TInteger i, TString path, TString attrName, TString attrValue)</div><h1>DESCRIPTION</h1>
+<div class="dc">To set the value of an attribute of an element</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>i</h4>
+<div class="dc">The handle of the TXMLTree object</div>
+<h4>path</h4>
+<div class="dc">The element path</div>
+<h4>attrName</h4>
+<div class="dc">The attribute name</div>
+<h4>attrValue</h4>
+<div class="dc">The new attribute value to be set</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0 for success and -1 for failure</div><h1>EXAMPLES</h1><div class="dc">
+i = hxmlparse('&lt;x a=&quot;1&quot;&gt;123&lt;/x&gt;');<br>
+hxmlsetattr(i, 'x', 'a', '2');<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;x a=&quot;2&quot;&gt;123&lt;/x&gt;');<br>
+</div>

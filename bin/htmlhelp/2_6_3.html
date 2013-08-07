@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSCPChargeServer::startcharge()</div><h1>说明</h1>
+<div class="dc">当业务逻辑已经设置好相关参数后，可以用这个函数来立即开始计费。</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TSCPChargeServer ch1;<br>
+ch1 = new TSCPChargeServer;<br>
+ch1.addchargeclass(100);<br>
+ch1.onstop([recACR]); //必须设置这个回调入口，这个入口用来处理话单<br>
+ch1.startcharge(); //业务逻辑可以不设置呼叫监控，但必须设置计费类别<br>
+</div>

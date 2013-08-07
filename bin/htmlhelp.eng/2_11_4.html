@@ -1,0 +1,18 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSoap::setcurrentpath(TString path)</div><h1>DESCRIPTION</h1>
+<div class="dc">To set the current path. If the current path is set, the path argument of other functions are all reletive path</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">A path from tag 'Envelope'</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+Values less than 0 is returned for failure and other values is for success</div><h1>EXAMPLES</h1><div class="dc">
+var TSoap s = new TSoap;<br>
+s.init('',0);<br>
+s.addchild('a', '123', 'Body');<br>
+assert(s.tostr()=='&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;env:Envelope xmlns:env=<br>
+&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;env:Body&gt;&lt;a&gt;123&lt;/a&gt;&lt;/env:Body&gt;&lt;/env:<br>
+Envelope&gt;');<br>
+s.setcurrentpath('Envelope/Body');<br>
+assert(s.getvalue('a') == '123');<br>
+s.setcurrentpath('Envelope');<br>
+assert(s.getvalue('Body/a') == '123');<br>
+</div>

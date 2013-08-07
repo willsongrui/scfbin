@@ -1,0 +1,24 @@
+<h1>原型</h1>
+<div class="dc">TString vxmlrun(TString arg)</div><h1>说明</h1>
+<div class="dc">其功能等价于printf \{ -VXML ...\}</div><h1>参数</h1>
+<div class="dc"><h4>arg</h4>
+<div class="dc">VXML指令字符串</div>
+</div><h1>返回</h1><div class="dc">
+返回vxml执行的结果，与printf不同的是，并没有将结果解析到argv中，而是全部返回，之后需要程序自己 pickword取出需要的字段。</div><h1>示例</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TInteger i;<br>
+&nbsp;&nbsp;&nbsp;var TString result;<br>
+<br>
+&nbsp;&nbsp;&nbsp;for(i=0;i&lt;10000;i=i+1)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result=vxmlrun('http://192.168.2.217:31976/conf.vxml');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while(pickword(result,' ',0)=='pc')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result=vxmlrun('next pcresult');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vxmlrun('next release');<br>
+&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+</div>

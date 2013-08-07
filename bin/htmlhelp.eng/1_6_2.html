@@ -1,0 +1,11 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString sqlgetstrprefix(TString s)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get a string include all prefix of another string. The result is used to construct a sql statement for 'in()' operation</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The source string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A set of prefix of a string. Each prefix is in single quotation marks and commas separate them</div><h1>EXAMPLES</h1><div class="dc">
+assert(sqlgetstrprefix('12345') ==<br>
+'\2712345\27,\271234\27,\27123\27,\2712\27,\271\27'<br>
+// \27 is ', eg, '12345','1234','123','12','1'<br>
+</div>

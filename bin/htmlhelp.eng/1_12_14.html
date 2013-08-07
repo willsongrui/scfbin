@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString checksum(TString s)<br>
+TString checksum2(TString s)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the checksum of a string<br>
+- checksum(), The result is sum of all characters of the string modulo 256<br>
+- checksum2(), The result is XOR of all characters of the string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The string to be processed</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A string only include one character</div><h1>EXAMPLES</h1><div class="dc">
+str = checksum('12341');<br>
+assert(str == '1');<br>
+</div>

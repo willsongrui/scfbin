@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger TFTPClient::putfile(TString lname, TString rname)</div><h1>说明</h1>
+<div class="dc">上传一个文件到FTP服务器上</div><h1>参数</h1>
+<div class="dc"><h4>lname</h4>
+<div class="dc">本地文件名</div>
+<h4>rname</h4>
+<div class="dc">远端文件名</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TFTPClient ftp;<br>
+ftp = new TFTPClient;<br>
+ftp.init('ahost'，21，'user'，'password');<br>
+ftp.putfile('sourceFile', 'destFile');<br>
+</div>

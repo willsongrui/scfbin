@@ -1,0 +1,12 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString encrypt(TString src, TString key)</div><h1>DESCRIPTION</h1>
+<div class="dc">To encrypt a string. It use unix standard crypt() function.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>src</h4>
+<div class="dc">The string to be encrypted</div>
+<h4>key</h4>
+<div class="dc">The encryption key</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The encryption result</div><h1>EXAMPLES</h1><div class="dc">
+assert(encrypt('abcd', '12') == '12UhNQxwwKQ7c');<br>
+assert(encrypt('123456', '123456') == '635204');<br>
+</div>

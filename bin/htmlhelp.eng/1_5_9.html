@@ -1,0 +1,52 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString&nbsp;&nbsp;currentdate8andtime(TInteger alignSec=-1, TInteger timeZone=0)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the time string of the system current date and time. This function can also get the alignment time according to the alignment arguments</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>alignSec</h4>
+<div class="dc">The second number from Greenwich 00:00:00 (0-86399 is valid). The default value is -1 for no alignment.</div>
+<h4>timeZone</h4>
+<div class="dc">The minute number between local time and Greenwich time. (-720-780 is valid)</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+14 bytes time string that the format is YYYYMMDDHHmmSS</div><h1>EXAMPLES</h1><div class="dc">
+// For example, in china, the time area is East 8.<br>
+print(currentdate8andtime());<br>
+// For example the output is 20080728201605 (2008-7-28 20:16:05).<br>
+// This is the scf system time.<br>
+<br>
+print(currentdate8andtime(10*3600,480));<br>
+// Then output 20080728180000<br>
+<br>
+print(currentdate8andtime(12*3600,480));<br>
+// Then output 20080728200000<br>
+<br>
+print(currentdate8andtime(14*3600,480));<br>
+// Then output 20080728220000<br>
+<br>
+print(currentdate8andtime(16*3600,480));<br>
+// Then output 20080729000000. The date is 29<br>
+// Because 20080729000000 is nearer to system time than 20080728000000<br>
+<br>
+print(currentdate8andtime(18*3600,480));<br>
+// Then output 20080729020000<br>
+<br>
+print(currentdate8andtime(20*3600,480));<br>
+// Then output 20080729040000<br>
+<br>
+print(currentdate8andtime(22*3600,480));<br>
+// Then output 20080729060000<br>
+<br>
+print(currentdate8andtime(0,480));<br>
+// Then output 20080729080000<br>
+<br>
+print(currentdate8andtime(2*3600,480));<br>
+// Then output 20080728100000. The date is 28<br>
+// Because 20080728100000 is nearer to system time than 20080729100000<br>
+<br>
+print(currentdate8andtime(4*3600,480));<br>
+// Then output 20080728120000<br>
+<br>
+print(currentdate8andtime(6*3600,480));<br>
+// Then output 20080728140000<br>
+<br>
+print(currentdate8andtime(8*3600,480));<br>
+// Then output 20080728160000<br>
+</div>

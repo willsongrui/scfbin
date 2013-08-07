@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TString THttpContent::getheadervalue(TString key)<br>
+TInteger THttpContent::setheadervalue(TString key ,TString value)</div><h1>说明</h1>
+<div class="dc">getheadervalue获取扩展消息头的值<br>
+serheadervalue设置扩展消息头的值</div><h1>参数</h1>
+<div class="dc"><h4>key</h4>
+<div class="dc">消息头关键字的名字，比如Content-Type, Content-Length等</div>
+<h4>value</h4>
+<div class="dc">消息头关键字的值</div>
+</div><h1>返回</h1><div class="dc">
+getheadervalue返回关键字的值</div><h1>示例</h1><div class="dc">
+contSubObj3.setheadervalue('Content-Type','text/xml');<br>
+assert(contSubObj3.getheadervalue('Content-Type')=='text/xml');<br>
+</div>

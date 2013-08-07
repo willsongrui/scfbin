@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TInteger fwrite(TString fileName, TInteger pos, TString str, TInteger length)</div><h1>说明</h1>
+<div class="dc">向文件中写入指定长度的字符串</div><h1>参数</h1>
+<div class="dc"><h4>fileName</h4>
+<div class="dc">要写入的文件名</div>
+<h4>pos</h4>
+<div class="dc">写入文件的位置（-1表示从文件尾开始写）</div>
+<h4>str</h4>
+<div class="dc">要写入的字符串</div>
+<h4>length</h4>
+<div class="dc">是要写入的长度（如果长度小于等于0或者大于实际长度，则写实际长度）</div>
+</div><h1>返回</h1><div class="dc">
+返回实际写入的字节数</div><h1>示例</h1><div class="dc">
+assert(fwrite('file',0,'good',-2) == 4);<br>
+</div>

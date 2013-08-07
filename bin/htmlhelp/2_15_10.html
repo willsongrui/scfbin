@@ -1,0 +1,29 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallSegment::ica(TString called, TString calling)<br>
+TInteger TSipCallSegment::icawitharg(TString connectType, TString urlCalled, TString calling, TString toCalled, TString other='')</div><h1>说明</h1>
+<div class="dc">试呼</div><h1>参数</h1>
+<div class="dc"><h4>called</h4>
+<div class="dc">被叫号码</div>
+<h4>calling</h4>
+<div class="dc">显示的主叫号码</div>
+<h4>connectType</h4>
+<div class="dc">连接类型，直接连接媒体为1<br>
+2请求媒体类型为audio<br>
+3请求媒体类型为video<br>
+4请求媒体类型为audio，ms不重发invite<br>
+5请求媒体类型为video，ms不重发invite<br>
+6 携带nosdp的invite</div>
+<h4>urlCalled</h4>
+<div class="dc">url中的被叫号码</div>
+<h4>toCalled</h4>
+<div class="dc">在to头字段中的被叫号码，默认和url中的一致</div>
+<h4>other</h4>
+<div class="dc">其它参数，暂时保留</div>
+</div><h1>返回</h1><div class="dc">
+1成功，0失败</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.ica('6666','7777');<br>
+</div>

@@ -1,0 +1,38 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSipMsg::getcontent()<br>
+TInteger TSipMsg::setcontent(TString content)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get or set the content of the sip messsage</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>content</h4>
+<div class="dc">the message content to be set</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+setcontent() returns 0 for success and -1 for failure. getcontent() the content string</div><h1>EXAMPLES</h1><div class="dc">
+/* For example:<br>
+INVITE sip:7434@10.20.200.227:5060 SIP/2.0<br>
+Call-ID: 7764053628133e4b65b609e7160e555e@10.20.200.227<br>
+From: &lt;sip:07312910430@10.20.200.227:5060&gt;;tag=00143-0b1006b1010684d6<br>
+...<br>
+P-Asserted-Identity: &lt;sip:07312910430@10.20.201.5&gt;<br>
+Supported: 100rel,timer,diversion<br>
+<br>
+v=0<br>
+o=- 1 1 IN IP4 10.20.200.227<br>
+s=-<br>
+c=IN IP4 10.20.201.168<br>
+t=0 0<br>
+m=audio 30000 RTP/AVP 8<br>
+a=rtpmap:8 PCMA/8000<br>
+a=ptime:20<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getcontent() == 'v=0<br>
+o=- 1 1 IN IP4 10.20.200.227<br>
+s=-<br>
+c=IN IP4 10.20.201.168<br>
+t=0 0<br>
+m=audio 30000 RTP/AVP 8<br>
+a=rtpmap:8 PCMA/8000<br>
+a=ptime:20<br>
+');<br>
+}<br>
+</div>

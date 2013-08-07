@@ -1,0 +1,21 @@
+<h1>原型</h1>
+<div class="dc">TString httpauthenticate(TString nonce, TString realm)<br>
+TString httpgetauthorization(TString a, TString method, TString uri, TString username, TString password)</div><h1>说明</h1>
+<div class="dc">httpauthenticate用于Server发送消息之前构造WWW-Authenticate字段的内容<br>
+httpgetauthorization用于Client端发送消息之前构造Authenticate字段的内容</div><h1>参数</h1>
+<div class="dc"><h4>nonce</h4>
+<div class="dc">nonce字符串</div>
+<h4>realm</h4>
+<div class="dc">realm字符串</div>
+<h4>a</h4>
+<div class="dc">Client此前收到的消息中的WWW-Authenticate头字段的内容</div>
+<h4>method</h4>
+<div class="dc">发送当前http请求所用的方法，'GET'或'POST'</div>
+<h4>uri</h4>
+<div class="dc">所用请求访问的uri地址，如'/QuickSetup.htm'等</div>
+<h4>username</h4>
+<div class="dc">用户名</div>
+<h4>password</h4>
+<div class="dc">密码</div>
+</div><h1>返回</h1><div class="dc">
+构造好的WWW-Authenticate或Authenticate字段内容</div>

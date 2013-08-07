@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc">TInteger THttpServer::sendresponse (THttpContent contentid)</div><h1>说明</h1>
+<div class="dc">发送响应消息</div><h1>参数</h1>
+<div class="dc"><h4>contentid</h4>
+<div class="dc">为要发送的消息的内容handle</div>
+</div><h1>返回</h1><div class="dc">
+如果返回值小于0,代表失败，大等于0代表成功。</div><h1>示例</h1><div class="dc">
+var THttpContent cntObj;<br>
+cntObj=serverObj.getcontent();<br>
+serverObj.sendresponse(cntObj);<br>
+</div>

@@ -1,0 +1,20 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSipMsg::getcseqnum()<br>
+TString TSipMsg::getcseqmethod()</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the number and method from the &quot;CSeq&quot; parameter of the message head</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+number of method name of &quot;CSeq&quot;</div><h1>EXAMPLES</h1><div class="dc">
+/* For example:<br>
+INVITE sip:7434@10.20.200.227:5060 SIP/2.0<br>
+Call-ID: 7764053628133e4b65b609e7160e555e@10.20.200.227<br>
+From: &lt;sip:07312910430@10.20.200.227:5060&gt;;tag=00143-0b1006b1010684d6<br>
+To: &lt;sip:7434@10.20.200.227:5060&gt;<br>
+CSeq: 1 INVITE<br>
+...<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getcseqnum() == '1');<br>
+&nbsp;&nbsp;&nbsp;assert(req.getcseqmethod() == 'INVITE');<br>
+}<br>
+</div>

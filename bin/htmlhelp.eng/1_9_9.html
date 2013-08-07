@@ -1,0 +1,26 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger hxmladdleft(TXMLTree i, TString path, TXMLTree j)<br>
+TInteger TXMLTree::addleft(TString path, TXMLTree j)<br>
+TInteger hxmladdright(TXMLTree i, TString path, TXMLTree j)<br>
+TInteger TXMLTree::addright(TString path, TXMLtree j)</div><h1>DESCRIPTION</h1>
+<div class="dc">To duplicate a TXMLTree object and add this duplicated object to another TXMLTree object as a brother of an element. addleft() is to add as the first brother. addright() is to add as the last brother.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>i</h4>
+<div class="dc">The TXMLTree object handle</div>
+<h4>path</h4>
+<div class="dc">The element path</div>
+<h4>j</h4>
+<div class="dc">The TXMLTree object to be duplicated</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0 is for success and -1 is for failure</div><h1>EXAMPLES</h1><div class="dc">
+i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+j = hxmlparse('&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;');<br>
+hxmladdleft(i,'x/y',j);<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;x&gt;xxx&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+<br>
+i = hxmlparse('&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+j = hxmlparse('&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;');<br>
+hxmladdright(i,'x/y',j);<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;x&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;a&gt;aaa&lt;b&gt;bbb&lt;/b&gt;&lt;/a&gt;&lt;/x&gt;');<br>
+</div>

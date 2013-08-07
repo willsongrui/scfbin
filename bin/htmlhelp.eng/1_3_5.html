@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString utf8toucs2(TString s, TInteger i=0)<br>
+TString ucs2toutf8(TString s, TInteger i=0 )</div><h1>DESCRIPTION</h1>
+<div class="dc">utf8toucs2() is to convert UTF-8 string to UCS2 string. ucs2toutf8() is to convert UCS2 string to UTF-8 string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The string to be converted</div>
+<h4>i</h4>
+<div class="dc">The bit order of the UCS2 string. For utf8toucs2(), 3 is for big endian and 2 is for little endian. For ucs2toutf8() 1 is for big endian and 0 is for little endian. The default value is 0</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The result string. A null string will be returned if the source string format is not valid</div><h1>EXAMPLES</h1><div class="dc">
+assert(utf8toucs2('\EF\BB\BF\E6\B1\89\E5\A5\8E\61\62', 2)<br>
+&nbsp;&nbsp;&nbsp;== '\FF\FE\49\6C\4E\59\61\00\62\00');<br>
+assert(utf8toucs2('\EF\BB\BF\E6\B1\89\E5\A5\8E\61\62', 3)<br>
+&nbsp;&nbsp;&nbsp;== '\FE\FF\6C\49\59\4E\00\61\00\62');<br>
+</div>

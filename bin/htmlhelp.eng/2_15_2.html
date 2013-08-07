@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TTCAPDialogue::getacname()<br>
+TInteger TTCAPDialogue::setacname(TString ascACName)</div><h1>DESCRIPTION</h1>
+<div class="dc">getacname() is to get the application context name, and setacname() is to set the application context name. Normally, getac() and setac() function is used, but for some strange application context while is not configured in the config.ac getacname() and setacname is used for sending TC-Begin or TC-Uni.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>ascACName</h4>
+<div class="dc">An ASC string which is the encoded application name object identifier.</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+getacname() returns the ASC string that the format is same as argument ascACName. setacname() returns 0</div><h1>EXAMPLES</h1><div class="dc">
+// for received the InitiDP operation of INAP<br>
+void main(TTCAPDialogue d)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(d.getacname() == '03A37D0101010000');<br>
+}<br>
+</div>

@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString strcat(TString arg1 ,TString arg2)<br>
+result = arg1 + arg2</div><h1>DESCRIPTION</h1>
+<div class="dc">String concatenation. Not only strcat but also '+' operator can be used for this function</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">The first string</div>
+<h4>arg2</h4>
+<div class="dc">The second string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The new string after concatenation</div><h1>EXAMPLES</h1><div class="dc">
+var TString s = strcat('a', 'b');<br>
+assert(s == 'ab');<br>
+s = s + s;<br>
+assert(s == 'abab');<br>
+</div>

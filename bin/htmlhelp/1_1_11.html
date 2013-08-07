@@ -1,0 +1,17 @@
+<h1>原型</h1>
+<div class="dc">TString::foreachbyte(TString operater, TInteger value)</div><h1>说明</h1>
+<div class="dc">用于对一个字符串的每一个字节做一个运算，可以用于简单的字符串加密</div><h1>参数</h1>
+<div class="dc"><h4>operater</h4>
+<div class="dc">操作符，支持加，减，乘，除，取余，与，或，异或</div>
+<h4>value</h4>
+<div class="dc">操作值</div>
+</div><h1>返回</h1><div class="dc">
+0</div><h1>示例</h1><div class="dc">
+var TString s;<br>
+s.init(10, `A`);<br>
+assert(s == 'AAAAAAAAAA');<br>
+s.foreachbyte('+', 3);<br>
+assert(s == 'DDDDDDDDDD');<br>
+s.foreachbyte('-', 1);<br>
+assert(s == 'CCCCCCCCCC');<br>
+</div>

@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TInteger tcpconnectsend(TString logicName, TString host, TInteger port, TString s, TInteger length)</div><h1>说明</h1>
+<div class="dc">通过logicName指定的socket，向指定的主机发送信息。发送消息前socket会连接到指定主机</div><h1>参数</h1>
+<div class="dc"><h4>logicName</h4>
+<div class="dc">logicName，在config.client.*中配置</div>
+<h4>host</h4>
+<div class="dc">新的主机名或者ip地址，空串表示ip地址和端口号不变</div>
+<h4>port</h4>
+<div class="dc">新的端口号</div>
+<h4>s</h4>
+<div class="dc">发送字符串</div>
+<h4>length</h4>
+<div class="dc">发送的长度，如果为0，则最后加0发送，如果超过s的长度，那么按照s的实际长度发送</div>
+</div><h1>返回</h1><div class="dc">
+返回值大于等于0表示成功，是新建的link id，返回负数表示失败</div>

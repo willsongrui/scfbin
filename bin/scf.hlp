@@ -1,0 +1,3421 @@
+
+COMMAND
+
+    access
+ a
+
+
+FUNCTION
+
+    访问某个进程
+
+
+USAGE
+
+    access <processname>
+
+
+DESCRIPTION
+
+    
+    <processname>可以是manager, sync，scf0，scf1，...，scf39，tcap等。命
+    令access x执行成功的条件是这个x进程必须已经启动，并且打开了管道文件$CINDIR/
+    fifo/access.x和$CINDIR/fifo/x.access。access无论在那个进程的提示符下都
+    可以执行，实际上它是inaccess自己保留的命令，其它进程的维护命令中不能含
+    有这个命令。
+    
+
+COMMAND
+
+    exit
+ quit
+
+
+FUNCTION
+
+    退回操作系统
+
+
+USAGE
+
+    exit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    列出所有的命令
+
+
+USAGE
+
+    help
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    history
+
+
+FUNCTION
+
+    列出本次启动inaccess以来最近执行的命令，最多100条
+
+
+USAGE
+
+    history
+
+
+DESCRIPTION
+
+    
+    history无论在那个进程的提示符下都可以执行，实际上它是inaccess自己保留
+    的命令，其它进程的维护命令中不能含有这个命令。
+    
+
+COMMAND
+
+    passwd
+
+
+FUNCTION
+
+    修改用户密码
+
+
+USAGE
+
+    passwd
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    quitall
+
+
+FUNCTION
+
+    在任何一个状态退回操作系统
+
+
+USAGE
+
+    quitall
+
+
+DESCRIPTION
+
+    
+    quitall无论在那个进程的提示符下都可以执行，实际上它是inaccess自己保留
+    的命令，其它进程的维护命令中不能含有这个命令。
+    
+
+COMMAND
+
+    useradd
+
+
+FUNCTION
+
+    增加用户
+
+
+USAGE
+
+    useradd [-l <level>] [-d <day>] [-h <hour>] [-s <second>] <username>
+    
+
+
+DESCRIPTION
+
+    
+    -l是用户级别，缺省为1；
+    -d -h -s是设置密码的有效期，-d是以天为单位，-h是以小时为单位，-s是以
+    秒为单位。
+    
+
+COMMAND
+
+    userdel
+
+
+FUNCTION
+
+    删除用户
+
+
+USAGE
+
+    userdel <username>
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    usermod
+
+
+FUNCTION
+
+    修改用户状态
+
+
+USAGE
+
+    usermod <username> [-l <level>] [-d <day>] [-h <hour>] [-s <second>]
+     
+
+
+DESCRIPTION
+
+    
+    参数的含义与useradd命令相同
+    
+
+COMMAND
+
+    users
+
+
+FUNCTION
+
+    列出所有用户
+
+
+USAGE
+
+    users
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    whoami
+
+
+FUNCTION
+
+    我是谁?
+
+
+USAGE
+
+    whoami
+
+
+DESCRIPTION
+
+    
+    显示此次进入inaccess的用户名
+    
+
+COMMAND
+
+    abnf
+
+
+FUNCTION
+
+    ABNF维护命令
+
+
+USAGE
+
+    abnf list [<abnfname>]
+    abnf load <abnfname>
+    abnf rm <abnfname>
+
+
+DESCRIPTION
+
+    
+    abnf list列出已经加载的abnf规则表，参数是规则表的名字，可选，如果带参
+    数，列出特定规则标的详细信息
+    abnf load加载一个abnf规则表，参数是规则表的名字
+    abnf rm删除一个abnf规则表，参数是规则表的名字
+    例如:
+    abnf load sip
+    将读取$CINDIR/abnf/sip.abnf和$CINDIR/abnf/sip.abnf.rulecfg文件
+    
+
+COMMAND
+
+    about
+
+
+FUNCTION
+
+    显示程序的版本信息
+
+
+USAGE
+
+    about
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    ac
+
+
+FUNCTION
+
+    显示SCF所支持的应用上下文
+
+
+USAGE
+
+    ac [-ld | -o]
+
+
+DESCRIPTION
+
+    
+    ac 不带参数将显示所有应用上下文的序号和名称。
+    例如：
+
+    scf0> ac
+    [ 0] [ 08 03 A3 7D 01 01 01 00 00 -- -- -- ]
+    [ 0] [ 0A 2B 0C 02 88 53 03 03 00 00 04 -- ]
+    [ 0] [ 07 04 00 01 01 01 00 00 -- -- -- -- ]
+    [ 1] [ 08 03 A3 7D 01 01 01 01 00 -- -- -- ]
+    [ 2] [ 08 03 A3 7D 01 01 01 02 00 -- -- -- ]
+    [ 3] [ 08 03 A3 7D 01 01 01 03 00 -- -- -- ]
+    [ 4] [ 08 03 A3 7D 01 01 01 04 00 -- -- -- ]
+    [ 5] [ 08 03 A3 7D 01 01 01 05 00 -- -- -- ]
+    [ 6] [ 08 03 A3 7D 01 01 01 06 00 -- -- -- ]
+    [ 7] [ 08 03 A3 7D 01 01 01 07 00 -- -- -- ]
+    [11] [ 08 03 A3 7D 01 01 01 0B 00 -- -- -- ]
+    [12] [ 09 02 84 08 01 00 01 00 05 02 -- -- ]
+
+    表示scf程序目前支持的应用上下文（Application Context，AC）
+    第1列是AC的序号，如果序号相同，则表示同样的序号有很多名字。
+    后面方括弧中第一列是AC名称的长度，此后是名称的编码，是按对象标识符的
+    编码规则来编码的
+    
+    'ac -o'将列出对象标识符格式的AC名称。例如
+
+    scf0> ac -o
+    [ 0] 0.3.4605.1.1.1.0.0
+    [ 0] 1.3.12.2.1107.3.3.0.0.4
+    [ 0] 0.4.0.1.1.1.0.0
+    [ 1] 0.3.4605.1.1.1.1.0
+    [ 2] 0.3.4605.1.1.1.2.0
+    [ 3] 0.3.4605.1.1.1.3.0
+    [ 4] 0.3.4605.1.1.1.4.0
+    [ 5] 0.3.4605.1.1.1.5.0
+    [ 6] 0.3.4605.1.1.1.6.0
+    [ 7] 0.3.4605.1.1.1.7.0
+    [11] 0.3.4605.1.1.1.11.0
+    [12] 0.2.520.1.0.1.0.5.2
+    total: 10 of 100
+
+    'ac -ld'从配置文件$CINDIR/etc/config.ac中重新load相关的应用上下文名称
+    。
+    
+
+SEE ALSO
+
+    op
+
+
+COMMAND
+
+    addwatch
+
+
+FUNCTION
+
+    打开某几项CCB的显示开关
+
+
+USAGE
+
+    addwatch <ccbName> ...
+
+
+DESCRIPTION
+
+    
+    fsm命令将显示相应SCSM自动机的某些CCB的内容，这些CCB的显示与否是由它们
+    的显示开关是否打开有关的。对静态CCB，<ccbname>指明CCB的名称；对动态的
+    CCB，<ccbname>指明当前在调业务中此CCB在CIDLOC中定义的序号(从0开始)，CCB的
+    名称和序号可以用lccb命令得到。
+    一条命令可以打开多个CCB显示的开关
+    
+
+SEE ALSO
+
+    stopat，watchall，nowatch，delwatch，fsm，go，next，lccb
+
+
+COMMAND
+
+    blackbox 
+
+
+FUNCTION
+
+    在SCF.INFO.*中记录业务逻辑的执行情况
+
+
+USAGE
+
+    blackbox on
+    blackbox off
+    blackbox <40-bytes-character-string>
+
+
+DESCRIPTION
+
+    
+    SCF进程运行过程中，对每一个业务逻辑执行实例都记录了它的最近20步业务逻
+    辑的步骤号。当blackbox on命令将开关打开时，每当SCF程序往SCF.INFO.*中记
+    录与具体呼叫相关的错误信息的时候, 就会把最近的20步业务逻辑用40个字节可
+    见串写在那一行的后面。blackbox off命令可以关掉上述的功能（为了避免SCF.
+    INFO.*写得太多）。
+    因为那40个字节的可见串很难读懂，所以用它做参数使用blackbox命令的第三
+    个用法可以列出这20步业务逻辑的情况，然后可以根据这些信息分析系统的问题
+    。
+    
+
+COMMAND
+
+    broadcast
+
+
+FUNCTION
+
+    广播scf进程的维护命令
+
+
+USAGE
+
+    broadcast <command> <argv1> <argv2>...
+
+
+DESCRIPTION
+
+    
+    有些scf的维护命令需要在每个scf进程都做一次，例如keytree -a等，如果scf进
+    程很多，这样做很麻烦，broadcast命令就是广播这些命令到所有的scf进程。broadcast的
+    参数就是一个完整的scf维护命令（包括参数）。例如：
+    'broadcast keytree -a'
+    在任何一个scf进程的提示符下操作，相当于在所有的scf进程都做了'keytree -a'
+    命令。
+    
+
+COMMAND
+
+    buffer
+
+
+FUNCTION
+
+    察看scf进程数据段中的几块内存区
+
+
+USAGE
+
+    buffer <type> [-d]
+
+
+DESCRIPTION
+
+    
+    注意：-d参数要小心使用，如果要显示的东西太多，会影响到scf程序的正常运
+    行。
+    
+    在SCF程序中，TLispResult类的new和delete操作被重载，它们将从在数据段中
+    预先定义好的数组中得到地址，每个类对应一个数组，数组有1000项，每项的大
+    小就是该类的大小。buffer命令用类名作为参数显示的是这个数组的使用情况。
+    例如：
+
+    scf0> buffer TLispResult
+    @..@@@......................................................
+    ............................................................
+    ............................................................
+    ........
+
+    一共要显示1000个字符，'@'表示该项被占用，'.'表示该项没有被占用。
+    buffer命令再跟参数-d表示要显示每一项的具体内容。
+    
+
+COMMAND
+
+    charge
+
+
+FUNCTION
+
+    SCP记费相关的设置的管理
+
+
+USAGE
+
+    charge -c | -h | -a
+    charge -dm <starttime> <duration> <chargeclass>
+    charge -dm2 <startdateandtime> <duration> <chargeclass>
+    charge -md <money> <chargeclass> <starttime> <maxduration>
+    charge -mdmc <money> <starttime> <maxduration> <chargeclass> ...
+    charge -mdf <money> <chargeclass> ...
+
+
+DESCRIPTION
+
+    
+    -c选项是列出所有的计费类别
+    -h选项是列出节假日表
+    -a选项是将计费类别表和节假日表从文件中再加载一次
+    -dm根据开始时间，时长，计费类别计算出计费的金额
+    -dm2根据呼叫开始时刻，时长， 计费类别计算出计费的金额
+    -md根据金额，计费类别，开始时间，最大时长计算实际时长
+    -mdmc，根据金额，多个计费类别，开始时间，最大时长计算实际时长，多个计
+    费类别一起起作用。
+    -mdf，根据金额，多个计费类别计算一个大致的允许通话时间（不考虑折扣）
+    
+    
+
+COMMAND
+
+    checkdb
+
+
+FUNCTION
+
+    检查数据库的状态
+
+
+USAGE
+
+    checkdb -l | -a
+
+
+DESCRIPTION
+
+    
+    这个功能适用于有Memory Channel的Alpha TruCluster环境下的多SCP应用连接
+    多INFORMIX的配置环境
+    这个环境下每台机器的$INFORMIXDIR/bin下有一个lkforinformix可执行程序是
+    我们自己加的，他用来创建一个cluster锁，参数是锁的key。TruCluster的INFORMIX的
+    启动脚本最后要启动此程序，关闭脚本中要杀死此进程。
+    所以，某台机器启动了ASE service，相应的应该有lkforinformix进程，cluster中
+    也应该有相应的锁存在，scf或sync进程通过判断这个所是否存在来判断它所相
+    连的数据库的状态。
+    使用checkdb -l命令来察看三个数据库的连接状态，用checkdb -a命令来更新
+    数据库的配置（从配置文件$CINDIR/etc/config.checkdb中重新load）
+    配置文件$CINDIR/etc/config.checkdb的格式举例如下：
+
+    scp1@shbep1 24613521
+    scp2@shbep2 24613522
+    scp3@shbep3 24613523
+
+    第一列是数据库的名字，第二列是数据库对应的锁的key。这个文件各台机器一
+    致，一般不改变
+    那么checkdb -l命令的返回结果可能如下：
+
+    [0] scp1@shbep1 24613521 up
+    [1] scp2@shbep2 24613522 up
+    [2] scp3@shbep3 24613523 up
+
+    
+
+COMMAND
+
+    clearstop
+
+
+FUNCTION
+
+    清除所有断点
+
+
+USAGE
+
+    clearstop
+
+
+DESCRIPTION
+
+
+SEE ALSO
+
+    stopat，debug
+
+
+COMMAND
+
+    configssp
+
+
+FUNCTION
+
+    配置自身和与自身相连的其它7号信令节点的PC和SSN
+
+
+USAGE
+
+    configssp
+    configssp -scp
+    configssp -l
+    configssp -a <name> <addr>
+    configssp -u <name> <addr>
+    configssp -d <name>
+    configssp -lall
+    configssp -max <name> <maxnumber>
+    configssp -ld
+    configssp -g
+    configssp -ac
+
+
+DESCRIPTION
+
+    
+    命令configssp有如下几种用法：
+    1. configssp不带参数
+    列出SCP的名称和OPC以及他的所有目的信令点(包括SSP和IP)的名称和DPC
+    
+    2. configssp -scp
+    只列出SCP的名称和OPC
+    
+    3. configssp -l
+    只列出SCP的所有目的信令点(包括SSP和IP)的名称和DPC
+    
+    4. configssp -a <name> <addr>
+    增加一个目的信令点
+    <name>最长为12个字符的字符串，用于标识目的信令点名
+    <addr>格式为AAA.BBB.CCC.DDD，其中AAA,BBB,CCC,DDD为范围是0－255的整数
+    ，标识SSP的7号信令地址。DDD是子系统号（SSN），AAA, BBB, CCC是七号信令
+    的点码（PC）
+    
+    5. configssp -u <name> <addr>
+    更新一个目的信令点, 参数含义同上
+    
+    6. configssp -d <name>
+    删除一个目的信令点, 参数含义同上
+    以上3个命令用法的执行会自动修改配置文件$CINDIR/etc/SYSCFG.DAT，增加修
+    改或删除相应的行。
+    
+    7. configssp -lall
+    分SSP列出呼叫的一些统计信息
+    SSP-NAME：SSP的名称
+    RATE：这个SSP上一个10秒钟里发起的呼叫总数
+    MAX：在两秒钟内, 针对这个SSP, SCP最多处理的呼叫数, 其余的都Abort, 0表
+    示没有限制
+    HMAX：从SCP启动到现在, 这个SSP在各个2秒钟里发起的呼叫数的最大值
+    AVA：这个SSP最近3000个呼叫在SCP中的平均处理时间
+    CALLSUM：从SCP启动到现在, 这个SSP发起的呼叫总数
+    INTER：从SCP启动到现在, 这个SSP发起的呼叫总数中连接国际长途的个数
+    NATIVE：从SCP启动到现在, 这个SSP发起的呼叫总数中连接国内长途的个数
+    LOCAL：从SCP启动到现在, 这个SSP发起的呼叫总数中连接本地电话的个数
+    SSP-NO7-ADDRESS：SSP的7号信令地址
+    
+    8. configssp -max <name> <maxnumber>
+    设置MAX的值，一般当一个SSP的话务量比较大的时候，可以设置这个值对它进
+    行限制
+    
+    9. configssp -ld
+    将配置信息从配置文件$CINDIR/etc/SYSCFG.DAT中再装载一次
+    
+    10. configssp -g
+    察看每个信令点的Group的设置
+    
+    11. configssp -ac
+    察看每个信令点的DefaultAC的设置
+
+COMMAND
+
+    debug
+
+
+FUNCTION
+
+    进入调试状态
+
+
+USAGE
+
+    debug [<callingPartyNumber>]
+    debug -s <serviceid>
+
+
+DESCRIPTION
+
+    
+    针对某一主叫号码引起的呼叫所创建的自动机进行调式，可以实现在正常运行
+    中跟踪某业务分支而不影响其它呼叫。如参数缺省：如果此时存在SCSM自动机，
+    则第一个收到消息的自动机将被调试。否则，此后创建的第一个SCSM自动机将被
+    调试。此自动机删除时退出调试状态。同时只能有一个自动机被调试。一旦进入
+    调试状态，下面满足条件的自动机将被调试，业余逻辑的执行将在第一个SIB执
+    行之前暂停，这时必须用go命令或next命令才能使业务逻辑继续执行。
+    'debug -s'是针对某一个业务的自动机进行调试。
+    
+
+SEE ALSO
+
+    stopat，watchall，fsm，go，next
+
+
+COMMAND
+
+    delete
+
+
+FUNCTION
+
+    删除自动机
+
+
+USAGE
+
+    delete [-9] <fsmInstance> ...
+    delete -old <serviceKey>
+    delete -e <fsmInstance> ...
+
+
+DESCRIPTION
+
+    
+    1. delete [-9] <fsminstance> ...
+    删除一个或者多个自动机，<fsmInstance>为自动机实例号。实际上此命令将向
+    各个自动机发送一个id-dummyTCEnd消息。一般的，SCSM消息收到此消息后将中
+    断当前业务的执行，执行当前SIB的错误出口。
+    如果当前SIB的错误出口并没有导致业务逻辑的结束，可以用-9选项，此命令将
+    向自动机发送inter-fsmDelete消息，强制删除自动机。
+    
+    2. delete -old <servicekey>
+    当rm或者update命令删除或者更新一个业务的时候，如果旧版本的业务还有呼
+    叫，那么会有一个老版本的业务存在，如果想要把这个旧版本业务上的所有呼叫
+    都删除，就用delete -old <servicekey>命令，<servicekey>是业务关键字
+    
+    3. delete -e <fsminstance>
+    命令并没有真正删除自动机，而是产生一个serviceEvent事件给自动机，业务
+    执行serviceEvent的事件入口。
+    
+
+SEE ALSO
+
+    scmectrl
+
+
+COMMAND
+
+    delwatch
+
+
+FUNCTION
+
+    关闭某几项CCB的显示开关
+
+
+USAGE
+
+    delwatch <ccbName> ...
+
+
+DESCRIPTION
+
+    
+    对静态CCB，<ccbname>指明CCB的名称；对动态的CCB，<ccbname>指明当前在调
+    业务中此CCB在CIDLOC中定义的序号(从0开始)。参见addwatch中的详细说明。
+    
+    
+
+SEE ALSO
+
+    stopat，watchall，nowatch，addwatch，fsm，go，next，lccb
+
+
+COMMAND
+
+    display
+
+
+FUNCTION
+
+    跟踪信息显示控制
+
+
+USAGE
+
+    display -all | -no
+    display -monitor  or -nomonitor
+    display -nmp  or -nonmp
+    display -servicelog | -noservicelog
+    display -calling <callingnumber>
+    display -called <callednumber>
+    display -addcalling [is|like|include] <ccbvalue> [username] [filter]
+    
+    display -delcalling [is|like|include] <ccbvalue>
+    display -addcalled [is|like|include] <ccbvalue> [username] [filter]
+    
+    display -delcalled [is|like|include] <ccbvalue>
+    display -gt <remotegt>
+    display -pc <remotepc>
+    display -ssn <ssn>
+    display -s <servicekey>
+    display -fsm <fsminstance>
+    display -ccb <servickey> <ccbname>  is | like <ccbvalue>
+    display -ccb clear all
+    display -ccb clear <servicekey> [<ccbname>]
+    display -elapse  or -noelapse
+    display -sipon | -sipoff
+    display -sibon | -siboff
+    display -nr
+    display -stop
+    display state
+
+
+DESCRIPTION
+
+    
+    1. display -all | -no
+    'display -all'命令打开所有自动机执行的trace开关。'display -no'命令关
+    闭所有自动机执行的trace开关。
+    
+    2. display -servicelog | -noservicelog
+    对业务逻辑中使用printf SIB的-Log选项方式写log文件和终端输出做控制，默
+    认不做输出。'display -servicelog'  打开输出。'display -noservicelog' 
+    关闭输出 
+    
+    3.display -nmp  or -nonmp
+    'display -nmp'
+    显示所有与SMP以及与INES交互的信息。'display -nonmp'命令关闭
+    
+    4. display -servicelog | -noservicelog
+    对业务逻辑中使用printf SIB的-Log选项方式写log文件和终端输出做控制，默
+    认不做输出。'display -servicelog'  打开输出。'display -noservicelog' 
+    关闭输出 
+    
+    5. display -s <servicekey>
+    设置一个控制条件，新的自动机如果业务逻辑ID是<serviceid>，那么打开trace开
+    关。'display -s 0'让这个条件失效
+    
+    6. display -calling <callingnumber>
+       display -called <callednumber>
+    设置一个控制条件，新的自动机如果满足这个条件就打开trace开关。
+    对于SS7 InitialDP触发的业务（非协议模板方式）, callingnumber是主叫号
+    码，callednumber是被叫号码
+    对于invokeservice或者INES触发的业务，或者SIP触发的业务，callingnumber和
+    callednumber根据不同的情况有不同的含义。
+    对于普通的业务逻辑，如果要启用这个功能，那么可以通过在业务逻辑中使用
+    赋值语句对callingAddress和calledAddress赋值来实现。
+    使用'display -calling NO'或者'display -called NO'让这个条件失效。(实
+    际上使用一个不存在的号码)
+    
+    7. display -fsm <fsminstance>
+    打开一个<fsminstance>指定的自动机的trace开关。
+    
+    8. display -ccb <servickey> <ccbname>  is | like <ccbvalue>
+    设置一个控制条件，新的自动机如果满足某个CCB变量是某个值这个条件就打开
+    trace开关。<ccbname>只能是TString类型的变量
+    'display -ccb clear ...'可以使得上面设置的条件失效。
+    
+    9. display -nr
+    一般来说，一旦一个自动机的trace开关打开，那么关联自动机的开关也会打开
+    。这个命令是用来关掉对关联自动机的trace开关的打开
+    
+    10. display -stop
+    除了像-no一样关掉所有开关之外，还可以停掉正在进行的trace。
+    
+    11. display state
+    显示上述一些开关的状态
+    
+
+COMMAND
+
+    distrtab
+
+
+FUNCTION
+
+    维护呼叫分配表
+
+
+USAGE
+
+    distrtab -l [<index>] 
+    distrtab -dp | -ds | -dn | -dt <index>
+
+
+DESCRIPTION
+
+    
+    distrtab -l 命令显示当前的分配表结构，的执行结果如下所示：
+
+    distribute items of percentage
+    index  key              logicEnds counter
+    ...
+    distribute items of sequential
+    index  key              logicEnds counter
+    ...
+    distribute items of number interval
+    index  key              counter
+    ...
+    distribute items of time interval
+    index  key              nextTime   currentTime
+    ...
+
+    它显示了呼叫分配的四种方式（按比例分配/percentage，顺序分配/sequential，
+    呼叫数间隔分配/number counter 和时间间隔分配/time interval）所对应的呼
+    叫分配表的情况。index是表项在表中的数组下标，key是用来唯一标识一个分配
+    的一个字符串，一般用业务标识和业务用户号码组合而成。
+    按比例分配：每当创建了一项按比例分配之后，将对应有一个100个元素的数组
+    ，数组元素的内容就是一些SIB出口号，这些出口号按一定的比例均匀的分布在
+    这个数组中。命令distrtab -l <index>可以显示相应的项的这个数组的详情。
+    logicEnds是指一共有多少个逻辑出口。counter在0-99间循环，当前呼叫用counter作
+    为下标来从数组中得到SIB的出口。
+    顺序分配：logicEnds是SIB的出口数，counter在1到logicEnds间循环，当前呼
+    叫根据counter的值来决定走SIB的哪个出口。
+    呼叫数间隔分配：counter在呼叫间隔数和0之间循环，当前呼叫判断counter的
+    值为0时走SIB出口1，counter的值为非0时走SIB出口2。
+    时间间隔分配：nextTime和currentTime都以秒为单位，nextTime起初被赋值为
+    currentTime+间隔秒数，currentTime每秒加1，当前呼叫判nexeTime == currentTime时
+    走SIB出口1（再把nextTime赋值为currentTime+间隔秒数），否则走SIB出口2
+    
+    
+    distrtab -dp删除相应的比例分配项。
+    distrtab -ds删除相应的顺序分配项。
+    distrtab -dn删除相应的次数间分配项。
+    distrtab -dt删除相应的时间间隔分配项。
+
+COMMAND
+
+    env
+
+
+FUNCTION
+
+    维护一些环境变量
+
+
+USAGE
+
+    env [<name> <value>]
+    env default
+
+
+DESCRIPTION
+
+    
+    env命令不带参数，显示各个环境变量的值，这些参数的含义如下：
+    
+    TimeUnit: 设置一个时间单位，SCF程序在构造TC-Invoke请求原语填写timeout参
+    数时要乘上这个时间单位，用来适应不同厂家的TCAP对此项参数的单位理解不一
+    致。对于我们目前最常用的DECSS7的TCAP，这个参数最好设为20。
+    
+    ComponentSingle: 0：表示连续请求成分原语，只在必要的时候发送对话原语
+    ；1：表示SCF请求操作时，每一个成分原语跟一个对话原语；缺省值为0。
+    
+    MainLoopTimes: 表示每多少次主循环激活一次接收socket或者有名管道发来的
+    消息，缺省值为6
+    
+    FirstInvokeID: 一个对话中由SCF所引起的操作调用在分配调用ID时从几开始
+    ，缺省值为128。
+    
+    ActivateTest: 0表示Connect之后不发送ActivateTest操作给SSP，其他整数表
+    示Connect之后发送ActivateTest操作给SSP，整数的值表示两次发送ActivateTest操
+    作间隔的分钟数。缺省值为5。
+    
+    MaxFSMNumber: 表示一个SCF进程最大的自动机个数，缺省值为1000。
+    
+    LogToSCFInfo: 1表示SCF程序向SCF.INFO.x文件中写信息；0表示不写。缺省值
+    为1。
+    
+    BackupSCSMState: 表示一个呼叫进入通话状态时是否将当前状态保存在$CINDIR/
+    crash/SCFFSM.log.*中（以备scf重启动时将这些呼叫的状态恢复）。0表示不保
+    存；1表示保存。缺省值为0。
+    
+    SLPUseSharedMem: 表示SLP是否保存在共享内存中。0不使用共享内存；1使用
+    共享内存。缺省值为1，实际运行的SCP系统必须设为1，如果是SCE的后台环境一
+    般设为0，可以节省共享内存的开销，以便多用户使用。
+    
+    SCFID: SCP要使用独立IP时，使用UI SIB发ETC操作给SSP时需填写的SCFID参数
+    （注意：仅限于使用UI SIB发ETC的情况，如果使用xmlsib发ETC操作，那么ETC的
+    参数由xmlsib的参数决定）。这个参数可以是0-65535之间的整数；如果为0，发
+    ETC操作给SSP时不需填写SCFID参数。
+    SCFID如果在1-65535之间, ETC操作中将包含两个字节的SCFID参数，第一个字
+    节是: SCFID变量/256，第二个字节是: SCFID变量%256。例如如果SCFID变量的
+    值设为1025, 真正发给SSP的SCFID参数应该是 04 01两个字节
+    SCFID如果设为16777216-33554431之间（也就是十六进制0x1000000到0x1FFFFFF之
+    间），发送的ETC操作中的SCFID将是3个子节：第一个字节是: SCFID变量/65536%
+    256，第二个字节是: SCFID变量/256%256，第三个字节是: SCFID变量%256。例
+    如如果SCFID变量的值设为16777301, 真正发给SSP的SCFID参数应该是00 00 55三
+    个字节。反过来说, 如果要求发送的SCFID是00 00 55，那么env中SCFID变量应
+    该设为: 16777216+0*65536+0*256+85=16777301
+    
+    SyncState: SCF业务逻辑的execsql SIB操作数据库，所有的表格分为两类：可
+    能只向SMP同步的为一类（acr_record表或者是在config.tabdb中配置为[sync]
+    ），其它的表为二类。那么SyncState的配置这两类表是：本地操作，发给SMP，
+    二者皆是，放弃等四种方式，具体含义如下：
+    值	一类表    	对于二类表           	一般应用环境
+    0	只发给SMP	本地操作成功后发给SMP	传统SCP
+    1	只发给SMP	只本地操作           	与SMP共享数据库的SCP
+    
+    3	放弃     	只本地操作           	SCE后台环境
+    4	放弃     	本地操作成功后发给SMP	测试
+    9	只本地操作	只本地操作           	基于SCF的SMP
+    
+    StepsPerEvent: 表示一个呼叫对应的自动机可以连续执行多少个SIB才交出控
+    制权。缺省值为1，设为比1大的值可以提高一点系统的效率，但是最大不能超过
+    5。
+    
+    PriceFormat: 因为各种SSP交换机对INAP的PA和P&C操作的价钱参数的理解不一
+    致。例如如果跟BELL1240连用0；如果跟lucent连用1。
+    
+    TimerForIP: 使用独立IP时，AssistSSPIPFSM使用的计时器的值，以秒为单位
+    ，缺省值为600秒。一般要设成最长的一条语音的持续时间。
+    
+    SCPCharge: 0：表示SSP计费；1：表示SCP计费，采用可变折扣的方式。（3.71以
+    上版本支持）；2：表示SCP记费，但采用固定折扣的方式（4.00版本以上支持）
+    
+    可变折扣方式：在记费的过程中，记费程序可以根据目前的时刻和记费类别中
+    的时间段折扣规定实时的调整当前的折扣。
+    固定折扣方式：在记费的过程中，记费程序始终使用记费开始的得到的折扣。
+    这种方式中，记费开始就可以根据余额得到预期的通话时间，业务可以在sspcharge 
+    SIB之后使用CCB变量estimateTime。
+    
+    AlarmInterval: configssp命令或者SYSCFG.DAT配置文件可以对每个SSP限制呼
+    叫，设置一个N秒内的最大呼叫数，这个N就在这里设置，一个整数，只能设置1-
+    10之间。
+    
+    TelecomMonthLastDay: 意思是电信月的最后一天。取值在-27和27之间：
+     	0： 表示电信月最后一天就是实际月底。
+     	 >0：表示电信月最后一天提前到几号。例如19，表示5月19号电信月
+    5月结束，5月20号开始为下一个电信月，6月
+     	 <0：表示电信月最后一天顺延到下个月的几号。例如-9，表示6月9号
+    5月电信月才结束，6月10号开始才是电信月6月
+    业务逻辑中，telecommonth函数返回YYYYMM格式的当前电信月字符串。
+    
+    命令env <envName> <newValue>可以重新设置某个环境变量的值，同时更新文
+    件$CINDIR/etc/scfenv。
+    
+    命令env default将这些变量都设为缺省值。
+    
+    注意：env命令只影响一个SCF进程，所以一般要对所有的scf都做一下这个命令
+    。
+
+COMMAND
+
+    feam
+
+
+FUNCTION
+
+    SOCKET相关的状态察看以及维护
+
+
+USAGE
+
+    feam -wait [<sec> <usec>]
+    feam -sdp
+    feam -sdp connect
+    feam -sdp <sdphost> <sdpport> <bakhost> <bakport>
+    feam -protocol
+    feam -printon [t]
+    feam -printoff
+    feam -fifo
+    feam -ines
+    feam -link
+    feam -ines enable | disable <name>
+    feam -sockservice
+
+
+DESCRIPTION
+
+    
+    feam -wait <sec> <usec>可以改变select文件描述符的等待时间。<sec>和<usec>
+    分别是秒和微秒为单位的值。一般的，系统的缺省设置为0，1000。feam -wait只
+    显示着两个时间
+    
+    当SCP连接独立SDP的时候：
+    feam -sdp 察看连接的状态
+    feam -sdp connect 重新连接SDP
+    feam -sdp <sdphost> <sdpport> <bakhost> <bakport>重新设置主SDP和备SDP的
+    主机名和端口号（配置文件$CINDIR/etc/config.sdp.*也随之更新）
+    
+    feam -protocol显示config.protocol中配置的协议
+    feam -printon | -printoff打开或者关闭socket消息的显示开关。注意实际运
+    行的系统如果话务量较大，这个命令不要随便使用。因为打开开关之后十分消耗
+    系统资源。feam -printon t打开显示开关，并且针对纯文本的消息按照纯文本
+    格式显示，不再显示16进制
+    feam -fifo显示scf打开的与manager相连的fifo的情况
+    feam -sockservice显示config.socketservice.*配置的socket和业务逻辑对应
+    关系的情况
+    feam -ines enable | disable name将某个socket禁用或者恢复使用
+    feam -ines显示config.server.*或者config.client.*配置的socket的情况。
+    命令显示结果是xml格式：
+
+    对于socket server标记如下：
+       <fileDescriptor>文件描述符
+       <acceptCounter>调用accept的次数
+       <logicName>在config.server.*中配置的名字
+       <disabled>是否已经禁用
+       <portNumber>端口号
+       <appProcotol>协议
+       <lastInformation>最后的信息
+       <maxConnections>最大的连接数
+       <aliveConnections>当前存活的连接数
+    对于socket client标记如下：
+       <serverHostName>server的主机名（或者ip地）
+       <connectCounter>调用connect的次数
+    其它同server
+    对于某条link, 标记如下：
+       <index>此link的索引
+       <fd>文件描述符
+       <clientIP>对于server的link，是client的IP地址
+       <clientPort>端口号
+       <clientName>对于server的link，client的名字
+       <dialogueIDRadix>对于bin11协议，是dialogueID的基数
+       <groupID>对于bin11协议，是组号
+       <socketState>状态：1是OPEN
+       <readState>读状态
+       <gotLength>收到的所有消息的长度
+       <gotMessage>收到的消息数
+       <bufferStart>缓存的开始位置
+       <bufferEnd>缓存的结束位置
+       <queueLength>发送队列的长度
+       <aliveCheck>例检的时长
+       <timer>针对例检，当前的计时器值
+       <checkNumber>发送例检消息的次数
+
+    
+    feam -link可以简要列出目前活的所有socket link的情况，一行一个，每行字
+    段说明如下：
+    LOGICNAME：配置的逻辑名
+    PROTOCOL：使用的协议名
+    T：C表示这是一个client, S表示这是一个server
+    ID：表示link的编号
+    PEER-ADDR：连接对端的IP地址和端口号
+    READ：当前已经收到的字节数
+    WRITE：当前已经发出的字节数
+    KEY：某些类型的协议与自动机关联key
+    
+
+COMMAND
+
+    fsm
+
+
+FUNCTION
+
+    查看自动机的CCB情况
+
+
+USAGE
+
+    fsm [<fsmInstance>]
+
+
+DESCRIPTION
+
+    
+    <fsmInstance>为自动机实例号，如此自动机为SCSM，则列出所有要查看的CCB此
+    时的值；如为其它FSM，则列出相关信息。如<fsmInstance>缺省，则针对当前被
+    调试的SCSM。显示的结果可能是：
+
+    [ 0]serviceKey         	= 	300, 0x12C
+    [ 1]streamNumber       	= 	0, 0x0
+    [ 3]callingAddress      	= 	'0281111111'
+    [ 4]calledAddress        = 	''
+    [ 5]callConnectedElapsedTime = 0, 0x0
+    [ 6]callAttemptElapsedTime = 0, 0x0
+    [ 7]callStopTime			= 	00 00 00 00 00 00
+    CCBItem[  3]       = ( 19) 	0, 0x0
+    CCBItem[  4]       = ( 19) 	0, 0x0
+    CCBItem[  5]       = ( 19) 	0, 0x0
+
+    前半段是一些静态CCB，[]中是静态CCB的序号，然后是静态CCB的名称，然后时
+    静态CCB的值，对于整数，分别显示十进制和16进制的值，对于可打印串显示''
+    引起来的串的内容，对于不可打印串，用16进制逐个字节显示。
+    后半段是动态CCB，[]中是CCB的序号，（）中是CCB的类型，然后是CCB的值。
+    
+    
+
+SEE ALSO
+
+    debug，addwatch，delwatch，watchall，scmectrl
+
+
+COMMAND
+
+    go
+
+
+FUNCTION
+
+    继续执行业务
+
+
+USAGE
+
+    go
+
+
+DESCRIPTION
+
+    
+    业务继续执行到任一断点所指的SLPSTEP之前暂停，显示此SLPSTEP的SIB名称和
+    其它有关信息。
+    
+
+SEE ALSO
+
+    stopat，watchall，fsm，next
+
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    帮助
+
+
+USAGE
+
+    help [<commandName>]
+
+
+DESCRIPTION
+
+    
+    help不带参数将列出所有命令以及它们的缩写的名字。
+    help带参数<commandName>将列出此命令的功能，用法，说明和参见等内容
+    
+
+COMMAND
+
+    info
+
+
+FUNCTION
+
+    显示一些类的size
+
+
+USAGE
+
+    info [ccb  |  inap  |  sib ]
+
+
+DESCRIPTION
+
+    
+    info ccb显示一些CCB变量类型的长度
+    info inap显示inap操作有关的一些数据类型的长度
+    info sib显示一些SIB的时数据类型的长度
+    info不带参数显示其它一些重要的数据类型的长度
+    
+
+COMMAND
+
+    invokeservice
+ i
+
+
+FUNCTION
+
+    调用一个业务
+
+
+USAGE
+
+    invokeservice <serviceid> <accesscode> [<callingaddr>] ...
+
+
+DESCRIPTION
+
+    
+    <serviceid>是要启动的业务逻辑的关键字
+    <accesscode>是一个号码，它在业务逻辑执行之前将被复制到静态CCB变量calledPartyNumBer中
+    ，业务逻辑可以根据这个CCB变量走不同的分支。
+    这样的业务只有先发起TCAP对话才可以何别的实体通过SS7通信，例如使用InitialCall 
+    SIB或者xmlsib发起对话。
+    实际上invokeservice命令可以至少带2个参数，至多带30个参数，每个参数之
+    间用空格分开，每个参数的长度小于30个字节。从第3个参数开始都是可选的，
+    这些参数将被复制到CCB变量argv2到argv29中。
+    
+
+COMMAND
+
+    keytree
+
+
+FUNCTION
+
+    维护用于号码字冠分析的键树
+
+
+USAGE
+
+    keytree -l | -a
+
+
+DESCRIPTION
+
+    
+    键树是一棵10叉树，用于存放所有可能的区号或者局号。
+    'keytree -l' 列出键树的内容
+    'keytree -a' 将键树从文件$CINDIR/etc/numbertab重新构造一遍
+    在业务逻辑的设计过程中，有时需要根据主叫或者被叫号码取得区号或者局号
+    用于计费，所以业务逻辑程序设计语言中提供了取得区号的功能，他是算法SIB的
+    一种语句：
+    <destNumber> = numbertrans(<srcNumber>, <n>);
+    变量<srcNumber>是主叫或被叫号码，变量<destNumber>用于存放返回的区号或
+    者局号，<n>是一个整数，填1或者2，一般1表示最短匹配，2表示最长匹配，",
+    1"可以省略不写。例如010和0106228都在键树中，则最短和010匹配，最长和0106228匹
+    配。
+    文件$CINDIR/etc/numbertab用于构造键树，他有两列号码，第一列用于匹配，
+    第二列用于返回，例如文件的内容如下：
+
+    010     	10
+    0106207  	106207
+    0106228  	106228
+    020      	20
+    021      	21
+    0215     	215
+    022      	22
+
+    命令keytree -l将列出如下结果
+
+    scf0> keytree -l
+    010      	10
+    ...6207 	106207
+    .....28  	106228
+    .20      	20
+    ..1      	21
+    ...5     	215
+    ..2      	22
+
+    '.'表示这个位置的字符与上一行相同。
+    numbertrans('01062282297',1) 会返回'10'.
+    numbertrans('01062282297',2) 会返回'106228'.
+    
+
+COMMAND
+
+    lccb
+
+
+FUNCTION
+
+    列出CCB名称
+
+
+USAGE
+
+    lccb -s | -d
+
+
+DESCRIPTION
+
+    
+    'lccb -s' 列出静态CCB的名称，例如
+
+    scf0> lccb -s
+    [+]serviceKey
+    [+]streamNumber
+    [+]cli
+    [-]callingAddress
+    [-]calledAddress
+    [+]callConnectedElapsedTime
+    [+]callAttemptElapsedTime
+    [+]callStopTime
+    [+]releaseCause
+    ...
+
+    '[+]'表示此CCB正在被察看，即fsm命令将列出此CCB的值
+    '[-]'表示此CCB没有被察看。
+    
+    'lccb -d' 列出service命令所选择的业务的动态CCB的名称及序号
+
+    scf0> lccb -d
+    [  0] [+]mailBoxID (38)
+    [  1] [+]boxPayed (19)
+    [  2] [+]selectedFunction (13)
+    [  3] [+]ownerUser (19)
+    [  4] [+]userState (19)
+    [  5] [+]stateModified (19)
+    [  6] [+]contentState (19)
+    [  7] [+]totalOwnersMail (19)
+    [  8] [+]totalClientsMail (19)
+    [  9] [+]deletedMail (19)
+    [ 10] [+]recordSuccess (19)
+
+    第一列[]中的数字表示序号，[+][-]的意义同静态CCB，（）中的数是此CCB的
+    类型
+    在使用lccb -d命令之前，必须使用service命令选择一个业务
+    
+
+SEE ALSO
+
+    addwatch，delwatch，service
+
+
+COMMAND
+
+    limittab
+
+
+FUNCTION
+
+    维护呼叫限制表
+
+
+USAGE
+
+    limittab -l 
+    limittab -l <key>
+    limittab -d all
+    limittab -d <index>
+    limittab -d key <key>
+    limittab -d ex <expandkey>
+
+
+DESCRIPTION
+
+    
+    limittab -l 列出limit表中的所有的项目
+    第一列是序号
+    第二列是限制关键字，点号右边的部分是扩展关键字
+    第三列是限制的最大个数
+    第四列是当前个数
+    limittab -l <key>
+    	列出limit标中关键字是<key>的项目
+    limittab -d all
+    将所有的项目都删除
+    limittab -d <index>
+    将<index>指定序号的项目删除
+    limittab -d key <key>
+    将<key>所指定限制关键字对应的的项目删除
+    limittab -d ex <expandkey>
+    将<expandkey>所指定的扩展关键字所对应的项目删除
+    例如：用limit SIB实现的卡类业务
+    解卡的时候可以用命令（例如卡号是111122223333，业务中规定的扩展关键字
+    是5）
+    limitab -d key 111122223333.5
+    如果要判断此卡是不是正在使用，可以用命令：
+    'limittab -l 111122223333.5'
+    
+
+COMMAND
+
+    list
+ l
+
+
+FUNCTION
+
+    列出业务逻辑的概况
+
+
+USAGE
+
+    list [<stepNo>]
+    list -all [exec]
+    list -sib <sibid>
+    list -edp
+    list -proc
+    list -proc <procid>
+
+
+DESCRIPTION
+
+    
+    先用service命令选择一个业务，list不带参数将从当前step开始列出10步业务
+    的概况（当前step初始为0）。list带参数<stepNo>则从<stepNo>开始列出10步
+    业务的概况，当前step随之改变。list -all列出整个业务。例如：
+
+    scf0> l 50
+    [ 50]51	: NewCMP  '' exit( 2:52 e:196 ) [0]
+    [ 51]52	:UI     'PA 12' exit( 1:197 e:196 ) [0]
+    [ 52]53	:UI     'P\&C 13' exit( 1:48 2:48 e:196 ) [0]
+    [ 53]54	: UI      'P\&C 14' exit( e:196 ) [0]
+    [ 54]55	: NewCMP  '' exit( 3:56 e:196 ) [0]
+    [ 55]56	: UI      'PA 15' exit( 1:197 e:196 ) [0]
+    [ 56]57	:ExecSQL 'update VMS\_USER set pin' exit( e:196 ) [0]
+    [ 57]58	: UI      'PA 16' exit( 1:15 2:15 e:196 ) [0]
+    [ 58]59	: NewCMP  '' exit( 1:64 e:196 ) [1]
+    [ 59]60	: NewCMP  '' exit( 1:62 e:196 ) [0]
+
+    第一列[]中的数字是业务逻辑步骤的序号，stopat命令要使用这个序号。第二
+    列'：'之前的内容是业务逻辑步骤的标号，它可以是任何字符串。'：'之后的字
+    符串是SIB的名称。单引号括起来的内容是对这个SIB参数的简介，例如ExecSQL 
+    SIB将是SQL语句的一个片断。exit（）中的内容是这个SIB的出口。最后一列[]
+    中的数表示此步骤执行的次数。
+    
+    list -all exec只列出执行过的SIB
+    
+    list -sib <sibid> 只列出执行过的指定SIB,sibid是SIB的整数ID，可以使用
+    st sib命令得到。
+    
+    list -edp将列出此业务逻辑的所有EDP事件的入口，例如：
+
+    scf0> l -edp
+    10 -> 176
+    9 -> 123
+
+    表示oAbandon(10)事件收到时应走到业务逻辑的176步，oDisconnect事件收到
+    时应走业务逻辑的123步。
+    
+    list  -proc 列出所有过程名称和过程id
+    
+    list  -proc 'procid'  列出该过程的所有step
+    
+
+SEE ALSO
+
+    addwatch, delwatch, service, st
+
+
+COMMAND
+
+    liststop
+
+
+FUNCTION
+
+    列出所有断点
+
+
+USAGE
+
+    liststop
+
+
+DESCRIPTION
+
+
+SEE ALSO
+
+    stopat，debug
+
+
+COMMAND
+
+    load
+
+
+FUNCTION
+
+    加载业务
+
+
+USAGE
+
+    load <serviceid> <binFileName>
+
+
+DESCRIPTION
+
+    
+    <serviceid>是一个整数，作为业务标识。
+    <binFileName>是业务逻辑的二进制文件名，名为<binFileName>的文件已在$CINDIR/
+    etc目录下存在。
+    
+
+SEE ALSO
+
+    ls，update，rm
+
+
+COMMAND
+
+    ls
+
+
+FUNCTION
+
+    列出所有的业务的情况
+
+
+USAGE
+
+    ls [-s | -c | -m | -d | -v]
+
+
+DESCRIPTION
+
+    
+    ls命令不带参数将显示如下信息：
+
+    SERVICEID FILENAME      ACCESSCODE T S V USING USED  UPDATETIME
+    101       test.bin      101        0 0 0 0     0     20091203175613
+    ...
+
+    SERVICEID是业务标识
+    FILENAME是业务文件名
+    ACCESSCODE事业务接入码
+    S是业务的状态（0表示正常，1表示暂停）
+    V是业务的版本标志（0表示新版本，1表示旧版本）
+    USING表示当前正在使用此业务的有多少呼叫
+    USED表示已经有多少呼叫使用过此业务
+    TIMEMARK表示业务逻辑最后一次更新的时间。
+    
+    ls -s命令将显示如下信息：
+
+    svcID callSum normalEnd Connect CostSum(C) AvaDuration(S)
+    101   0       0         0       0          0.000000
+    ...
+
+    normalEnd是指整个业务逻辑执行过程中没有走过ERROR出口的呼叫次数
+    Connext是指业务执行到Connect SIB的次数。
+    这个命令同时将屏幕所显示的信息追加到文件$CINDIR/service.st中。
+    ls -c命令将ls -s命令所列出的相关计数器清零。
+    
+    ls -m命令将列出已经加载的业务逻辑占用共享内存的简单统计信息，例如：
+
+    scf0> ls -m
+    m[40220000..41532d00]
+    free table:  1 blocks, 19551080 bytes total
+    alloc table: 410 blocks, 448920 bytes total
+
+    表示共享内存的地址从40220000到41532d00，空闲内存1块，总共19551080个字
+    节，已分配内存410块，一共448920字节。
+    ls -md命令将列出已经加载的业务逻辑占用共享内存的详细情况，但是要注意
+    此命令不能在话务量较大的时候使用，因为他会占用系统的很多时间，影响系统
+    的正常运行。
+    
+    ls -v 显示当前业务的版本号等信息。
+    
+    ls跟一个serviceid做参数，可以列出某一个业务逻辑的更详细的信息
+    
+
+SEE ALSO
+
+    rm，update，load
+
+
+COMMAND
+
+    manageinfo
+
+
+FUNCTION
+
+    察看目前是哪个SCF进程负责处理时间表等功能。
+
+
+USAGE
+
+    manageinfo
+
+
+DESCRIPTION
+
+    
+    SCF程序中的一些功能例如时间表功能和流量控制有关的静态表，动态表，自适
+    应表都需要定时检查，以便根据表中的信息作相应的动作。当SCP中启动多个SCF进
+    程的时候，只有一个SCF进程能够负责作此工作。所以有一块共享内存记录了当
+    前哪个SCF进程负责做这件事情，以便各个SCF进程来判断。
+    
+
+SEE ALSO
+
+    schedule
+
+
+COMMAND
+
+    msgs
+
+
+FUNCTION
+
+    列出当前消息队列的详细情况
+
+
+USAGE
+
+    msgs
+
+
+DESCRIPTION
+
+    
+    msgs命令的显示结果第一行如下
+
+    msgName                msgPara   sourceFSM destFSM   counter
+
+    msgName是消息名称
+    msgPara是消息的参数
+    sourceFSM是消息的起源自动机号
+    destFSM是消息的目的自动机号
+    counter是这个消息被重发的次数
+    
+
+SEE ALSO
+
+    scmectrl，timers
+
+
+COMMAND
+
+    next
+ n
+
+
+FUNCTION
+
+    执行下一步
+
+
+USAGE
+
+    next
+
+
+DESCRIPTION
+
+    
+    执行当前SLPSTEP，暂停，显示下一SLPSTEP的SIB名称和其它有关信息
+    
+
+SEE ALSO
+
+    stopat，watchall，fsm，go
+
+
+COMMAND
+
+    nowatch
+
+
+FUNCTION
+
+    关闭所有的CCB的显示开关
+
+
+USAGE
+
+    nowatch
+
+
+DESCRIPTION
+
+
+SEE ALSO
+
+    stopat，watchall，addwatch，delwatch，fsm，go，next
+
+
+COMMAND
+
+    op
+
+
+FUNCTION
+
+    显示某操作的情况
+
+
+USAGE
+
+    op [<opID>]
+
+
+DESCRIPTION
+
+    
+    op不带参数将显示目前SCF为了兼容支持的部分老的INAP操作（其余操作都在协
+    议模版中定义）。
+    
+    op <opid>具体显示这个操作的情况，例如
+
+    scf0> op 48
+    operation id   = 48
+    operation name = PromptAndCollectUserInformation
+    operation type = 1
+    timer value    = 1000
+
+    表示操作ID为48的操作，名字是PromptAndCollectUserInformation类型为1类
+    操作（执行正确和错误都有返回），操作的超时值为1000（在构造TCInvoke原语
+    时要乘上TimeUnit时间单位，参见命令env）。
+    
+
+SEE ALSO
+
+    ac
+
+
+COMMAND
+
+    outtty
+
+
+FUNCTION
+
+    改变输出的显示终端
+
+
+USAGE
+
+    outtty <ttyname>
+    outtty -delay
+    outtty -nodelay
+
+
+DESCRIPTION
+
+    
+    <ttyname>是终端的名字，可以在操作系统shell下用tty命令得到，例如/dev/
+    pts/0，outtty命令执行后将把此进程的标准输出改到相应的终端上来。
+    这个命令可以用于一下情况：
+    1. 当需要将各个进程的输出分到不同的终端上。
+    2. 因为开始启动进程的终端丢失，需要重新显示各个进程的输出。
+    
+    outtty  -delay 设置输出为阻塞方式，缓冲输出
+    outtty  -nodelay 设置输出为非阻塞方式，立即输出
+    
+
+COMMAND
+
+    pause
+
+
+FUNCTION
+
+    暂停业务
+
+
+USAGE
+
+    pause <serviceid>
+
+
+DESCRIPTION
+
+    
+    将业务标识为 <serviceid> 的业务暂停。不再接收新的呼叫。可以用restore命
+    令恢复此业务的使用
+    
+
+SEE ALSO
+
+    ls，update，load，rm，restore
+
+
+COMMAND
+
+    queuetab
+
+
+FUNCTION
+
+    维护排队队列
+
+
+USAGE
+
+    queuetab -l
+
+
+DESCRIPTION
+
+    queuetab -d <index>
+    
+    使用-l选项列出排队表中的各项:
+
+    index key  maxAct maxQue waitTm length usable
+
+    index是此项在排队表中的数组下标
+    key时表示某个排队项的关键字
+    maxAct是最大可用资源数
+    maxQue是最大队长
+    waitTm是在队列中的最大等待时长
+    length是当前的队长
+    usable是当前可用的资源数
+    
+    命令queuetab -d <index>删除由<index>指定的排队表中的项目。
+    
+
+COMMAND
+
+    quit
+
+
+FUNCTION
+
+    退出对SCF进程的监控
+
+
+USAGE
+
+    quit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    restore
+
+
+FUNCTION
+
+    恢复暂停的业务
+
+
+USAGE
+
+    restore <serviceid>
+
+
+DESCRIPTION
+
+    
+    将业务标识为 <serviceid> 的被暂停的业务恢复使用。
+    
+
+SEE ALSO
+
+    ls，update，load，rm，pause
+
+
+COMMAND
+
+    rm
+
+
+FUNCTION
+
+    删除业务
+
+
+USAGE
+
+    rm <serviceid> 
+    rm -old <serviceid>
+
+
+DESCRIPTION
+
+    
+    将业务标识为 <serviceid> 的业务删除。如有呼叫正在使用此业务则不再接收
+    新的呼叫，等现存呼叫结束后自动删除。
+    -old选项将强制删除由于update和rm命令所造成的在业务列表中存留的老版本
+    业务。（注意：在rm -old使用之前，一定要先在每一个scf上执行delete -old命
+    令）
+    
+
+SEE ALSO
+
+    ls，update，load
+
+
+COMMAND
+
+    schedule
+
+
+FUNCTION
+
+    时间表的维护
+
+
+USAGE
+
+    schedule -l
+    schedule  -a
+    schedule  -add YYYYMMDDWhhmm 'command arg ...'
+    schedule  -del 'command arg ...'
+
+
+DESCRIPTION
+
+    
+    -l选项列出时间表
+    -a选项重新加载一次时间表
+    SCF程序运行过程中，要按照时间表的规定作一些动作。这些动作一般是一个命
+    令行。
+    时间表是由配置文件$CINDIR/etc/schedule.scf规定的，此文件的格式如下：
+    
+
+    ---------0000 servicest 300
+    --------10000 servicest 800
+
+    如上面的例子所示，时间表的一项占一行，第一列的13个字符表示日期和时间
+    ，它的格式为：YYYYMMDDwHHmm。YYYY表示公元年号，MM表示月号（1-12），DD表
+    示日号（1-31），W表示星期几（0-6），HH表示几点（0-23），mm表示几分（0-
+    59）。字符'-'表示这一位可以忽略。这一列必须顶头写，前面不能有空格或其
+    它字符。它与后面的命令行用空格分开，命令行以回车结束。
+    于是，上面的例子表示每天零点列出300业务的统计数据，每星期一的零点列出
+    800业务的统计数据，
+    命令schedule -l所列出来的alignmentSecond表示主循环上次访问时间表的时
+    间time()秒数。
+    
+    -add 选项增加一项时间表
+    -del  删除一项时间表
+    
+
+SEE ALSO
+
+    ls，update，load
+
+
+COMMAND
+
+    scmectrl
+
+
+FUNCTION
+
+    简要列出当前scmectrl下的消息队列，超时队列，自动机队列的情况；
+    通过CCB变量的值查找自动机。
+
+
+USAGE
+
+    scmectrl  [first]
+    scmectrl   -s serviceKey -v ccbname ccbvalue
+    scmectrl fsmmap
+    scmectrl all
+
+
+DESCRIPTION
+
+    
+    1. scmectrl命令的显示结果例如:
+
+    scMEControl:
+    msgQueue: 0 messages.
+    timeQueue: 1 second timers, 0 minute timers.
+    total: 1
+    fsmQueue:
+    --------------------------------------------------
+    fsmType    fsmInstance 	parentFSM   dialogueID	MsgCount
+    SCFFSM     1           	0           101         0
+
+    消息队列中没有消息，超时队列中有1个秒级超时，自动机队列中有1个自动机
+    ，自动机的类型是执行业务逻辑的自动机（SCFFSM），fsmInstance指的是自动
+    机的实例号，dialogueID是对应的TCAP对话ID，parentFSM指的是这个自动机的
+    父自动机的标识, MsgCount是这个自动机还没有处理的消息数量。
+    
+    scmectrl first列出进程中最古老的一个自动机的实例号和创建时间。scmectrl 
+    first还可以列出执行业务逻辑步骤最多的一个自动机，这个命令配合state命令
+    和display -fsm命令，可以帮助业务开发人员查处业务中的死循环。
+    
+    2. 命令scmectrl  -s <servicekey> -v <ccbname> <ccbvalue>通过ccb变量的
+    值查找自动机
+    
+    3. scmectrl fsmmap可以显示自动机在 8192个数组位置上的分布情况.
+    每8个连续位置显示一个字符，一共64*16个字符。如果这8个位置都没有自动机
+    ，那么显示空格，否则显示数字1-8表示这8个位置上有几个自动机.
+    
+    4. scmectrl all可以显示所有自动机的详细信息。每列的含义如下：
+    ID: 自动机号
+    PID: 父自动机号
+    T: 类型，0表示SCFFSM, 6表示GMPFSM
+    SVCKEY: 业务逻辑serviceKey
+    DLGID: 对话ID, 16进制显示，如果没有对话，显示一横线
+    MSGS: 消息队列中消息数量
+    EVENT: 执行了多少次消息处理（包括被disable的重复尝试）
+    STEP: 当前的业务逻辑步骤ID
+    STATE: 当前的SIB状态
+    TIMER: 当前的超时设置，秒为单位，如果没有设置，显示0，如果超时队列中
+    有两个以上的设置，显示负值（这样是有问题的）
+    N: 当前是否屏蔽中断，N为屏蔽，横线为不屏蔽
+    STARTED: 自动机创建时间，如果是24小时以内的，显示时间，否则显示日期
+    
+    CORRKEY: correlationKey的设置
+    
+
+SEE ALSO
+
+    msgs，timers，display，state
+
+
+COMMAND
+
+    service
+
+
+FUNCTION
+
+    选择一个业务
+
+
+USAGE
+
+    service <serviceid>
+
+
+DESCRIPTION
+
+    
+    指明list和lccb等命令所针对的业务
+    
+
+SEE ALSO
+
+    list，lccb
+
+
+COMMAND
+
+    serviceid
+
+
+FUNCTION
+
+    维护业务标识的配置表
+
+
+USAGE
+
+    serviceid -l  |  -a
+
+
+DESCRIPTION
+
+    
+    SCP收到TCBegin和CS1的InitialDP(或者AIN的相关操作)之后会根据业务关键字
+    ，主叫号码，被叫号码，子系统号查一个表格, 来确定一个业务标识。如果查不
+    到，业务关键字就作为业务标识，如果查不到，并且业务关键字不存在，子系统
+    号就作为业务标识，然后, 再根据这个业务标识唯一确定一个业务
+    配置文件$CINDIR/etc/config.serviceid来存放业务标识配置信息。格式如下
+    ：
+    空行和#开头的行将被忽略，有效行有五个单词，之间用空格或者Tab分开，他
+    们分别是业务关键字，子系统号，主叫号码，被叫号码，业务标识，如果某个单
+    词是"NULL", 表示对应的这一项为空，如果为空, 在将来匹配的时候这一项被忽
+    略，例如:
+    1 240 NULL NULL 1
+    2 240 NULL NULL 1
+    3 240 NULL NULL 1
+    1 101 NULL NULL 2
+    1 102 NULL NULL 2
+    1 103 NULL NULL 2
+    NULL NULL NULL 300 3
+    表示serviceKey为1或2或3, SSN是240, 无论主被叫是什么, 对应业务标识为1；
+     serviceKey为1, SSN是101或102或103, 无论主被叫是什么, 对应业务标识为2
+    
+    serviceid -l 列出业务标识表格的内容
+    serviceid -a 从配置文件中重新加载一次
+    
+
+COMMAND
+
+    serviceconfig
+ sc
+
+
+FUNCTION
+
+    维护配置文件为config.service.bin 的业务标识配置表 
+
+
+USAGE
+
+    serviceconfig -l  |  -a
+
+
+DESCRIPTION
+
+    
+    serviceconfig -l列出业务标识配置表内容，例如：
+
+    AC  OPID  SSN  SVRID  FSM  R  PARAMETER      CALLING      CALLED
+    0   0     -1   200    6    0  <<0.48.128>>=200     X         X
+    1   0     -1   0      6    0        X           X         X
+    2   0     -1   0      6    0        X           X         X
+
+    
+    serviceconfig -a从配置文件重新加载配置文件config.service.bin
+    
+
+COMMAND
+
+    servicest
+
+
+FUNCTION
+
+    业务执行情况的统计
+
+
+USAGE
+
+    servicest <servicekey>
+    servicest <servicekey> [-l]
+    servicest <servicekey> -ssp <sspname>
+    servicest <servicekey> -sspm <sspname>
+    servicest <servicekey> -sspf <sspname>
+    servicest <servicekey> -mobile
+    servicest <servicekey> -fix
+    servicest <servicekey> -a <label> <infostring>
+    servicest <servicekey> -d <label>
+    servicest <servicekey> -week
+
+
+DESCRIPTION
+
+    
+    1. 列出某业务的当前统计结果
+    servicest <servicekey>
+    <servicekey>是业务关键字
+    结果如果不存在此业务或此业务没有统计项目，回送错误信息。否则回送一张
+    表格，两列分别为统计项目的说明串和统计的结果
+    例如：
+    修改密码次数: 567
+    查询余额次数: 789
+    接通被叫次数: 2345
+    
+    2. 列出某业务的所有统计项目
+    servicest <servicekey> -l
+    如果不存在此业务，回送错误信息。否则回送一张表格，三列分别为：统计项
+    目对应业务逻辑中的实际步骤号，统计项目对应业务逻辑中的步骤的标号，和统
+    计项目的说明串
+    例如：
+
+    [3] 5： 修改密码次数
+    [10] 12a： 查询余额次数
+    [50] 60： 接通被叫次数
+    total： 3
+
+    
+    3. 分SSP观察统计结果
+    servicest <servicekey> -ssp <sspname>
+    <servicekey>意义同上。<sspname>是SSP的名字, 所有SSP的名字可以通过configssp命
+    令得到
+    
+    4. 分SSP观察移动主叫用户的统计结果
+    servicest <servicekey> -sspm <sspname>
+    <servicekey>意义同上。<sspname>是SSP的名字, 所有SSP的名字可以通过configssp命
+    令得到
+    
+    5. 分SSP观察固定主叫用户的统计结果
+    servicest <servicekey> -sspf <sspname>
+    <servicekey>意义同上。<sspname>是SSP的名字, 所有SSP的名字可以通过configssp命
+    令得到
+    
+    6. 统计移动用户对该业务的拨叫总次数
+    servicest <servicekey> -mobile 
+    <servicekey>意义同上。
+    
+    7. 统计固定用户对该业务的拨叫总次数
+    servicest <servicekey> -fix
+    <servicekey>意义同上。
+    8. 对某业务增加一个统计项目
+    servicest <servicekey> -a <label> <infostring>
+    <servicekey>意义同上。<lable>为统计项目对应业务逻辑中的步骤的标号，最
+    长为31个字符的串。<infostring>为统计项目的说明串，最长为64个字符的串。
+    
+    
+    9. 对某业务去掉一个统计项目
+    servicest <servicekey> -d <label>
+    <servicekey>意义同上。<lable>意义同上。
+    
+    10. 观察最近一个星期的统计结果
+    servicest <servicekey> -week
+    <servicekey>意义同上。
+
+
+
+
+    
+
+SEE ALSO
+
+    list，lccb
+
+
+COMMAND
+
+    sipconfig
+
+
+FUNCTION
+
+    SIP相关配置的维护
+
+
+USAGE
+
+    sipconfig -a | -l | -clear
+
+
+DESCRIPTION
+
+    -a重新加载配置
+    -l列出目前的配置
+    -clear清空目前的配置
+
+COMMAND
+
+    state
+
+
+FUNCTION
+
+    查看自动机的状态
+
+
+USAGE
+
+    state [<fsminstance>]
+    state -procstack [<fsminstance>]
+    state -obj <handle> [<fsminstance>]
+    state -blackbox [ <fsmid> ]
+
+
+DESCRIPTION
+
+    
+    <fsmInstance>为SCSM实例号，列出此SCSM的状态，包括当前执行的SLP步骤，
+    SIB返回值，各种状态。如<fsmInstance>缺省，则为当前被调试的SCSM
+    
+    当一个呼叫由SCP记费的时候，会列出当前的计费状态。例如：
+
+    -- scp charge 0 -----------------------------------------
+    chargeClass：     	102
+    recordID：        	1
+    charging：        	1
+    callTime：        	836
+    callCost：        	191.000000
+    nextChargePoint： 	840
+    currentSegment：  	2
+    currentUnit：     	10
+
+    chargeClass：指的是记费类别
+    recordID：指的是当前这个记费的ID（因为可以同时存在多个记费）
+    callTime：指的是当前已经用的时间（从开始记费到现在，秒为单位）
+    callCost：当前的记费费用（意思是如果现在呼叫停止，就记这么多了）
+    nextChargePoint：下一个记费点（当callTime到达这个点的时候，就要将callCost加
+    上当前记费单元的费用值，再将nextChargePoint加一个记费单元时长）
+    currentSegment：当前的记费区段
+    currentUnit：当前记费区段中的当前记费单元
+    记费过程中重复使用state命令可以看到这些值的变化情况
+    
+    state命令还可以列出所有的对象的简要情况，如果要列出某一个对象的详细情
+    况，可以使用state -obj用法
+    
+    state -procstack可以列出当前过程调用栈的情况
+    
+    state -blackbox [ <fsmid> ]可以列出指定自动机的当前blackbox的现状。
+    
+    
+
+SEE ALSO
+
+    debug，scmectrl
+
+
+COMMAND
+
+    statistics
+ st
+
+
+FUNCTION
+
+    统计
+
+
+USAGE
+
+    st
+    st tc [-cr  |  -cs ]
+    st inapop [-cr | -cs]
+    st inaperr [-cr | -cs]
+    st ainop [-cr | -cs]
+    st ainerr [-cr | -cs]
+    st mapop [-cr | -cs]
+    st maperr [-cr | -cs]
+    st abort
+    st sib
+
+
+DESCRIPTION
+
+    
+    st tc 列出TCAP原语的统计信息
+    st tc -cr 将TCAP原语的接收统计计数器清零
+    st tc -cs 将TCAP原语的发送统计计数器清零
+    st inapop 列出INAP操作的统计信息
+    st inapop -cr 将INAP操作的接收统计计数器清零
+    st inapop -cs 将INAP操作的发送统计计数器清零
+    st inaperr 列出INAP相关的错误的统计信息
+    st inaperr -cr 将INAP错误的接收统计计数器清零
+    st inaperr -cs 将INAP错误的发送统计计数器清零
+    st ainop 列出AIN操作的统计信息
+    st ainop -cr 将AIN操作的接收统计计数器清零
+    st ainop -cs 将AIN操作的发送统计计数器清零
+    st ainerr 列出AIN相关的错误的统计信息
+    st ainerr -cr 将AIN错误的接收统计计数器清零
+    st ainerr -cs 将AIN错误的发送统计计数器清零
+    st mapop 列出MAP操作的统计信息
+    st mapop -cr 将MAP操作的接收统计计数器清零
+    st mapop -cs 将MAP操作的发送统计计数器清零
+    st maperr 列出MAP相关的错误的统计信息
+    st maperr -cr 将MAP错误的接收统计计数器清零
+    st maperr -cs 将MAP错误的发送统计计数器清零
+    
+    st sib列出这个SCF中所有执行过的SIB的情况，例如
+
+    ID NAME              EXEC       AVACOST   COST
+    1  Algorithm         6          0.011528  0.069166
+    44 Printf            6          0.001944  0.011666
+
+    ID表示SIB的内部标识
+    NAME表示SIB的名称
+    EXEC表示这个SIB一共执行过多少次
+    AVACOST表示这个SIB的平均耗时
+    COST表示这个SIB的总耗时
+
+COMMAND
+
+    stopat
+
+
+FUNCTION
+
+    设断点或清除断点
+
+
+USAGE
+
+    stopat <stepid>
+
+
+DESCRIPTION
+
+    
+    <stepid>指明SLPSTEP ID，如此断点已设，则清除此断点，如此断点未设，则
+    设此断点。可最多设20个断点。
+    注意：这个<stepid>不是业务逻辑步骤的标号，而是业务逻辑步骤在数组中的
+    下标，也就是list命令第一列所显示的内容。
+    
+
+SEE ALSO
+
+    debug，list
+
+
+COMMAND
+
+    sync
+
+
+FUNCTION
+
+    察看与同步进程间的共享内存的情况
+
+
+USAGE
+
+    sync
+
+
+DESCRIPTION
+
+    
+    例如sync命令的显示结果及其解释如下：
+    numberOfNotSendItems is 0
+      在队列中还没有发送给SMP的sql语句数。（同inmon中的notsend）
+    numberOfSendingItems is 0
+      已经发送给SMP但还没有收到回应的sql语句数。（同inmon中的sending）
+    writeCursor is 0
+      队列中当前的写指针。
+    readCursor  is 0
+      队列中当前的读指针。（写了还未读的就是未发送的）
+    numberOfTimeOutItems is 0
+      因为发送给SMP没有收到回应而超时的SQL语句数。
+    saveFileName is 3997
+    当前因为与SMP的链路断掉而将SQL语句保存在$CIN/crash/NOTSYNC.*中。每个
+    文件只保存10条sql语句，3997是当前文件名的后缀
+    loadFileName is 3997
+    当前因为与SMP的链路恢复而将保存在$CIN/crash/NOTSYNC.*中的语句发送到SMP。
+    一般每秒发送一个文件3997是当前文件名的后缀。
+    saveSQLCounter is 0
+      当前总共保存了多少条SQL语句到文件中（同inmon中的save）
+    socket to SMS is OK
+      与SMP的链路的情况
+    manuallySyncCounter is -1
+      手工发送的当前NOTSYNC文件后缀
+    total sql from SCF is 0, 0 per second
+      从SCF来的sql语句的总数和速率
+    total sql from SMP is 0, 0 per second
+      从SMP来的sql语句的总数和速率
+    
+
+COMMAND
+
+    tbt
+
+
+FUNCTION
+
+    维护scf进程所连接的数据库
+
+
+USAGE
+
+    tbt -l  |  -a
+
+
+DESCRIPTION
+
+    
+    tbt -l命令显示$CINDIR/etc/config.tabledbd的配置情况，例如
+
+    defaultDB: scp3@shbep3
+    table ad_user at scp1@shbep1
+    table aab_user at scp1@shbep1
+    table fph_user at scp2@shbep2
+    table upt_user_00 at scp1@shbep1
+    table upt_ispn_00 at scp2@shbep2
+    current db: scp1@shbep1
+    connected db:
+       [0] scp1@shbep1
+       [1] scp2@shbep2
+       [2] scp3@shbep3
+
+    
+    tbt -a命令重新配置文件$CINDIR/etc/config.tabledb
+
+
+    
+
+SEE ALSO
+
+    checkdb
+
+
+COMMAND
+
+    timediff
+
+
+FUNCTION
+
+    察看或者改变scf时间和系统时间的差异
+
+
+USAGE
+
+    timediff [<diffsecond>]
+
+
+DESCRIPTION
+
+    
+    timediff不带参数列出scf时间和系统时间的差异，例如运行结果可能是：
+
+    system time is Tue Jul 23 16:24:11 2002
+    time difference is 2000 seconds
+    scf time is Tue Jul 23 16:57:31 2002
+
+    表示scf时间比系统时间快2000秒。
+    
+    timediff跟一个整数作为参数可以改变这种差异，正数使得scf时间比系统时间
+    快，负数使得scf时间比系统时间慢，0使得scf时间和系统时间一致。改变的结
+    果将存放在$CINDIR/etc/config.timediff中。
+    
+    业务逻辑中使用的静态CCB变量，SCP计费的时候，scf使用的都是scf时间。这
+    个可以用于计费时间的校准，用于业务测试中临时针对对一些时间相关项目临时
+    改变scf时间。
+    
+
+COMMAND
+
+    timers
+
+
+FUNCTION
+
+    列出计时器的详细情况
+
+
+USAGE
+
+    timers
+
+
+DESCRIPTION
+
+    
+    例如timers命令的运行结果：
+
+    Second timers:
+    type fsmInstance  mark      timeDalay
+    1  : 3            30        17
+    Minute timers:
+    type fsmInstance  mark      timeDalay
+
+    它分为分钟级超时和秒级超时两个队列。
+    type是超时的类型：1表示由某种自动机所设置的超时，一旦超时，要发一条超
+    时消息发给这个自动机。2表示是呼叫排队表所设置的超时，一旦超时将通知呼
+    叫排队表。
+    fsmInstance是设置超时的自动机号，或者是参加排队的呼叫所对应的自动机号
+    。
+    mark是一个表识，用于同一个自动机设置不同的超时。
+    timeDelay表示这个超时项目还有多少时间就超时了。对于秒级超时以秒为单位
+    ，分钟级超时以分钟为单位。
+    
+
+SEE ALSO
+
+    scmectrl，msgs，queuetab
+
+
+COMMAND
+
+    transmsg
+
+
+FUNCTION
+
+    察看scf进程间通信的缓存的情况
+
+
+USAGE
+
+    transmsg -c  |  -gidlist  |  -gidload  |  -mygid  |  -listmsgs
+
+
+DESCRIPTION
+
+    
+    SCP中有一块共享内存用于各个scf进程之间的消息通信。transmsg -listmsgs可
+    以看到每个scf进程的缓冲区中没有处理的消息数。transmsg -c将所有的缓冲区
+    都清空。
+    
+    为了支持SCP-SSP-IP之间交互所用到的3字节的correlationID，config.globalscfid配
+    置了全局的SCFID，用于进程间通信：
+    transmsg -list列出现有的配置
+    transmsg -gidload重新从配置文件加载配置
+    transmsg -mygid显示自己的globalScfID
+    
+
+COMMAND
+
+    update
+
+
+FUNCTION
+
+    更新业务
+
+
+USAGE
+
+    update <serviceid> [<fileName>]
+
+
+DESCRIPTION
+
+    
+    将业务标识为 <serviceid> 的业务更新。如有呼叫正在使用此业务则不再接收
+    新的呼叫，旧版本等现存呼叫结束后自动删除。如果新版本的业务文件名已经改
+    变，可以加上<fileName>参数。
+    
+    如果旧版本现存呼叫没有结束，那么旧版本还存在，这时候不能再次update业
+    务。解决的方法如下：
+    1．等待旧版本现存呼叫结束，一般要等几分钟就可以。
+    2．如果等不及，可能有一些呼叫时间不结束，可以使用delete -old <serviceKey>
+    命令强行删除这个呼叫，要每一个scf都做一次。
+    3．如果delete -old命名做完之后，旧版本仍然没有自动删除，可以使用rm -
+    old <serviceKey> 命令强行删除业务。注意：rm -old命令使用之前一定要先使
+    用delete -old命令。
+    
+
+SEE ALSO
+
+    ls，rm，load
+
+
+COMMAND
+
+    watchall
+
+
+FUNCTION
+
+    打开所有的CCB的显示开关
+
+
+USAGE
+
+    watchall
+
+
+DESCRIPTION
+
+
+SEE ALSO
+
+    stopat，nowatch，addwatch，delwatch，fsm,，go，next
+
+
+COMMAND
+
+    register
+
+
+FUNCTION
+
+    实现CIN-SCF对外提供的一些服务的注册
+
+
+USAGE
+
+    register servername ipaddress portnumber
+    register -l
+
+
+DESCRIPTION
+
+    
+    servername :服务名，当前支持 alarm  (告警服务)
+    ipaddress  :使用该服务的主机地址
+    portnumber :udp端口号
+    
+    -l 选项列出当前已经注册的服务。
+    
+
+COMMAND
+
+    unregister
+
+
+FUNCTION
+
+    实现CIN-SCF对外提供的一些服务的注销
+
+
+USAGE
+
+    unregister servername ipaddress portnumber
+
+
+DESCRIPTION
+
+    
+    servername :要注销的服务名，当前支持 alarm  (告警服务)
+    ipaddress  :要注销的主机地址
+    portnumber :要注销的udp端口
+    
+
+COMMAND
+
+    xmlwoods
+
+
+FUNCTION
+
+    实现xml树林的维护
+
+
+USAGE
+
+    xmlwoods -list
+    xmlwoods -listtree <name>
+    xmlwoods -loadtree <name>
+    xmlwoods -deletetree <name>
+    xmlwoods -updatetree <name>
+
+
+DESCRIPTION
+
+    
+    -list列出所有的xml树的名字
+    -listtree列出name参数所指的xml树的内容
+    -loadtree加载name参数所表示的一个xml树，相应的文件名必须在$CINDIR/xmlwoods中
+    存在，会自动修改$CINDIR/xmlwoods/root文件。
+    -deletetree删除name所指的一个xml树，会自动修改$CINDIR/xmlwoods/root文
+    件，但是并不删除name所指的文件。
+    -updatetree更新name所指一个xml树，相应的文件名必须在$CINDIR/xmlwoods中
+    存在。
+    
+
+COMMAND
+
+    about
+
+
+FUNCTION
+
+    显示程序的版本信息
+
+
+USAGE
+
+    about
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    列出所有的命令
+
+
+USAGE
+
+    help
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    listhashtab
+ lht
+
+
+FUNCTION
+
+    察看manager所管理的对话和scf进程关系的HASH表的状况
+
+
+USAGE
+
+    listhashtab -c  |  -a
+
+
+DESCRIPTION
+
+    
+    -c选项简单列出每个进程的对话总数，-a选项列出HASH表的详细情况，当话务
+    量很大的时候不要使用listhashtab -a命令，因为这个命令要显示很多内容，可
+    能影响系统的运行效率。
+    
+
+SEE ALSO
+
+    upgrade，listscdf，rmdialog
+
+
+COMMAND
+
+    listscdf
+
+
+FUNCTION
+
+    察看manager所启动的scf进程的状况
+
+
+USAGE
+
+    listscdf
+
+
+DESCRIPTION
+
+    
+    listscdf的输出结果第一行中：
+    SCF scf进程的标识号码（0-39）
+    PID scf进程的进程号
+    STATE 进程的状态：RUN表示正常运行的新进程，SCREEN表示还有没处理完呼叫
+    的老进程
+    CALLNUM 呼叫数
+    TIMER 守护计时器的值
+    
+
+SEE ALSO
+
+    upgrade，listhashtab，rmdialog
+
+
+COMMAND
+
+    quit
+
+
+FUNCTION
+
+    退出对manager进程的监控
+
+
+USAGE
+
+    quit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    rmdialog
+
+
+FUNCTION
+
+    删除一些对话
+
+
+USAGE
+
+    rmdialog -s <scfid>
+    rmdialog -d <dialogueid>
+    rmdialog -l <linkid>
+
+
+DESCRIPTION
+
+    
+    这个命令一般用于upgrade命令之后，如果upgrade命令执行结束后老的scf进程
+    残留的呼叫长时间不退出，这样会影响系统的效率，而且不能再次做upgrade，
+    这时候可以选择使用这个命令将某个scf进程相关的对话都删除。
+    -s，删除scfid所指的scf进程相关的dialogueID
+    -d，删除dialogueid所指的dialogueID
+    -l，删除linkid所指的socket link相关的dialogueID
+    
+
+SEE ALSO
+
+    upgrade，listscdf，listhashtab
+
+
+COMMAND
+
+    socket
+
+
+FUNCTION
+
+    察看socket连接的状态
+
+
+USAGE
+
+    socket -ssp  |  -smp
+
+
+DESCRIPTION
+
+    
+    通常manager打开两个socket server等待client的连接，这两个socket server的
+    端口号是在$CINDIR/config.manager中配置的，例如：
+    SSP 23463
+    SMP 24464
+    SSP端口一般是ss7gateway进程, tcap进程, 模拟ssf进程来连接；SMP端口一般
+    是SMP或者INES的相关进程来连接。socket -ssp是观察SSP端口的情况；socket 
+    -smp是观察SMP端口的情况。例如命令的显示结果是这样的
+    socket for server:
+    file descriptor: 12	打开socket server返回的文件描述符
+    logic name: ForSS7GateWay如果是ForSS7GateWay表示SSP端口（ss7gateway连
+    接），如果是ForSMSAndINES表示SMP（SMP或者INES连接）端口
+    app procotol: bin11	 协议，bin11表示同ss5gateway之间的协议（二进
+    制，11字节的头）。text0ines表示同ines之间的协议（文本，0分界，有ines信
+    息）
+    information:	启动信息，可能为空
+       connections: 1 of 100当前的连接数和最大连结数。如果有一个连接存在
+    ，显示的结果可能是这样：
+       ---------------------------------
+    socket on service:fd 18 ID=0这个socket link的文件描述符
+    client IP address:192.168.2.205 38926 client的IP地址
+    clientName=(0,0)	 括弧中的数，第一个是dialogueID基数，第二个是
+    gruopID，如果是SMP端口，还应该有INES或者SMP的注册名
+    socketState=1	1是正常, 0非正常
+    readState=2	对于SSP端口, 1表示正在读取消息头；2表示正在读取消息长
+    度；3表示正在读取消息类型； 4表示正在读取消息内容。对于SMP端口, 这个值
+    没有意义
+    gotLength=17    	已经读到的字节数
+    gotMessage=0	已经读到的完整消息数
+    buffer=[0-0]	只对SMP端口端口有用, 读buffer中没有处理的部分是从第几
+    个字节开始到第几个字节结束
+    queueLength=0	未发送成功的消息队列的长度
+    aliveCheck=30	活着测试的超时时间
+    timer=5	活着测试的当前的计时器的值
+    checkNumber=2	已经进行了多少次活着测试
+    
+
+COMMAND
+
+    tty
+
+
+FUNCTION
+
+    改变输出的显示终端
+
+
+USAGE
+
+    tty <ttyname>
+
+
+DESCRIPTION
+
+    
+    ttyname是终端的名字，可以在操作系统shell下用tty命令得到，例如/dev/pts/
+    0，outtty命令执行后将把此进程的标准输出改到相应的终端上来。如果开始启
+    动进程的终端丢失，需要重新显示manager进程的输出，可以使用这个命令
+    
+
+COMMAND
+
+    upgrade
+
+
+FUNCTION
+
+    更新scf的版本或者改变scf进程数目
+
+
+USAGE
+
+    upgrade -scdf <filename> <scdfnumber>
+
+
+DESCRIPTION
+
+    
+    scf进程由manager进程启动和守护。scf进程启动的数量由配置文件$CINDIR/etc/
+    config.manager规定，这个值一般在1到20之间，但在一般应用的硬件环境中最
+    多不能超过10，所以manager启动的scf进程一般是scf0-scf9或者scf20-scf29。
+    upgrade命令可以在线改变scf进程的数量。例如目前启动的进程数量是5（scf0-
+    scf4），用命令upgrade -scdf scf 7可以将进程改为7个（scf20-scf26）。如
+    果这时候scf0到scf4中还有正在处理的呼叫，他们继续处理（所以这个时刻实际
+    上有12个scf进程在运行，注意：这时候不能载再次运行upgrade命令），但是scf0到
+    scf4不再接收新的呼叫。当scf0到scf4的呼叫都处理完毕，他们将自动退出，经
+    过一段时间以后应该只有scf20到scf26进程在运行。
+    用法中的参数<filename>可以改变，因此可以更新scf程序的版本。例如新的scf程
+    序的文件名是scfnew，与旧的scf在一个目录下，使用upgrade -scdf scfnew 7可
+    以在改变scf进程数目的同时更换scf的版本。
+    
+
+SEE ALSO
+
+    listscdf，listhashtab，rmdialog
+
+
+COMMAND
+
+    about
+
+
+FUNCTION
+
+    显示程序的版本信息
+
+
+USAGE
+
+    about
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    checkdb
+
+
+FUNCTION
+
+    功能和用法与scf程序维护命令中的checkdb一致
+
+    end{scfcmd
+
+
+DESCRIPTION
+
+    
+
+COMMAND
+
+    display
+
+
+FUNCTION
+
+    打开或者关闭跟踪信息显示的开关
+
+
+USAGE
+
+    display [ on  |  off ]
+
+
+DESCRIPTION
+
+    
+    display不带参数显示当前的开关状态
+    display on将开关打开
+    display off将开关关闭
+    注意display on命令只能用在系统最初的安装调试中，系统已经投入使用后不
+    能使用这个命令，以免影响系统的性能
+    
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    列出所有的命令
+
+
+USAGE
+
+    help
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    quit
+
+
+FUNCTION
+
+    退出对scf_sync进程的监控
+
+
+USAGE
+
+    quit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    setsync
+
+
+FUNCTION
+
+    使得scf_sync进程继续发送SQL命令
+
+
+USAGE
+
+    setsync sockok
+
+
+DESCRIPTION
+
+    
+    当scf_sync发送SQL不成功的时候会认为SCP和SMP的连接断掉（sync命令看到的
+    socket to SMS is ...一句），从此之后所有的语句都保存在$CINDIR/crash下
+    。通常scf_sync进程认为连接已经恢复的条件是收到SMP发来的消息。这个命令
+    是强制让scf_sync认为连接已经恢复。
+    
+
+SEE ALSO
+
+    sync
+
+
+COMMAND
+
+    socketst
+
+
+FUNCTION
+
+    察看与SMP相连的socket的状态
+
+
+USAGE
+
+    socketst
+
+
+DESCRIPTION
+
+    
+    scf_sync进程打开一个socket端口等待SMP的连接。socketst命令的显示结果例
+    如：
+    port number: 22461	端口号
+    socket wait fd: 15	等待连接的socket文件描述符
+    socket fd: -1	SMP连接成功的返回的文件描述符
+    socket state: CLOSE	socket的状态
+    recieve buffer: 0 - 0	接收缓冲区的状态
+    no messages in send queue	有没有消息在发送队列中
+    
+
+COMMAND
+
+    sync
+
+
+FUNCTION
+
+    察看与同步进程间的共享内存的情况
+
+
+USAGE
+
+    sync
+    sync <filenamesuffix>
+    sync list
+    sync -files <number>
+
+
+DESCRIPTION
+
+    
+    sync不带参数显示的内容参见scf程序的维护命令中的sync命名的解释
+    sync <filenamesuffix>用来手工发送NOTSYNC文件，<filenamesuffix>是一个
+    整数。
+    当SCP有呼叫处理，SMP未启动（或者SCP和SMP的连接断掉）。产生的话单或者
+    其它的SQL语句保存在$CINDIR/crash。当SCP与SMP的连接恢复后，scf_sync进程
+    应该自动将这些SQL语句发给SMP。但是如果连接恢复之前如果SCP重新启动过，
+    scf_sync所保存的开始文件名后缀, 结束文件名后缀等信息丢失了，所以scf_sync不
+    会自动发送SQL, 需要手工发送
+    方法如下:
+
+    cd \$CINDIR/crash
+    ls -rt  \or  head
+
+    显示出来的应该是最早的几个文件例如:
+
+    NOTSYNC.2345
+    NOTSYNC.2346
+    NOTSYNC.2347
+    ...
+
+    然后使用这个命令：sync 2345，这时候scf_sync就会从NOTSYNC.2345开始处理
+    这些文件。如果文件名的后缀都是连续的（一般应该这样）, 就会自动发送完，
+    否则，就会停下来。所以在恢复过程中要经常（例如1小时一次）在$CINDIR/crash用
+    ls  |  wc下看一看文件数是不是在不断减少，如果不是, 就要从ls -rt  |  head再
+    做
+    sync -list显示缓冲区中没有发送和正在发送的SQL，注意：inmon看到当没有
+    发送或者正在发送的SQL语句过多的时候不要使用这个命令，以避免影响系统性
+    能。
+    sync -files <number> 可以改变每秒同步的save文件数目，这个命令会修改sync.
+    conf配置文件。<number>必须是1-100之间。
+    
+
+COMMAND
+
+    tbt
+
+
+FUNCTION
+
+    功能和用法与scf程序维护命令中的tbt一致
+
+    end{scfcmd
+
+
+DESCRIPTION
+
+    
+    apter{ininit程序维护命令}
+    
+
+COMMAND
+
+    help
+
+
+FUNCTION
+
+    列出所有的命令
+
+
+USAGE
+
+    help
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    list
+
+
+FUNCTION
+
+    列出ininit所守护的进程
+
+
+USAGE
+
+    list
+
+
+DESCRIPTION
+
+    
+    通常ininit守护的进程是manager和scf_sync，例如list命令显示的结果是xml格
+    式，每一个<record>是一个进程，每个进程的标记如下：
+    <command>被守护进程的名字
+    <argv1>启动的第一个参数
+    <argv2>启动的第二个参数
+    <fifoname>有名管道的文件名（用于被守护进程的例行报告）
+    <fd>打开这个有名管道的文件描述符
+    <pid>被守护进程的进程号
+    <suspendTimer>启动过程中的超时值
+    <checkTimer>运行过程中的超时值
+    <currentTimer>当前的计时器的值
+    
+
+SEE ALSO
+
+    start，stop
+
+
+COMMAND
+
+    quit
+
+
+FUNCTION
+
+    退出对ininit进程的监控
+
+
+USAGE
+
+    quit
+
+
+DESCRIPTION
+
+
+COMMAND
+
+    start
+
+
+FUNCTION
+
+    启动一个被守护的进程
+
+
+USAGE
+
+    start <fifiname> <suspendtimer> <checktimer> <command> [<arg1>] [<arg2>
+    ]
+
+
+DESCRIPTION
+
+    
+    <fifiname>时被守护进程用于例行报告的有名管道的名字，在使用这个命令之
+    前，这个有名管道必须在$CINDIR/fifo下建立
+    <suspendtimer>被守护进程启动过程中的超时值
+    <checktimer>被守护进程运行过程中的超时值
+    <command>被守护进程的名字
+    <arg1>被守护进程启动的第一个参数（可以不存在）
+    <arg2>被守护进程启动的第二个参数（可以不存在）
+    
+
+SEE ALSO
+
+    list，stop
+
+
+COMMAND
+
+    stop
+
+
+FUNCTION
+
+    关闭一个被守护的进程
+
+
+USAGE
+
+    stop <command> <arg>
+
+
+DESCRIPTION
+
+    
+    <command>是要被关闭的进程的名字
+    <arg>是进程启动的第一个参数
+    
+
+SEE ALSO
+
+    list，start
+
+
+COMMAND
+
+    cluster
+
+
+FUNCTION
+
+    cluster方式进程维护命令
+
+
+USAGE
+
+    cluster list
+    cluster relocate <processname> <arg1> <arg2>
+    cluster delete <processname> <arg1> <arg2>
+    cluster new <timer1> <timer2> <processname> <arg1> <arg2> <bakhost>
+
+    
+
+DESCRIPTION
+
+    
+    如果使用CIN-Cluster模式，那么只能用这个命令改变守护进程的状态，以前的
+    start和stop命令不允许使用。list命令仍然可以使用。cluster命令的用法如下
+    ：
+    1. cluster list
+    列出CIN-Cluster成员的基本情况
+    2. cluster relocate
+    将一个进程的主备关系改变。这个命令后面还有三个参数：进程的名字，进程
+    的两个启动参数。这个命令只能在这个进程的主机上使用，备机上使用无效。运
+    行这个命令之后，ininit将这个进程杀死，并改变状态，发送R消息给备机的ininit进
+    程。
+    3. cluster delete
+    将一个进程从CIN-Cluster中删除。这个命令后面还有三个参数：进程的名字，
+    进程的两个启动参数。这个命令只能在这个进程的主机上使用，备机上使用无效
+    。运行这个命令之后，ininit将这个进程杀死，并清除进程表项，发送D消息给
+    备机的ininit进程。
+    4. cluster new
+    将一个进程从加入CIN-Cluster中。这个命令后面还有六个参数：前两个参数是
+    两个计时器的值（含义和ininit的start命令中的这两个参数相同）。然后是进
+    程的名字，进程的两个启动参数，备机的逻辑名。
+    这个命令在ininit上使用，这个ininit就作为这个进程的主机。备机的逻辑名
+    必须是有效的，并且不能是本机。运行这个命令之后，ininit将增加一个进程表
+    项，启动这个进程，发送N消息给备机的ininit进程。
+    
+
+NAME
+
+    the-end

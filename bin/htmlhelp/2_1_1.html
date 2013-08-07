@@ -1,0 +1,23 @@
+<h1>原型</h1>
+<div class="dc">TInteger TObject::type()</div><h1>说明</h1>
+<div class="dc">TObject对象是所有对象的父对象，它的方法会被所有对象继承。type()是用来获得对象的具体类型的，一般用在不知道触发对象类型的业务逻辑的main函数之后。这种情况下，main函数写TObject参数，之后使用type()方法判断对象类型进一步处理</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+整数形式的类型，例如TObject::HttpServerType，TObject::CommandLineType，TObject::TCAPDialogueType等等</div><h1>示例</h1><div class="dc">
+void main(TObject obj)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TCommandLine cmd;<br>
+&nbsp;&nbsp;&nbsp;var THttpServer httpServer;<br>
+&nbsp;&nbsp;&nbsp;if(obj.type() == TObject::CommandLineType)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd = (TCommandLine)obj;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;else if(obj.type() == TObject::HttpServerType)<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpServer = (THttpServer)obj;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+<br>
+</div>

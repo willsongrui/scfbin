@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TString fread(TString fileName, TInteger pos, TInteger length)</div><h1>说明</h1>
+<div class="dc">从文件中读指定长度的字符串</div><h1>参数</h1>
+<div class="dc"><h4>fileName</h4>
+<div class="dc">指定文件名</div>
+<h4>pos</h4>
+<div class="dc">指定位置</div>
+<h4>length</h4>
+<div class="dc">指定长度（如果length小于等于0，那么读出文件中所有字符串）</div>
+</div><h1>返回</h1><div class="dc">
+从文件中读出的字符串，注意fread最多只能读取512K大小，如果要读取的内容超过512K禁止使用该函数</div><h1>示例</h1><div class="dc">
+s = fread('file', 0, 2)<br>
+</div>

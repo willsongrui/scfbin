@@ -1,0 +1,10 @@
+<h1>原型</h1>
+<div class="dc">TInteger TTCAPDialogue::appdlgid(TString destName='*')<br>
+TInteger TTCAPDialogue::appdlgid(TInteger groupID)</div><h1>说明</h1>
+<div class="dc">向TCAP申请对话ID，可以根据参数选择向哪个TCAP申请对话ID</div><h1>参数</h1>
+<div class="dc"><h4>destName</h4>
+<div class="dc">字符串，缺省为'*'，否则是一个scf程序的configssp命令所能看到的DPC的名字</div>
+<h4>groupID</h4>
+<div class="dc">如果没有配置DPC和名字的对应关系，可以直接使用整数参数指定申请dialogueID的groupID，这个groupID是tcap程序向scf程序注册时给定的</div>
+</div><h1>返回</h1><div class="dc">
+整数，申请到的dialogueID</div>

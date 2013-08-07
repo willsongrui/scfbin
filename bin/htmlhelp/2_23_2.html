@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TString TCommandLine::argv(TInteger index=-1)</div><h1>说明</h1>
+<div class="dc">返回TCommandLine对象的某个参数的值</div><h1>参数</h1>
+<div class="dc"><h4>index</h4>
+<div class="dc">参数的索引，-1表示所有参数，其它0-29表示具体的某个参数</div>
+</div><h1>返回</h1><div class="dc">
+字符串，具体的参数</div><h1>示例</h1><div class="dc">
+void main(TCommandLine cmd)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TInteger i;<br>
+&nbsp;&nbsp;&nbsp;print(cmd.argv()); // display the whole message<br>
+&nbsp;&nbsp;&nbsp;for(i=0; i&lt;cmd.argc(); i=i+1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(cmd.argv(i));&nbsp;&nbsp;// display each argument<br>
+}<br>
+</div>

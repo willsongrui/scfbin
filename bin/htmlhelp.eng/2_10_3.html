@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">ASNHandle = TagPath</div><h1>DESCRIPTION</h1>
+<div class="dc">This is a special assignment statement. It can simplify the long tag path.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>ASNHandle</h4>
+<div class="dc">a asn handle var defined before</div>
+<h4>TagPath</h4>
+<div class="dc">a tag path</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+var &lt;&lt;inap.invoke.PromptAndCollectUserInformation.informationToSend&gt;&gt; itsHandle;<br>
+itsHandle = &lt;&lt;inap.invoke.PlayAnnouncement.informationToSend&gt;&gt;<br>
+i = asnvalue(&lt;&lt;$itsHandle.inbandinfo.numberOfRepetitions&gt;&gt;)<br>
+</div>

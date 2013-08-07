@@ -1,0 +1,18 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString alignstr(TString arg1, TString arg2, TInteger i)</div><h1>DESCRIPTION</h1>
+<div class="dc">To align a string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">The string to be processed</div>
+<h4>arg2</h4>
+<div class="dc">The character to be aligned</div>
+<h4>i</h4>
+<div class="dc">The alignment length. Negative integer indicates a left-aligned, positive number indicates a right-aligned. If the length of the string that you want to process is greater than the alignment length, only the alignment length can be returned the remain characters is truncated</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A new string</div><h1>EXAMPLES</h1><div class="dc">
+assert(alignstr('1100', 'F',6) == 'FF1100');<br>
+assert(alignstr('1100', 'F',3) == '100');<br>
+assert(alignstr('1100', 'F',4) == '1100');<br>
+assert(alignstr('1100', 'F',-6) == '1100FF');<br>
+assert(alignstr('1100', 'F',-3) == '110');<br>
+assert(alignstr('1100', 'F',-4) == '1100');<br>
+</div>

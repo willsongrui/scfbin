@@ -1,0 +1,12 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString&nbsp;&nbsp;trimfloatstr (TString arg1, TInteger i)</div><h1>DESCRIPTION</h1>
+<div class="dc">To append some '0' characters at the end of a string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">the source string</div>
+<h4>i</h4>
+<div class="dc">i is the number of '0' characters to append if i is positive and a dot will be append first before '0' if i is negative</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+converted string</div><h1>EXAMPLES</h1><div class="dc">
+assert(trimfloatstr ('126', 2) == '12600');<br>
+assert(trimfloatstr ('126', -2) == '126.00');<br>
+</div>

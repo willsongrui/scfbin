@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TXMLTree TCommandLine::getxmltree()</div><h1>说明</h1>
+<div class="dc">serviceEvent事件导致的TCommandLine对象，有可能其中保存有消息解析结果中的xml树，这个函数用来获得这个xml树<br>
+这个xml对象不能使用delete函数删除</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+xml树的句柄</div><h1>示例</h1><div class="dc">
+var TXMLTree x;<br>
+on(serviceEvent, TCommandLine cmd)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;x=cmd.getxmltree();<br>
+&nbsp;&nbsp;&nbsp;print(x.tostr());<br>
+}<br>
+</div>

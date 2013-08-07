@@ -1,0 +1,15 @@
+<h1>原型</h1>
+<div class="dc">TInteger TFTPClient::listdir(TString dirname)</div><h1>说明</h1>
+<div class="dc">列目录，需要在这个函数后再使用getlastinfo()才能获得文件名列表</div><h1>参数</h1>
+<div class="dc"><h4>dirname</h4>
+<div class="dc">远端目录名</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+TFTPClient ftp;<br>
+TString fileList;<br>
+ftp = new TFTPClient;<br>
+ftp.init('ahost'，21，'user'，'password');<br>
+ftp.listdir('dirname');<br>
+fileList = ftp.getlastinfo(); // get the file list string<br>
+print(fileList)<br>
+</div>

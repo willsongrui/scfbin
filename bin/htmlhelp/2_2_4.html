@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc">TString THttpServer::geturlvalue(TString name)</div><h1>说明</h1>
+<div class="dc">获得url中某个参数的值</div><h1>参数</h1>
+<div class="dc"><h4>name</h4>
+<div class="dc">参数的名字</div>
+</div><h1>返回</h1><div class="dc">
+参数的值</div><h1>示例</h1><div class="dc">
+// For example, the URL: http://192.168.2.205:8080?a=1&amp;b=c<br>
+assert(httpServer.geturlvalue('a') == '1');<br>
+assert(httpServer.geturlvalue('b') == 'c');<br>
+</div>

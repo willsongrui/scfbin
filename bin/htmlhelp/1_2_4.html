@@ -1,0 +1,33 @@
+<h1>原型</h1>
+<div class="dc">TString strd2h(TString s)<br>
+TString strh2d(TString s)<br>
+TString strh2u(TString s)</div><h1>说明</h1>
+<div class="dc">strd2h将表示10进制整数的字符串转换为表示16进制整数的串，可以支持的整数范围是：-9223372036854775808 到 9223372036854775807<br>
+strh2d将表示16进制整数的字符串按照有符号数转换为表示10进制整数的串，可以支持的长度为2-16位<br>
+strh2u将表示16进制整数的字符串按照无符号数转换为表示10进制整数的串，可以支持的长度为2-16位，这个函数与strh2d函数的区别是，后者是按照有符号整数处理的。例如，对于'FF'，strh2d('FF')将得到'-1'，而strh2u('FF')将得到'255'<br>
+strd2h的返回结果是最短表示。strh2d输入可以是最短表示，也可以允许前面有冗余的FF或者00</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">被转换的字符串</div>
+</div><h1>返回</h1><div class="dc">
+转换后的返回结果</div><h1>示例</h1><div class="dc">
+assert(strd2h('-9223372036854775808') == '8000000000000000');<br>
+assert(strd2h('-1') == 'FF');<br>
+assert(strd2h('0') == '00');<br>
+assert(strd2h('9223372036854775807') == '7FFFFFFFFFFFFFFF');<br>
+assert(strd2h('-9223372036854775808') == '8000000000000000');<br>
+<br>
+assert(strh2d('8000000000000000') == '-9223372036854775808');<br>
+assert(strh2d('FF') == '-1');<br>
+assert(strh2d('FFFFFFFFFFFFFFFF') == '-1');<br>
+assert(strh2d('00') == '0');<br>
+assert(strh2d('0000000000000000') == '0');<br>
+assert(strh2d('7FFFFFFFFFFFFFFF') == '9223372036854775807');<br>
+assert(strh2d('8000000000000000') == '-9223372036854775808');<br>
+<br>
+assert(strh2u('00') == '0');<br>
+assert(strh2u('ff') == '255');<br>
+assert(strh2u('ffff') == '65535');<br>
+assert(strh2u('ffffffffffffffff') == '18446744073709551615');<br>
+assert(strh2u('8000000000000000') == '9223372036854775808');<br>
+assert(strh2u('7fffffffffffffff') == '9223372036854775807');<br>
+</div>

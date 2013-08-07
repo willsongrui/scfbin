@@ -1,0 +1,63 @@
+<h1>原型</h1>
+<div class="dc">TString idea(TString s, TInteger length, TInteger mode, TString key, TString&amp; ivec)</div><h1>说明</h1>
+<div class="dc">IDEA加解密函数，采用较为通用的cfb模式</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要加密的字符串</div>
+<h4>length</h4>
+<div class="dc">s的长度</div>
+<h4>mode</h4>
+<div class="dc">1:加密 0:解密</div>
+<h4>key</h4>
+<div class="dc">密钥，必须为16字节128比特，通常可以通过一字符串的md5值得到</div>
+<h4>ivec</h4>
+<div class="dc">初始向量，该值无需秘密保存，必须为8字节，变参，后续加密连续使用该ivec参数</div>
+</div><h1>返回</h1><div class="dc">
+返回结果为16进制格式，长度为length</div><h1>示例</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString plain,cipher,cipher1,plain1,cipher2,plain2,plain3;<br>
+&nbsp;&nbsp;&nbsp;var TString key,ivec;<br>
+&nbsp;&nbsp;&nbsp;var TInteger mode,length;<br>
+<br>
+&nbsp;&nbsp;&nbsp;plain='This is the plain i want to encrypt by idea algorithm.';<br>
+&nbsp;&nbsp;&nbsp;key=md5('222222');<br>
+&nbsp;&nbsp;&nbsp;printbin(key);<br>
+&nbsp;&nbsp;&nbsp;ivec='12345678';<br>
+<br>
+&nbsp;&nbsp;&nbsp;length=strlen(plain);<br>
+&nbsp;&nbsp;&nbsp;print('length='+itoa(length));<br>
+<br>
+&nbsp;&nbsp;&nbsp;mode=1;//encrypt<br>
+&nbsp;&nbsp;&nbsp;// first, encrypt the precious 44 bytes<br>
+&nbsp;&nbsp;&nbsp;cipher=idea(plain, length-10, mode, key, ivec);<br>
+&nbsp;&nbsp;&nbsp;print('ivec='+ivec); // ivec is changed<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher);<br>
+<br>
+&nbsp;&nbsp;&nbsp;// then encrypt the last 10 bytes<br>
+&nbsp;&nbsp;&nbsp;cipher1=idea(substr(plain,length-10,10), 10, mode, key, ivec);<br>
+&nbsp;&nbsp;&nbsp;print('cipher1:');<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher1);<br>
+<br>
+&nbsp;&nbsp;&nbsp;cipher2=cipher+cipher1; // the total cipher text<br>
+&nbsp;&nbsp;&nbsp;print('cipher2:');<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher2);<br>
+<br>
+&nbsp;&nbsp;&nbsp;mode=0; // decryption<br>
+&nbsp;&nbsp;&nbsp;ivec='12345678'; // The value is same as encryption<br>
+<br>
+&nbsp;&nbsp;&nbsp;// decrypt the priviois 44 bytes, and the ivec is changed<br>
+&nbsp;&nbsp;&nbsp;plain2=idea(cipher2, length-10, mode, key, ivec);<br>
+<br>
+&nbsp;&nbsp;&nbsp;// decrypt the last 10 bytes<br>
+&nbsp;&nbsp;&nbsp;plain3=idea(substr(cipher2,length-10,10),10,mode,key,ivec);<br>
+&nbsp;&nbsp;&nbsp;plain1=plain2+plain3; // the total plain text<br>
+&nbsp;&nbsp;&nbsp;printbin(plain1);<br>
+&nbsp;&nbsp;&nbsp;printbin(plain);<br>
+<br>
+&nbsp;&nbsp;&nbsp;if(strcmp(plain, plain1)==0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('ok.');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('error!');<br>
+}<br>
+</div>

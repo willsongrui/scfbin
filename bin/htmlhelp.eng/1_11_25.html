@@ -1,0 +1,25 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger shareinfo(TString info)<br>
+TString getsharedinfo(TString fsmKey, TString keyName='')</div><h1>DESCRIPTION</h1>
+<div class="dc">shareinfo() can share some information to other FSMs. getsharedinfo() is to get the shared infomation of one FSM</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>info</h4>
+<div class="dc">The information to share. It is a string that can be constructed according to the requirement.</div>
+<h4>fsmKey</h4>
+<div class="dc">The key of the FSM. This key can be set by setkey() function. If the key is invalid, an exception can be generated</div>
+<h4>keyName</h4>
+<div class="dc">The name of the key. It is same as the name argument of setkey() function.</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+shareinfo() returns 0. getsharedinfo() returns the shared information</div><h1>EXAMPLES</h1><div class="dc">
+// one slpl program<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;setkey('AAA', '12345');<br>
+&nbsp;&nbsp;&nbsp;shareinfo('abcde');<br>
+&nbsp;&nbsp;&nbsp;sleep(100);<br>
+}<br>
+// the other slpl program<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(getsharedinfo('12345', 'AAA')=='abcde');<br>
+}<br>
+</div>

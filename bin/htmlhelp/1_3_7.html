@@ -1,0 +1,9 @@
+<h1>原型</h1>
+<div class="dc">TString gbk2py(TString s)</div><h1>说明</h1>
+<div class="dc">gbk编码的汉字到拼音的转换，目前只支持最常用的3755个汉字（所谓的一级字库），不在这个范围之内的字符将原样返回不转换。</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">要转换的GBK编码的字符串</div>
+</div><h1>返回</h1><div class="dc">
+返回转换之后的拼音字符串，全拼加数字表示的声调，字与字之间没有空格，声调1表示阴平，2表示阳平，3表示上声，4表示去声，5表示轻声</div><h1>示例</h1><div class="dc">
+assert(gbk2py('汉字到拼音的转换') == 'han4zi4dao4pin1yin1de5zhuan3huan4');<br>
+</div>

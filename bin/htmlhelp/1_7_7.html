@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc">TString sqlstrencode( TString s)<br>
+TString sqlstrdecode( TString s)</div><h1>说明</h1>
+<div class="dc">对sql语句需要的字符串进行编解码，避免语句中的非法字符导致sql语句执行成功。一般来说构造sql语句之前要进行编码，对于SQL语句返回的结果要进行解码。主要是对回车竖线引号等字符的转换</div><h1>参数</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">需要编码或者解码的字符串</div>
+</div><h1>返回</h1><div class="dc">
+编码或者解码之后的字符串</div><h1>示例</h1><div class="dc">
+assert(sqlstrencode('abc\ndef|123') == 'abc\\0Adef\\7C123');<br>
+assert(sqlstrdecode('abc\\0Adef\\7C123') == 'abc\ndef|123');<br>
+</div>

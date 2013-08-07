@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString strstr(TString arg1 ,TString arg2)<br>
+TString strcasestr (TString arg1 ,TString arg2)</div><h1>DESCRIPTION</h1>
+<div class="dc">Search a string from another string. strstr is case sensitive, strcasestr is not case sensitive</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">The source string</div>
+<h4>arg2</h4>
+<div class="dc">The string to search</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+Return a new string that is a part of the source string from the first occurrence of the string to search to the end of the source string</div><h1>EXAMPLES</h1><div class="dc">
+assert(strstr('abcd', 'c') == 'cd');<br>
+assert(strcasestr('abCd', 'c') == 'Cd');<br>
+</div>

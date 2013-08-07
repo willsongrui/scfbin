@@ -1,0 +1,25 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSCPTable::coltostr(TInteger index,TString sep='|')<br>
+TString TSCPTable::coltostr(TString colTitle,TString sep='|')<br>
+TString TSCPTable::rowtostr(TInteger index,TString sep='|')</div><h1>DESCRIPTION</h1>
+<div class="dc">To convert a row or a column of a table to a string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>index</h4>
+<div class="dc">row index or column index, first is 1</div>
+<h4>colTital</h4>
+<div class="dc">name of column</div>
+<h4>sep</h4>
+<div class="dc">separator character, default is '|'</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The converted string</div><h1>EXAMPLES</h1><div class="dc">
+var TSCPTable t;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+// 11&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;14<br>
+// 21&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-<br>
+// 31&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-<br>
+assert(t.coltostr(1,'|') == '11|21|31');<br>
+assert(t.rowtostr(1,'|') == '11|||14');<br>
+</div>

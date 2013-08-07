@@ -1,0 +1,20 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger sscanf(TString strSrc, TString format, ...)</div><h1>DESCRIPTION</h1>
+<div class="dc">sscanf parse all fiels by space. The source can not be changed</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>strSrc</h4>
+<div class="dc">source string</div>
+<h4>format</h4>
+<div class="dc">Same as the format argument of sprintf function as C language</div>
+<h4>...</h4>
+<div class="dc">Integer or string, The maximum is 80</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+return parsed characters</div><h1>EXAMPLES</h1><div class="dc">
+var TString str1;<br>
+&nbsp;&nbsp;&nbsp;var TString str2;<br>
+&nbsp;&nbsp;&nbsp;var TString str3;<br>
+&nbsp;&nbsp;&nbsp;str1=¡¯how are you¡¯;<br>
+&nbsp;&nbsp;&nbsp;sscanf(str1,¡¯%s %s %s¡¯,str2,str3);<br>
+&nbsp;&nbsp;&nbsp;......<br>
+<br>
+&nbsp;&nbsp;&nbsp;±¾Àý·µ»Østr2=how, str3=are you<br>
+</div>

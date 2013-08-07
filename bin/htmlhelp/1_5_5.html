@@ -1,0 +1,16 @@
+<h1>原型</h1>
+<div class="dc">TString addmonth(TString t1, TInteger s)</div><h1>说明</h1>
+<div class="dc">在指定时间后加几个月，如果字符串是有效的日期则返回新的日期，否则抛出异常。这里要说明两个规则：<br>
+规则一：如果初始日期是月的最后一天，结果日期也是月的最后一天。<br>
+规则二：因为新的月可能比初始月天数少，保持月的天数不变可能会使结果日期是一个无效日期，这时会减少月的天数以保证结果日期有效。</div><h1>参数</h1>
+<div class="dc"><h4>t1</h4>
+<div class="dc">表示时间的字符串，格式为YYYYMMDDHHmmSS</div>
+<h4>s</h4>
+<div class="dc">要增加的月数，整数，可以为负数</div>
+</div><h1>返回</h1><div class="dc">
+一个新的时间字符串，格式为YYYYMMDDHHmmSS</div><h1>示例</h1><div class="dc">
+assert(addmonth('20100101000000', 1) == '20100201000000');<br>
+assert(addmonth('20100131000000', 1) == '20100228000000');<br>
+assert(addmonth('20100227000000', 1) == '20100327000000');<br>
+assert(addmonth('20100228000000', 1) == '20100331000000');<br>
+</div>

@@ -1,0 +1,21 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSoap::getsubcount(TString path)<br>
+TString TSoap::getsubname(TInteger index, TString path)</div><h1>说明</h1>
+<div class="dc">getsubcount()获得path对应节点子节点的数量<br>
+getsubname获得path对应节点的某个子节点的名称。</div><h1>参数</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">路径应该从setcurrentpath后的路径开始，标签不包含setcurrentpath后的标签，应该是从它的下一级开始，如果path为'',则为setcurrentpath得到的节点</div>
+<h4>index</h4>
+<div class="dc">指第几个字节点，第一个节点index从0 开始。</div>
+</div><h1>返回</h1><div class="dc">
+返回值小于0，失败，否则返回子节点的数量。</div><h1>示例</h1><div class="dc">
+ssubname = soapObj.getsubname(0,'third');<br>
+assert(ssubname == 'third1');<br>
+print('a third subname:'+ssubname);<br>
+ssubname = soapObj.getsubname(1,'third');<br>
+assert(ssubname == 'third2');<br>
+print('a third subname2:'+ssubname);<br>
+<br>
+isubcount = soapObj.getsubcount('third');<br>
+assert(isubcount == 3);<br>
+</div>

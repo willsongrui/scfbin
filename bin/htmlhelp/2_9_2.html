@@ -1,0 +1,5 @@
+<h1>原型</h1>
+<div class="dc">TString TTelnetClient::receive()</div><h1>说明</h1>
+<div class="dc">从telnet服务器获取信息。因为直到目前为止，仍为发现一个有效的判断服务器返回结果结束的办法，因此底层只做了一个简单的判断（select超时就认为对端返回结束）。可能需要在业务逻辑层里做一些判断以保证得到了所有的返回结果。</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+接收到的字符串</div>

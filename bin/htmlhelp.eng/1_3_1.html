@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString asctobcd(TString s)<br>
+TString bcdtoasc(TString s, TInteger mode=1)</div><h1>DESCRIPTION</h1>
+<div class="dc">asctobcd() is to convert asc string to bcd string. bcdtoasc() is to convert bcd string to asc string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The string to be converted. The asc string can only include characters in set [0-9A-Fa-f] or star or double-cross that the star is equal to 'B' and the double-cross is equal to 'C'</div>
+<h4>mode</h4>
+<div class="dc">The converting mode for bcdtoasc(). 1 means that the star or double-cross is used and 0 means that 'B' or 'C' is used</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The result string.&nbsp;&nbsp;The last nibble of the bcd string will be filled with 0 if the asc string length is odd</div><h1>EXAMPLES</h1><div class="dc">
+assert(asctobcd('126') == '\21\06');<br>
+assert(bcdtoasc('\02\50\90\51\71\23\52') == '20050915173225');<br>
+</div>

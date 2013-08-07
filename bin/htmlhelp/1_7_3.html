@@ -1,0 +1,10 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;sqlchname (TString arg1)</div><h1>说明</h1>
+<div class="dc">根据当前时间，将sql语句中的acr_recode转换为acr_record_电信月格式</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc"> sql字符串</div>
+</div><h1>返回</h1><div class="dc">
+acr_record_电信月格式</div><h1>示例</h1><div class="dc">
+s = sqlchname ('select * from acr_record')<br>
+如果当前电信月为2004年4月，那么执行结果也许s为'select * from ACR_RECORD_200404'<br>
+</div>

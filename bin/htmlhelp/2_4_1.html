@@ -1,0 +1,12 @@
+<h1>原型</h1>
+<div class="dc">TString THttpContent::getcontenttype()</div><h1>说明</h1>
+<div class="dc">获得Content-Type,在message header里边的Content-Type的内容。</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+<br>
+contObj.setbuffer('text/plain','&lt;vxml version=&quot;1.0&quot;&gt;&lt;form id=&quot;form1&quot;&gt;&lt;block&gt;&lt;prompt&gt;&lt;audio src=&quot;10006.wav&quot;/&gt;&lt;/prompt&gt;&lt;/block&gt;&lt;/form&gt;&lt;/vxml&gt;');<br>
+var TString strtmp;<br>
+strtmp=contentObj.getcontenttype();<br>
+assert(strtmp=='text/plain');<br>
+<br>
+</div>

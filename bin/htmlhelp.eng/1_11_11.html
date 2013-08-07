@@ -1,0 +1,22 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger repeat(initialAction, TInteger conditialExp, actions ...)</div><h1>DESCRIPTION</h1>
+<div class="dc">To do some expression repeatlly. For some simple loopment in the service logic, this function can be used to improve the performance. To avoid the dead loop, the max loop number is 10000.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>initialAction</h4>
+<div class="dc">An expression for initialization. This expression is only be executed one time</div>
+<h4>conditionExp</h4>
+<div class="dc">A condition expression. This condition will be checked each loop. If the condition expression is false, the loopment will be broken.</div>
+<h4>actions ...</h4>
+<div class="dc">Many action expressions. These expressions will be executed once each loop</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0</div><h1>EXAMPLES</h1><div class="dc">
+// To print: 0 0 2 2000 4 4000...<br>
+var TInteger i;<br>
+repeat(i=0, i&lt;100, print(itoa(i)), print(itoa(i*1000)), i=i+2);<br>
+<br>
+// To calculate the sum of the second column of the table<br>
+var TSCPTable t;<br>
+var TInteger i, sum=0, rowCount;<br>
+...<br>
+rowCount = t.rowcount();<br>
+repeat(i=1, i&lt;=rowCount, sum+=atoi(t[i++][2]));<br>
+</div>

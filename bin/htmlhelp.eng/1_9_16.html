@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger hxmlelement(TString tag, TString content)</div><h1>DESCRIPTION</h1>
+<div class="dc">To construct a simple TXMLTree object using a tag name and a content string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>tag</h4>
+<div class="dc">The tag name</div>
+<h4>content</h4>
+<div class="dc">The content string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The constructed TXMLTree object handle</div><h1>EXAMPLES</h1><div class="dc">
+i = hxmlelement('aaa', 'bbb');<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;aaa&gt;bbb&lt;/aaa&gt;');<br>
+</div>

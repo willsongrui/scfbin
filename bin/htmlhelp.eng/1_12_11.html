@@ -1,0 +1,21 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString numbertrans(TString src, TInteger type)<br>
+TString keymatch(TString src, TInteger type)</div><h1>DESCRIPTION</h1>
+<div class="dc">To match the first column of file $CINDIR/etc/numbertab and return the second column. numbertrans() is used to get the prefix of the telephone number for charging. keymatch() is used for key word filtering. keymatch() can match from any place of the source string. The lines for key match in numbertab file must start with 'F'</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>src</h4>
+<div class="dc">The string to match</div>
+<h4>type</h4>
+<div class="dc">The match rule. 12 is for longest match and 11 is for shortest match</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The second column string is return if matching success. A null string is returned if matching failure</div><h1>EXAMPLES</h1><div class="dc">
+/*<br>
+# the numbertab file<br>
+030 309999<br>
+0306223 21890<br>
+F030 a<br>
+*/<br>
+assert(numbertrans('0306223', 11) == '309999');<br>
+assert(numbertrans('0306223', 22) == '21890');<br>
+assert(numbertrans('003000', 12) == '');<br>
+assert(keymatch('003000', 2) == 'a');<br>
+</div>

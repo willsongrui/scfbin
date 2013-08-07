@@ -1,0 +1,37 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString TSCPChargeServer::getcrstartdate8andtime()<br>
+TString TSCPChargeServer::getcrstopdate8andtime()<br>
+TInteger TSCPChargeServer::getcrcallcost()<br>
+TInteger TSCPChargeServer::getcrcallduration()<br>
+TInteger TSCPChargeServer::getcrreason()<br>
+TString TSCPChargeServer::getcrcallinfo(TString infoname)</div><h1>DESCRIPTION</h1>
+<div class="dc">After the charging is stoped, These function can be used to get the information of charging result:<br>
+getcrstartdate8andtime() is to get the start time.<br>
+getcrstopdate8andtime() is to get the stop time.<br>
+getcrcallcost() is to get the call cost.<br>
+getcrcallduration() is to get the call duration.<br>
+getcrreason() is to get the reason of stopping<br>
+getcrcallinfo() is to get information according to the name</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>infoname</h4>
+<div class="dc">The name can be 'startdate8andtime', 'stopdate8andtime', 'cost', 'duration', 'reason'</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+getcrstartdate8andtime() and getcrstopdate8andtime() return a time string that the format is YYYYMMDDHHmmSS.<br>
+getcrcallcost() returns the integer cost.<br>
+getcrcallduration() returns the integer duration that the unit is second.<br>
+getcrreason() returns the integer reason:<br>
+&nbsp;&nbsp;&nbsp;1: chargeLimitReached<br>
+&nbsp;&nbsp;&nbsp;2: recordClosedNotFinal<br>
+&nbsp;&nbsp;&nbsp;3: recordCloseFinal<br>
+&nbsp;&nbsp;&nbsp;4: timeLimitReached<br>
+&nbsp;&nbsp;&nbsp;5: slpStopCharge</div><h1>EXAMPLES</h1><div class="dc">
+var TString crStart = ch1.getcrstartdate8andtime();<br>
+var TString crStop = ch1.getcrstopdate8andtime();<br>
+var TInteger crcost = ch1.getcrcallcost();<br>
+var TInteger crdur = ch1.getcrcallduration();<br>
+var TInteger crrea = ch1.getcrreason();<br>
+crstart = ch1.getcrcallinfo('startdate8andtime');<br>
+crstop = ch1.getcrcallinfo('stopdate8andtime');<br>
+crcost = ch1.getcrcallinfo('cost');<br>
+crdur = ch1.getcrcallinfo('duration');<br>
+crrea = ch1.getcrcallinfo('reason');<br>
+</div>

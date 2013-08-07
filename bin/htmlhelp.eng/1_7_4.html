@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString fread(TString fileName, TInteger pos, TInteger length)</div><h1>DESCRIPTION</h1>
+<div class="dc">To read a string from a file</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>fileName</h4>
+<div class="dc">The file name</div>
+<h4>pos</h4>
+<div class="dc">The begin position of the file to read</div>
+<h4>length</h4>
+<div class="dc">The length to read. If the length is equal to or less than 0, read to the end if the file</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The read result string. Notice: fread can only read file content less than 512K</div><h1>EXAMPLES</h1><div class="dc">
+s = fread('file', 0, 2)<br>
+</div>

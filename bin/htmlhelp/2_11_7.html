@@ -1,0 +1,25 @@
+<h1>原型</h1>
+<div class="dc">TString TSoap::getxmlns(TString path)<br>
+TString TSoap::getattrxmlns(TString attrName, TString path)<br>
+TString TSoap::getxmlnsvalue(TString prefix)</div><h1>说明</h1>
+<div class="dc">getxmlns获得path对应节点的命名空间的前缀<br>
+getattrxmlns获得path对应节点某个属性的命名空间的前缀<br>
+getxmlnsvalue获得命名空间前缀对应的值</div><h1>参数</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">同getsubcount的path</div>
+<h4>attrName</h4>
+<div class="dc">属性的名称，如果属性名称中包含命名空间的前缀，则AttrName的值不包含该前缀</div>
+<h4>prefix</h4>
+<div class="dc">如果prefix为NULL,则得到缺省的命名空间的前缀。</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TSoap s = new TSoap;<br>
+s.init('',0);<br>
+s.addattr('env:a', '123', 'Body');<br>
+assert(s.tostr()=='&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;env:Envelope xmlns:env=<br>
+&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;env:Body env:a=&quot;123&quot;&gt;&lt;/env:Body&gt;&lt;/en<br>
+v:Envelope&gt;', s.tostr());<br>
+assert(s.getxmlns('Body')=='env', s.getxmlns('Envelope'));<br>
+assert(s.getattrxmlns('a', 'Body')=='env', s.getattrxmlns('a', 'Body'));<br>
+assert(s.getxmlnsvalue('env')=='http://schemas.xmlsoap.org/soap/envelope/');<br>
+</div>

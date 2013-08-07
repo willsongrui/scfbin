@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::splitleg(TInteger legID)</div><h1>DESCRIPTION</h1>
+<div class="dc">To split two legs in one CS</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>legID</h4>
+<div class="dc">leg Id</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+1 for success, 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.splitleg (2);<br>
+</div>

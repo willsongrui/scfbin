@@ -1,0 +1,13 @@
+<h1>原型</h1>
+<div class="dc">TInteger TString::init(TInteger size, TInteger initialValue)</div><h1>说明</h1>
+<div class="dc">字符串初始化，初始化之后字符串本身被改变</div><h1>参数</h1>
+<div class="dc"><h4>size</h4>
+<div class="dc">要初始化的长度</div>
+<h4>initalValue</h4>
+<div class="dc">每个字符的值</div>
+</div><h1>返回</h1><div class="dc">
+0</div><h1>示例</h1><div class="dc">
+var TString s = 'aaa';<br>
+s.init(10,`b`);<br>
+assert(s == 'bbbbbbbbbb');<br>
+</div>

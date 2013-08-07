@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSCPChargeServer::addchargeclass(TInteger c)</div><h1>DESCRIPTION</h1>
+<div class="dc">To add a charging class to the TSCPChargeServer object. You can call this function many times for adding many charging class. For example a mobile call, you can use several charging class for the local call charging and roaming charging. One TSCPChargeServer object supports a maximum of 10 charging actions at the same time.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>c</h4>
+<div class="dc">The charging class to be added</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+</div><h1>EXAMPLES</h1><div class="dc">
+var TSCPChargeServer ch1;<br>
+ch1 = new TSCPChargeServer;<br>
+ch1.addchargeclass(100);<br>
+ch1.addchargeclass(101);<br>
+ch1.addchargeclass(102);<br>
+// 3 charging classes are set<br>
+</div>

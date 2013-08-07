@@ -1,0 +1,12 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TSipCallLeg TSip::createcallleg()</div><h1>DESCRIPTION</h1>
+<div class="dc">After received a SIP message, calling this function can create a TSipCallLeg object to process the other messages about the calling party</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+the handle of TSipCallLeg object</div><h1>EXAMPLES</h1><div class="dc">
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TSipCallLeg oleg;<br>
+&nbsp;&nbsp;&nbsp;oleg = req.createcallleg(req);<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

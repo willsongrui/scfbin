@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger TINESObj::clean()</div><h1>说明</h1>
+<div class="dc">用于清空本次会话信息，准备发起新的会话。</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TINESObj inesobj;<br>
+var TString response;<br>
+inesobj = new TINESObj;<br>
+inesobj.init('FSM');<br>
+response=inesobj.synctofsm('invokeservice 201 1', 5);<br>
+inesobj.clean()<br>
+response=inesobj.synctofsm('invokeservice 202 1', 5);<br>
+…<br>
+</div>

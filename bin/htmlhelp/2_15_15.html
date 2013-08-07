@@ -1,0 +1,19 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSipCallSegment::getparescode()<br>
+TInteger TSipCallSegment::getpcrescode()<br>
+TString TSipCallSegment::getpcdtmf()<br>
+TInteger TSipCallSegment::getprrescode()</div><h1>说明</h1>
+<div class="dc">在onpa, onpc, onpr所设置的事件处理程序中可以调用这些函数获得相应码或者收号的内容</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+响应码或者收号的内容</div><h1>示例</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.onpa ([padone]);<br>
+cs.asynpa('0','10001',0,' ',1,0);<br>
+on([padone], TSipCallSegment cs1)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TInteger code = cs1.getparescode();<br>
+}<br>
+</div>

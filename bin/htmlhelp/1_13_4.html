@@ -1,0 +1,22 @@
+<h1>原型</h1>
+<div class="dc">TInteger globaldis(TString x1, TString y1 ,TString x2, TString x2, TString r='6370')<br>
+TDouble globaldis(TDouble x1, TDouble y1 ,TDouble x2, TDouble x2, TDouble r=6371.004)</div><h1>说明</h1>
+<div class="dc">计算球面上两点之间的距离。（较早的版本只支持以字符串为参数返回整数）</div><h1>参数</h1>
+<div class="dc"><h4>x1</h4>
+<div class="dc">第一个点的经度</div>
+<h4>y1</h4>
+<div class="dc">第一个点的维度</div>
+<h4>x2</h4>
+<div class="dc">第二个点的经度</div>
+<h4>y2</h4>
+<div class="dc">第二个点的维度</div>
+<h4>r</h4>
+<div class="dc">球的半径，缺省为地球的平均半径，公里为单位</div>
+</div><h1>返回</h1><div class="dc">
+两点之间的距离，公里为单位</div><h1>示例</h1><div class="dc">
+例如北京在东经116.4 ，北纬39.9，上海在东经121.4，北纬31.2，求北京到上海的球面距离:<br>
+globaldis('116.4', '39.9', '121.4', '31.2', '6370')<br>
+返回1067<br>
+globaldis(116.4, 39.9, 121.4, 31.2, 6370)<br>
+返回1067.273602186433<br>
+</div>

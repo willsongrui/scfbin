@@ -1,0 +1,12 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;trimfloatstr (TString arg1,TInteger i)</div><h1>说明</h1>
+<div class="dc">将字符串补零</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">要补零的字符串</div>
+<h4>i</h4>
+<div class="dc">补零个数，如果i为正数，在字符串后面补i个0；如果i为负数，在字符串后面补小数点和i个0</div>
+</div><h1>返回</h1><div class="dc">
+改变后的字符串</div><h1>示例</h1><div class="dc">
+assert(trimfloatstr ('126', 2) == '12600');<br>
+assert(trimfloatstr ('126', -2) == '126.00');<br>
+</div>

@@ -1,0 +1,28 @@
+<h1>原型</h1>
+<div class="dc">TInteger jsivar(TString varName, TString strValue)<br>
+TInteger jsivar(TString varName, TInteger intValue)<br>
+TString jsi(TString exp)<br>
+TInteger jsitest(TString boolExp)</div><h1>说明</h1>
+<div class="dc">这个是一个测试用的函数，实际应用并使用。scf支持vxml解析的同时只吃了简单的javascript解释执行。这几个函数就是为了测试这个javascript环境而设。可以定义变量，计算普通表达式和bool表达式的返回结果</div><h1>参数</h1>
+<div class="dc"><h4>varName</h4>
+<div class="dc">要定义的jsi变量名</div>
+<h4>strValue</h4>
+<div class="dc">要定义的字符串变量的初始值</div>
+<h4>intValue</h4>
+<div class="dc">要定义的整数变量的初始值</div>
+<h4>exp</h4>
+<div class="dc">要计算的js表达式</div>
+<h4>intValue</h4>
+<div class="dc">要计算的js bool表达式</div>
+</div><h1>返回</h1><div class="dc">
+对于jsi函数，返回计算结果，无论是整数还是字符串都返回字符串格式，对于jsitest函数，如果bool表达式为真则返回1，如果为假则返回0</div><h1>示例</h1><div class="dc">
+jsivar('a','1') // 定义一个字符串变量a，其初始值为'1'<br>
+jsi('a') // 计算js表达式'a'，得到结果'1'<br>
+jsivar('b','2') // 定义一个字符串变量b，其初始值为'2'<br>
+jsi('a+b') // 计算js表达式'a+b'，得到'12'<br>
+jsivar('i',1) // 定义一个整数变量i，其初始值为1<br>
+jsivar('j',2) // 定义一个整数变量j，其初始值为2<br>
+jsi('i+j') // 计算js表达式，得到'3'<br>
+jsitest('a&gt;3') // 计算js bool表达式，得到0<br>
+jsitext('a&lt;3') // 计算js bool表达式，得到1<br>
+</div>

@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TInteger udpsend(TString host, TInteger port, TString s)<br>
+TInteger&nbsp;&nbsp;udpsendbyname(TString host, TInteger port, TString s, TString logicName)</div><h1>说明</h1>
+<div class="dc">udpsend发送UDP消息，发送端的端口不能指定，需要配置config.udp.*。udpsendbyname可以指定端口</div><h1>参数</h1>
+<div class="dc"><h4>host</h4>
+<div class="dc">主机名</div>
+<h4>port</h4>
+<div class="dc">端口号</div>
+<h4>s</h4>
+<div class="dc">要发送的字符串</div>
+<h4>logicName</h4>
+<div class="dc">配置udp端口的logicName，在config.server.*配置，协议名配置为udp</div>
+</div><h1>返回</h1><div class="dc">
+0表示成功，负数表示失败</div>

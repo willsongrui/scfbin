@@ -1,0 +1,16 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger filetype(TString path)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the file type</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>path</h4>
+<div class="dc">The file path</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+returns -1 for file not existed. Other values:<br>
+1: Named pipe<br>
+4: Directory<br>
+8: Normal file<br>
+10: Symbol link</div><h1>EXAMPLES</h1><div class="dc">
+var TString sfile;<br>
+sfile=sprintf('%s/log/test.txt',getenv('CINDIR'));<br>
+iresult = filetype(sfile);<br>
+print('file type ' + itoa(iresult));<br>
+</div>

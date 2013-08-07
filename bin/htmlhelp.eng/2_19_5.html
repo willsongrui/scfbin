@@ -1,0 +1,14 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TINESObj TCommandLine::getinesobj()</div><h1>DESCRIPTION</h1>
+<div class="dc">If a sub service logic is invoked by INES or other FSM, a TCOmmandLine object may be as the parameter of main() function. Thus the sub service logic can use this function to get the TINESObj object from the TCommandLine object and can return messages using this TINESobj object.<br>
+The TINESObj object cannot be deleted using delete function</div><h1>ARGUMENTS</h1>
+<div class="dc">no arguments</div><h1>RETURN VALUES</h1><div class="dc">
+handle of the TINESObj object</div><h1>EXAMPLES</h1><div class="dc">
+void main(TCommandLine cmd)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TINESObj i;<br>
+&nbsp;&nbsp;&nbsp;i=cmd.getinesobj();<br>
+&nbsp;&nbsp;&nbsp;i.synctofsm('serviceevent a b');<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

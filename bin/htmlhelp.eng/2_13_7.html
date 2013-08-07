@@ -1,0 +1,41 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::onfail([eventProcessLabel])<br>
+TInteger TSipCallSegment::onbusy([eventProcessLabel])<br>
+TInteger TSipCallSegment::onnoanswer([eventProcessLabel], TInteger time=30 )<br>
+TInteger TSipCallSegment::ondisconnect([eventProcessLabel])<br>
+TInteger TSipCallSegment::onanswer([eventProcessLabel])<br>
+TInteger TSipCallSegment::onringing([eventProcessLabel])<br>
+TInteger TSipCallSegment::ontransfer([eventProcessLabel])<br>
+TInteger TSipCallSegment::onreplaces([eventProcessLabel])<br>
+TInteger TSipCallSegment::onpassivehold([eventProcessLabel])</div><h1>DESCRIPTION</h1>
+<div class="dc">onfail: set the event processing entry for routing failure<br>
+onbusy: set the event processing entry for called party busy<br>
+onnoanswer: set the event processing entry for called party no answer<br>
+ondisconnect: set the event processing entry for disconnecting (calling or called party disconnecting after answering)<br>
+onanswer: set the event processing entry for called party answering (including caused by ica)<br>
+onringing: set the event processing entry for called party ringing (include caused by ica)<br>
+ontransfer: set the event processing entry for call transfering<br>
+onreplace: set the event processing entry for called party replacing<br>
+onpassivehold: set the event processing entry for ternimal holding</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>eventProcessLabel</h4>
+<div class="dc">the entry name for processing the event</div>
+<h4>time</h4>
+<div class="dc">no answering time. default is 30 seconds</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+1 for success, 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.onfail([routingfailed]);<br>
+cs.onfail([calledbusy]);<br>
+<br>
+on([routingfailed], TSipCallSegment cs)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+on([calledbusy], TSipCallSegment cs)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

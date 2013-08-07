@@ -1,0 +1,26 @@
+<h1>原型</h1>
+<div class="dc">TInteger hxmlelem(TString tagname , ... )<br>
+TInteger hxmlattr(TString attrname, TString attrvalue)</div><h1>说明</h1>
+<div class="dc">这两个函数用来构造XML树，不能单独使用，需要配合使用</div><h1>参数</h1>
+<div class="dc"><h4>tagname</h4>
+<div class="dc">构造xml元素的tag</div>
+<h4>attrname</h4>
+<div class="dc">构造属性的名称</div>
+<h4>attrvalue</h4>
+<div class="dc">构造属性的值</div>
+<h4>...</h4>
+<div class="dc">构造xml元素的内容字符串，或者子元素的handle，或者属性的handle</div>
+</div><h1>返回</h1><div class="dc">
+xml元素或者属性的handle</div><h1>示例</h1><div class="dc">
+i = hxmlelem('authorize',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hxmlelem('accountnumber',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'11111111111',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hxmlattr('password', '123')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hxmlelem('pin', '1111')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;);<br>
+s = hxmlstr(i);<br>
+assert(s == '&lt;authorize&gt;&lt;accountnumber password=&quot;123&quot;&gt;11111111111&lt;/accountnumber&gt;<br>
+&lt;pin&gt;1111&lt;/pin&gt;&lt;/authorize&gt;', s);<br>
+delete(i);<br>
+</div>

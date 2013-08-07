@@ -1,0 +1,20 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger THttpClient::sendget(TString url, int timeout=60)<br>
+TInteger THttpClient::sendpost(TString url, THttpContent contentid, int timeout=60)</div><h1>DESCRIPTION</h1>
+<div class="dc">To send request message. sendget() uses method 'GET'. sendpost() uses method 'POST'</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>url</h4>
+<div class="dc">The url to request</div>
+<h4>timeout</h4>
+<div class="dc">The timeout value that the unit is second. The default value is 60</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+Values less than 0 are returned for failure. Other values are returned for success</div><h1>EXAMPLES</h1><div class="dc">
+var TString&nbsp;&nbsp;strURL;<br>
+strURL = 'http://192.168.2.237:51289/httpservertest';<br>
+contentObj.setbuffer('text/xml','&lt;vxml version=&quot;1.0&quot;&gt;&lt;form id=&quot;form3&quot;&gt;&lt;block&gt;&lt;prompt&gt;<br>
+&lt;audio src=&quot;10004.wav&quot;/&gt;&lt;/prompt&gt;&lt;/block&gt;&lt;/form&gt;&lt;/vxml&gt;');		<br>
+contentObj.setsoapbody(soapObj);<br>
+	<br>
+resultCode=httpclientobj.sendpost(strURL,contentObj);<br>
+<br>
+resultCode=httpclientobj.sendget(strURL);<br>
+</div>

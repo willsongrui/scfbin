@@ -1,0 +1,55 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString ideaecb(TString s,TString c,TInteger&amp; length,TInteger mode,TString key)</div><h1>DESCRIPTION</h1>
+<div class="dc">To encrypt or decrypt a string using IDEA algorithm, using ecb mode.</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The source string</div>
+<h4>c</h4>
+<div class="dc">when s'length is not multiple of 8, it will fill with character c</div>
+<h4>length</h4>
+<div class="dc">The length of cipher string</div>
+<h4>mode</h4>
+<div class="dc">1 is for encryption, 0 is for decryption</div>
+<h4>key</h4>
+<div class="dc">The 16 bytes key. Normally it is a MD5 result</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The result string. It's length is in returned parameter length</div><h1>EXAMPLES</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString plain,cipher,cipher1,plain1,cipher2,plain2,plain3;<br>
+&nbsp;&nbsp;&nbsp;var TString key,ivec;<br>
+&nbsp;&nbsp;&nbsp;var TInteger mode,length,newlen;<br>
+<br>
+&nbsp;&nbsp;plain='This is the plain i want to encrypt by ideaecb algorithm.';<br>
+&nbsp;&nbsp;&nbsp;key=md5('222222');<br>
+&nbsp;&nbsp;&nbsp;printbin(key);<br>
+<br>
+&nbsp;&nbsp;&nbsp;length=strlen(plain);<br>
+&nbsp;&nbsp;&nbsp;print('length='+itoa(length));<br>
+<br>
+&nbsp;&nbsp;&nbsp;mode=1;//encrypt<br>
+&nbsp;&nbsp;&nbsp;cipher=ideaecb(plain,' ',newlen,mode,key);<br>
+&nbsp;&nbsp;&nbsp;print('newlen='+itoa(newlen));<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher);<br>
+<br>
+&nbsp;&nbsp;&nbsp;mode=0; // decryption<br>
+&nbsp;&nbsp;&nbsp;plain1=ideaecb(cipher,' ',newlen,mode,key);<br>
+&nbsp;&nbsp;&nbsp;print('newlen='+itoa(newlen));<br>
+&nbsp;&nbsp;&nbsp;printbin(plain1);<br>
+<br>
+&nbsp;&nbsp;&nbsp;plain=plain+' '+' ';<br>
+&nbsp;&nbsp;&nbsp;printbin(plain);<br>
+&nbsp;&nbsp;&nbsp;if(strcmp(plain, plain1)==0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('ok.');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('error!');<br>
+<br>
+&nbsp;&nbsp;&nbsp;plain2='1234567812345678';<br>
+&nbsp;&nbsp;&nbsp;cipher2=ideaecb(plain2,' ',newlen,1,key);<br>
+&nbsp;&nbsp;&nbsp;print('newlen='+itoa(newlen));<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher2);//fisrt 8 bytes and last 8 bytes are equal<br>
+&nbsp;&nbsp;&nbsp;ivec='11111111';<br>
+&nbsp;&nbsp;&nbsp;cipher1=idea(plain2,16,1,key,ivec);<br>
+&nbsp;&nbsp;&nbsp;printbin(cipher1);//fisrt 8 bytes and last 8 bytes are different<br>
+}<br>
+</div>

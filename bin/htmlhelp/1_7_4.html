@@ -1,0 +1,11 @@
+<h1>原型</h1>
+<div class="dc">TString&nbsp;&nbsp;sqlgetstrprefix (TString arg1)</div><h1>说明</h1>
+<div class="dc">返回一个字符串的前缀组合，其结果一般用来构造SQL语句，用在in()中</div><h1>参数</h1>
+<div class="dc"><h4>arg1</h4>
+<div class="dc">源字符串</div>
+</div><h1>返回</h1><div class="dc">
+字符串的前缀组合，每个都带有单引号，用逗号分开</div><h1>示例</h1><div class="dc">
+assert(sqlgetstrprefix('12345') ==<br>
+'\2712345\27,\271234\27,\27123\27,\2712\27,\271\27'<br>
+// \27 is ', eg, '12345','1234','123','12','1'<br>
+</div>

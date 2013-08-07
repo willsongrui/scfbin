@@ -1,0 +1,37 @@
+<h1>原型</h1>
+<div class="dc">TInteger THttpContent::sethtmlbody(TString buffer, TString title, TString configFile, TString alert)</div><h1>说明</h1>
+<div class="dc">设置要发送的html消息的内容</div><h1>参数</h1>
+<div class="dc"><h4>buffer</h4>
+<div class="dc">一般是由webxml sib生成的html内容</div>
+<h4>title</h4>
+<div class="dc">为要显示的名称</div>
+<h4>configFile</h4>
+<div class="dc">为界面配置文件，该文件必须两个百分号s,第一个会被title替代，第二个会被buffer替代，第一个一般应在&lt;title&gt;&lt;/title&gt;之间。第二个应该在&lt;body&gt;&lt;/body&gt;之间。</div>
+<h4>Alert</h4>
+<div class="dc">提示信息，如果alert为NULL,则认为没有提示信息，否则认为有提示信息</div>
+</div><h1>返回</h1><div class="dc">
+返回值如果小于0代表失败，否则成功。</div><h1>示例</h1><div class="dc">
+var THttpContent contObj;<br>
+contObj=new(THttpContent);<br>
+......<br>
+var TString dbTableStr = '&lt;Row&gt;ID|父ID|类型|业务|对话|消息|步骤数|当前步|状态|计时器|屏蔽|创建时间|对象|关联ID|操作&lt;/Row&gt;&lt;Row&gt;&quot;&quot;&lt;Row&gt;ID|PID|TYPE|SVC|DIA|MSG|STEPS|STEP|STATE|TIMERS|DISABLE|START|OBJECTS|CID|OPERATIONS&lt;/Row&gt;&lt;/Row&gt;';<br>
+var TString configfile='test';	<br>
+%{<br>
+	webxml<br>
+	{<br>
+	&nbsp;&nbsp;&lt;Html&gt;<br>
+		&lt;ToCCB&gt;dbTableStr&lt;/ToCCB&gt;<br>
+		&lt;Body&gt;<br>
+			&lt;DBTable&gt;<br>
+				&lt;Value&gt;dbTableStr&lt;/Value&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		&lt;Separator&gt;'|'&lt;/Separator&gt;	<br>
+			&lt;/DBTable&gt;<br>
+		&lt;/Body&gt;<br>
+	&lt;/Html&gt;<br>
+	}<br>
+%}<br>
+var TInteger setReturn;<br>
+setReturn=contObj.sethtmlbody(dbTableStr,'testhttp',configfile,'notice');<br>
+<br>
+......<br>
+</div>

@@ -1,0 +1,23 @@
+<h1>原型</h1>
+<div class="dc">TInteger TINESObj::init(TString inesname, TString fsmid='*')</div><h1>说明</h1>
+<div class="dc">初始化TINESObj，设置对端INES名字和对端自动机号。</div><h1>参数</h1>
+<div class="dc"><h4>inesname</h4>
+<div class="dc">通信方标识，可以是:<br>
+逻辑名，如果本端做客户端，对端INES是服务端<br>
+注册名，如果本端做服务端，对端INES是客户端<br>
+'FSM'，用于和其它自动机通信<br>
+'*'或者'**'用于自环INES方式通信</div>
+<h4>fsmid</h4>
+<div class="dc">对方的自动机号，如果第一次发起会话还不知道对方的自动机号，填'*'，缺省为'*'。<br>
+如果是新建TINESObj对象并且知道对方的自动机号，或者使用CorrelationKey方式，那么inesname参数不能使用'FSM'，并且fsmid参数需要这样填写：<br>
+对直接自动机号方式，格式为xxyyyy，xx为2字节进程号，yyyy为自动机号<br>
+CorrelationKey，格式为xxAyyyyyy，xx为2字节进程号，然后是字符A，然后是多字节CorrelationKey</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+var TINESObj inesobj;<br>
+inesobj = new TINESObj;<br>
+inesobj.init('INESC'); //本端做server，对端INES的注册名是INESC<br>
+// ...<br>
+inesobj.init('FSM');&nbsp;&nbsp;//可以用init方法重新初始化该对象用于与FSM通信<br>
+// ...<br>
+</div>

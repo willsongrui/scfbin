@@ -1,0 +1,35 @@
+<h1>原型</h1>
+<div class="dc">TInteger TTelnetClient::send(TString msg)</div><h1>说明</h1>
+<div class="dc">向服务器端发送信息。底层会自动在每个发送字符串后面添加0D 0A。如果在今后的测试中发现有问题的话，可能会不自动添加，改成由业务逻辑控制。</div><h1>参数</h1>
+<div class="dc"><h4>msg</h4>
+<div class="dc">要发送的消息</div>
+</div><h1>返回</h1><div class="dc">
+</div><h1>示例</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString tmpStr;<br>
+&nbsp;&nbsp;&nbsp;var TInteger tmpInt;<br>
+&nbsp;&nbsp;&nbsp;var TTelnetClient telnetClient;<br>
+<br>
+&nbsp;&nbsp;&nbsp;telnetClient=new TTelnetClient;<br>
+&nbsp;&nbsp;&nbsp;telnetClient.init('192.168.2.205', 23);<br>
+&nbsp;&nbsp;&nbsp;sleep(1);&nbsp;&nbsp;// wait for server<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;tmpInt=telnetClient.send('wenyx');<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;telnetClient.send('*****');<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;telnetClient.send('vmstat 1');<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;tmpStr=sprintf('\03');&nbsp;&nbsp;&nbsp;// send ctrl-C, can interrupt the vmstat command<br>
+&nbsp;&nbsp;&nbsp;telnetClient.send(tmpStr);<br>
+&nbsp;&nbsp;&nbsp;sleep(3);<br>
+&nbsp;&nbsp;&nbsp;tmpStr=telnetClient.receive();<br>
+&nbsp;&nbsp;&nbsp;print(tmpStr);<br>
+}<br>
+</div>

@@ -1,0 +1,18 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TSipCallSegment::moveleg(TInteger newLegID,TSipCallSegment srcCS, TInteger srcLeg)</div><h1>DESCRIPTION</h1>
+<div class="dc">To move a leg from another CS to this CS</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>newLegID</h4>
+<div class="dc">the new leg id in this CS</div>
+<h4>srcCS</h4>
+<div class="dc">another CS</div>
+<h4>srcLeg</h4>
+<div class="dc">leg id in another CS</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+1 for success, 0 for failure</div><h1>EXAMPLES</h1><div class="dc">
+var TSipCallSegment cs;<br>
+var TSipCallSegment cs2;<br>
+var TSipMsg req;<br>
+...<br>
+cs = req.createcallsegment();<br>
+cs.moveleg(2,cs2,1);<br>
+</div>

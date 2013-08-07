@@ -1,0 +1,38 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TTCAPDialogue::rejectreq(TInteger invokeID, TInteger problemType, TInteger problemID)</div><h1>DESCRIPTION</h1>
+<div class="dc">To send the U-REJECT request</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>invokeID</h4>
+<div class="dc">integer. The invoke ID of the operation to reject</div>
+<h4>problemType</h4>
+<div class="dc">integer. The problem type:<br>
+0x80 for general problem<br>
+0x81 for invoke problem<br>
+0x82 for return result problem<br>
+0x83 for return error problem</div>
+<h4>problemID</h4>
+<div class="dc">integer. The problem ID<br>
+IDs of problem type 0x80:<br>
+- 0x00 for unrecognized component<br>
+- 0x01 for mistype component<br>
+- 0x02 badly structured component<br>
+IDs of type 0x81:<br>
+- 0x00 for duplicated invoke ID<br>
+- 0x01 for unrecongnized operation<br>
+- 0x02 for mistyped parameter<br>
+- 0x03 for resource limitation<br>
+- 0x04 for initiating release<br>
+- 0x05 for unrongnized linked ID<br>
+- 0x06 for linked response unexpected<br>
+- 0x07 for unexpected linked operation<br>
+IDs of problem type 0x82:<br>
+- 0x00 for unrecognized invoke ID<br>
+- 0x01 for return result unexpected<br>
+- 0x02 for mistyped parameter<br>
+IDs of problem type 0x83:<br>
+- 0x00 for unrecognized invoke ID<br>
+- 0x01 for return error unexpected<br>
+- 0x02 for unrecongnized error<br>
+- 0x03 for unexpected error<br>
+- 0x04 for mistyped parameter</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+0</div>

@@ -1,0 +1,366 @@
+#! /bin/sh
+#--common condiction.
+
+INFDIR=${INFORMIXDIR}
+LIBSCF="${CINDIR}/lib/libscf_nodatabase.a"
+DATABASE="nodb"
+DB64Bit="no"
+TARGET=""
+O3FLAG=""
+CFLAGS=""
+MAKEFILENAME="make.demo"
+EXENAME="scfdemoines"
+
+check_argument()
+{
+   if [ $# -eq 0 ]
+   then
+        set_system_type;
+        help;
+        exit 1;
+   fi
+}
+
+set_argument()
+{
+   until [ $# -eq 0 ]
+   do
+     case $1
+     in
+        informix)
+           DATABASE="informix";;
+        informix64)
+           DATABASE="informix64";;
+        oracle)
+           DATABASE="oracle";;
+        oracle64)
+           DATABASE="oracle64";;
+        mysql)
+           DATABASE="mysql";;
+        nodb)
+           DATABASE="nodb";;
+        nodb64)
+           DATABASE="nodb64";;
+        help)
+           set_system_type;
+           help
+           exit 1;;
+        clean)
+           clean
+           exit 1;;
+        all)
+           clean;;
+        *)
+           echo "build: unkown argument $1"
+           help
+           exit 1 ;;
+     esac
+     shift;
+   done
+}
+
+set_system_type()
+{
+   if [ -z "$UTYPE" ]; then
+      UTYPE=Generic                      
+      if [ -s /usr/bin/uname       ];   then UTYPE=`/usr/bin/uname`; fi
+      if [ -s /bin/uname           ];   then UTYPE=`/bin/uname`;     fi
+      if [ -d /var/sadm/pkg/UnixWare ]; then UTYPE=UnixWare; fi
+   fi
+
+   if [ "$UTYPE" = "SunOS" ]; then
+      PROCESSTYPE=`uname -p`
+      if [ "$PROCESSTYPE" = "i386" ]; then
+         UTYPE="SunOS SOLARISX86"
+      fi
+   fi
+
+   if [ "$DB64Bit" = "yes" ] ; then
+      case "$UTYPE"
+      in
+         SunOS)     UTYPE="SunOS64";;
+         HP-UX)     UTYPE="HP-UX64";;
+      esac
+   fi
+}
+
+help()
+{
+   echo "Usage:"
+   echo "build [database]"
+   echo "eg:"
+   echo "build informix    ;to make ${EXENAME} for $UTYPE  informix. "
+   echo "build informix64  ;to make ${EXENAME} for $UTYPE  informix 64. "
+   echo "build oracle      ;to make ${EXENAME} for $UTYPE  oracle."
+   echo "build oracle64    ;to make ${EXENAME} for $UTYPE  oracle 64."
+   echo "build mysql       ;to make ${EXENAME} for $UTYPE  mysql."
+   echo "build nodb        ;to make ${EXENAME} for $UTYPE  no database."
+   echo "build nodb64      ;to make ${EXENAME} for $UTYPE  no database,but system is 64."
+   echo "build clean       ;to clean up object file"
+   echo "build help        ;to show this info"
+   echo
+}
+
+clean()
+{
+   make -f ${MAKEFILENAME} clean 
+}
+
+set_informix724_option()
+{
+   if   [ -s "${INFDIR}/lib/esql/libifsql.a" ]; then
+      XORF=f
+   elif [ -s "${INFDIR}/lib/esql/libixsql.a" ]; then
+      XORF=x
+   else
+      echo "build error: file ${INFDIR}/lib/esql/libifsql.a not exist"
+      exit 0
+   fi
+   SLIB="${INFDIR}/lib/esql/libi${XORF}sql.a"
+   GLIB="${INFDIR}/lib/esql/libi${XORF}gen.a"
+   OLIB="${INFDIR}/lib/esql/libi${XORF}os.a"
+   ALIB="${INFDIR}/lib/libi${XORF}asf.a"
+   GLSLIB="${INFDIR}/lib/esql/libi${XORF}gls.a"
+   GLXLIB="${INFDIR}/lib/esql/libi${XORF}glx.a"
+   COMB="${OLIB} ${GLIB}"
+   NETSTUB="${INFDIR}/lib/netstub.a"
+   #next line for informix 64bit version
+   if [ "$DB64Bit" = "yes" ]; then
+      CHECKAPILIB="${INFDIR}/lib/esql/checkapi.o"
+   else
+      CHECKAPILIB=""
+   fi
+      DBLIB="${SLIB} ${COMB} ${ALIB} ${COMB} ${GLSLIB} ${GLXLIB} ${CHECKAPILIB} ${DBDEFINE}"
+   LIBSCF="${CINDIR}/lib/libscf_informix.a"
+}
+
+set_oracle_option()
+{
+   DBLIB="-L${ORACLE_HOME}/lib/ -lclntsh `cat ${ORACLE_HOME}/lib/sysliblist`"
+   LIBSCF="${CINDIR}/lib/libscf_oracle.a"
+}
+
+set_mysql_option()
+{
+   DBLIB="-L${MYSQLDIR}/lib/mysql -lmysqlclient -lz"
+   LIBSCF="${CINDIR}/lib/libscf_mysql.a"
+}
+
+set_nodb_option()
+{
+   echo "build no database"
+   DBLIB=
+   LIBSCF="${CINDIR}/lib/libscf_nodatabase.a"
+}
+
+set_database()
+{
+   if [ "$DATABASE" = "informix" ]; then
+      set_informix724_option 
+   elif [ "$DATABASE" = "informix731" ]; then
+      set_informix724_option 
+   elif [ "$DATABASE" = "informix64" ]; then
+      DB64Bit="yes"
+      set_informix724_option 
+   elif [ "$DATABASE" = "oracle" ]; then
+      DBVersion="9i"
+      set_oracle_option
+   elif [ "$DATABASE" = "oracle64" ]; then
+      DBVersion="9i"
+      DB64Bit="yes"
+      set_oracle_option
+   elif [ "$DATABASE" = "mysql" ]; then
+      set_mysql_option
+   elif [ "$DATABASE" = "nodb" ]; then
+      set_nodb_option
+   elif [ "$DATABASE" = "nodb64" ]; then
+      DB64Bit="yes"
+      set_nodb_option
+   else
+      DATABASE="nodb"
+      set_nodb_option
+   fi
+}
+
+build()
+{
+   if [ "${O3FLAG}" != "" ]; then
+      case "$UTYPE"
+      in
+         HP-UX64)   O3FLAG="+O3";;
+         HP-UX)     O3FLAG="+O3";;
+         *)         O3FLAG="-O3";;
+      esac
+   fi
+
+   CFLAGS="${CFLAGS} ${O3FLAG}"
+
+   if [ "$UTYPE" != "" ]; then
+   if [ "$UTYPE" = "AIX" ]; then
+	SYSNLIB="-lxti -lpthread -ldl"
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+        CC="xlC" \
+        cc="xlC" \
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_AIX -qchars=signed" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "BSD/OS" ]; then
+        SYSNLIB="-lnsl -lpthread  -lm  -ldl -lm -lcrypt -L/usr/lib/security ${THREADLIB} -ldl"
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+        CC="gcc"\
+        cc="cc" \
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_LINUX" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "FreeBSD" ]; then
+        SYSNLIB="-lnsl -lpthread  -lm  -ldl -lm -lcrypt -L/usr/lib/security ${THREADLIB} -ldl"
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+        CC="gcc" \
+        cc="cc" \
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_LINUX" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "HP-UX64" ]; then
+        SYSNLIB="-lnsl -lsec  -lpthread ${THREADLIB}"
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+        CC="aCC" \
+        cc="aCC -Ae" \
+	EC="$EC" \
+        CFLAGS="${CFLAGS} +DS2.0 +DA2.0W +eh -D_HP -D_INFORMIX64 +W829" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF" \
+        INFDIR="$INFDIR"
+        exit 1;
+
+   elif [ "$UTYPE" = "HP-UX" ]; then
+        SYSNLIB="-lnsl -lsec  -lpthread ${THREADLIB} "
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+        CC="aCC" \
+        cc="aCC -Ae" \
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_HP +W829" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF" \
+        INFDIR="$INFDIR"
+        exit 1
+
+   elif [ "$UTYPE" = "Linux" ]; then
+        SYSNLIB="-ldl -lcrypt -lpthread -lrt"
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+	EC="$EC" \
+        CC="g++"\
+        cc="gcc"\
+        CFLAGS="${CFLAGS} -fno-const-strings -D_LINUX" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "SCO" ]; then
+        SYSNLIB="-lsocket -lnsl -ldl -lpthread ${THREADLIB}"
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+        CC="CC" \
+        cc="cc" \
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_SCO" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "SunOS64" ]; then
+        SYSNLIB="-lsocket -lnsl -ldl -lpthread ${THREADLIB}"
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+        CC="CC" \
+        cc="cc" \
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_SUN  -D_INFORMIX64 -features=no%conststrings -instances=explicit -xarch=v9" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "SunOS" ]; then
+        SYSNLIB="-lsocket -lnsl -ldl ${THREADLIB} -lm -lpthread -lrt" 
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+        CC="CC" \
+        cc="cc" \
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_SUN -features=no%conststrings -instances=explicit" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "SunOS SOLARISX86" ]; then
+        SYSNLIB="-lsocket -lnsl  -laio -lm -lelf -lrt -lpthread -ldl ${THREADLIB}" 
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE" \
+        CC="CC" \
+        cc="cc" \
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_SUN -D_SOLARISX86 -features=no%conststrings -instances=explicit" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "OSF1" ]; then
+        SYSNLIB="-ltli -lsecurity -lm -lpthread -lxti ${THREADLIB}" 
+        make -f ${MAKEFILENAME} $TARGET\
+	MAKE="$MAKE"\
+        CC="cxx" \
+        cc="cc" \
+        EC="$EC"\
+        CFLAGS="${CFLAGS} ${USEIMC} -D_ALPHA -D_REENTRANT" \
+        LIB="${SYSNLIB} ${DBLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "UnixWare" ]; then
+        SYSNLIB="-lsocket -lnsl -Kthread -ldl -lm" 
+        make -f ${MAKEFILENAME} $TARGET\
+        CC="CC"\
+        cc="cc"\
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_UNIXWARE" \
+        LIB="${DBLIB} ${SYSNLIB}" \
+        LIBSCF="$LIBSCF"
+        exit 1
+
+   elif [ "$UTYPE" = "Tandem" ]; then
+        make -f ${MAKEFILENAME} $TARGET\
+        CC="NCC"\
+        cc="cc"\
+	EC="$EC" \
+        CFLAGS="${CFLAGS} -D_TANDEM -D_REENTRANT" \
+        SYSLIB="-lsocket -lnsl" 
+        exit 1
+   fi
+   fi
+}
+
+main()
+{
+   check_argument $*;
+   set_argument $*;
+   set_database $*;
+   set_system_type $*;
+   build $*;
+}
+
+main $*;
+exit 1

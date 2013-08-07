@@ -1,0 +1,71 @@
+<h1>原型</h1>
+<div class="dc">TInteger sqlfetch(TSCPTable t, TString sql, TInteger maxRows=500, beginRow=0)<br>
+TInteger sqlrun(TString sql, TInteger notSync=0)</div><h1>说明</h1>
+<div class="dc">执行一个SQL语句。一般来说select语句用sqlfetch，其它语句用sqlrun</div><h1>参数</h1>
+<div class="dc"><h4>t</h4>
+<div class="dc">返回结果存放的TSCPTable句柄，之前必须new得</div>
+<h4>sql</h4>
+<div class="dc">要执行的sql语句</div>
+<h4>maxRows</h4>
+<div class="dc">最多返回的记录数量，通常可以是1-500之间的数值，缺省为500。如果这个数是0，那么将使用游标方式，第一次执行打开游标并返回第一条记录，后续执行取下一条，如果游标已经到尽头则关闭游标。如果这个参数是-1则强行关闭游标</div>
+<h4>beginRow</h4>
+<div class="dc">从第几条记录开始取。这个不是所有的数据库都支持。如果maxRows为0的游标方式，这个参数无效</div>
+<h4>notSync</h4>
+<div class="dc">是否要同步到SMP，0同步，1不同步，缺省为同步</div>
+</div><h1>返回</h1><div class="dc">
+如果返回大于等于0，表示执行成功，返回获得或者影响记录数。如果返回小于0，说明执行不成功。如果select, update, delete等语句没有符合条件的纪录，会返回-39</div><h1>示例</h1><div class="dc">
+#progma c<br>
+void main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TString sql;<br>
+&nbsp;&nbsp;&nbsp;var TInteger i,j,k;<br>
+&nbsp;&nbsp;&nbsp;var TSCPTable t;<br>
+<br>
+&nbsp;&nbsp;&nbsp;sql='drop table sqlfunctest';<br>
+&nbsp;&nbsp;&nbsp;i=sqlrun(sql);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('drop failure');<br>
+<br>
+&nbsp;&nbsp;&nbsp;sql='create table sqlfunctest (a int, b char(10))';<br>
+&nbsp;&nbsp;&nbsp;i=sqlrun(sql);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('create failure');<br>
+<br>
+&nbsp;&nbsp;&nbsp;sql='insert into sqlfunctest(a,b) values (100, \'12345\')';<br>
+&nbsp;&nbsp;&nbsp;i=sqlrun(sql);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('insert failure');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(sprintf('insert %d records',i));<br>
+<br>
+&nbsp;&nbsp;&nbsp;sql='insert into sqlfunctest(a,b) values (200, \'abcd3\')';<br>
+&nbsp;&nbsp;&nbsp;i=sqlrun(sql);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('insert failure');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(sprintf('insert %d records',i));<br>
+<br>
+&nbsp;&nbsp;&nbsp;t=new TSCPTable;<br>
+&nbsp;&nbsp;&nbsp;sql='select * from sqlfunctest';<br>
+&nbsp;&nbsp;&nbsp;i=sqlfetch(t, sql, 10);<br>
+&nbsp;&nbsp;&nbsp;if(i&lt;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print('select failure');<br>
+&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k=t.rowcount();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(sprintf('return %d, rowcount %d',i,k));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(j=1;j&lt;=k;j=j+1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(sprintf('row %d: %s',j,t.rowtostr(j)));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;//SCF6.5(08.12)以上版本支持informix数据库对sqlfetch操作存储过程的调用及返回<br>
+&nbsp;&nbsp;&nbsp;sqlrun('create procedure slpltest(i integer, j integer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returning integer, integer;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return i+j, i-j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end procedure');<br>
+&nbsp;&nbsp;&nbsp;sqlfetch(t, 'execute procedure slpltest(10, 20)', 10);<br>
+&nbsp;&nbsp;&nbsp;assert(t.tostr()=='30|-10', t.tostr());<br>
+<br>
+}<br>
+</div>

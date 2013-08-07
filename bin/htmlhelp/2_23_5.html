@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TINESObj TCommandLine::getinesobj()</div><h1>说明</h1>
+<div class="dc">对于INES或者别的自动机调用子业务逻辑导致的TCommandLine对象，子业务逻辑可以调用这个函数来获得相关的TINESObj对象，然后利用这个对象来回送消息。<br>
+这个TINESObj对象不能使用delete函数删除</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+TINESObj对象的句柄</div><h1>示例</h1><div class="dc">
+void main(TCommandLine cmd)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;var TINESObj i;<br>
+&nbsp;&nbsp;&nbsp;i=cmd.getinesobj();<br>
+&nbsp;&nbsp;&nbsp;i.synctofsm('serviceevent a b');<br>
+&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+</div>

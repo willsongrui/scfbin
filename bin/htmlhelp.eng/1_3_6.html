@@ -1,0 +1,11 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString base64encode(TString s)<br>
+TString base64decode(TString s)</div><h1>DESCRIPTION</h1>
+<div class="dc">base64encode() is to encode normal string to BASE64 format. base64decode() is to decode BASE64 format string to normal string</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>s</h4>
+<div class="dc">The source string</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The result string</div><h1>EXAMPLES</h1><div class="dc">
+assert(base64encode('abcde') == 'YWJjZGU=');<br>
+assert(base64decode('YWJjZGU=') == 'abcde');<br>
+</div>

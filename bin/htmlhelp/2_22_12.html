@@ -1,0 +1,22 @@
+<h1>原型</h1>
+<div class="dc">TSCPTable TSCPTable::diffbycol(TSCPTable table2, TInteger col1, TInteger col2)</div><h1>说明</h1>
+<div class="dc">自身某一列和另外一个字符串表某一列比较，返回比较的结果</div><h1>参数</h1>
+<div class="dc"><h4>table2</h4>
+<div class="dc">另一个字符串表</div>
+<h4>col1</h4>
+<div class="dc">自身参与比较的列号</div>
+<h4>col2</h4>
+<div class="dc">另一个字符串表参与比较的列号</div>
+</div><h1>返回</h1><div class="dc">
+返回比较的结果，比较的结果将存放在一个只有一列的新字符串表中</div><h1>示例</h1><div class="dc">
+var TSCPTable t, t2, t3;<br>
+t=new TSCPTable(3,4);<br>
+t[1][1]='11';<br>
+t[2][1]='21';<br>
+t[3][1]='31';<br>
+t[1][4]='14';<br>
+t2=new TSCPTable(2,2);<br>
+t2[2][1]='21';<br>
+t3=t.diffbycol(t2,1,1);<br>
+assert(t3.tostr('|') == '11|31');<br>
+</div>

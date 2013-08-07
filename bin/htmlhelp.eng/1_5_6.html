@@ -1,0 +1,13 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString nextweekday(TString t1, TInteger s)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get a new time string according to a time string and a next weekday index ( 0 for Sunday, 1 for Monday ... 6 for Saturday ). </div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>t1</h4>
+<div class="dc">The time string. The format is YYYYMMDDHHmmSS</div>
+<h4>s</h4>
+<div class="dc">weekday index, It is an integer between 0 and 6 ( 0 for Sunday, 1 for Monday ... 6 for Saturday )</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A new time string. The format is YYYYMMDDHHmmSS</div><h1>EXAMPLES</h1><div class="dc">
+// for example, 2002-5-20 is Monday<br>
+assert(nextweekday('20020520000000', 6) == '20020525000000'); // get next Saturday<br>
+assert(nextweekday('20020520000000', 5) == '20020524000000'); // get next Friday<br>
+</div>

@@ -1,0 +1,16 @@
+<h1>原型</h1>
+<div class="dc">TString TSipMsg::getmethod()</div><h1>说明</h1>
+<div class="dc">获得SIP消息的方法, 取得的类型都为大写的字符串。如INVITE、BYE、ACK等</div><h1>参数</h1>
+<div class="dc">无</div><h1>返回</h1><div class="dc">
+字符串类型的方法名称</div><h1>示例</h1><div class="dc">
+/* For example:<br>
+INVITE sip:7434@10.20.200.227:5060 SIP/2.0<br>
+Call-ID: 7764053628133e4b65b609e7160e555e@10.20.200.227<br>
+From: &lt;sip:07312910430@10.20.200.227:5060&gt;;tag=00143-0b1006b1010684d6<br>
+...<br>
+*/<br>
+void main(TSipMsg req)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;assert(req.getmethod() == 'INVITE');<br>
+}<br>
+</div>

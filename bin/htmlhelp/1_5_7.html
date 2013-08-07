@@ -1,0 +1,14 @@
+<h1>原型</h1>
+<div class="dc">TString monthlastday(TString t1)</div><h1>说明</h1>
+<div class="dc">得到指定日期的月末日期，要求字符串是有效日期，否则抛出异常</div><h1>参数</h1>
+<div class="dc"><h4>t1</h4>
+<div class="dc">表示时间的字符串，格式为YYYYMMDDHHmmSS</div>
+</div><h1>返回</h1><div class="dc">
+一个新的时间字符串，格式为YYYYMMDDHHmmSS</div><h1>示例</h1><div class="dc">
+var TString stmp;<br>
+stmp =monthlastday('20101020');<br>
+print(stmp);<br>
+本例返回时间：20101031142135<br>
+142135为系统本天当前时间<br>
+参数具体到秒时，返回的结果为查找月最后一天的相应时间。否则返回最后一天的与当前时间一样的时间<br>
+</div>

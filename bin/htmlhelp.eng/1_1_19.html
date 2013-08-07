@@ -1,0 +1,15 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TInteger TString::getbyte(TInteger index)<br>
+TInteger TString::setbyte(TInteger index, TInteger value)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get or set a byte value of a string. getbyte() is to get a byte value. setbyte() is to get a byte value</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>index</h4>
+<div class="dc">integer. The index must be greater than or equal to 0 and less than the string length</div>
+<h4>value</h4>
+<div class="dc">integer. It is the byte value to set</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+A negative integer is returned for failure. If success, getbyte() returns a byte value between 0-255 and setbyte() returns 0</div><h1>EXAMPLES</h1><div class="dc">
+var TString s='12345';<br>
+assert(s.getbyte(2) == 51);<br>
+s.setbyte(1,51);<br>
+assert(s == '13345');<br>
+</div>

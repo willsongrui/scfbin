@@ -1,0 +1,24 @@
+<h1>原型</h1>
+<div class="dc">TInteger THttpContent::setfile(TString contentType,TString&nbsp;&nbsp;fileName)<br>
+TInteger THttpContent::setbuffer(TString contentType,TString buffer)<br>
+TInteger THttpContent::setxmlbody(TXMLTree xmlhandle)<br>
+TInteger THttpContent::setsoapbody(TSoap soaphandle)</div><h1>说明</h1>
+<div class="dc">setfile()把整个文件设置为发送消息的内容，比如发送一个多媒体文件等等。这个文件要在webxml目录下存在。<br>
+setbuffer()设置一个字符串作为要发送的消息的内容<br>
+setxmlbody()设置消息体的内容为text/xml格式，并将一个TXMLTree对象作为要发送的消息的内容<br>
+setsoapbody()设置消息体的内容为text/xml格式，并将一个TSoap对象作为要发送消息的内容</div><h1>参数</h1>
+<div class="dc"><h4>contentType</h4>
+<div class="dc">要发送的消息的Content-Type</div>
+<h4>fileName</h4>
+<div class="dc">发送的文件名称</div>
+<h4>buffer</h4>
+<div class="dc">要发送的内容</div>
+<h4>handle</h4>
+<div class="dc">TXMLTree或者TSoap对象的handle</div>
+</div><h1>返回</h1><div class="dc">
+返回值如果小于0代表失败，否则成功。</div><h1>示例</h1><div class="dc">
+contentObj.setbuffer('text/xml','&lt;vxml version=&quot;1.0&quot;&gt;&lt;form id=&quot;form3&quot;&gt;&lt;block&gt;&lt;prompt&gt;<br>
+&lt;audio src=&quot;10004.wav&quot;/&gt;&lt;/prompt&gt;&lt;/block&gt;&lt;/form&gt;&lt;/vxml&gt;');		<br>
+contentObj.setsoapbody(soapObj);<br>
+contentObj.setfile('text/xml','smp');<br>
+</div>

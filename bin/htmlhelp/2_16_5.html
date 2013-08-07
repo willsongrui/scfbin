@@ -1,0 +1,35 @@
+<h1>原型</h1>
+<div class="dc">TInteger TSdpMsg::getmediacount()<br>
+TString TSdpMsg::getmediacodec(TInteger index)<br>
+TString TSdpMsg::getmediacodecbytype(TString mediaType)<br>
+TString TSdpMsg::getmediatype(TInteger index)<br>
+TString TSdpMsg::getmediaport(TInteger index)<br>
+TString TSdpMsg::getmediaportbytype(TString mediaType)<br>
+TString TSdpMsg::getmediadirection(TInteger pos)<br>
+TString TSdpMsg::getmediadirectionbytype(TString mediaType)<br>
+TInteger TSdpMsg::addmedia(TString mediaType,TString trans,TString addr,TString port,TString codec)<br>
+TInteger TSdpMsg::setmediaport(TString port)<br>
+TInteger TSdpMsg::setmediaportbytype(TString mediaType, TString port)</div><h1>说明</h1>
+<div class="dc">这组函数操作SDP对象中的媒体:<br>
+getmediacount得到SDP对象中媒体的个数<br>
+getmediacodec得到SDP对象中某个媒体的codec<br>
+getmediatype得到SDP对象中某个媒体的媒体类型<br>
+addmedia向SDP对象中增加一种媒体类型<br>
+setmediaport设置SDP对象中mediaport值</div><h1>参数</h1>
+<div class="dc"><h4>index</h4>
+<div class="dc">该媒体在sdp中的位置，从0开始</div>
+<h4>mediaType</h4>
+<div class="dc"></div>
+<h4>trans</h4>
+<div class="dc"></div>
+<h4>addr</h4>
+<div class="dc"></div>
+<h4>port</h4>
+<div class="dc"></div>
+<h4>codec</h4>
+<div class="dc"></div>
+</div><h1>返回</h1><div class="dc">
+getmediacount返回媒体的个数<br>
+getmediacodec返回该媒体codec的值，多个codec的话中间用'|'分隔<br>
+getmediatype返回该媒体的类型，目前有audio、video等<br>
+其它函数返回0表示成功，1表示失败</div>

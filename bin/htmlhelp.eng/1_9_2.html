@@ -1,0 +1,27 @@
+<h1>SYNOPSIS</h1>
+<div class="dc">TString hxml(TXMLTree handle, TString path, TString default)<br>
+TString TXMLtree::getvalue(TString path, TString default)</div><h1>DESCRIPTION</h1>
+<div class="dc">To get the content of an element</div><h1>ARGUMENTS</h1>
+<div class="dc"><h4>handle</h4>
+<div class="dc">The handle of the TXMLTree object</div>
+<h4>path</h4>
+<div class="dc">The element path</div>
+<h4>default</h4>
+<div class="dc">The default value for path invalid</div>
+</div><h1>RETURN VALUES</h1><div class="dc">
+The elememt content is returned if the path is valid. If the path is invalid the default value will be returned</div><h1>EXAMPLES</h1><div class="dc">
+var TXMLTree i = hxmlparse('&lt;x cvd:attr1=&quot;hello&quot;&gt;xxx&lt;y&gt;yyy&lt;/y&gt;&lt;/x&gt;');<br>
+s1 = hxml(i,'x/y','null');<br>
+s2 = hxml(i,'x/z','null');<br>
+s3 = hxml(i,'x/cvd:attr1','null');<br>
+assert(s1 == 'yyy');<br>
+assert(s2 == 'null');<br>
+assert(s3 == 'hello');<br>
+<br>
+s1 = i.getvalue('x/y','null');<br>
+s2 = i.getvalue('x/z','null');<br>
+s3 = i.getvalue('x/cvd:attr1','null');<br>
+assert(s1 == 'yyy');<br>
+assert(s2 == 'null');<br>
+assert(s3 == 'hello');<br>
+</div>
